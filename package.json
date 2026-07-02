@@ -1,0 +1,58 @@
+{
+  "name": "math-genius",
+  "productName": "Math Genius",
+  "version": "2.0.0",
+  "description": "Professional Mathematics Learning Platform",
+  "main": "main.js",
+
+  "author": "Lakshmi Kanta Samanta",
+  "license": "ISC",
+
+  "type": "commonjs",
+
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build": "electron-builder",
+    "dist": "electron-builder --win"
+  },
+
+  "build": {
+    "appId": "com.mathgenius.desktop",
+    "productName": "Math Genius",
+
+    "directories": {
+      "output": "release"
+    },
+
+    "files": [
+      "**/*",
+      "!node_modules/.cache/**"
+    ],
+
+    "win": {
+      "target": "nsis",
+      "icon": "assets/Math-Genius-logo-png.ico"
+    },
+
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+
+  "keywords": [
+    "mathematics",
+    "education",
+    "learning",
+    "algebra",
+    "geometry"
+  ],
+
+  "devDependencies": {
+    "electron": "^42.1.0",
+    "electron-builder": "^26.8.1"
+  }
+}

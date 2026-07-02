@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Math Genius</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+   body{
+    margin:0;
+    padding:0;
+    background:#020b26;
+    color:white;
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    overflow:hidden;
+    box-sizing:border-box;
+} 
+
+  .container{
+    margin-top:120px;
+    text-align:center;
+    width:100%;
+}
+
+    h1{
+      font-size:70px;
+      color:#32c5ff;
+      text-shadow:0 0 20px #32c5ff;
+    }
+
+    p{
+      font-size:28px;
+      margin-bottom:40px;
+    }
+
+    .science-box{
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      margin-bottom:40px;
+      flex-wrap:wrap;
+    }
+
+    .card{
+      background:#0a1b45;
+      padding:15px 25px;
+      border-radius:12px;
+      border:1px solid #32c5ff;
+    }
+    
+  .card:hover{
+
+    background:#123a7a;
+
+    transform:translateY(-8px) scale(1.05);
+
+    box-shadow:0 0 25px #32c5ff;
+
+    transition:0.3s;
+
+}
+
+    button{
+      padding:15px 40px;
+      font-size:22px;
+      border:none;
+      border-radius:12px;
+      background:#32c5ff;
+      cursor:pointer;
+      box-shadow:0 0 20px #32c5ff;
+    }
+    button:hover{
+   transform:scale(1.08);
+   transition:0.3s;
+   box-shadow:0 0 35px #32c5ff;
+} 
+
+.bg-circle{
+   position:absolute;
+   width:500px;
+   height:500px;
+   background:#0f2d7a;
+   border-radius:50%;
+   filter:blur(120px);
+   z-index:-1;
+   animation:move 8s infinite alternate;
+}
+
+@keyframes move{
+
+   from{
+      transform:translate(-100px,-50px);
+   }
+
+   to{
+      transform:translate(100px,50px);
+   }
+
+}
+.math-page{
+   width:100%;
+   min-height:100vh;
+   background:#020b26;
+   color:white;
+   padding:50px;
+   font-family:'Poppins',sans-serif;
+}
+
+.math-page h1{
+   text-align:center;
+   margin-bottom:40px;
+}
+
+.formula-box{
+   background:#0a1b45;
+   padding:25px;
+   margin:20px auto;
+   border-radius:15px;
+   width:70%;
+   border:1px solid #32c5ff;
+   box-shadow:0 0 20px rgba(50,197,255,0.2);
+}
+
+.formula-box h2{
+   color:#32c5ff;
+   margin-bottom:15px;
+}
+
+.formula-box p{
+   font-size:28px;
+}
+
+.topbar { ... }
+.logo { ... }
+.search { ... }
+.search:focus { ... }
+
+  </style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="logo">Math Genius</div>
+
+    <input
+        type="text"
+        class="search"
+        placeholder="Search Formula, Class, Topic..."
+    >
+</header>
+
+  <div class="container">
+
+    <div style="font-size:80px;">∑</div>
+
+    <h1>Math Genius</h1>
+
+    <p>Solve • Learn • Discover</p>
+
+    <div class="science-box">
+
+     <div class="card" onclick="openMath()">
+Mathematics
+</div>
+
+      <div class="card">Physics</div>
+
+      <div class="card">Chemistry</div>
+
+      <div class="card">Biology</div>
+      <div class="bg-circle"></div>
+
+    </div>
+
+    <button onclick="startApp()">Start</button>
+
+  </div>
+ 
+<script>
+
+  function startApp(){
+   alert("Welcome to Math Genius");
+    }
+function openMath(){
+
+document.body.innerHTML = `
+
+<div class="math-page">
+
+<h1>Mathematics Formula Section</h1>
+
+<div class="formula-box">
+<h2>Quadratic Formula</h2>
+
+<p>
+x = (-b ± √(b² - 4ac)) / 2a
+</p>
+</div>
+
+<div class="formula-box">
+<h2>Pythagoras Theorem</h2>
+
+<p>
+a² + b² = c²
+</p>
+</div>
+
+<div class="formula-box">
+<h2>Area of Circle</h2>
+
+<p>
+A = πr²
+</p>
+</div>
+
+</div>
+
+`;
+
+}
+
+</script>
+
+</body>
+
+</html>

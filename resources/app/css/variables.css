@@ -1,0 +1,27 @@
+/* ==========================
+   CSS VARIABLES
+========================== */
+
+:root{
+
+    --primary:#1EA7FF;
+    --secondary:#0A1E5E;
+
+    --background:#020B2D;
+    --card:#0E1C4D;
+
+    --text:#FFFFFF;
+    --text-light:#C8D4F0;
+
+    --border:#2C4D8C;
+
+    --success:#27AE60;
+    --danger:#E74C3C;
+
+    --radius:12px;
+
+    --transition:0.3s;
+
+    --shadow:0 8px 25px rgba(0,0,0,.25);
+
+}

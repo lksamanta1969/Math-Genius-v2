@@ -1,0 +1,29 @@
+/* ==========================
+   BUTTON
+========================== */
+
+.btn{
+
+    background:#1EA7FF;
+
+    color:white;
+
+    padding:12px 30px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:16px;
+
+}
+
+.btn:hover{
+
+    background:#0B8BE6;
+
+}

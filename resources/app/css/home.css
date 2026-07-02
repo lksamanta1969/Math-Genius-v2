@@ -1,0 +1,41 @@
+/* ==========================
+   HOME
+========================== */
+
+.container{
+
+    width:92%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+}
+
+.hero{
+
+    text-align:center;
+
+    padding:70px 20px 40px;
+
+}
+
+.hero h1{
+
+    font-size:68px;
+
+    color:#35C3FF;
+
+    text-shadow:0 0 25px #1EA7FF;
+
+}
+
+.hero p{
+
+    font-size:22px;
+
+    margin-top:18px;
+
+    color:#D4E4FF;
+
+}

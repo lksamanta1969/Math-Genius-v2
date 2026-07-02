@@ -1,0 +1,51 @@
+/* ==========================
+   CARDS
+========================== */
+
+.card-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:50px;
+
+}
+
+.card{
+
+    background:#0D2A70;
+
+    border-radius:18px;
+
+    padding:35px 20px;
+
+    text-align:center;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    transition:.35s;
+
+    border:1px solid #1EA7FF;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    background:#1295F3;
+
+    box-shadow:0 10px 25px rgba(0,170,255,.45);
+
+}

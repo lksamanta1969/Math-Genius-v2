@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Calculator</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script>
+
+function calc(){
+
+let v=document.getElementById("c").value;
+
+document.getElementById("r").innerHTML=eval(v);
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h2>Calculator</h2>
+
+<input id="c">
+
+<button onclick="calc()">=</button>
+
+<h3 id="r"></h3>
+
+<br>
+
+<button onclick="history.back()">Back</button>
+
+</body>
+
+</html>

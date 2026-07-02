@@ -1,0 +1,129 @@
+body{
+    border:5px solid red;
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.app-header{
+
+    height:72px;
+
+    background:#13285f;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 25px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.logo{
+
+    width:42px;
+
+    height:42px;
+
+}
+
+.title h2{
+
+    color:var(--primary);
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.title span{
+
+    font-size:12px;
+
+    color:var(--text-light);
+
+}
+
+.header-center{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.header-center input{
+
+    width:420px;
+
+    max-width:100%;
+
+    background:#19397b;
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    border-radius:30px;
+
+    padding:12px 20px;
+
+}
+
+.header-center input::placeholder{
+
+    color:#cfd8ef;
+
+}
+
+.header-right{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.header-btn{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:#1f4185;
+
+    color:white;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.header-btn:hover{
+
+    background:var(--primary);
+
+    transform:translateY(-2px);
+
+}

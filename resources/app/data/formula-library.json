@@ -1,0 +1,139 @@
+{
+  "version": "1.0",
+  "app": "Math Genius",
+  "categories": [
+    {
+      "id": "number-system",
+      "title": "Number System",
+      "icon": "🔢",
+      "formulas": [
+        {
+          "id": 1,
+          "name": "Natural Numbers",
+          "formula": "N = {1,2,3,...}",
+          "description": "Counting numbers.",
+          "keywords": ["natural","number system","counting"]
+        },
+        {
+          "id": 2,
+          "name": "Whole Numbers",
+          "formula": "W = {0,1,2,3,...}",
+          "description": "Whole numbers including zero.",
+          "keywords": ["whole","zero"]
+        },
+        {
+          "id": 3,
+          "name": "Integers",
+          "formula": "Z={...,-2,-1,0,1,2,...}",
+          "description": "Positive and negative whole numbers.",
+          "keywords": ["integer","z"]
+        }
+      ]
+    },
+
+    {
+      "id": "algebra",
+      "title": "Algebra",
+      "icon": "📘",
+      "formulas": [
+        {
+          "id": 101,
+          "name": "Identity 1",
+          "formula": "(a+b)² = a² +2ab + b²",
+          "description": "Algebraic Identity",
+          "keywords":["identity","square"]
+        },
+        {
+          "id": 102,
+          "name": "Identity 2",
+          "formula": "(a-b)² = a² -2ab + b²",
+          "description":"Algebraic Identity",
+          "keywords":["identity"]
+        },
+        {
+          "id":103,
+          "name":"Identity 3",
+          "formula":"a²-b²=(a+b)(a-b)",
+          "description":"Difference of Squares",
+          "keywords":["factorisation"]
+        }
+      ]
+    },
+
+    {
+      "id":"geometry",
+      "title":"Geometry",
+      "icon":"📐",
+      "formulas":[
+
+        {
+          "id":201,
+          "name":"Pythagoras Theorem",
+          "formula":"a²+b²=c²",
+          "description":"Right Angle Triangle",
+          "keywords":[
+            "triangle",
+            "pythagoras",
+            "right triangle"
+          ]
+        },
+
+        {
+          "id":202,
+          "name":"Area of Rectangle",
+          "formula":"A=l×b",
+          "description":"Rectangle Area",
+          "keywords":[
+            "rectangle",
+            "area"
+          ]
+        },
+
+        {
+          "id":203,
+          "name":"Area of Square",
+          "formula":"A=a²",
+          "description":"Square Area",
+          "keywords":[
+            "square",
+            "area"
+          ]
+        },
+
+        {
+          "id":204,
+          "name":"Perimeter of Square",
+          "formula":"P=4a",
+          "description":"Square Perimeter",
+          "keywords":[
+            "square",
+            "perimeter"
+          ]
+        },
+
+        {
+          "id":205,
+          "name":"Area of Circle",
+          "formula":"πr²",
+          "description":"Circle Area",
+          "keywords":[
+            "circle",
+            "area"
+          ]
+        },
+
+        {
+          "id":206,
+          "name":"Circumference",
+          "formula":"2πr",
+          "description":"Circle Circumference",
+          "keywords":[
+            "circle",
+            "circumference"
+          ]
+        }
+
+      ]
+    }
+  ]
+}
