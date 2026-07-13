@@ -1,0 +1,110 @@
+[
+  {
+    "title": "Addition",
+    "category": "Arithmetic",
+    "keywords": ["add", "plus", "sum", "addition"],
+    "url": "arithmetic.html"
+  },
+  {
+    "title": "Subtraction",
+    "category": "Arithmetic",
+    "keywords": ["minus", "subtract", "difference"],
+    "url": "arithmetic.html"
+  },
+  {
+    "title": "Percentage",
+    "category": "Arithmetic",
+    "keywords": ["percentage", "percent"],
+    "url": "arithmetic.html"
+  },
+  {
+    "title": "Linear Equation",
+    "category": "Algebra",
+    "keywords": ["equation", "linear", "algebra"],
+    "url": "algebra.html"
+  },
+  {
+    "title": "Quadratic Equation",
+    "category": "Algebra",
+    "keywords": ["quadratic", "polynomial"],
+    "url": "algebra.html"
+  },
+  {
+    "title": "Triangle",
+    "category": "Geometry",
+    "keywords": ["triangle", "angles"],
+    "url": "geometry.html"
+  },
+  {
+    "title": "Circle",
+    "category": "Geometry",
+    "keywords": ["circle", "radius", "diameter"],
+    "url": "geometry.html"
+  },
+  {
+    "title": "Area",
+    "category": "Mensuration",
+    "keywords": ["area", "surface"],
+    "url": "mensuration.html"
+  },
+  {
+    "title": "Volume",
+    "category": "Mensuration",
+    "keywords": ["volume", "cube", "cuboid"],
+    "url": "mensuration.html"
+  },
+  {
+    "title": "Sine",
+    "category": "Trigonometry",
+    "keywords": ["sin", "sine"],
+    "url": "trigonometry.html"
+  },
+  {
+    "title": "Cosine",
+    "category": "Trigonometry",
+    "keywords": ["cos", "cosine"],
+    "url": "trigonometry.html"
+  },
+  {
+    "title": "Mean",
+    "category": "Statistics",
+    "keywords": ["mean", "average"],
+    "url": "statistics.html"
+  },
+  {
+    "title": "Median",
+    "category": "Statistics",
+    "keywords": ["median"],
+    "url": "statistics.html"
+  },
+  {
+    "title": "Probability",
+    "category": "Probability",
+    "keywords": ["chance", "probability"],
+    "url": "probability.html"
+  },
+  {
+    "title": "Derivative",
+    "category": "Calculus",
+    "keywords": ["derivative", "differentiation"],
+    "url": "calculus.html"
+  },
+  {
+    "title": "Integration",
+    "category": "Calculus",
+    "keywords": ["integration", "integral"],
+    "url": "calculus.html"
+  },
+  {
+    "title": "Calculator",
+    "category": "Tools",
+    "keywords": ["calculator", "calc"],
+    "url": "calculator.html"
+  },
+  {
+    "title": "Formula Library",
+    "category": "Tools",
+    "keywords": ["formula", "library"],
+    "url": "formula-library.html"
+  }
+]

@@ -295,3 +295,96 @@ body{
 }
 
 }
+/* ==========================
+   PAGE HEADER
+========================== */
+
+.page-header{
+    padding:20px;
+}
+
+.back-btn{
+    background:#1f4185;
+    color:#ffffff;
+    border:1px solid #32c5ff;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.25s;
+position:fixed;
+top:25px;
+left:25px;
+z-index:999;    
+}
+
+.back-btn:hover{
+    background:#32c5ff;
+    color:#08132f;
+}
+/* ===============================
+   Topic Sections
+=================================*/
+
+.page-desc{
+    color:#cfd8ef;
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+.topic-section{
+    margin:30px 0;
+}
+
+.topic-section h2{
+    color:#32c5ff;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.topic-list{
+    list-style:none;
+    padding:0;
+}
+
+.topic-list li{
+    background:#15295c;
+    border:1px solid #32c5ff;
+    padding:12px 18px;
+    margin-bottom:10px;
+    border-radius:8px;
+    color:#fff;
+}
+
+.topic-list li:hover{
+    background:#1f4185;
+    transform:translateX(6px);
+    transition:.25s;
+    cursor:pointer;
+}
+.formula-box{
+    box-shadow:0 0 15px rgba(50,197,255,.15);
+    background:#15295c;
+    border:1px solid #32c5ff;
+    border-radius:10px;
+    padding:20px;
+    color:#fff;
+    line-height:1.8;
+}
+
+.formula-box hr{
+    border:none;
+    border-top:1px solid #325a8a;
+    margin:18px 0;
+}
+
+.practice-list{
+    color:#fff;
+    line-height:2;
+    padding-left:25px;
+}
+
+.practice-list li{
+    margin-bottom:10px;
+}

@@ -2,65 +2,83 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Math Genius - Formula Library</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/theme.css">
-    <link rel="stylesheet" href="../css/formula.css">
+<title>Formula Library - Math Genius</title>
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/formula.css">
+
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="formula-header">
-        <h1>📚 Formula Library</h1>
-        <p>Search • Learn • Discover</p>
-    </header>
+<div class="page-header">
 
-    <!-- Search -->
-    <section class="search-section">
+<button class="back-btn" onclick="history.back()">
+← Back
+</button>
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search Formula..."
-        >
+</div>
 
-        <button id="showAllBtn">
-            Show All
-        </button>
+<div class="container">
 
-    </section>
+<h1>📚 Formula Library</h1>
 
-    <!-- Categories -->
-    <section>
+<p class="page-desc">
+Quick access to all important mathematical formulas in one place.
+</p>
 
-        <h2>Categories</h2>
+<section class="search-section">
 
-        <div id="categoryList" class="category-grid"></div>
+<input
+type="text"
+id="searchInput"
+placeholder="Search Formula..."
+>
 
-    </section>
+<button id="showAllBtn">
+Show All
+</button>
 
-    <!-- Formula List -->
-    <section>
+</section>
 
-        <h2>Formulas</h2>
+<section class="topic-section">
 
-        <div id="formulaList" class="formula-grid"></div>
+<h2>📂 Categories</h2>
 
-    </section>
+<div id="categoryList"
+class="category-grid">
+</div>
 
-    <!-- Footer -->
-    <footer class="formula-footer">
-        © 2026 Math Genius
-    </footer>
+</section>
 
-    <!-- JavaScript -->
-    <script src="../js/formula.js"></script>
+<section class="topic-section">
+
+<h2>
+📖 Formulas
+(<span id="formulaCount">0</span>)
+</h2>
+
+<div
+id="formulaList"
+class="formula-grid">
+</div>
+
+</section>
+
+</div>
+
+<footer class="formula-footer">
+
+© 2026 Math Genius
+
+</footer>
+
+<script src="../js/formula.js"></script>
 
 </body>
 
