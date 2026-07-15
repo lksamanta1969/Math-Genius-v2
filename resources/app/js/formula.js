@@ -2,112 +2,24 @@
 
 /* ==========================================
    Math Genius
-   Formula Library Database
+   Formula Library
 ========================================== */
 
-const formulaDatabase = {
+let formulaDatabase = null;
 
-    categories: [
+async function loadFormulaDatabase() {
 
-        {
-            id: "number-system",
-            title: "Number System",
-            icon: "🔢",
+    console.log("Loading Formula Database...");
 
-            formulas: [
+    const response = await fetch("../data/formula-library.json");
 
-                {
-                    id: 1,
-                    name: "Natural Numbers",
-                    formula: "N = {1,2,3,...}",
-                    description: "Counting Numbers"
-                },
+    console.log(response);
 
-                {
-                    id: 2,
-                    name: "Whole Numbers",
-                    formula: "W = {0,1,2,3,...}",
-                    description: "Whole Numbers including Zero"
-                },
+    formulaDatabase = await response.json();
 
-                {
-                    id: 3,
-                    name: "Integers",
-                    formula: "Z = {...,-2,-1,0,1,2,...}",
-                    description: "Positive and Negative Numbers"
-                }
+    console.log(formulaDatabase);
 
-            ]
-
-        },
-
-        {
-            id: "algebra",
-            title: "Algebra",
-            icon: "📘",
-
-            formulas: [
-
-                {
-                    id: 101,
-                    name: "Identity 1",
-                    formula: "(a+b)² = a² + 2ab + b²",
-                    description: "Algebraic Identity"
-                },
-
-                {
-                    id: 102,
-                    name: "Identity 2",
-                    formula: "(a-b)² = a² - 2ab + b²",
-                    description: "Algebraic Identity"
-                },
-
-                {
-                    id: 103,
-                    name: "Difference of Squares",
-                    formula: "a² - b² = (a+b)(a-b)",
-                    description: "Difference of Squares"
-                }
-
-            ]
-
-        },
-
-        {
-            id: "geometry",
-            title: "Geometry",
-            icon: "📐",
-
-            formulas: [
-
-                {
-                    id: 201,
-                    name: "Pythagoras Theorem",
-                    formula: "a² + b² = c²",
-                    description: "Right Triangle"
-                },
-
-                {
-                    id: 202,
-                    name: "Area of Rectangle",
-                    formula: "A = L × B",
-                    description: "Rectangle Area"
-                },
-
-                {
-                    id: 203,
-                    name: "Area of Circle",
-                    formula: "A = πr²",
-                    description: "Circle Area"
-                }
-
-            ]
-
-        }
-
-    ]
-
-};
+}
 
 /* ==========================================
    Global
@@ -250,7 +162,9 @@ function searchFormula(keyword) {
    Start
 ========================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+
+    await loadFormulaDatabase();
 
     prepareFormulaList();
 

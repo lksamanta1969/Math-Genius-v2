@@ -66,34 +66,47 @@
       "icon":"📐",
       "formulas":[
 
-        {
-          "id":201,
-          "name":"Pythagoras Theorem",
-          "formula":"a²+b²=c²",
-          "description":"Right Angle Triangle",
-          "keywords":[
-            "triangle",
-            "pythagoras",
-            "right triangle"
-          ]
-        },
-
-        {
-          "id":202,
-          "name":"Area of Rectangle",
-          "formula":"A=l×b",
-          "description":"Rectangle Area",
-          "keywords":[
-            "rectangle",
-            "area"
-          ]
-        },
-
-        {
-          "id":203,
+       {
+  "id": 201,
+  "name": "Pythagoras Theorem",
+  "formula": "a²+b²=c²",
+  "description": "Right Angle Triangle",
+  "category": "Geometry",
+  "class": "Class 8",
+  "chapter": "Triangles",
+  "difficulty": "Easy",
+  "example": "If a=3 and b=4 then c=5",
+  "keywords": [
+    "triangle",
+    "pythagoras",
+    "right triangle"
+  ]
+},
+{
+  "id": 202,
+  "name": "Area of Rectangle",
+  "formula": "A=l×b",
+  "description": "Rectangle Area",
+  "category": "Geometry",
+  "class": "Class 8",
+  "chapter": "Quadrilaterals",
+  "difficulty": "Easy",
+  "example": "If l=10 and b=5 then A=50",
+  "keywords": [
+    "rectangle",
+    "area"
+  ]
+},
+{
+  "id": 203,
           "name":"Area of Square",
           "formula":"A=a²",
           "description":"Square Area",
+          "category": "Geometry",
+          "class": "Class 8",
+          "chapter": "Quadrilaterals",
+          "difficulty": "Easy",
+          "example": "If a=5 then A=25",
           "keywords":[
             "square",
             "area"
@@ -105,6 +118,11 @@
           "name":"Perimeter of Square",
           "formula":"P=4a",
           "description":"Square Perimeter",
+          "category": "Geometry",
+"class": "Class 8",
+"chapter": "Quadrilaterals",
+"difficulty": "Easy",
+"example": "If a=6 then P=24",
           "keywords":[
             "square",
             "perimeter"
@@ -116,6 +134,11 @@
           "name":"Area of Circle",
           "formula":"πr²",
           "description":"Circle Area",
+          "category": "Geometry",
+          "class": "Class 8",
+          "chapter": "Circles",
+          "difficulty": "Easy",
+          "example": "If r=5 then A=25π",
           "keywords":[
             "circle",
             "area"
@@ -127,6 +150,11 @@
           "name":"Circumference",
           "formula":"2πr",
           "description":"Circle Circumference",
+          "category": "Geometry",
+          "class": "Class 8",
+          "chapter": "Circles",
+          "difficulty": "Easy",
+          "example": "If r=5 then C=10π",
           "keywords":[
             "circle",
             "circumference"
