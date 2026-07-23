@@ -1,9 +1,9 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1400,
+    width: 1600,
     height: 900,
     minWidth: 1200,
     minHeight: 700,
@@ -12,7 +12,8 @@ function createWindow() {
 
     icon: path.join(__dirname, "assets", "Math-Genius-logo-png.ico"),
 
-    autoHideMenuBar: false,
+    autoHideMenuBar: true,
+    fullscreen: false,
 
     backgroundColor: "#020B2D",
 
@@ -24,9 +25,10 @@ function createWindow() {
     },
   });
 
+  win.center();
+
   win.once("ready-to-show", () => {
     win.show();
-    win.maximize();          // Full Screen Window (Maximized)
   });
 
   win.loadFile(
@@ -48,6 +50,7 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  Menu.setApplicationMenu(null);
   createWindow();
 
   app.on("activate", () => {

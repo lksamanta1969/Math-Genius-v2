@@ -16,7 +16,7 @@ function loadSidebar() {
 
       <a href="pages/notes.html">📝 Notes</a>
 
-      <a href="pages/mocktest.html">🧪 Mock Test</a>
+      <a href="pages/mock-test.html">🧪 Mock Test</a>
 
       <a href="pages/pdf.html">📄 PDF Library</a>
 
