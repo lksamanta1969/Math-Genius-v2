@@ -1,127 +1,104 @@
-body{
-    border:5px solid red;
-}
-
 /* ==========================
    HEADER
 ========================== */
 
 .app-header{
-
     height:72px;
-
     background:#13285f;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
-    padding:0 25px;
-
+    padding:0 28px;
     border-bottom:1px solid var(--border);
-
 }
 
 .header-left{
-
     display:flex;
-
     align-items:center;
-
     gap:15px;
-
 }
 
 .logo{
-    font-size:48px;
+    font-size:44px;
     font-weight:700;
-    color:#32c5ff;
-    text-shadow:0 0 20px #32c5ff;
+    color:#35C3FF;
+    text-shadow:0 0 8px rgba(30, 167, 255, 0.35);
     width:auto;
     height:auto;
+    letter-spacing:0.2px;
+    line-height:1.1;
 }
 
 .title h2{
-
     color:var(--primary);
-
     font-size:28px;
-
     font-weight:700;
-
 }
 
 .title span{
-
     font-size:12px;
-
     color:var(--text-light);
-
 }
 
 .header-center{
-
     flex:1;
-
     display:flex;
-
     justify-content:center;
-
+    align-items:center;
 }
 
-.header-center input{
-    width:520px;
+.search-box{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:0 24px;
+}
+
+.header-center input,
+.search-box input{
+    width:460px;
     max-width:100%;
     box-sizing:border-box;
-
-    background:#19397b;
-    border:1px solid var(--border);
+    height:42px;
+    background:#16356f;
+    border:1px solid #2a4f8f;
     color:#ffffff;
-
     border-radius:30px;
-    padding:12px 20px;
+    padding:0 22px;
     outline:none;
-    font-size:15px;
+    font-size:14px;
+    transition:border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
-.header-center input::placeholder{
+.header-center input:focus,
+.search-box input:focus{
+    border-color:var(--primary);
+    background:#1a3f80;
+    box-shadow:0 0 0 3px rgba(30, 167, 255, 0.18);
+}
 
-    color:#cfd8ef;
-
+.header-center input::placeholder,
+.search-box input::placeholder{
+    color:#a8b8dc;
 }
 
 .header-right{
-
     display:flex;
-
     gap:12px;
-
 }
 
 .header-btn{
-
     width:42px;
-
     height:42px;
-
     border-radius:50%;
-
     background:#1f4185;
-
     color:white;
-
     font-size:18px;
-
-    transition:.3s;
-
+    transition:background 0.25s ease, transform 0.25s ease;
 }
 
 .header-btn:hover{
-
     background:var(--primary);
-
     transform:translateY(-2px);
-
 }
