@@ -21,10 +21,10 @@
 
 <header class="solver-header">
 <h1>🧠 AI Math Solver</h1>
-<p class="page-desc">Phase 8A — Local upload, OCR, and question detection. Solving arrives in Phase 8B.</p>
+<p class="page-desc">Phase 8B.4 — Arithmetic + Intro Algebra (Local Rule Engine). Offline. No Geometry.</p>
 <div class="phase-banner">
-<span class="phase-chip phase-active">8A OCR + Detect</span>
-<span class="phase-chip">8B Solver</span>
+<span class="phase-chip">8A OCR + Detect</span>
+<span class="phase-chip phase-active">8B.4 Algebra</span>
 <span class="phase-chip">8C PDF+</span>
 <span class="phase-chip">8D History</span>
 </div>
@@ -85,20 +85,65 @@
 <p id="docMeta" class="muted"></p>
 </aside>
 
-<aside class="panel panel-right" aria-label="Detected questions">
+<aside class="panel panel-right" aria-label="Detected questions and solutions">
 <h2>Detected Questions <span id="questionCount">(0)</span></h2>
 <div id="questionList" class="question-list">
 <p class="empty-state">Run OCR to detect questions.</p>
 </div>
 
 <div id="questionPreview" class="question-preview" hidden>
-<h3>Question Preview</h3>
-<pre id="previewText"></pre>
-<dl class="preview-meta" id="previewMeta"></dl>
-<div class="toolbar">
-<button type="button" class="solver-btn" disabled title="Phase 8B">AI Solve</button>
-<button type="button" class="solver-btn" disabled title="Phase 8B">Steps</button>
+<h3>Solution</h3>
+<div id="solveStatusBanner" class="solve-status-banner" hidden></div>
+
+<section class="sol-block edit-block">
+<h4>Detected Question (edit before Solve)</h4>
+<textarea id="questionEdit" class="question-edit" rows="3" aria-label="Edit detected question"></textarea>
+<div class="toolbar sol-actions">
+<button type="button" class="solver-btn primary" id="solveBtn">Solve</button>
+<button type="button" class="solver-btn" id="retrySolveBtn">Retry Solve</button>
+<button type="button" class="solver-btn" id="clearResultBtn">Clear Result</button>
+<button type="button" class="solver-btn" id="copySolutionBtn">Copy Solution</button>
+<button type="button" class="solver-btn" id="copyAnswerBtn">Copy Final Answer</button>
 </div>
+</section>
+
+<p id="timingRow" class="timing-row muted">OCR: — · Solve: —</p>
+
+<div id="solutionPanel" class="solution-panel">
+<section class="sol-block" data-section="question">
+<h4>Question</h4>
+<pre id="solQuestion" class="sol-pre"></pre>
+</section>
+<section class="sol-block" data-section="given">
+<h4>Given</h4>
+<p id="solGiven" class="sol-text"></p>
+</section>
+<section class="sol-block" data-section="find">
+<h4>Find</h4>
+<p id="solFind" class="sol-text"></p>
+</section>
+<section class="sol-block" data-section="formula">
+<h4>Formula Used</h4>
+<ul id="solFormulas" class="sol-list"></ul>
+</section>
+<section class="sol-block" data-section="steps">
+<h4>Steps</h4>
+<ol id="solSteps" class="sol-steps"></ol>
+</section>
+<section class="sol-block" data-section="answer">
+<h4>Final Answer</h4>
+<p id="solAnswer" class="sol-answer"></p>
+</section>
+<section class="sol-block" data-section="verification">
+<h4>Verification</h4>
+<p id="solVerification" class="sol-text"></p>
+</section>
+<section class="sol-block" data-section="confidence">
+<h4>Confidence</h4>
+<p id="solConfidence" class="sol-text"></p>
+</section>
+</div>
+<dl class="preview-meta" id="previewMeta"></dl>
 </div>
 </aside>
 
@@ -142,7 +187,17 @@
 <script src="../js/solver/solution-schema.js"></script>
 <script src="../js/solver/solver-engine.js"></script>
 <script src="../js/solver/solution-pipeline.js"></script>
+<script src="../js/solver/providers/local-rule-engine/formula-catalog.js"></script>
+<script src="../js/solver/providers/local-rule-engine/math-utils.js"></script>
+<script src="../js/solver/providers/local-rule-engine/expression.js"></script>
+<script src="../js/solver/providers/local-rule-engine/normalize.js"></script>
+<script src="../js/solver/providers/local-rule-engine/algebra.js"></script>
+<script src="../js/solver/providers/local-rule-engine/handlers.js"></script>
+<script src="../js/solver/providers/local-rule-engine/provider.js"></script>
+<script src="../js/solver/providers/local-rule-engine/register.js"></script>
 <script src="../js/solver/providers/stub-providers.js"></script>
+<script src="../js/solver/input-validator.js"></script>
+<script src="../js/solver/ocr-solve-bridge.js"></script>
 <script src="../js/teacher/exam-readiness-schema.js"></script>
 <script src="../js/teacher/teacher-modes.js"></script>
 <script src="../js/teacher/knowledge-graph-schema.js"></script>

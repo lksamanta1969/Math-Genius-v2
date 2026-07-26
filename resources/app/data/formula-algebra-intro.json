@@ -1,0 +1,107 @@
+{
+  "version": "1.0",
+  "pack": "intro-algebra-c6-c7",
+  "description": "Introductory Algebra formulas for Local Rule Engine (Phase 8B.4). IDs resolve via Formula Catalog — solver does not hardcode formula text.",
+  "formulas": [
+    {
+      "id": "CBSE-C6-AL-001",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "name": "Variable and Constant",
+      "formula": "A variable is a letter that stands for a number; a constant is a fixed number.",
+      "latex": "\\text{variable}=x,\\;\\text{constant}=c"
+    },
+    {
+      "id": "CBSE-C6-AL-002",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "name": "Algebraic Expression",
+      "formula": "An algebraic expression is a combination of variables, constants and operations.",
+      "latex": "ax+b"
+    },
+    {
+      "id": "CBSE-C6-AL-003",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "name": "Like Terms",
+      "formula": "Like terms have the same variable raised to the same power (e.g. 2a and 3a).",
+      "latex": "2a,\\;3a"
+    },
+    {
+      "id": "CBSE-C6-AL-004",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "name": "Unlike Terms",
+      "formula": "Unlike terms have different variables or powers (e.g. 2a and 3b).",
+      "latex": "2a,\\;3b"
+    },
+    {
+      "id": "CBSE-C6-AL-005",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "name": "Combine Like Terms",
+      "formula": "Add or subtract coefficients of like terms: pa ± qa = (p ± q)a",
+      "latex": "pa\\pm qa=(p\\pm q)a"
+    },
+    {
+      "id": "CBSE-C6-AL-006",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "name": "Evaluate an Expression",
+      "formula": "Substitute the given value of the variable and simplify.",
+      "latex": "\\text{evaluate }f(x)\\text{ at }x=k"
+    },
+    {
+      "id": "CBSE-C6-AL-007",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Simple Equations",
+      "name": "Simple Linear Equation (One Variable)",
+      "formula": "ax + b = c  (a ≠ 0)",
+      "latex": "ax+b=c\\;(a\\neq 0)"
+    },
+    {
+      "id": "CBSE-C6-AL-008",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Simple Equations",
+      "name": "Addition / Subtraction Property of Equality",
+      "formula": "If a = b, then a ± k = b ± k",
+      "latex": "a=b\\Rightarrow a\\pm k=b\\pm k"
+    },
+    {
+      "id": "CBSE-C6-AL-009",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Simple Equations",
+      "name": "Multiplication / Division Property of Equality",
+      "formula": "If a = b and k ≠ 0, then a × k = b × k and a ÷ k = b ÷ k",
+      "latex": "a=b,\\;k\\neq 0\\Rightarrow ak=bk,\\;\\frac{a}{k}=\\frac{b}{k}"
+    },
+    {
+      "id": "CBSE-C6-AL-010",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Simple Equations",
+      "name": "Missing Number Problem",
+      "formula": "Find the unknown that makes the number sentence true.",
+      "latex": "\\square + a = b"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "feature": "AI Math Solver",
-  "version": "8A.6",
-  "phase": "8A",
+  "version": "8B.4",
+  "phase": "8B.4",
   "architecture": "plugin-based",
   "productModel": "learning-platform",
   "security": {
@@ -53,8 +53,8 @@
     ]
   },
   "solver": {
-    "defaultProvider": null,
-    "runtimeMode": "auto",
+    "defaultProvider": "local-rule-engine",
+    "runtimeMode": "offline",
     "allowCloudSolver": false,
     "enabledCloudProviders": [],
     "retryCount": 1,
@@ -83,8 +83,29 @@
       "practice-questions",
       "mini-quiz"
     ],
+    "localRuleEngine": {
+      "phase": "8B.1",
+      "scope": "CBSE Class 6 Arithmetic",
+      "supported": [
+        "Addition",
+        "Subtraction",
+        "Multiplication",
+        "Division",
+        "BODMAS",
+        "Factors",
+        "Multiples",
+        "HCF",
+        "LCM",
+        "Prime Number",
+        "Even / Odd",
+        "Fractions",
+        "Simplification",
+        "Intro Algebra (variables, like terms, linear equations)"
+      ],
+      "unsupported": ["Geometry", "Mensuration", "Quadratic", "Simultaneous", "Cloud AI"]
+    },
     "providers": [
-      { "id": "local-rule-engine", "label": "Local Rule Engine", "available": false, "local": true },
+      { "id": "local-rule-engine", "label": "Local Rule Engine", "available": true, "local": true },
       { "id": "ollama-local-llm", "label": "Ollama / Local LLM", "available": false, "local": true },
       { "id": "openai", "label": "OpenAI", "available": false, "local": false },
       { "id": "azure-openai", "label": "Azure OpenAI", "available": false, "local": false },
@@ -261,21 +282,47 @@
       ]
     },
     "8B": {
-      "status": "planned",
+      "status": "partial",
       "features": [
-        "aiSolve",
+        "localRuleEngine",
+        "class6Arithmetic",
         "stepGenerator",
-        "explanation",
-        "streaming",
-        "retry",
-        "cancellation",
-        "conceptDetection",
-        "learningInsights",
-        "practiceGenerator",
-        "knowledgeGraph",
-        "misconceptionDetection",
-        "learningPath",
-        "teacherModes"
+        "verification",
+        "formulaLibraryLookup"
+      ]
+    },
+    "8B.1": {
+      "status": "complete",
+      "features": ["localRuleEngine", "class6Arithmetic"]
+    },
+    "8B.2": {
+      "status": "complete",
+      "features": [
+        "ocrToSolverIntegration",
+        "asyncSolveQueue",
+        "solutionUiPanel",
+        "perQuestionSolutions",
+        "pdfPageQuestionSolutions"
+      ]
+    },
+    "8B.3": {
+      "status": "complete",
+      "features": [
+        "inputValidation",
+        "lowConfidenceGate",
+        "editBeforeSolve",
+        "ocrSolveTimings",
+        "copyRetryClear"
+      ]
+    },
+    "8B.4": {
+      "status": "active",
+      "features": [
+        "algebraRuleEngine",
+        "likeTerms",
+        "simpleLinearEquations",
+        "evaluateExpressions",
+        "missingNumber"
       ]
     },
     "8C": {
@@ -287,5 +334,6 @@
       "features": ["history", "export", "share", "print"]
     }
   },
-  "disabledInPhase8A": ["aiSolve", "stepGenerator", "history", "export", "share", "print"]
+  "disabledInPhase8A": ["history", "export", "share", "print"],
+  "disabledUntilLater": ["cloudAiSolve", "algebra", "geometrySolver"]
 }

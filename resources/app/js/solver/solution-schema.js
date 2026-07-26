@@ -29,7 +29,8 @@
     COMPLETE: "complete",
     CANCELLED: "cancelled",
     ERROR: "error",
-    NEEDS_REVIEW: "needs-review"
+    NEEDS_REVIEW: "needs-review",
+    UNSUPPORTED: "unsupported"
   });
 
   const VerificationStatus = Object.freeze({
@@ -149,6 +150,13 @@
 
       insights: p.insights || null,
       practiceSetId: p.practiceSetId || null,
+
+      // Pipeline / bridge errors (Phase 8B.2+)
+      error: p.error || null,
+      solveDurationMs:
+        typeof p.solveDurationMs === "number" ? p.solveDurationMs : null,
+      ocrDurationMs:
+        typeof p.ocrDurationMs === "number" ? p.ocrDurationMs : null,
 
       explanationMode: p.explanationMode || "Standard",
       language: p.language || "en",

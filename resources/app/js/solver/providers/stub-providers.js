@@ -1,6 +1,7 @@
 /**
  * Future solver providers — registered stubs (not hardcoded into UI).
- * Phase 8A/pre-8B: available=false. Solving is not implemented yet.
+ * Phase 8B.1: Local Rule Engine is registered separately (available).
+ * Cloud / LLM providers remain stubs — not implemented.
  */
 (function (global) {
   "use strict";
@@ -9,20 +10,12 @@
     return async function () {
       throw new Error(
         name +
-          " solver is architecture-ready but not implemented yet (await Phase 8B approval)."
+          " solver is architecture-ready but not implemented (Local Rule Engine only in Phase 8B.1)."
       );
     };
   }
 
   const stubs = [
-    {
-      id: "local-rule-engine",
-      label: "Local Rule Engine",
-      local: true,
-      available: false,
-      supportsStreaming: false,
-      supportsCancellation: true
-    },
     {
       id: "ollama-local-llm",
       label: "Ollama / Local LLM",

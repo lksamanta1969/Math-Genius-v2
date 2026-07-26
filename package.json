@@ -10,6 +10,10 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron .",
+    "test:local-rule-engine": "node scripts/test-local-rule-engine.js",
+    "test:ocr-solve": "node scripts/test-ocr-solve-pipeline.js",
+    "test:algebra": "node scripts/test-algebra-rule-engine.js",
+    "test:solver": "npm run test:local-rule-engine && npm run test:ocr-solve && npm run test:solver-validation && npm run test:algebra",
     "build": "electron-builder",
     "dist": "electron-builder --win"
   },

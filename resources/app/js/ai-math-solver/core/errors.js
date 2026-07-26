@@ -20,7 +20,35 @@
       LOW_CONFIDENCE: "LOW_CONFIDENCE",
       TIMEOUT: "TIMEOUT",
       PROVIDER_UNAVAILABLE: "PROVIDER_UNAVAILABLE",
-      CACHE_ERROR: "CACHE_ERROR"
+      CACHE_ERROR: "CACHE_ERROR",
+      UNSUPPORTED: "Unsupported",
+      UNREADABLE_OCR: "Unreadable OCR",
+      INVALID_EXPRESSION: "Invalid expression",
+      EMPTY_QUESTION: "Empty question"
+    },
+
+    unsupportedSolve: function (reason) {
+      return makeError(
+        "Unsupported",
+        reason || "Unsupported question type",
+        null
+      );
+    },
+
+    emptyQuestion: function () {
+      return makeError("Empty question", "Empty question — nothing to solve.");
+    },
+
+    unreadableOcr: function () {
+      return makeError("Unreadable OCR", "OCR text is unreadable.");
+    },
+
+    invalidExpression: function (reason) {
+      return makeError(
+        "Invalid expression",
+        reason || "Invalid expression",
+        null
+      );
     },
 
     unsupportedFormat: function (format) {

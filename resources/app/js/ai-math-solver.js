@@ -1,9 +1,9 @@
 "use strict";
 
 /* ==========================================
-   AI Math Solver — Phase 8A Controller
-   Upload → Preview → Crop/Rotate → OCR → Detect
-   Local-only. No solving.
+   AI Math Solver — Phase 8B.3 Controller
+   Upload → OCR → Detect → Edit (optional) → Local Rule Engine → Solution
+   Validation, timings, copy/retry. Offline. No Algebra.
 ========================================== */
 
 const state = {
@@ -19,6 +19,13 @@ const state = {
   pageIndex: 0,
   questions: [],
   selectedQuestionId: null,
+  /** @type {Record<string, object>} */
+  solutions: Object.create(null),
+  /** @type {Record<string, string>} pending|solving|done|error|needs-verify */
+  solveStatus: Object.create(null),
+  solveCancel: null,
+  ocrDurationMs: null,
+  lastOcrAt: null,
   cameraStream: null,
   busy: false,
   zoom: 1
@@ -46,8 +53,23 @@ const els = {
   questionList: document.getElementById("questionList"),
   questionCount: document.getElementById("questionCount"),
   questionPreview: document.getElementById("questionPreview"),
-  previewText: document.getElementById("previewText"),
   previewMeta: document.getElementById("previewMeta"),
+  solveStatusBanner: document.getElementById("solveStatusBanner"),
+  questionEdit: document.getElementById("questionEdit"),
+  solveBtn: document.getElementById("solveBtn"),
+  retrySolveBtn: document.getElementById("retrySolveBtn"),
+  clearResultBtn: document.getElementById("clearResultBtn"),
+  copySolutionBtn: document.getElementById("copySolutionBtn"),
+  copyAnswerBtn: document.getElementById("copyAnswerBtn"),
+  timingRow: document.getElementById("timingRow"),
+  solQuestion: document.getElementById("solQuestion"),
+  solGiven: document.getElementById("solGiven"),
+  solFind: document.getElementById("solFind"),
+  solFormulas: document.getElementById("solFormulas"),
+  solSteps: document.getElementById("solSteps"),
+  solAnswer: document.getElementById("solAnswer"),
+  solVerification: document.getElementById("solVerification"),
+  solConfidence: document.getElementById("solConfidence"),
   ocrStatus: document.getElementById("ocrStatus"),
   ocrConfidence: document.getElementById("ocrConfidence"),
   ocrProgressBar: document.getElementById("ocrProgressBar"),
@@ -216,6 +238,10 @@ function canvasToBlob(canvas) {
 
 function clearAll() {
   stopCamera();
+  if (state.solveCancel) {
+    state.solveCancel();
+    state.solveCancel = null;
+  }
   state.mode = null;
   state.fileName = "";
   state.sourceCanvas = null;
@@ -227,6 +253,9 @@ function clearAll() {
   state.pageIndex = 0;
   state.questions = [];
   state.selectedQuestionId = null;
+  state.solutions = Object.create(null);
+  state.solveStatus = Object.create(null);
+  state.ocrDurationMs = null;
   state.busy = false;
   els.fileInput.value = "";
   els.questionPreview.hidden = true;
@@ -239,6 +268,100 @@ function clearAll() {
   setProgress(0);
   setConfidence(null);
   setStatus("Ready — select a local image or PDF.");
+}
+
+function badgeFor(qid) {
+  const st = state.solveStatus[qid] || "pending";
+  const label =
+    st === "solving"
+      ? "Solving"
+      : st === "done"
+        ? "Solved"
+        : st === "error"
+          ? "Error"
+          : st === "needs-verify"
+            ? "Verify"
+            : "Queued";
+  return '<span class="solve-badge ' + st + '">' + label + "</span>";
+}
+
+function formatMs(ms) {
+  if (ms == null || Number.isNaN(Number(ms))) return "—";
+  const n = Number(ms);
+  if (n < 1000) return Math.round(n) + " ms";
+  return (n / 1000).toFixed(2) + " s";
+}
+
+function updateTimingRow(solution) {
+  if (!els.timingRow) return;
+  const ocr = formatMs(state.ocrDurationMs);
+  const solve =
+    solution && solution.solveDurationMs != null
+      ? formatMs(solution.solveDurationMs)
+      : "—";
+  els.timingRow.textContent = "OCR: " + ocr + " · Solve: " + solve;
+}
+
+function copyText(text, okMsg) {
+  const value = String(text == null ? "" : text);
+  if (!value || value === "—") {
+    setStatus("Nothing to copy.");
+    return;
+  }
+  const done = function () {
+    setStatus(okMsg || "Copied.");
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(value).then(done).catch(function () {
+      fallbackCopy(value, done);
+    });
+  } else {
+    fallbackCopy(value, done);
+  }
+}
+
+function fallbackCopy(value, done) {
+  const ta = document.createElement("textarea");
+  ta.value = value;
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand("copy");
+    done();
+  } catch (e) {
+    setStatus("Copy failed.");
+  }
+  document.body.removeChild(ta);
+}
+
+function buildSolutionCopyText(solution, question) {
+  if (!solution) return "";
+  const lines = [];
+  lines.push("Question: " + (solution.question || (question && question.text) || ""));
+  lines.push("Given: " + (solution.given || ""));
+  lines.push("Find: " + (solution.find || ""));
+  if (solution.formulaUsed && solution.formulaUsed.length) {
+    lines.push(
+      "Formula Used: " +
+        solution.formulaUsed
+          .map(function (f) {
+            return (f.formulaId || "") + " " + (f.formulaName || "");
+          })
+          .join("; ")
+    );
+  }
+  lines.push("Steps:");
+  (solution.steps || []).forEach(function (s) {
+    lines.push(
+      "  " + s.stepNumber + ". " + (s.title || "") + " — " + (s.description || "")
+    );
+  });
+  lines.push("Final Answer: " + (solution.finalAnswer != null ? solution.finalAnswer : ""));
+  lines.push("Verification: " + (solution.verification || ""));
+  if (solution.confidence != null) {
+    lines.push("Confidence: " + Math.round(solution.confidence * 100) + "%");
+  }
+  return lines.join("\n");
 }
 
 function renderQuestions() {
@@ -258,11 +381,12 @@ function renderQuestions() {
       "question-item" + (q.id === state.selectedQuestionId ? " active" : "");
     btn.innerHTML =
       "<strong>" +
-      q.id +
+      escapeHtml(q.id) +
       " · Page " +
-      q.page +
+      escapeHtml(String(q.page)) +
       (q.order != null ? " · #" + q.order : "") +
       (q.containsMath ? " · Math" : "") +
+      badgeFor(q.id) +
       "</strong><p>" +
       escapeHtml(String(q.text || q.recognizedText || "").slice(0, 180)) +
       (String(q.text || q.recognizedText || "").length > 180 ? "…" : "") +
@@ -272,6 +396,165 @@ function renderQuestions() {
     });
     els.questionList.appendChild(btn);
   });
+}
+
+function setBanner(kind, message) {
+  if (!els.solveStatusBanner) return;
+  if (!message) {
+    els.solveStatusBanner.hidden = true;
+    els.solveStatusBanner.textContent = "";
+    els.solveStatusBanner.className = "solve-status-banner";
+    return;
+  }
+  els.solveStatusBanner.hidden = false;
+  els.solveStatusBanner.textContent = message;
+  els.solveStatusBanner.className =
+    "solve-status-banner" + (kind ? " is-" + kind : "");
+}
+
+function renderSolutionPanel(question, solution, jobStatus) {
+  const qText = (question && (question.text || question.recognizedText)) || "";
+
+  if (els.questionEdit && document.activeElement !== els.questionEdit) {
+    els.questionEdit.value = qText;
+  }
+
+  updateTimingRow(solution);
+
+  if (jobStatus === "needs-verify") {
+    setBanner(
+      "warn",
+      "Low OCR confidence. Please verify the detected question."
+    );
+    els.solQuestion.textContent = qText || "—";
+    els.solGiven.textContent = "—";
+    els.solFind.textContent = "—";
+    els.solFormulas.innerHTML =
+      '<li class="sol-empty">Edit the question above, then click Solve</li>';
+    els.solSteps.innerHTML = "";
+    els.solAnswer.textContent = "—";
+    els.solVerification.textContent = "—";
+    els.solConfidence.textContent =
+      question && question.confidence != null
+        ? "OCR " + Math.round(question.confidence) + "% (below threshold)"
+        : "—";
+    return;
+  }
+
+  if (jobStatus === "solving" || jobStatus === "pending") {
+    setBanner(
+      "solving",
+      jobStatus === "pending" ? "Queued for solving…" : "Solving…"
+    );
+    els.solQuestion.textContent = qText;
+    els.solGiven.textContent = "—";
+    els.solFind.textContent = "—";
+    els.solFormulas.innerHTML = '<li class="sol-empty">Waiting…</li>';
+    els.solSteps.innerHTML = '<li class="sol-empty">Waiting…</li>';
+    els.solAnswer.textContent = "—";
+    els.solVerification.textContent = "—";
+    els.solConfidence.textContent = "—";
+    return;
+  }
+
+  if (!solution) {
+    setBanner("warn", "Edit the question if needed, then click Solve.");
+    els.solQuestion.textContent = qText;
+    els.solGiven.textContent = "—";
+    els.solFind.textContent = "—";
+    els.solFormulas.innerHTML = "";
+    els.solSteps.innerHTML = "";
+    els.solAnswer.textContent = "—";
+    els.solVerification.textContent = "—";
+    els.solConfidence.textContent = "—";
+    return;
+  }
+
+  const err = solution.error;
+  const isErr =
+    jobStatus === "error" ||
+    solution.status === "error" ||
+    solution.status === "unsupported" ||
+    !!err;
+
+  if (isErr) {
+    const code = (err && err.code) || solution.status || "Error";
+    const msg = (err && err.message) || code;
+    const low =
+      code === "Low confidence" ||
+      (msg && msg.indexOf("Low OCR confidence") >= 0);
+    setBanner(
+      low ? "warn" : "error",
+      code + (msg && msg !== code ? " — " + msg : "")
+    );
+  } else {
+    setBanner(
+      "ok",
+      "Solved · " + (solution.verification || "Needs Review")
+    );
+  }
+
+  els.solQuestion.textContent = solution.question || qText || "—";
+  els.solGiven.textContent = solution.given || "—";
+  els.solFind.textContent = solution.find || "—";
+
+  const formulas = Array.isArray(solution.formulaUsed)
+    ? solution.formulaUsed
+    : [];
+  if (!formulas.length) {
+    els.solFormulas.innerHTML = isErr
+      ? '<li class="sol-empty">—</li>'
+      : '<li class="sol-empty">No Formula Library match for this operation</li>';
+  } else {
+    els.solFormulas.innerHTML = formulas
+      .map(function (f) {
+        const id = f.formulaId || f.id || "";
+        const name = f.formulaName || f.name || "";
+        return (
+          "<li><code>" +
+          escapeHtml(id) +
+          "</code> — " +
+          escapeHtml(name) +
+          "</li>"
+        );
+      })
+      .join("");
+  }
+
+  const steps = Array.isArray(solution.steps) ? solution.steps : [];
+  if (!steps.length) {
+    els.solSteps.innerHTML = '<li class="sol-empty">No steps</li>';
+  } else {
+    els.solSteps.innerHTML = steps
+      .map(function (s) {
+        return (
+          "<li><div class=\"step-title\">" +
+          escapeHtml(s.stepNumber + ". " + (s.title || "Step")) +
+          "</div><div class=\"step-desc\">" +
+          escapeHtml(s.description || "") +
+          "</div></li>"
+        );
+      })
+      .join("");
+  }
+
+  els.solAnswer.textContent =
+    solution.finalAnswer != null && solution.finalAnswer !== ""
+      ? String(solution.finalAnswer)
+      : "—";
+  els.solVerification.textContent = solution.verification || "—";
+  const conf =
+    typeof solution.confidence === "number"
+      ? Math.round(solution.confidence * 100) +
+        "% (solver)" +
+        (question && question.confidence != null
+          ? " · OCR " + Math.round(question.confidence) + "%"
+          : "")
+      : question && question.confidence != null
+        ? "OCR " + Math.round(question.confidence) + "%"
+        : "—";
+  els.solConfidence.textContent = conf;
+  updateTimingRow(solution);
 }
 
 function selectQuestion(id) {
@@ -285,7 +568,11 @@ function selectQuestion(id) {
     return;
   }
   els.questionPreview.hidden = false;
-  els.previewText.textContent = q.text || q.recognizedText || "";
+
+  const jobStatus = state.solveStatus[id] || "pending";
+  const solution = state.solutions[id] || null;
+  renderSolutionPanel(q, solution, jobStatus);
+
   els.previewMeta.innerHTML =
     "<dt>ID</dt><dd>" +
     escapeHtml(q.id) +
@@ -296,26 +583,226 @@ function selectQuestion(id) {
     "<dt>Order</dt><dd>" +
     escapeHtml(String(q.order != null ? q.order : "—")) +
     "</dd>" +
-    "<dt>Confidence</dt><dd>" +
+    "<dt>OCR Confidence</dt><dd>" +
     escapeHtml(String(q.confidence)) +
     "%</dd>" +
     "<dt>Contains Math</dt><dd>" +
     (q.containsMath ? "Yes" : "No") +
     "</dd>" +
-    "<dt>Equations</dt><dd>" +
-    escapeHtml(String((q.equations && q.equations.length) || 0)) +
-    "</dd>" +
-    "<dt>Language</dt><dd>" +
-    escapeHtml(q.language || "eng") +
-    "</dd>" +
-    "<dt>Status</dt><dd>" +
-    escapeHtml(q.status) +
-    "</dd>" +
-    "<dt>Bounding Box</dt><dd>" +
-    (q.boundingBox
-      ? escapeHtml(JSON.stringify(q.boundingBox))
-      : "n/a") +
+    "<dt>Solve Status</dt><dd>" +
+    escapeHtml(jobStatus) +
     "</dd>";
+}
+
+/**
+ * After OCR detection: auto-solve high-confidence questions only.
+ * Low-confidence → needs-verify (user must edit + Solve).
+ */
+function startSolvingDetectedQuestions(questions) {
+  if (state.solveCancel) {
+    state.solveCancel();
+    state.solveCancel = null;
+  }
+
+  state.solutions = Object.create(null);
+  state.solveStatus = Object.create(null);
+
+  const threshold =
+    window.OcrSolveBridge && window.OcrSolveBridge.lowConfidenceThreshold
+      ? window.OcrSolveBridge.lowConfidenceThreshold(state.config)
+      : Number(
+          (state.config &&
+            state.config.limits &&
+            state.config.limits.lowConfidenceThreshold) ||
+            40
+        );
+
+  (questions || []).forEach(function (q) {
+    const conf = typeof q.confidence === "number" ? q.confidence : 0;
+    if (conf > 0 && conf < threshold) {
+      state.solveStatus[q.id] = "needs-verify";
+      state.solutions[q.id] = null;
+    } else {
+      state.solveStatus[q.id] = "pending";
+    }
+  });
+  renderQuestions();
+  if (state.selectedQuestionId) {
+    selectQuestion(state.selectedQuestionId);
+  }
+
+  if (!questions || !questions.length) {
+    setStatus("No questions detected to solve.");
+    return;
+  }
+
+  if (!window.OcrSolveBridge) {
+    setStatus("OCR→Solver bridge unavailable.");
+    return;
+  }
+
+  const autoList = questions.filter(function (q) {
+    return state.solveStatus[q.id] !== "needs-verify";
+  });
+  const skipped = questions.length - autoList.length;
+
+  if (!autoList.length) {
+    setStatus(
+      "Detected " +
+        questions.length +
+        " question(s). Low OCR confidence — verify and click Solve."
+    );
+    setProgress(100);
+    return;
+  }
+
+  setStatus(
+    "Solving " +
+      autoList.length +
+      " question(s)" +
+      (skipped ? " (" + skipped + " need verification)" : "") +
+      "…"
+  );
+
+  const job = window.OcrSolveBridge.solveAll(autoList, {
+    config: state.config,
+    onQuestionStart: function (q) {
+      state.solveStatus[q.id] = "solving";
+      renderQuestions();
+      if (q.id === state.selectedQuestionId) selectQuestion(q.id);
+    },
+    onQuestionDone: function (q, sol, _i, _n, meta) {
+      state.solutions[q.id] = sol;
+      if (meta && meta.skipped) {
+        state.solveStatus[q.id] = "needs-verify";
+      } else {
+        const failed =
+          !sol ||
+          sol.status === "error" ||
+          sol.status === "unsupported" ||
+          (sol.error && sol.error.code);
+        state.solveStatus[q.id] = failed ? "error" : "done";
+      }
+      renderQuestions();
+      if (q.id === state.selectedQuestionId) selectQuestion(q.id);
+    },
+    onProgress: function (p) {
+      if (p.total > 0) {
+        setProgress(Math.round(((p.index + 1) / p.total) * 100));
+      }
+    }
+  });
+
+  state.solveCancel = job.cancel;
+
+  job.promise
+    .then(function () {
+      const done = questions.filter(function (q) {
+        return state.solveStatus[q.id] === "done";
+      }).length;
+      const verify = questions.filter(function (q) {
+        return state.solveStatus[q.id] === "needs-verify";
+      }).length;
+      setStatus(
+        "Solved " +
+          done +
+          "/" +
+          questions.length +
+          (verify ? " · " + verify + " need verification" : "") +
+          ". Select a question to review."
+      );
+      setProgress(100);
+      state.solveCancel = null;
+    })
+    .catch(function (err) {
+      if (err && err.name === "AbortError") return;
+      console.error(err);
+      setStatus(err.message || "Solving failed.");
+      state.solveCancel = null;
+    });
+}
+
+/**
+ * Apply editor text and solve the selected question (user-initiated).
+ */
+async function solveSelectedQuestion() {
+  const id = state.selectedQuestionId;
+  const q = state.questions.find(function (item) {
+    return item.id === id;
+  });
+  if (!q || !window.OcrSolveBridge) {
+    setStatus("Select a detected question first.");
+    return;
+  }
+
+  const edited = els.questionEdit
+    ? String(els.questionEdit.value || "").trim()
+    : "";
+  if (edited) {
+    q.text = edited;
+    q.recognizedText = edited;
+  }
+
+  state.solveStatus[q.id] = "solving";
+  renderQuestions();
+  selectQuestion(q.id);
+  setStatus("Solving…");
+
+  try {
+    const sol = await window.OcrSolveBridge.solveOne(q, {
+      config: state.config,
+      forceSolve: true,
+      checkConfidence: false
+    });
+    if (state.ocrDurationMs != null) {
+      sol.ocrDurationMs = state.ocrDurationMs;
+    }
+    state.solutions[q.id] = sol;
+    const failed =
+      !sol ||
+      sol.status === "error" ||
+      sol.status === "unsupported" ||
+      (sol.error && sol.error.code);
+    state.solveStatus[q.id] = failed ? "error" : "done";
+    renderQuestions();
+    selectQuestion(q.id);
+    setStatus(
+      failed
+        ? (sol.error && sol.error.message) || "Solve failed — see error."
+        : "Solved in " + formatMs(sol.solveDurationMs) + "."
+    );
+  } catch (err) {
+    state.solveStatus[q.id] = "error";
+    setStatus(err.message || "Solve failed.");
+    renderQuestions();
+    selectQuestion(q.id);
+  }
+}
+
+function clearSelectedResult() {
+  const id = state.selectedQuestionId;
+  if (!id) return;
+  delete state.solutions[id];
+  const q = state.questions.find(function (item) {
+    return item.id === id;
+  });
+  const threshold =
+    window.OcrSolveBridge && window.OcrSolveBridge.lowConfidenceThreshold
+      ? window.OcrSolveBridge.lowConfidenceThreshold(state.config)
+      : 40;
+  if (
+    q &&
+    typeof q.confidence === "number" &&
+    q.confidence > 0 &&
+    q.confidence < threshold
+  ) {
+    state.solveStatus[id] = "needs-verify";
+  } else {
+    state.solveStatus[id] = "pending";
+  }
+  renderQuestions();
+  selectQuestion(id);
+  setStatus("Result cleared.");
 }
 
 function escapeHtml(value) {
@@ -404,7 +891,15 @@ async function runPipeline() {
 
   state.busy = true;
   updateChrome();
+  if (state.solveCancel) {
+    state.solveCancel();
+    state.solveCancel = null;
+  }
   state.questions = [];
+  state.solutions = Object.create(null);
+  state.solveStatus = Object.create(null);
+  state.selectedQuestionId = null;
+  els.questionPreview.hidden = true;
   renderQuestions();
 
   try {
@@ -430,6 +925,7 @@ async function processImageDocument() {
   if (!canvas) throw new Error("No image to process");
   setStatus("Running local OCR…");
   setProgress(10);
+  const ocrStarted = Date.now();
 
   if (window.SolverEvents) {
     window.SolverEvents.emit(window.SolverEvents.OCR_STARTED, { mode: "image" });
@@ -485,7 +981,22 @@ async function processImageDocument() {
     }
   }
 
+  state.ocrDurationMs = Date.now() - ocrStarted;
+  updateTimingRow(null);
   setConfidence(result.confidence);
+  const ocrText = String(result.text || "").trim();
+  if (!ocrText) {
+    state.questions = [];
+    renderQuestions();
+    setProgress(100);
+    setStatus(
+      "Unreadable OCR — no text detected on page 1. (OCR " +
+        formatMs(state.ocrDurationMs) +
+        ")"
+    );
+    return;
+  }
+
   const detected = window.QuestionDetector.detect(result.text, {
     page: 1,
     confidence: result.confidence,
@@ -500,14 +1011,20 @@ async function processImageDocument() {
       count: detected.length
     });
     window.SolverEvents.emit(window.SolverEvents.OCR_DONE, {
-      pages: 1
+      pages: 1,
+      durationMs: state.ocrDurationMs
     });
   }
   setProgress(100);
   setStatus(
-    "Detected " + detected.length + " question(s) on page 1. Select one to preview."
+    "OCR " +
+      formatMs(state.ocrDurationMs) +
+      " · Detected " +
+      detected.length +
+      " question(s)."
   );
   if (detected[0]) selectQuestion(detected[0].id);
+  startSolvingDetectedQuestions(detected);
 }
 
 async function processPdfDocument() {
@@ -515,6 +1032,7 @@ async function processPdfDocument() {
   const all = [];
   const total = state.pdfPages.length;
   let confidenceSum = 0;
+  const ocrStarted = Date.now();
 
   for (let i = 0; i < total; i += 1) {
     const page = state.pdfPages[i];
@@ -537,6 +1055,10 @@ async function processPdfDocument() {
     });
 
     confidenceSum += Number(result.confidence) || 0;
+    const pageText = String(result.text || "").trim();
+    if (!pageText) {
+      continue;
+    }
     const detected = window.QuestionDetector.detect(result.text, {
       page: page.page,
       confidence: result.confidence,
@@ -546,18 +1068,23 @@ async function processPdfDocument() {
     Array.prototype.push.apply(all, detected);
   }
 
+  state.ocrDurationMs = Date.now() - ocrStarted;
+  updateTimingRow(null);
   state.questions = all;
   renderQuestions();
   setConfidence(total ? confidenceSum / total : null);
   setProgress(100);
   setStatus(
-    "Processed " +
+    "OCR " +
+      formatMs(state.ocrDurationMs) +
+      " · " +
       total +
-      " PDF page(s). Detected " +
+      " page(s) · " +
       all.length +
       " question(s)."
   );
   if (all[0]) selectQuestion(all[0].id);
+  startSolvingDetectedQuestions(all);
 }
 
 /* Crop interaction (image only) */
@@ -678,6 +1205,39 @@ function bindEvents() {
   els.closeCameraBtn.addEventListener("click", stopCamera);
   els.runPipelineBtn.addEventListener("click", runPipeline);
   els.clearBtn.addEventListener("click", clearAll);
+
+  if (els.solveBtn) {
+    els.solveBtn.addEventListener("click", function () {
+      solveSelectedQuestion();
+    });
+  }
+  if (els.retrySolveBtn) {
+    els.retrySolveBtn.addEventListener("click", function () {
+      solveSelectedQuestion();
+    });
+  }
+  if (els.clearResultBtn) {
+    els.clearResultBtn.addEventListener("click", clearSelectedResult);
+  }
+  if (els.copySolutionBtn) {
+    els.copySolutionBtn.addEventListener("click", function () {
+      const id = state.selectedQuestionId;
+      const q = state.questions.find(function (item) {
+        return item.id === id;
+      });
+      const sol = state.solutions[id];
+      copyText(buildSolutionCopyText(sol, q), "Solution copied.");
+    });
+  }
+  if (els.copyAnswerBtn) {
+    els.copyAnswerBtn.addEventListener("click", function () {
+      const sol = state.solutions[state.selectedQuestionId];
+      copyText(
+        sol && sol.finalAnswer != null ? String(sol.finalAnswer) : "",
+        "Final answer copied."
+      );
+    });
+  }
 
   els.rotateLeftBtn.addEventListener("click", function () {
     if (state.mode !== "image") return;
@@ -817,13 +1377,16 @@ async function boot() {
   bindEvents();
   drawDocument();
   updateChrome();
-  setStatus("Phase 8A ready — plugin OCR architecture. Local processing by default.");
+  setStatus("Phase 8B.4 ready — Arithmetic + Intro Algebra. Offline.");
 
   window.MathGeniusSolver = {
-    phase: "8A",
+    phase: "8B.4",
     architecture: "plugin-based",
     getQuestions: function () {
       return state.questions.slice();
+    },
+    getSolutions: function () {
+      return Object.assign({}, state.solutions);
     },
     getOcrProviders: function () {
       return window.OcrEngine.list();
@@ -831,10 +1394,25 @@ async function boot() {
     getSolverProviders: function () {
       return window.SolverEngine ? window.SolverEngine.list() : [];
     },
+    solveQuestion: function (question, options) {
+      if (window.OcrSolveBridge) {
+        return window.OcrSolveBridge.solveOne(question, {
+          config: state.config,
+          explanationMode: options && options.explanationMode,
+          language: options && options.language,
+          signal: options && options.signal
+        });
+      }
+      if (!window.SolverEngine) {
+        return Promise.reject(new Error("SolverEngine unavailable"));
+      }
+      return window.SolverEngine.solve(question, options);
+    },
     events: window.SolverEvents || null,
     documentManager: window.DocumentManager || null,
     solverEngine: window.SolverEngine || null,
-    solutionPipeline: window.SolutionPipeline || null
+    solutionPipeline: window.SolutionPipeline || null,
+    ocrSolveBridge: window.OcrSolveBridge || null
   };
 }
 
