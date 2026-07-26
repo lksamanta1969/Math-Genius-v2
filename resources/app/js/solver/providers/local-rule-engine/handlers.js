@@ -1,5 +1,5 @@
 /**
- * Topic handlers — Arithmetic + Algebra + Geometry (8C) + Mensuration (8D).
+ * Topic handlers — Arithmetic + Algebra + Geometry + Mensuration + Statistics (8E).
  */
 (function (root, factory) {
   "use strict";
@@ -10,7 +10,8 @@
       require("./normalize"),
       require("./algebra"),
       require("./geometry"),
-      require("./mensuration")
+      require("./mensuration"),
+      require("./statistics")
     );
   } else {
     root.LocalRuleHandlers = factory(
@@ -19,7 +20,8 @@
       root.LocalRuleNormalize,
       root.LocalRuleAlgebra,
       root.LocalRuleGeometry,
-      root.LocalRuleMensuration
+      root.LocalRuleMensuration,
+      root.LocalRuleStatistics
     );
   }
 })(typeof window !== "undefined" ? window : globalThis, function (
@@ -28,7 +30,8 @@
   Normalize,
   Algebra,
   Geometry,
-  Mensuration
+  Mensuration,
+  Statistics
 ) {
   "use strict";
 
@@ -77,6 +80,17 @@
     const text = Normalize.normalize(rawText);
     const compact = text.replace(/\s+/g, " ");
     const lower = compact.toLowerCase();
+
+    // Statistics / data handling (before mensuration — "range" is stats not geometry)
+    if (Statistics && Statistics.isUnsupportedStatistics) {
+      const stBad = Statistics.isUnsupportedStatistics(compact);
+      if (stBad && Statistics.looksLikeStatistics(compact)) {
+        return { type: "unsupported", reason: stBad };
+      }
+    }
+    if (Statistics && Statistics.looksLikeStatistics(compact)) {
+      return { type: "statistics", text: compact };
+    }
 
     // Mensuration first (area/perimeter/circumference) — before geometry
     if (Mensuration && Mensuration.isUnsupportedMensuration) {
@@ -714,6 +728,21 @@
       return {
         unsupported: true,
         reason: (intent && intent.reason) || "Unsupported"
+      };
+    }
+
+    if (intent.type === "statistics" && Statistics && Statistics.trySolve) {
+      const st = Statistics.trySolve(intent.text || "");
+      if (st && st.unsupported) {
+        return {
+          unsupported: true,
+          reason: st.reason || "Unsupported statistics"
+        };
+      }
+      if (st) return st;
+      return {
+        unsupported: true,
+        reason: "Unsupported statistics question type"
       };
     }
 

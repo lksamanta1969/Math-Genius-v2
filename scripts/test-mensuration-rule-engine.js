@@ -31,6 +31,7 @@ loadScript("resources/app/js/solver/providers/local-rule-engine/normalize.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/algebra.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/geometry.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/mensuration.js");
+loadScript("resources/app/js/solver/providers/local-rule-engine/statistics.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/handlers.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/provider.js");
 

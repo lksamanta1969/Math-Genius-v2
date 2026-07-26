@@ -101,7 +101,16 @@
     mensuration_triangle_perimeter: ["CBSE-C6-ME-003"],
     mensuration_triangle_area: ["CBSE-C6-ME-006"],
     mensuration_circle_circumference: ["CBSE-C7-ME-002"],
-    mensuration_circle_area: ["CBSE-C7-ME-003"]
+    mensuration_circle_area: ["CBSE-C7-ME-003"],
+    // Phase 8E — Data Handling & Statistics
+    statistics_mean: ["CBSE-C7-ST-001"],
+    statistics_range: ["CBSE-C7-ST-002"],
+    statistics_median: ["CBSE-C7-ST-003"],
+    statistics_mode: ["CBSE-C7-ST-004"],
+    statistics_frequency: ["CBSE-C6-DH-001"],
+    statistics_frequency_table: ["CBSE-C6-DH-001"],
+    statistics_pictograph: ["CBSE-C6-DH-002"],
+    statistics_bar_graph: ["CBSE-C6-DH-003"]
   });
 
   function ingestFormulasArray(list) {

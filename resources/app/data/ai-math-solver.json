@@ -1,7 +1,7 @@
 {
   "feature": "AI Math Solver",
-  "version": "8D",
-  "phase": "8D",
+  "version": "8E",
+  "phase": "8E",
   "architecture": "plugin-based",
   "productModel": "learning-platform",
   "security": {
@@ -84,8 +84,8 @@
       "mini-quiz"
     ],
     "localRuleEngine": {
-      "phase": "8D",
-      "scope": "CBSE Class 6–7 Arithmetic + Algebra + Geometry basics + Mensuration (plane)",
+      "phase": "8E",
+      "scope": "CBSE Class 6–7 Arithmetic + Algebra + Geometry + Mensuration + Data Handling/Statistics",
       "supported": [
         "Addition",
         "Subtraction",
@@ -102,9 +102,17 @@
         "Simplification",
         "Intro Algebra (variables, like terms, linear equations)",
         "Geometry (point, line, ray, segment, parallel/intersecting, angles, triangle basics)",
-        "Mensuration (square, rectangle, triangle, circle — perimeter/area/circumference)"
+        "Mensuration (square, rectangle, triangle, circle — perimeter/area/circumference)",
+        "Data Handling (tally, frequency table, pictograph, bar graph)",
+        "Statistics (mean, median, mode, range)"
       ],
       "unsupported": [
+        "Probability",
+        "Standard Deviation",
+        "Variance",
+        "Pie Charts",
+        "Histograms",
+        "Box Plot",
         "Volume",
         "Surface Area",
         "3D Geometry (cylinder, cone, sphere)",
@@ -369,7 +377,7 @@
       ]
     },
     "8D": {
-      "status": "active",
+      "status": "complete",
       "features": [
         "mensurationRuleEngine",
         "squareRectangleTriangleCircle",
@@ -379,10 +387,20 @@
       ]
     },
     "8E": {
+      "status": "active",
+      "features": [
+        "statisticsRuleEngine",
+        "meanMedianModeRange",
+        "frequencyTable",
+        "pictographBarGraph",
+        "dataHandlingFormulas"
+      ]
+    },
+    "8F": {
       "status": "planned",
-      "features": ["history", "export", "share", "print", "pdfEnhancements", "docx", "statistics"]
+      "features": ["history", "export", "share", "print", "pdfEnhancements", "docx", "numberSystem", "probability"]
     }
   },
   "disabledInPhase8A": ["history", "export", "share", "print"],
-  "disabledUntilLater": ["cloudAiSolve", "statisticsSolver", "3dMensuration"]
+  "disabledUntilLater": ["cloudAiSolve", "probabilitySolver", "numberSystemSolver", "3dMensuration"]
 }

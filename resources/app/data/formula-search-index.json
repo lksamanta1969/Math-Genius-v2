@@ -1,7 +1,7 @@
 {
-  "version": "4.2",
-  "generatedAt": "2026-07-26T20:00:00.000Z",
-  "count": 84,
+  "version": "4.3",
+  "generatedAt": "2026-07-26T21:00:00.000Z",
+  "count": 86,
   "formulas": [
     {
       "id": "CBSE-C6-AR-001",
@@ -1319,6 +1319,38 @@
       "keywords": [
         "range",
         "spread",
+        "data"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-ST-003",
+      "name": "Median of Data",
+      "formulaName": "Median of Data",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Statistics",
+      "chapter": "Data Handling",
+      "topic": "Median",
+      "keywords": [
+        "median",
+        "middle",
+        "data"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-ST-004",
+      "name": "Mode of Data",
+      "formulaName": "Mode of Data",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Statistics",
+      "chapter": "Data Handling",
+      "topic": "Mode",
+      "keywords": [
+        "mode",
+        "frequency",
         "data"
       ],
       "difficulty": "Easy"

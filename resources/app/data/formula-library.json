@@ -1,7 +1,7 @@
 {
-  "version": "4.2",
+  "version": "4.3",
   "app": "Math Genius",
-  "phase": "phase-8d-mensuration-rule-engine",
+  "phase": "phase-8e-statistics-rule-engine",
   "syllabusStandard": {
     "description": "Formula Library follows the latest board Mathematics syllabi. Each class contains only formulas prescribed for that class.",
     "hierarchy": "boards[] → classes[] → subjects[] → chapters[] → formulas[]",
@@ -7054,6 +7054,148 @@
                       "isFavourite": false,
                       "viewCount": 0,
                       "lastViewed": null
+                    },
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T21:00:00.000Z",
+                      "updatedAt": "2026-07-26T21:00:00.000Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": null,
+                      "example": "Data 3, 5, 7, 9 ⇒ median = (5+7)/2 = 6",
+                      "latex": "\\tilde{x}=\\text{middle value(s)}",
+                      "variables": [
+                        {
+                          "symbol": "n",
+                          "meaning": "Number of observations"
+                        },
+                        {
+                          "symbol": "x̃",
+                          "meaning": "Median"
+                        }
+                      ],
+                      "relatedFormulas": [
+                        "CBSE-C7-ST-001",
+                        "CBSE-C7-ST-004"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-ST-001",
+                        "CBSE-C7-ST-004"
+                      ],
+                      "keywords": [
+                        "median",
+                        "middle",
+                        "data"
+                      ],
+                      "formulaName": "Median of Data",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Statistics"
+                      ],
+                      "id": "CBSE-C7-ST-003",
+                      "class": "Class 7",
+                      "subject": "Statistics",
+                      "chapter": "Data Handling",
+                      "chapterNumber": 1,
+                      "topic": "Median",
+                      "name": "Median of Data",
+                      "formula": "Median = middle value (odd n) or average of two middle values (even n) after arranging in order",
+                      "description": "The median is the central value of ordered data. For even n, take the mean of the two central observations.",
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Data Handling"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Data Handling",
+                        "exercise": null,
+                        "page": null
+                      }
+                    },
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T21:00:00.000Z",
+                      "updatedAt": "2026-07-26T21:00:00.000Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": null,
+                      "example": "Data 2, 3, 2, 5, 2 ⇒ mode = 2",
+                      "latex": "\\mathrm{Mode}=\\arg\\max f(x)",
+                      "variables": [
+                        {
+                          "symbol": "f(x)",
+                          "meaning": "Frequency of observation x"
+                        }
+                      ],
+                      "relatedFormulas": [
+                        "CBSE-C7-ST-001",
+                        "CBSE-C7-ST-003",
+                        "CBSE-C6-DH-001"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-ST-001",
+                        "CBSE-C7-ST-003",
+                        "CBSE-C6-DH-001"
+                      ],
+                      "keywords": [
+                        "mode",
+                        "frequency",
+                        "data"
+                      ],
+                      "formulaName": "Mode of Data",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Statistics"
+                      ],
+                      "id": "CBSE-C7-ST-004",
+                      "class": "Class 7",
+                      "subject": "Statistics",
+                      "chapter": "Data Handling",
+                      "chapterNumber": 1,
+                      "topic": "Mode",
+                      "name": "Mode of Data",
+                      "formula": "Mode = observation with the highest frequency",
+                      "description": "The mode is the most frequent observation. A data set may have more than one mode, or no mode if all frequencies are 1.",
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Data Handling"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Data Handling",
+                        "exercise": null,
+                        "page": null
+                      }
                     }
                   ]
                 }
@@ -8401,5 +8543,5 @@
       "classes": []
     }
   ],
-  "updatedAt": "2026-07-26T20:00:00.000Z"
+  "updatedAt": "2026-07-26T21:00:00.000Z"
 }

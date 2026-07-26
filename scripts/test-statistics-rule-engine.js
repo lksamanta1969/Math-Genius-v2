@@ -1,9 +1,6 @@
 /**
- * Phase 8C — Geometry Rule Engine tests
- * Run: node scripts/test-geometry-rule-engine.js
- *
- * Angle identification · Triangle classification · Parallel lines
- * Plus unsupported: coordinate / congruence / transformations / circle theorems
+ * Phase 8E — Data Handling & Statistics Rule Engine tests
+ * Run: node scripts/test-statistics-rule-engine.js
  */
 "use strict";
 
@@ -42,80 +39,63 @@ g.CurriculumMapper.loadFromData(formulaData);
 g.FormulaCatalog.loadFromData(formulaData);
 
 const cases = [
-  // Angle identification
-  { name: "acute 45°", text: "Classify the angle 45°", expect: "Acute angle" },
-  { name: "right 90°", text: "What type of angle is 90 degrees?", expect: "Right angle" },
-  { name: "obtuse 120°", text: "Classify 120° angle", expect: "Obtuse angle" },
-  { name: "straight 180°", text: "Identify the angle 180°", expect: "Straight angle" },
-  { name: "reflex 270°", text: "Classify angle 270°", expect: "Reflex angle" },
-  { name: "complete 360°", text: "Classify 360°", expect: "Complete angle" },
-
-  // Triangle classification
   {
-    name: "equilateral sides",
-    text: "Classify the triangle with sides 5, 5, 5",
-    expect: "Equilateral triangle"
+    name: "Mean",
+    text: "Find the mean of the data: 5, 8, 6, 7, 9",
+    expect: "7",
+    formulaId: "CBSE-C7-ST-001"
   },
   {
-    name: "isosceles sides",
-    text: "Classify triangle with sides 5, 5, 8",
-    expect: "Isosceles triangle"
+    name: "Median",
+    text: "Find the median of 3, 8, 5, 2, 9",
+    expect: "5",
+    formulaId: "CBSE-C7-ST-003"
   },
   {
-    name: "scalene sides",
-    text: "Classify the triangle with sides 3, 4, 5",
-    expect: "Scalene triangle"
+    name: "Mode",
+    text: "Find the mode of 2, 3, 2, 5, 2, 4",
+    expect: "2",
+    formulaId: "CBSE-C7-ST-004"
   },
   {
-    name: "right triangle angles",
-    text: "Classify the triangle with angles 90°, 45°, 45°",
-    expect: "Right triangle"
+    name: "Range",
+    text: "Find the range of the data 3, 8, 5, 12, 7",
+    expect: "9",
+    formulaId: "CBSE-C7-ST-002"
   },
   {
-    name: "acute triangle angles",
-    text: "Triangle angles 40°, 60°, 80° — classify",
-    expect: "Acute triangle"
+    name: "Frequency Table",
+    text: "Make a frequency table for the data: 2, 3, 2, 2, 5",
+    expectContains: "2: 3",
+    formulaId: "CBSE-C6-DH-001"
   },
   {
-    name: "obtuse triangle angles",
-    text: "Classify triangle with angles 20°, 30°, 130°",
-    expect: "Obtuse triangle"
-  },
-
-  // Parallel / intersecting
-  {
-    name: "parallel lines",
-    text: "Lines that never meet are called",
-    expect: "Parallel lines"
+    name: "Bar Graph Interpretation",
+    text:
+      "In a bar graph, 1 unit = 10 students. The bar for Class 6 has height 4 units. How many students?",
+    expect: "40",
+    formulaId: "CBSE-C6-DH-003"
   },
   {
-    name: "intersecting lines",
-    text: "What are intersecting lines?",
-    expect: "Intersecting lines"
-  },
-  {
-    name: "ray define",
-    text: "What is a ray in geometry?",
-    expect: "Ray"
+    name: "Pictograph",
+    text: "In a pictograph, 1 symbol = 5 books. There are 7 symbols. How many books?",
+    expect: "35",
+    formulaId: "CBSE-C6-DH-002"
   }
 ];
 
 const unsupportedCases = [
   {
-    name: "coordinate geometry",
-    text: "Plot the point (3, 4) on the coordinate plane"
+    name: "Unsupported Probability",
+    text: "What is the probability of getting a head when a coin is tossed?"
   },
   {
-    name: "congruence proof",
-    text: "Prove the triangles are congruent using SAS"
+    name: "Unsupported variance",
+    text: "Find the variance of the data 2, 4, 6, 8"
   },
   {
-    name: "transformation",
-    text: "Find the image after rotation of 90° about the origin"
-  },
-  {
-    name: "circle theorem",
-    text: "Apply the circle theorem for the angle in a semicircle"
+    name: "Unsupported pie chart",
+    text: "Interpret the pie chart showing favourite fruits"
   }
 ];
 
@@ -123,12 +103,12 @@ async function run() {
   let passed = 0;
   let failed = 0;
 
-  console.log("\n=== Geometry Rule Engine Results ===\n");
+  console.log("\n=== Statistics Rule Engine Results ===\n");
 
   for (const c of cases) {
     const sol = await g.LocalRuleEngineProvider.solve(
       {
-        id: "geo-" + c.name,
+        id: "st-" + c.name,
         recognizedText: c.text,
         text: c.text,
         containsMath: true
@@ -136,19 +116,31 @@ async function run() {
       { formulaLibraryData: formulaData }
     );
 
+    const hasId =
+      Array.isArray(sol.formulaIds) && sol.formulaIds.indexOf(c.formulaId) >= 0;
+    let answerOk = false;
+    if (c.expectContains) {
+      answerOk =
+        sol &&
+        String(sol.finalAnswer).indexOf(c.expectContains) >= 0;
+    } else {
+      answerOk = sol && String(sol.finalAnswer) === String(c.expect);
+    }
+
     const ok =
       sol &&
       sol.status === "complete" &&
-      String(sol.finalAnswer) === String(c.expect) &&
+      answerOk &&
       sol.verification === "Verified" &&
       Array.isArray(sol.steps) &&
-      sol.steps.length > 0 &&
-      Array.isArray(sol.formulaIds) &&
-      sol.formulaIds.length > 0;
+      sol.steps.length >= 3 &&
+      hasId;
 
     if (ok) {
       passed += 1;
-      console.log("PASS  " + c.name + " → " + c.expect);
+      console.log(
+        "PASS  " + c.name + " → " + (c.expect || c.expectContains)
+      );
     } else {
       failed += 1;
       console.log(
@@ -167,7 +159,7 @@ async function run() {
   for (const c of unsupportedCases) {
     const sol = await g.LocalRuleEngineProvider.solve(
       {
-        id: "geo-un-" + c.name,
+        id: "st-un-" + c.name,
         recognizedText: c.text,
         text: c.text,
         containsMath: true
@@ -177,11 +169,11 @@ async function run() {
     const ok = sol && sol.status === "unsupported";
     if (ok) {
       passed += 1;
-      console.log("PASS  unsupported: " + c.name);
+      console.log("PASS  " + c.name);
     } else {
       failed += 1;
       console.log(
-        "FAIL  unsupported: " +
+        "FAIL  " +
           c.name +
           " — status=" +
           (sol && sol.status) +
