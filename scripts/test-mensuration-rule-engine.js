@@ -1,9 +1,6 @@
 /**
- * Phase 8C — Geometry Rule Engine tests
- * Run: node scripts/test-geometry-rule-engine.js
- *
- * Angle identification · Triangle classification · Parallel lines
- * Plus unsupported: coordinate / congruence / transformations / circle theorems
+ * Phase 8D — Mensuration Rule Engine tests
+ * Run: node scripts/test-mensuration-rule-engine.js
  */
 "use strict";
 
@@ -41,93 +38,73 @@ g.CurriculumMapper.loadFromData(formulaData);
 g.FormulaCatalog.loadFromData(formulaData);
 
 const cases = [
-  // Angle identification
-  { name: "acute 45°", text: "Classify the angle 45°", expect: "Acute angle" },
-  { name: "right 90°", text: "What type of angle is 90 degrees?", expect: "Right angle" },
-  { name: "obtuse 120°", text: "Classify 120° angle", expect: "Obtuse angle" },
-  { name: "straight 180°", text: "Identify the angle 180°", expect: "Straight angle" },
-  { name: "reflex 270°", text: "Classify angle 270°", expect: "Reflex angle" },
-  { name: "complete 360°", text: "Classify 360°", expect: "Complete angle" },
-
-  // Triangle classification
   {
-    name: "equilateral sides",
-    text: "Classify the triangle with sides 5, 5, 5",
-    expect: "Equilateral triangle"
+    name: "Square area",
+    text: "Find the area of a square of side 6 cm",
+    expect: "36 cm²",
+    formulaId: "CBSE-C6-ME-005"
   },
   {
-    name: "isosceles sides",
-    text: "Classify triangle with sides 5, 5, 8",
-    expect: "Isosceles triangle"
+    name: "Square perimeter",
+    text: "Find the perimeter of a square with side 5 cm",
+    expect: "20 cm",
+    formulaId: "CBSE-C6-ME-002"
   },
   {
-    name: "scalene sides",
-    text: "Classify the triangle with sides 3, 4, 5",
-    expect: "Scalene triangle"
+    name: "Rectangle area",
+    text: "Rectangle length = 8 cm, breadth = 5 cm. Find the area.",
+    expect: "40 cm²",
+    formulaId: "CBSE-C6-ME-004"
   },
   {
-    name: "right triangle angles",
-    text: "Classify the triangle with angles 90°, 45°, 45°",
-    expect: "Right triangle"
+    name: "Rectangle perimeter",
+    text: "Find the perimeter of a rectangle with length 9 m and breadth 4 m",
+    expect: "26 m",
+    formulaId: "CBSE-C6-ME-001"
   },
   {
-    name: "acute triangle angles",
-    text: "Triangle angles 40°, 60°, 80° — classify",
-    expect: "Acute triangle"
+    name: "Triangle area",
+    text: "Find the area of a triangle with base 10 cm and height 6 cm",
+    expect: "30 cm²",
+    formulaId: "CBSE-C6-ME-006"
   },
   {
-    name: "obtuse triangle angles",
-    text: "Classify triangle with angles 20°, 30°, 130°",
-    expect: "Obtuse triangle"
-  },
-
-  // Parallel / intersecting
-  {
-    name: "parallel lines",
-    text: "Lines that never meet are called",
-    expect: "Parallel lines"
+    name: "Triangle perimeter",
+    text: "Find the perimeter of a triangle with sides 3 cm, 4 cm, 5 cm",
+    expect: "12 cm",
+    formulaId: "CBSE-C6-ME-003"
   },
   {
-    name: "intersecting lines",
-    text: "What are intersecting lines?",
-    expect: "Intersecting lines"
+    name: "Circle circumference",
+    text: "Find the circumference of a circle with radius 7 cm (π = 22/7)",
+    expect: "44 cm",
+    formulaId: "CBSE-C7-ME-002"
   },
   {
-    name: "ray define",
-    text: "What is a ray in geometry?",
-    expect: "Ray"
+    name: "Circle area",
+    text: "Find the area of a circle with radius 7 cm (π = 22/7)",
+    expect: "154 cm²",
+    formulaId: "CBSE-C7-ME-003"
   }
 ];
 
 const unsupportedCases = [
-  {
-    name: "coordinate geometry",
-    text: "Plot the point (3, 4) on the coordinate plane"
-  },
-  {
-    name: "congruence proof",
-    text: "Prove the triangles are congruent using SAS"
-  },
-  {
-    name: "transformation",
-    text: "Find the image after rotation of 90° about the origin"
-  },
-  {
-    name: "circle theorem",
-    text: "Apply the circle theorem for the angle in a semicircle"
-  }
+  { name: "Unsupported 3D shape (cylinder)", text: "Find the volume of a cylinder with radius 7 cm and height 10 cm" },
+  { name: "Cone surface area", text: "Find the surface area of a cone" },
+  { name: "Sphere volume", text: "Find the volume of a sphere of radius 7 cm" },
+  { name: "Composite figure", text: "Find the area of a composite L-shaped figure" }
 ];
 
 async function run() {
   let passed = 0;
   let failed = 0;
 
-  console.log("\n=== Geometry Rule Engine Results ===\n");
+  console.log("\n=== Mensuration Rule Engine Results ===\n");
 
   for (const c of cases) {
     const sol = await g.LocalRuleEngineProvider.solve(
       {
-        id: "geo-" + c.name,
+        id: "me-" + c.name,
         recognizedText: c.text,
         text: c.text,
         containsMath: true
@@ -135,15 +112,16 @@ async function run() {
       { formulaLibraryData: formulaData }
     );
 
+    const hasId =
+      Array.isArray(sol.formulaIds) && sol.formulaIds.indexOf(c.formulaId) >= 0;
     const ok =
       sol &&
       sol.status === "complete" &&
       String(sol.finalAnswer) === String(c.expect) &&
       sol.verification === "Verified" &&
       Array.isArray(sol.steps) &&
-      sol.steps.length > 0 &&
-      Array.isArray(sol.formulaIds) &&
-      sol.formulaIds.length > 0;
+      sol.steps.length >= 3 &&
+      hasId;
 
     if (ok) {
       passed += 1;
@@ -166,7 +144,7 @@ async function run() {
   for (const c of unsupportedCases) {
     const sol = await g.LocalRuleEngineProvider.solve(
       {
-        id: "geo-un-" + c.name,
+        id: "me-un-" + c.name,
         recognizedText: c.text,
         text: c.text,
         containsMath: true
@@ -176,11 +154,11 @@ async function run() {
     const ok = sol && sol.status === "unsupported";
     if (ok) {
       passed += 1;
-      console.log("PASS  unsupported: " + c.name);
+      console.log("PASS  " + c.name);
     } else {
       failed += 1;
       console.log(
-        "FAIL  unsupported: " +
+        "FAIL  " +
           c.name +
           " — status=" +
           (sol && sol.status) +

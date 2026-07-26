@@ -1,5 +1,5 @@
 /**
- * Topic handlers — Class 6 Arithmetic + Intro Algebra (8B.4) + Geometry (8C).
+ * Topic handlers — Arithmetic + Algebra + Geometry (8C) + Mensuration (8D).
  */
 (function (root, factory) {
   "use strict";
@@ -9,7 +9,8 @@
       require("./expression"),
       require("./normalize"),
       require("./algebra"),
-      require("./geometry")
+      require("./geometry"),
+      require("./mensuration")
     );
   } else {
     root.LocalRuleHandlers = factory(
@@ -17,7 +18,8 @@
       root.LocalRuleExpression,
       root.LocalRuleNormalize,
       root.LocalRuleAlgebra,
-      root.LocalRuleGeometry
+      root.LocalRuleGeometry,
+      root.LocalRuleMensuration
     );
   }
 })(typeof window !== "undefined" ? window : globalThis, function (
@@ -25,7 +27,8 @@
   Expression,
   Normalize,
   Algebra,
-  Geometry
+  Geometry,
+  Mensuration
 ) {
   "use strict";
 
@@ -75,7 +78,18 @@
     const compact = text.replace(/\s+/g, " ");
     const lower = compact.toLowerCase();
 
-    // Geometry unsupported gates (coordinate, congruence, transformations, circles, mensuration)
+    // Mensuration first (area/perimeter/circumference) — before geometry
+    if (Mensuration && Mensuration.isUnsupportedMensuration) {
+      const meBad = Mensuration.isUnsupportedMensuration(compact);
+      if (meBad && Mensuration.looksLikeMensuration(compact)) {
+        return { type: "unsupported", reason: meBad };
+      }
+    }
+    if (Mensuration && Mensuration.looksLikeMensuration(compact)) {
+      return { type: "mensuration", text: compact };
+    }
+
+    // Geometry unsupported gates (coordinate, congruence, transformations, circle theorems)
     if (Geometry && Geometry.isUnsupportedGeometry) {
       const geoBad = Geometry.isUnsupportedGeometry(compact);
       if (geoBad && Geometry.looksLikeGeometry(compact)) {
@@ -700,6 +714,21 @@
       return {
         unsupported: true,
         reason: (intent && intent.reason) || "Unsupported"
+      };
+    }
+
+    if (intent.type === "mensuration" && Mensuration && Mensuration.trySolve) {
+      const me = Mensuration.trySolve(intent.text || "");
+      if (me && me.unsupported) {
+        return {
+          unsupported: true,
+          reason: me.reason || "Unsupported mensuration"
+        };
+      }
+      if (me) return me;
+      return {
+        unsupported: true,
+        reason: "Unsupported mensuration question type"
       };
     }
 

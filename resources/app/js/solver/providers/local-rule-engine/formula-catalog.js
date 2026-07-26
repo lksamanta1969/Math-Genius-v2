@@ -92,7 +92,16 @@
     geometry_angle_complete: ["CBSE-C6-GE-003"],
     geometry_triangle_basics: ["CBSE-C6-GE-019", "CBSE-C7-GE-003"],
     geometry_triangle_classify_sides: ["CBSE-C6-GE-019"],
-    geometry_triangle_classify_angles: ["CBSE-C6-GE-019", "CBSE-C7-GE-003"]
+    geometry_triangle_classify_angles: ["CBSE-C6-GE-019", "CBSE-C7-GE-003"],
+    // Phase 8D — Mensuration (plane figures)
+    mensuration_square_perimeter: ["CBSE-C6-ME-002"],
+    mensuration_square_area: ["CBSE-C6-ME-005"],
+    mensuration_rectangle_perimeter: ["CBSE-C6-ME-001"],
+    mensuration_rectangle_area: ["CBSE-C6-ME-004"],
+    mensuration_triangle_perimeter: ["CBSE-C6-ME-003"],
+    mensuration_triangle_area: ["CBSE-C6-ME-006"],
+    mensuration_circle_circumference: ["CBSE-C7-ME-002"],
+    mensuration_circle_area: ["CBSE-C7-ME-003"]
   });
 
   function ingestFormulasArray(list) {

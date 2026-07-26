@@ -5,9 +5,7 @@
  * Angle types (acute/right/obtuse/straight/reflex/complete), Triangle basics.
  *
  * Rejects: Coordinate Geometry, Congruence Proofs, Transformations,
- * Circle Theorems, Mensuration (area/volume).
- *
- * Recommends Formula Library IDs only — no hardcoded formula text.
+ * Circle Theorems. (Plane mensuration is handled by Phase 8D.)
  */
 (function (root, factory) {
   "use strict";
@@ -51,7 +49,7 @@
     return { unsupported: true, reason: reason || "Unsupported geometry topic" };
   }
 
-  /** Topics explicitly out of Phase 8C scope */
+  /** Topics explicitly out of Phase 8C geometry scope */
   function isUnsupportedGeometry(text) {
     const t = String(text || "").toLowerCase();
     if (
@@ -84,13 +82,6 @@
       /\btheorem\b.*\bcircle\b|\bcircle\b.*\btheorem\b/.test(t)
     ) {
       return "Circle theorems are not supported in Phase 8C";
-    }
-    if (
-      /\b(area|volume|surface\s+area|perimeter\s+of\s+(a\s+)?(rectangle|square|circle|triangle|parallelogram)|mensuration)\b/.test(
-        t
-      )
-    ) {
-      return "Mensuration is not supported in Phase 8C";
     }
     return null;
   }

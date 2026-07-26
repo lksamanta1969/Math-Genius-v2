@@ -1467,10 +1467,10 @@ async function boot() {
   bindEvents();
   drawDocument();
   updateChrome();
-  setStatus("Phase 8C ready — Geometry Rule Engine (angles, lines, triangle basics).");
+  setStatus("Phase 8D ready — Mensuration Rule Engine (square, rectangle, triangle, circle).");
 
   window.MathGeniusSolver = {
-    phase: "8C",
+    phase: "8D",
     architecture: "plugin-based",
     getQuestions: function () {
       return state.questions.slice();

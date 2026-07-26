@@ -1,7 +1,7 @@
 {
-  "version": "4.1",
+  "version": "4.2",
   "app": "Math Genius",
-  "phase": "phase-8c-geometry-rule-engine",
+  "phase": "phase-8d-mensuration-rule-engine",
   "syllabusStandard": {
     "description": "Formula Library follows the latest board Mathematics syllabi. Each class contains only formulas prescribed for that class.",
     "hierarchy": "boards[] → classes[] → subjects[] → chapters[] → formulas[]",
@@ -3917,6 +3917,88 @@
                       "formulaName": "Area of a Square",
                       "relatedFormulaIds": [
                         "CBSE-C6-ME-002",
+                        "CBSE-C6-ME-004"
+                      ],
+                      "practiceQuestionIds": []
+                    },
+                    {
+                      "id": "CBSE-C6-ME-006",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Mensuration",
+                      "chapter": "Perimeter and Area",
+                      "chapterNumber": 6,
+                      "name": "Area of a Triangle",
+                      "formula": "A = ½ × base × height",
+                      "latex": "A=\\frac{1}{2}bh",
+                      "variables": [
+                        {
+                          "symbol": "A",
+                          "meaning": "Area"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Base"
+                        },
+                        {
+                          "symbol": "h",
+                          "meaning": "Corresponding height"
+                        }
+                      ],
+                      "description": "Area of a triangle is half the product of its base and the corresponding perpendicular height.",
+                      "example": "If base = 10 cm and height = 6 cm, A = ½ × 10 × 6 = 30 cm².",
+                      "notes": "Height must be perpendicular to the chosen base.",
+                      "practiceQuestions": [
+                        {
+                          "question": "Base 8 cm, height 5 cm. Find area of the triangle.",
+                          "answer": "20 cm²"
+                        }
+                      ],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Area"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T20:00:00.000Z",
+                      "updatedAt": "2026-07-26T20:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 6: Perimeter and Area"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 6: Perimeter and Area",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-ME-003",
+                        "CBSE-C6-ME-004"
+                      ],
+                      "keywords": [
+                        "area",
+                        "triangle",
+                        "base",
+                        "height"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Perimeter and Area",
+                      "formulaName": "Area of a Triangle",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-ME-003",
                         "CBSE-C6-ME-004"
                       ],
                       "practiceQuestionIds": []
@@ -8319,5 +8401,5 @@
       "classes": []
     }
   ],
-  "updatedAt": "2026-07-26T18:00:00.000Z"
+  "updatedAt": "2026-07-26T20:00:00.000Z"
 }

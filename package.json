@@ -17,7 +17,8 @@
     "test:algebra": "node scripts/test-algebra-rule-engine.js",
     "test:curriculum-mapper": "node scripts/test-curriculum-mapper.js",
     "test:geometry": "node scripts/expand-geometry-formulas-8c.js && node scripts/test-geometry-rule-engine.js",
-    "test:solver": "npm run test:local-rule-engine && npm run test:ocr-solve && npm run test:solver-validation && npm run test:algebra && npm run test:formula-library && npm run test:curriculum-mapper && npm run test:geometry",
+    "test:mensuration": "node scripts/expand-mensuration-formulas-8d.js && node scripts/test-mensuration-rule-engine.js",
+    "test:solver": "npm run test:local-rule-engine && npm run test:ocr-solve && npm run test:solver-validation && npm run test:algebra && npm run test:formula-library && npm run test:curriculum-mapper && npm run test:geometry && npm run test:mensuration",
     "build": "electron-builder",
     "dist": "electron-builder --win"
   },

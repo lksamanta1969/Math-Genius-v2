@@ -1,7 +1,7 @@
 {
   "feature": "AI Math Solver",
-  "version": "8C",
-  "phase": "8C",
+  "version": "8D",
+  "phase": "8D",
   "architecture": "plugin-based",
   "productModel": "learning-platform",
   "security": {
@@ -84,8 +84,8 @@
       "mini-quiz"
     ],
     "localRuleEngine": {
-      "phase": "8C",
-      "scope": "CBSE Class 6 Arithmetic + Intro Algebra + Geometry basics",
+      "phase": "8D",
+      "scope": "CBSE Class 6–7 Arithmetic + Algebra + Geometry basics + Mensuration (plane)",
       "supported": [
         "Addition",
         "Subtraction",
@@ -101,10 +101,14 @@
         "Fractions",
         "Simplification",
         "Intro Algebra (variables, like terms, linear equations)",
-        "Geometry (point, line, ray, segment, parallel/intersecting, angles, triangle basics)"
+        "Geometry (point, line, ray, segment, parallel/intersecting, angles, triangle basics)",
+        "Mensuration (square, rectangle, triangle, circle — perimeter/area/circumference)"
       ],
       "unsupported": [
-        "Mensuration",
+        "Volume",
+        "Surface Area",
+        "3D Geometry (cylinder, cone, sphere)",
+        "Composite Figures",
         "Coordinate Geometry",
         "Congruence Proofs",
         "Transformations",
@@ -355,7 +359,7 @@
       ]
     },
     "8C": {
-      "status": "active",
+      "status": "complete",
       "features": [
         "geometryRuleEngine",
         "angleIdentification",
@@ -365,10 +369,20 @@
       ]
     },
     "8D": {
+      "status": "active",
+      "features": [
+        "mensurationRuleEngine",
+        "squareRectangleTriangleCircle",
+        "perimeterAreaCircumference",
+        "mensurationFormulaIds",
+        "unitPreservation"
+      ]
+    },
+    "8E": {
       "status": "planned",
-      "features": ["history", "export", "share", "print", "pdfEnhancements", "docx"]
+      "features": ["history", "export", "share", "print", "pdfEnhancements", "docx", "statistics"]
     }
   },
   "disabledInPhase8A": ["history", "export", "share", "print"],
-  "disabledUntilLater": ["cloudAiSolve", "mensurationSolver"]
+  "disabledUntilLater": ["cloudAiSolve", "statisticsSolver", "3dMensuration"]
 }

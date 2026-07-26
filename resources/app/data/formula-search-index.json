@@ -1,7 +1,7 @@
 {
-  "version": "4.1",
-  "generatedAt": "2026-07-26T18:00:00.000Z",
-  "count": 83,
+  "version": "4.2",
+  "generatedAt": "2026-07-26T20:00:00.000Z",
+  "count": 84,
   "formulas": [
     {
       "id": "CBSE-C6-AR-001",
@@ -726,6 +726,23 @@
       "keywords": [
         "area",
         "square"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-ME-006",
+      "name": "Area of a Triangle",
+      "formulaName": "Area of a Triangle",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Mensuration",
+      "chapter": "Perimeter and Area",
+      "topic": "Perimeter and Area",
+      "keywords": [
+        "area",
+        "triangle",
+        "base",
+        "height"
       ],
       "difficulty": "Easy"
     },
