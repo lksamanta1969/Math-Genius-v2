@@ -1,5 +1,5 @@
 /**
- * Topic handlers — Class 6 Arithmetic + Intro Algebra (8B.4).
+ * Topic handlers — Class 6 Arithmetic + Intro Algebra (8B.4) + Geometry (8C).
  */
 (function (root, factory) {
   "use strict";
@@ -8,21 +8,24 @@
       require("./math-utils"),
       require("./expression"),
       require("./normalize"),
-      require("./algebra")
+      require("./algebra"),
+      require("./geometry")
     );
   } else {
     root.LocalRuleHandlers = factory(
       root.LocalRuleMath,
       root.LocalRuleExpression,
       root.LocalRuleNormalize,
-      root.LocalRuleAlgebra
+      root.LocalRuleAlgebra,
+      root.LocalRuleGeometry
     );
   }
 })(typeof window !== "undefined" ? window : globalThis, function (
   MathUtils,
   Expression,
   Normalize,
-  Algebra
+  Algebra,
+  Geometry
 ) {
   "use strict";
 
@@ -72,6 +75,19 @@
     const compact = text.replace(/\s+/g, " ");
     const lower = compact.toLowerCase();
 
+    // Geometry unsupported gates (coordinate, congruence, transformations, circles, mensuration)
+    if (Geometry && Geometry.isUnsupportedGeometry) {
+      const geoBad = Geometry.isUnsupportedGeometry(compact);
+      if (geoBad && Geometry.looksLikeGeometry(compact)) {
+        return { type: "unsupported", reason: geoBad };
+      }
+    }
+
+    // Intro geometry (angles, lines, triangle basics)
+    if (Geometry && Geometry.looksLikeGeometry(compact)) {
+      return { type: "geometry", text: compact };
+    }
+
     // Unsupported advanced algebra → explicit unsupported
     if (Algebra && Algebra.isUnsupportedAlgebra) {
       const bad = Algebra.isUnsupportedAlgebra(compact);
@@ -79,7 +95,7 @@
         bad &&
         (Algebra.looksLikeIntroAlgebra(compact) ||
           /[<>≤≥≠\^²]/.test(compact) ||
-          /=/.test(compact) && /[a-zA-Z]/.test(compact))
+          (/=/.test(compact) && /[a-zA-Z]/.test(compact)))
       ) {
         // Only hard-fail when clearly advanced/unsupported form
         if (/[<>≤≥≠\^²]/.test(compact) || /\n.*=/.test(compact)) {
@@ -684,6 +700,21 @@
       return {
         unsupported: true,
         reason: (intent && intent.reason) || "Unsupported"
+      };
+    }
+
+    if (intent.type === "geometry" && Geometry && Geometry.trySolve) {
+      const geo = Geometry.trySolve(intent.text || "");
+      if (geo && geo.unsupported) {
+        return {
+          unsupported: true,
+          reason: geo.reason || "Unsupported geometry"
+        };
+      }
+      if (geo) return geo;
+      return {
+        unsupported: true,
+        reason: "Unsupported geometry question type"
       };
     }
 

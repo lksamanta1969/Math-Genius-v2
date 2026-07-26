@@ -1,6 +1,6 @@
 /**
- * Formula Catalog — resolve Formula Library IDs to names.
- * Does not hardcode formula text; loads from formula-library.json.
+ * Formula Catalog — resolve operation → Formula Library IDs.
+ * Curriculum metadata (names, board, chapter, …) comes from Curriculum Mapper.
  */
 (function (root, factory) {
   "use strict";
@@ -26,12 +26,13 @@
     if (typeof node.id === "string" && typeof node.name === "string") {
       out[node.id] = {
         formulaId: node.id,
-        formulaName: node.name,
+        formulaName: node.formulaName || node.name,
         formula: node.formula || null,
         board: node.board || null,
         class: node.class || null,
         subject: node.subject || null,
-        chapter: node.chapter || null
+        chapter: node.chapter || null,
+        topic: node.topic || null
       };
     }
     Object.keys(node).forEach(function (k) {
@@ -75,7 +76,23 @@
       "CBSE-C6-AL-008",
       "CBSE-C6-AL-009"
     ],
-    algebra_missing_number: ["CBSE-C6-AL-010", "CBSE-C6-AL-007"]
+    algebra_missing_number: ["CBSE-C6-AL-010", "CBSE-C6-AL-007"],
+    // Phase 8C — Geometry basics
+    geometry_point: ["CBSE-C6-GE-010"],
+    geometry_line: ["CBSE-C6-GE-011"],
+    geometry_ray: ["CBSE-C6-GE-012"],
+    geometry_line_segment: ["CBSE-C6-GE-013"],
+    geometry_parallel: ["CBSE-C6-GE-014"],
+    geometry_intersecting: ["CBSE-C6-GE-015"],
+    geometry_angle_acute: ["CBSE-C6-GE-016", "CBSE-C6-GE-001"],
+    geometry_angle_right: ["CBSE-C6-GE-001"],
+    geometry_angle_obtuse: ["CBSE-C6-GE-017", "CBSE-C6-GE-001"],
+    geometry_angle_straight: ["CBSE-C6-GE-002"],
+    geometry_angle_reflex: ["CBSE-C6-GE-018", "CBSE-C6-GE-003"],
+    geometry_angle_complete: ["CBSE-C6-GE-003"],
+    geometry_triangle_basics: ["CBSE-C6-GE-019", "CBSE-C7-GE-003"],
+    geometry_triangle_classify_sides: ["CBSE-C6-GE-019"],
+    geometry_triangle_classify_angles: ["CBSE-C6-GE-019", "CBSE-C7-GE-003"]
   });
 
   function ingestFormulasArray(list) {
@@ -84,12 +101,13 @@
       if (node && typeof node.id === "string" && typeof node.name === "string") {
         indexById[node.id] = {
           formulaId: node.id,
-          formulaName: node.name,
+          formulaName: node.formulaName || node.name,
           formula: node.formula || null,
           board: node.board || null,
           class: node.class || null,
           subject: node.subject || null,
-          chapter: node.chapter || null
+          chapter: node.chapter || null,
+          topic: node.topic || null
         };
       }
     });
@@ -159,24 +177,28 @@
     },
 
     /**
+     * Operation → Formula IDs only (solver must not read curriculum text).
      * @param {string} operationKey
-     * @returns {{ formulaId: string, formulaName: string }[]}
+     * @returns {string[]}
+     */
+    resolveIdsForOperation: function (operationKey) {
+      const ids = OPERATION_FORMULA_IDS[operationKey] || [];
+      if (!loaded) return ids.slice();
+      return ids.filter(function (id) {
+        return !!indexById[id];
+      });
+    },
+
+    /**
+     * @deprecated Prefer resolveIdsForOperation + CurriculumMapper.
+     * Returns ID-only refs for solver compatibility.
+     * @param {string} operationKey
+     * @returns {{ formulaId: string }[]}
      */
     resolveForOperation: function (operationKey) {
-      const ids = OPERATION_FORMULA_IDS[operationKey] || [];
-      const out = [];
-      ids.forEach(function (id) {
-        const entry = indexById[id];
-        if (entry) {
-          out.push({
-            formulaId: entry.formulaId,
-            formulaName: entry.formulaName
-          });
-        } else if (!loaded) {
-          out.push({ formulaId: id, formulaName: null });
-        }
+      return this.resolveIdsForOperation(operationKey).map(function (id) {
+        return { formulaId: id };
       });
-      return out;
     },
 
     operationFormulaIds: OPERATION_FORMULA_IDS

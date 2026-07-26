@@ -21,11 +21,11 @@
 
 <header class="solver-header">
 <h1>🧠 AI Math Solver</h1>
-<p class="page-desc">Phase 8B.4 — Arithmetic + Intro Algebra (Local Rule Engine). Offline. No Geometry.</p>
+<p class="page-desc">Phase 8C — Geometry Rule Engine (points, lines, angles, triangle basics). Formula IDs resolve via Curriculum Mapper.</p>
 <div class="phase-banner">
 <span class="phase-chip">8A OCR + Detect</span>
-<span class="phase-chip phase-active">8B.4 Algebra</span>
-<span class="phase-chip">8C PDF+</span>
+<span class="phase-chip">8B Solver</span>
+<span class="phase-chip phase-active">8C Geometry</span>
 <span class="phase-chip">8D History</span>
 </div>
 </header>
@@ -122,6 +122,10 @@
 <h4>Find</h4>
 <p id="solFind" class="sol-text"></p>
 </section>
+<section class="sol-block" data-section="curriculum">
+<h4>Curriculum</h4>
+<p id="solCurriculum" class="sol-text">—</p>
+</section>
 <section class="sol-block" data-section="formula">
 <h4>Formula Used</h4>
 <ul id="solFormulas" class="sol-list"></ul>
@@ -187,11 +191,13 @@
 <script src="../js/solver/solution-schema.js"></script>
 <script src="../js/solver/solver-engine.js"></script>
 <script src="../js/solver/solution-pipeline.js"></script>
+<script src="../js/curriculum/curriculum-mapper.js"></script>
 <script src="../js/solver/providers/local-rule-engine/formula-catalog.js"></script>
 <script src="../js/solver/providers/local-rule-engine/math-utils.js"></script>
 <script src="../js/solver/providers/local-rule-engine/expression.js"></script>
 <script src="../js/solver/providers/local-rule-engine/normalize.js"></script>
 <script src="../js/solver/providers/local-rule-engine/algebra.js"></script>
+<script src="../js/solver/providers/local-rule-engine/geometry.js"></script>
 <script src="../js/solver/providers/local-rule-engine/handlers.js"></script>
 <script src="../js/solver/providers/local-rule-engine/provider.js"></script>
 <script src="../js/solver/providers/local-rule-engine/register.js"></script>

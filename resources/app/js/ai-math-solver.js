@@ -65,6 +65,7 @@ const els = {
   solQuestion: document.getElementById("solQuestion"),
   solGiven: document.getElementById("solGiven"),
   solFind: document.getElementById("solFind"),
+  solCurriculum: document.getElementById("solCurriculum"),
   solFormulas: document.getElementById("solFormulas"),
   solSteps: document.getElementById("solSteps"),
   solAnswer: document.getElementById("solAnswer"),
@@ -345,9 +346,21 @@ function buildSolutionCopyText(solution, question) {
       "Formula Used: " +
         solution.formulaUsed
           .map(function (f) {
-            return (f.formulaId || "") + " " + (f.formulaName || "");
+            return (
+              (f.formulaId || f.id || "") +
+              " " +
+              (f.formulaName || f.name || "")
+            );
           })
           .join("; ")
+    );
+  }
+  if (solution.board || solution.class || solution.subject || solution.chapter) {
+    lines.push(
+      "Curriculum: " +
+        [solution.board, solution.class, solution.subject, solution.chapter]
+          .filter(Boolean)
+          .join(" · ")
     );
   }
   lines.push("Steps:");
@@ -412,6 +425,50 @@ function setBanner(kind, message) {
     "solve-status-banner" + (kind ? " is-" + kind : "");
 }
 
+function hydrateSolutionForUi(solution) {
+  if (!solution) return solution;
+  if (
+    window.CurriculumMapper &&
+    window.CurriculumMapper.isLoaded() &&
+    ((Array.isArray(solution.formulaIds) && solution.formulaIds.length) ||
+      (Array.isArray(solution.formulaUsed) && solution.formulaUsed.length))
+  ) {
+    return window.CurriculumMapper.hydrateSolution(solution);
+  }
+  return solution;
+}
+
+function formatCurriculumLine(solution) {
+  if (!solution) return "—";
+  const parts = [
+    solution.board,
+    solution.class,
+    solution.subject,
+    solution.chapter,
+    solution.topic && solution.topic !== solution.chapter
+      ? "Topic: " + solution.topic
+      : null,
+    solution.difficulty ? "Difficulty: " + solution.difficulty : null
+  ].filter(Boolean);
+  if (!parts.length) {
+    if (
+      solution.curriculumErrors &&
+      solution.curriculumErrors.length
+    ) {
+      return (
+        "Curriculum error: " +
+        solution.curriculumErrors
+          .map(function (e) {
+            return e.code || e.message;
+          })
+          .join("; ")
+      );
+    }
+    return "—";
+  }
+  return parts.join(" · ");
+}
+
 function renderSolutionPanel(question, solution, jobStatus) {
   const qText = (question && (question.text || question.recognizedText)) || "";
 
@@ -421,6 +478,10 @@ function renderSolutionPanel(question, solution, jobStatus) {
 
   updateTimingRow(solution);
 
+  function clearCurriculum() {
+    if (els.solCurriculum) els.solCurriculum.textContent = "—";
+  }
+
   if (jobStatus === "needs-verify") {
     setBanner(
       "warn",
@@ -429,6 +490,7 @@ function renderSolutionPanel(question, solution, jobStatus) {
     els.solQuestion.textContent = qText || "—";
     els.solGiven.textContent = "—";
     els.solFind.textContent = "—";
+    clearCurriculum();
     els.solFormulas.innerHTML =
       '<li class="sol-empty">Edit the question above, then click Solve</li>';
     els.solSteps.innerHTML = "";
@@ -449,6 +511,7 @@ function renderSolutionPanel(question, solution, jobStatus) {
     els.solQuestion.textContent = qText;
     els.solGiven.textContent = "—";
     els.solFind.textContent = "—";
+    clearCurriculum();
     els.solFormulas.innerHTML = '<li class="sol-empty">Waiting…</li>';
     els.solSteps.innerHTML = '<li class="sol-empty">Waiting…</li>';
     els.solAnswer.textContent = "—";
@@ -462,6 +525,7 @@ function renderSolutionPanel(question, solution, jobStatus) {
     els.solQuestion.textContent = qText;
     els.solGiven.textContent = "—";
     els.solFind.textContent = "—";
+    clearCurriculum();
     els.solFormulas.innerHTML = "";
     els.solSteps.innerHTML = "";
     els.solAnswer.textContent = "—";
@@ -469,6 +533,8 @@ function renderSolutionPanel(question, solution, jobStatus) {
     els.solConfidence.textContent = "—";
     return;
   }
+
+  solution = hydrateSolutionForUi(solution);
 
   const err = solution.error;
   const isErr =
@@ -497,24 +563,48 @@ function renderSolutionPanel(question, solution, jobStatus) {
   els.solQuestion.textContent = solution.question || qText || "—";
   els.solGiven.textContent = solution.given || "—";
   els.solFind.textContent = solution.find || "—";
+  if (els.solCurriculum) {
+    els.solCurriculum.textContent = formatCurriculumLine(solution);
+  }
 
   const formulas = Array.isArray(solution.formulaUsed)
     ? solution.formulaUsed
     : [];
   if (!formulas.length) {
+    const currErr =
+      solution.curriculumErrors && solution.curriculumErrors.length
+        ? solution.curriculumErrors
+            .map(function (e) {
+              return escapeHtml(e.code || e.message || "Curriculum error");
+            })
+            .join("; ")
+        : null;
     els.solFormulas.innerHTML = isErr
       ? '<li class="sol-empty">—</li>'
-      : '<li class="sol-empty">No Formula Library match for this operation</li>';
+      : currErr
+        ? '<li class="sol-empty">' + currErr + "</li>"
+        : '<li class="sol-empty">No Formula Library match for this operation</li>';
   } else {
     els.solFormulas.innerHTML = formulas
       .map(function (f) {
         const id = f.formulaId || f.id || "";
         const name = f.formulaName || f.name || "";
+        const meta = [f.chapter, f.topic, f.difficulty]
+          .filter(Boolean)
+          .join(" · ");
+        const related =
+          Array.isArray(f.relatedFormulaIds) && f.relatedFormulaIds.length
+            ? " · related: " + f.relatedFormulaIds.join(", ")
+            : "";
         return (
           "<li><code>" +
           escapeHtml(id) +
           "</code> — " +
           escapeHtml(name) +
+          (meta ? "<br><span class=\"sol-meta\">" + escapeHtml(meta) + "</span>" : "") +
+          (related
+            ? "<br><span class=\"sol-meta\">" + escapeHtml(related) + "</span>"
+            : "") +
           "</li>"
         );
       })
@@ -1377,16 +1467,21 @@ async function boot() {
   bindEvents();
   drawDocument();
   updateChrome();
-  setStatus("Phase 8B.4 ready — Arithmetic + Intro Algebra. Offline.");
+  setStatus("Phase 8C ready — Geometry Rule Engine (angles, lines, triangle basics).");
 
   window.MathGeniusSolver = {
-    phase: "8B.4",
+    phase: "8C",
     architecture: "plugin-based",
     getQuestions: function () {
       return state.questions.slice();
     },
     getSolutions: function () {
       return Object.assign({}, state.solutions);
+    },
+    lookupFormula: function (formulaId) {
+      return window.CurriculumMapper
+        ? window.CurriculumMapper.lookup(formulaId)
+        : null;
     },
     getOcrProviders: function () {
       return window.OcrEngine.list();

@@ -32,44 +32,87 @@
 
   const PROVIDER_ID = "local-rule-engine";
 
+  function getCurriculumMapper() {
+    const g =
+      typeof window !== "undefined"
+        ? window
+        : typeof globalThis !== "undefined"
+          ? globalThis
+          : null;
+    return g && g.CurriculumMapper ? g.CurriculumMapper : null;
+  }
+
+  function syncCurriculumMapper(data) {
+    const Mapper = getCurriculumMapper();
+    if (Mapper && data) {
+      Mapper.loadFromData(data);
+    }
+  }
+
   function ensureCatalogLoaded(options) {
-    if (FormulaCatalog.isLoaded() && FormulaCatalog.getById("CBSE-C6-AL-007")) {
+    const opts = options || {};
+    const hasAlgebra = FormulaCatalog.getById("CBSE-C6-AL-007");
+    const Mapper = getCurriculumMapper();
+    if (FormulaCatalog.isLoaded() && hasAlgebra && Mapper && Mapper.isLoaded()) {
       return Promise.resolve();
     }
-    const opts = options || {};
 
-    function mergeAlgebra(data) {
-      if (data) FormulaCatalog.mergePack(data);
+    function afterMain(libraryData) {
+      if (libraryData) syncCurriculumMapper(libraryData);
+      // Seed pack is migration-only; merge only if IDs still missing
+      if (FormulaCatalog.getById("CBSE-C6-AL-007")) {
+        return Promise.resolve();
+      }
+      if (opts.algebraFormulaData) {
+        FormulaCatalog.mergePack(opts.algebraFormulaData);
+        if (Mapper) Mapper.loadFromData(opts.algebraFormulaData);
+        return Promise.resolve();
+      }
+      if (typeof fetch === "function") {
+        return FormulaCatalog.mergeFromUrl(
+          "../data/formula-algebra-intro.json"
+        ).catch(function () {
+          return null;
+        });
+      }
+      return Promise.resolve();
     }
 
     if (opts.formulaLibraryData) {
       FormulaCatalog.loadFromData(opts.formulaLibraryData);
-      if (opts.algebraFormulaData) {
-        mergeAlgebra(opts.algebraFormulaData);
-      }
-      return Promise.resolve();
+      return afterMain(opts.formulaLibraryData);
     }
     if (opts.formulaLibraryUrl) {
       return FormulaCatalog.loadFromUrl(opts.formulaLibraryUrl).then(function () {
-        if (opts.algebraFormulaUrl) {
-          return FormulaCatalog.mergeFromUrl(opts.algebraFormulaUrl);
-        }
+        // Catalog already loaded; re-fetch for Curriculum Mapper if needed
         if (typeof fetch === "function") {
-          return FormulaCatalog.mergeFromUrl(
-            "../data/formula-algebra-intro.json"
-          ).catch(function () {
-            return null;
-          });
+          return fetch(opts.formulaLibraryUrl)
+            .then(function (res) {
+              return res.ok ? res.json() : null;
+            })
+            .then(function (data) {
+              return afterMain(data);
+            })
+            .catch(function () {
+              return afterMain(null);
+            });
         }
-        return null;
+        return afterMain(null);
       });
     }
     if (typeof fetch === "function") {
       return FormulaCatalog.loadFromUrl("../data/formula-library.json")
         .then(function () {
-          return FormulaCatalog.mergeFromUrl(
-            "../data/formula-algebra-intro.json"
-          );
+          return fetch("../data/formula-library.json")
+            .then(function (res) {
+              return res.ok ? res.json() : null;
+            })
+            .then(function (data) {
+              return afterMain(data);
+            })
+            .catch(function () {
+              return afterMain(null);
+            });
         })
         .catch(function () {
           return null;
@@ -112,6 +155,7 @@
       question: text,
       given: "",
       find: "",
+      formulaIds: [],
       formulaUsed: [],
       steps: [],
       finalAnswer: null,
@@ -126,25 +170,36 @@
       commonMistakes: [],
       relatedFormulas: [],
       practiceQuestions: [],
-      class: 6,
-      subject: "Arithmetic",
-      board: "CBSE",
+      // Curriculum left null — mapper/UI must not invent syllabus facts
+      board: null,
+      class: null,
+      subject: null,
       providerNote: reason
     };
   }
 
   function buildSolution(question, result, verification) {
     const text = Normalize.questionText(question);
-    const formulas = FormulaCatalog.resolveForOperation(result.operationKey);
+    // Solver knows Formula IDs only — curriculum comes from Curriculum Mapper
+    const formulaIds = FormulaCatalog.resolveIdsForOperation
+      ? FormulaCatalog.resolveIdsForOperation(result.operationKey)
+      : (FormulaCatalog.resolveForOperation(result.operationKey) || []).map(
+          function (f) {
+            return f.formulaId || f.id;
+          }
+        );
     const confidence = verification.ok ? 0.98 : 0.4;
 
-    return {
+    const raw = {
       id: "sol-lre-" + Date.now().toString(36),
       status: "complete",
       question: text,
       given: result.given || "",
       find: result.find || "",
-      formulaUsed: formulas,
+      formulaIds: formulaIds.slice(),
+      formulaUsed: formulaIds.map(function (id) {
+        return { formulaId: id };
+      }),
       steps: result.steps || [],
       finalAnswer: result.finalAnswer,
       verification: verification.status,
@@ -159,20 +214,26 @@
         confidence: confidence
       },
       confidence: confidence,
-      class: result.operationKey &&
-        String(result.operationKey).indexOf("algebra") === 0
-        ? 6
-        : 6,
-      subject:
-        result.operationKey &&
-        String(result.operationKey).indexOf("algebra") === 0
-          ? "Algebra"
-          : "Arithmetic",
-      board: "CBSE",
-      difficulty: "Easy",
+      board: null,
+      class: null,
+      subject: null,
+      chapter: null,
+      topic: null,
+      difficulty: null,
       commonMistakes: [],
-      relatedFormulas: formulas.slice()
+      relatedFormulas: []
     };
+
+    const g =
+      typeof window !== "undefined"
+        ? window
+        : typeof globalThis !== "undefined"
+          ? globalThis
+          : null;
+    if (g && g.CurriculumMapper && g.CurriculumMapper.isLoaded()) {
+      return g.CurriculumMapper.hydrateSolution(raw);
+    }
+    return raw;
   }
 
   /**

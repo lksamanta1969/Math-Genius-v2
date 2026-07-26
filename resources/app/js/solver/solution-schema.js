@@ -8,11 +8,14 @@
  *
  * Solution {
  *   id, questionId, provider, status,
- *   question, given, find, concept, conceptId, formulaUsed[], steps[],
- *   finalAnswer, verification, verificationBlock,
+ *   question, given, find, concept, conceptId,
+ *   formulaIds[] (solver emits IDs only),
+ *   formulaUsed[] (rich objects via Curriculum Mapper),
+ *   steps[], finalAnswer, verification, verificationBlock,
  *   commonMistakes[], relatedFormulas[], practiceQuestions[], miniQuiz,
- *   alternativeMethods[], confidence, difficulty,
- *   chapter, subject, class, board, estimatedTime, insights, practiceSetId
+ *   alternativeMethods[], confidence, difficulty, topic,
+ *   chapter, subject, class, board, estimatedTime, insights, practiceSetId,
+ *   curriculumErrors[]
  * }
  *
  * Step {
@@ -107,7 +110,20 @@
       find: p.find || "",
       concept: p.concept || null,
       conceptId: p.conceptId || (p.concept && p.concept.id) || null,
+      // Solver emits IDs; Curriculum Mapper hydrates formulaUsed
+      formulaIds: Array.isArray(p.formulaIds)
+        ? p.formulaIds.slice()
+        : Array.isArray(p.formulaUsed)
+          ? p.formulaUsed
+              .map(function (f) {
+                return typeof f === "string" ? f : f && (f.formulaId || f.id);
+              })
+              .filter(Boolean)
+          : [],
       formulaUsed: Array.isArray(p.formulaUsed) ? p.formulaUsed : [],
+      curriculumErrors: Array.isArray(p.curriculumErrors)
+        ? p.curriculumErrors
+        : [],
       steps: Array.isArray(p.steps)
         ? p.steps.map(function (s) {
             return createStep(s);
@@ -140,6 +156,7 @@
 
       confidence: typeof p.confidence === "number" ? p.confidence : 0,
       difficulty: p.difficulty || null,
+      topic: p.topic || null,
 
       chapter: p.chapter || null,
       subject: p.subject || null,

@@ -35,7 +35,10 @@ loadScript("resources/app/js/solver/solution-presentation-schema.js");
 loadScript("resources/app/js/solver/solution-schema.js");
 
 g.FormulaCatalog.loadFromData(formulaData);
-g.FormulaCatalog.mergePack(algebraPack);
+// Algebra IDs now live in main library (8B.5); seed merge is optional fallback
+if (!g.FormulaCatalog.getById("CBSE-C6-AL-007")) {
+  g.FormulaCatalog.mergePack(algebraPack);
+}
 
 const cases = [
   { name: "x + 5 = 12", text: "x + 5 = 12", expect: "x = 7" },

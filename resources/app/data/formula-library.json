@@ -1,7 +1,7 @@
 {
-  "version": "3.3",
+  "version": "4.1",
   "app": "Math Genius",
-  "phase": "phase-2-cbse-class-6",
+  "phase": "phase-8c-geometry-rule-engine",
   "syllabusStandard": {
     "description": "Formula Library follows the latest board Mathematics syllabi. Each class contains only formulas prescribed for that class.",
     "hierarchy": "boards[] → classes[] → subjects[] → chapters[] → formulas[]",
@@ -137,14 +137,22 @@
         "totalQuestions": "number"
       },
       "relatedFormulas": [
-        "string"
+        "string (legacy alias; keep in sync with relatedFormulaIds)"
       ],
       "keywords": [
         "string"
       ],
       "isFavourite": "boolean",
       "viewCount": "number",
-      "lastViewed": "ISO datetime | null"
+      "lastViewed": "ISO datetime | null",
+      "topic": "string",
+      "formulaName": "string (display name; mirrors name)",
+      "relatedFormulaIds": [
+        "string (preferred alias of relatedFormulas)"
+      ],
+      "practiceQuestionIds": [
+        "string"
+      ]
     }
   },
   "boards": [
@@ -168,10 +176,10 @@
                 "arithmetic",
                 "geometry",
                 "mensuration",
-                "data-handling"
+                "data-handling",
+                "algebra"
               ],
               "excludedTopics": [
-                "Algebraic Identities",
                 "Trigonometry",
                 "Calculus",
                 "Matrices",
@@ -264,7 +272,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -294,7 +302,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Patterns in Mathematics",
+                      "formulaName": "nth Odd Number",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-002"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-002",
@@ -334,7 +348,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -364,7 +378,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Patterns in Mathematics",
+                      "formulaName": "nth Even Number",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-001"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-003",
@@ -404,7 +424,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -433,7 +453,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Patterns in Mathematics",
+                      "formulaName": "nth Triangular Number",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-004"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-004",
@@ -473,7 +499,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -502,7 +528,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Patterns in Mathematics",
+                      "formulaName": "nth Square Number",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-003",
+                        "CBSE-C6-AR-005"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-005",
@@ -542,7 +575,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -570,7 +603,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Patterns in Mathematics",
+                      "formulaName": "nth Cube Number",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-004"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-006",
@@ -610,7 +649,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -639,7 +678,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Patterns in Mathematics",
+                      "formulaName": "Fibonacci Sequence Rule",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-003"
+                      ],
+                      "practiceQuestionIds": []
                     }
                   ]
                 },
@@ -703,7 +748,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -732,7 +777,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Number Play",
+                      "formulaName": "Place Value of a Digit",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-008"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-008",
@@ -772,7 +823,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -800,7 +851,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Number Play",
+                      "formulaName": "Expanded Form of a Number",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-007"
+                      ],
+                      "practiceQuestionIds": []
                     }
                   ]
                 },
@@ -868,7 +925,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -896,7 +953,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Prime Time",
+                      "formulaName": "Factor Relation",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-010"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-010",
@@ -940,7 +1003,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -970,7 +1033,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Prime Time",
+                      "formulaName": "Multiple Relation",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-009",
+                        "CBSE-C6-AR-016"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-011",
@@ -1006,7 +1076,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1035,7 +1105,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Prime Time",
+                      "formulaName": "Divisibility Rule for 2",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-013",
+                        "CBSE-C6-AR-015"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-012",
@@ -1071,7 +1148,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1098,7 +1175,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Prime Time",
+                      "formulaName": "Divisibility Rule for 3",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-014"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-013",
@@ -1134,7 +1217,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1162,7 +1245,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Prime Time",
+                      "formulaName": "Divisibility Rule for 5",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-011",
+                        "CBSE-C6-AR-015"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-014",
@@ -1198,7 +1288,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1225,7 +1315,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Prime Time",
+                      "formulaName": "Divisibility Rule for 9",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-012"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-015",
@@ -1261,7 +1357,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1289,7 +1385,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Prime Time",
+                      "formulaName": "Divisibility Rule for 10",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-011",
+                        "CBSE-C6-AR-013"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-016",
@@ -1334,7 +1437,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1363,7 +1466,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Prime Time",
+                      "formulaName": "HCF × LCM Relation (Two Numbers)",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-009",
+                        "CBSE-C6-AR-010"
+                      ],
+                      "practiceQuestionIds": []
                     }
                   ]
                 },
@@ -1427,7 +1537,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1456,7 +1566,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Fractions",
+                      "formulaName": "Fraction Notation",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-018"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-018",
@@ -1496,7 +1612,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1524,7 +1640,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Fractions",
+                      "formulaName": "Equivalent Fractions",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-017",
+                        "CBSE-C6-AR-019"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-019",
@@ -1564,7 +1687,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1593,7 +1716,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Fractions",
+                      "formulaName": "Addition of Like Fractions",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-020",
+                        "CBSE-C6-AR-018"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-020",
@@ -1633,7 +1763,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1660,7 +1790,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Fractions",
+                      "formulaName": "Subtraction of Like Fractions",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-019"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-021",
@@ -1704,7 +1840,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1732,7 +1868,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Fractions",
+                      "formulaName": "Improper Fraction to Mixed Number",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-017"
+                      ],
+                      "practiceQuestionIds": []
                     }
                   ]
                 },
@@ -1796,7 +1938,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1824,7 +1966,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "The Other Side of Zero",
+                      "formulaName": "Absolute Value",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-023"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-023",
@@ -1864,7 +2012,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1893,7 +2041,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "The Other Side of Zero",
+                      "formulaName": "Additive Inverse",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-022",
+                        "CBSE-C6-AR-024"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-AR-024",
@@ -1933,7 +2088,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -1961,7 +2116,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "The Other Side of Zero",
+                      "formulaName": "Integer Addition on the Number Line",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AR-023"
+                      ],
+                      "practiceQuestionIds": []
                     }
                   ]
                 }
@@ -2034,7 +2195,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2063,7 +2224,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Right Angle",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-002",
+                        "CBSE-C6-GE-004"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-GE-002",
@@ -2099,7 +2267,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2128,7 +2296,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Straight Angle",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-005",
+                        "CBSE-C6-GE-003"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-GE-003",
@@ -2164,7 +2339,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2192,7 +2367,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Complete Angle",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-001"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-GE-004",
@@ -2228,7 +2409,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2256,7 +2437,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Complementary Angles",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-005",
+                        "CBSE-C6-GE-001"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-GE-005",
@@ -2292,7 +2480,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2320,7 +2508,644 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Supplementary Angles",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-004",
+                        "CBSE-C6-GE-002"
+                      ],
+                      "practiceQuestionIds": []
+                    },
+                    {
+                      "id": "CBSE-C6-GE-010",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 2,
+                      "name": "Point",
+                      "formula": "A point marks a location (no length or width)",
+                      "latex": "P",
+                      "variables": [],
+                      "description": "A point is an exact position in space. It has no size.",
+                      "example": "Point A marks the tip of a pencil on paper.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Geometry"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 2: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-GE-011",
+                        "CBSE-C6-GE-013"
+                      ],
+                      "keywords": [
+                        "point",
+                        "location"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Point",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-011",
+                        "CBSE-C6-GE-013"
+                      ],
+                      "practiceQuestionIds": []
+                    },
+                    {
+                      "id": "CBSE-C6-GE-011",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 2,
+                      "name": "Line",
+                      "formula": "A line extends endlessly in both directions",
+                      "latex": "\\overleftrightarrow{AB}",
+                      "variables": [],
+                      "description": "A straight line has no endpoints and infinite length.",
+                      "example": "Line AB passes through points A and B and goes on forever.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Geometry"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 2: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-GE-012",
+                        "CBSE-C6-GE-013",
+                        "CBSE-C6-GE-014"
+                      ],
+                      "keywords": [
+                        "line",
+                        "straight line"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Line",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-012",
+                        "CBSE-C6-GE-013",
+                        "CBSE-C6-GE-014"
+                      ],
+                      "practiceQuestionIds": []
+                    },
+                    {
+                      "id": "CBSE-C6-GE-012",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 2,
+                      "name": "Ray",
+                      "formula": "A ray has one endpoint and extends in one direction",
+                      "latex": "\\overrightarrow{AB}",
+                      "variables": [],
+                      "description": "Ray AB starts at A and passes through B without end.",
+                      "example": "A sunbeam can be modelled as a ray.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Geometry"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 2: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-GE-010",
+                        "CBSE-C6-GE-011",
+                        "CBSE-C6-GE-013"
+                      ],
+                      "keywords": [
+                        "ray",
+                        "endpoint"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Ray",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-010",
+                        "CBSE-C6-GE-011",
+                        "CBSE-C6-GE-013"
+                      ],
+                      "practiceQuestionIds": []
+                    },
+                    {
+                      "id": "CBSE-C6-GE-013",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 2,
+                      "name": "Line Segment",
+                      "formula": "A line segment joins two endpoints and has fixed length",
+                      "latex": "\\overline{AB}",
+                      "variables": [],
+                      "description": "Segment AB is the part of a line between A and B.",
+                      "example": "The edge of a ruler between two marks is a line segment.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Geometry"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 2: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-GE-010",
+                        "CBSE-C6-GE-011"
+                      ],
+                      "keywords": [
+                        "line segment",
+                        "segment",
+                        "endpoints"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Line Segment",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-010",
+                        "CBSE-C6-GE-011"
+                      ],
+                      "practiceQuestionIds": []
+                    },
+                    {
+                      "id": "CBSE-C6-GE-014",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 2,
+                      "name": "Parallel Lines",
+                      "formula": "Parallel lines never meet and stay the same distance apart",
+                      "latex": "l \\parallel m",
+                      "variables": [],
+                      "description": "Two lines in a plane that do not intersect are parallel.",
+                      "example": "Opposite edges of a ruler are parallel.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Geometry"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 2: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-GE-015",
+                        "CBSE-C6-GE-011"
+                      ],
+                      "keywords": [
+                        "parallel",
+                        "never meet"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Parallel Lines",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-015",
+                        "CBSE-C6-GE-011"
+                      ],
+                      "practiceQuestionIds": []
+                    },
+                    {
+                      "id": "CBSE-C6-GE-015",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 2,
+                      "name": "Intersecting Lines",
+                      "formula": "Intersecting lines meet at exactly one point",
+                      "latex": "l \\cap m = \\{P\\}",
+                      "variables": [],
+                      "description": "Two lines that cross form angles at their intersection point.",
+                      "example": "The letter X is formed by intersecting line segments.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Geometry"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 2: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-GE-014",
+                        "CBSE-C6-GE-001"
+                      ],
+                      "keywords": [
+                        "intersecting",
+                        "cross",
+                        "intersection"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Intersecting Lines",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-014",
+                        "CBSE-C6-GE-001"
+                      ],
+                      "practiceQuestionIds": []
+                    },
+                    {
+                      "id": "CBSE-C6-GE-016",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 2,
+                      "name": "Acute Angle",
+                      "formula": "0° < acute angle < 90°",
+                      "latex": "0^\\circ < \\angle < 90^\\circ",
+                      "variables": [],
+                      "description": "An acute angle is smaller than a right angle.",
+                      "example": "45° is an acute angle.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Geometry"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 2: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-GE-001",
+                        "CBSE-C6-GE-017"
+                      ],
+                      "keywords": [
+                        "acute",
+                        "acute angle"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Acute Angle",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-001",
+                        "CBSE-C6-GE-017"
+                      ],
+                      "practiceQuestionIds": []
+                    },
+                    {
+                      "id": "CBSE-C6-GE-017",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 2,
+                      "name": "Obtuse Angle",
+                      "formula": "90° < obtuse angle < 180°",
+                      "latex": "90^\\circ < \\angle < 180^\\circ",
+                      "variables": [],
+                      "description": "An obtuse angle is larger than a right angle but smaller than a straight angle.",
+                      "example": "120° is an obtuse angle.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Geometry"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 2: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-GE-001",
+                        "CBSE-C6-GE-002",
+                        "CBSE-C6-GE-016"
+                      ],
+                      "keywords": [
+                        "obtuse",
+                        "obtuse angle"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Obtuse Angle",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-001",
+                        "CBSE-C6-GE-002",
+                        "CBSE-C6-GE-016"
+                      ],
+                      "practiceQuestionIds": []
+                    },
+                    {
+                      "id": "CBSE-C6-GE-018",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 2,
+                      "name": "Reflex Angle",
+                      "formula": "180° < reflex angle < 360°",
+                      "latex": "180^\\circ < \\angle < 360^\\circ",
+                      "variables": [],
+                      "description": "A reflex angle is greater than a straight angle and less than a complete angle.",
+                      "example": "270° is a reflex angle.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Geometry"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 2: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-GE-002",
+                        "CBSE-C6-GE-003"
+                      ],
+                      "keywords": [
+                        "reflex",
+                        "reflex angle"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Lines and Angles",
+                      "formulaName": "Reflex Angle",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-002",
+                        "CBSE-C6-GE-003"
+                      ],
+                      "practiceQuestionIds": []
+                    },
+                    {
+                      "id": "CBSE-C6-GE-019",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 2,
+                      "name": "Triangle Basics",
+                      "formula": "Triangle: 3 sides, 3 vertices, 3 angles; angle sum = 180°",
+                      "latex": "\\angle A+\\angle B+\\angle C=180^\\circ",
+                      "variables": [],
+                      "description": "A triangle is a closed three-sided figure. Triangles are classified by sides (equilateral, isosceles, scalene) or by angles (acute, right, obtuse).",
+                      "example": "A triangle with sides 3, 4, 5 is scalene; angles 40°, 60°, 80° form an acute triangle.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Geometry"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 2: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-GE-003",
+                        "CBSE-C6-GE-001"
+                      ],
+                      "keywords": [
+                        "triangle",
+                        "equilateral",
+                        "isosceles",
+                        "scalene"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Triangle Basics",
+                      "formulaName": "Triangle Basics",
+                      "relatedFormulaIds": [
+                        "CBSE-C7-GE-003",
+                        "CBSE-C6-GE-001"
+                      ],
+                      "practiceQuestionIds": []
                     }
                   ]
                 },
@@ -2388,7 +3213,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2417,7 +3242,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Playing with Constructions",
+                      "formulaName": "Circle Defined by Radius",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-007"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-GE-007",
@@ -2461,7 +3292,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2489,7 +3320,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Playing with Constructions",
+                      "formulaName": "Perpendicular Bisector Property",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-006"
+                      ],
+                      "practiceQuestionIds": []
                     }
                   ]
                 },
@@ -2549,7 +3386,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2577,7 +3414,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Symmetry",
+                      "formulaName": "Line of Symmetry",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-009"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-GE-009",
@@ -2617,7 +3460,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2646,7 +3489,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Symmetry",
+                      "formulaName": "Order of Rotational Symmetry",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-GE-008",
+                        "CBSE-C6-GE-003"
+                      ],
+                      "practiceQuestionIds": []
                     }
                   ]
                 }
@@ -2727,7 +3577,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2756,7 +3606,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Perimeter and Area",
+                      "formulaName": "Perimeter of a Rectangle",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-ME-004",
+                        "CBSE-C6-ME-002"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-ME-002",
@@ -2796,7 +3653,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2825,7 +3682,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Perimeter and Area",
+                      "formulaName": "Perimeter of a Square",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-ME-005",
+                        "CBSE-C6-ME-001"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-ME-003",
@@ -2865,7 +3729,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2893,7 +3757,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Perimeter and Area",
+                      "formulaName": "Perimeter of a Triangle",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-ME-001"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-ME-004",
@@ -2937,7 +3807,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2966,7 +3836,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Perimeter and Area",
+                      "formulaName": "Area of a Rectangle",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-ME-001",
+                        "CBSE-C6-ME-005"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-ME-005",
@@ -3006,7 +3883,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -3035,7 +3912,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Perimeter and Area",
+                      "formulaName": "Area of a Square",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-ME-002",
+                        "CBSE-C6-ME-004"
+                      ],
+                      "practiceQuestionIds": []
                     }
                   ]
                 }
@@ -3108,7 +3992,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -3137,7 +4021,13 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Data Handling and Presentation",
+                      "formulaName": "Frequency",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-DH-002"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-DH-002",
@@ -3181,7 +4071,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -3210,7 +4100,14 @@
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
-                      "lastViewed": null
+                      "lastViewed": null,
+                      "topic": "Data Handling and Presentation",
+                      "formulaName": "Pictograph Scale",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-DH-001",
+                        "CBSE-C6-DH-003"
+                      ],
+                      "practiceQuestionIds": []
                     },
                     {
                       "id": "CBSE-C6-DH-003",
@@ -3254,7 +4151,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T00:00:00.000Z",
-                      "updatedAt": "2026-07-26T00:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -3279,6 +4176,879 @@
                       "keywords": [
                         "bar graph",
                         "scale"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "topic": "Data Handling and Presentation",
+                      "formulaName": "Bar Graph Reading",
+                      "relatedFormulaIds": [
+                        "CBSE-C6-DH-002"
+                      ],
+                      "practiceQuestionIds": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "algebra",
+              "title": "Algebra",
+              "icon": "𝑥",
+              "syllabus": {
+                "board": "CBSE",
+                "class": "Class 6",
+                "subject": "Algebra",
+                "syllabusYear": "2026-27"
+              },
+              "chapters": [
+                {
+                  "id": "introduction-to-algebra",
+                  "title": "Introduction to Algebra",
+                  "chapterNumber": 11,
+                  "chapterCode": "CBSE-C6-AL-CH01",
+                  "board": "CBSE",
+                  "class": "Class 6",
+                  "subject": "Algebra",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "55 min",
+                  "referenceBooks": [
+                    "NCERT",
+                    "Ganita Prakash"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 6",
+                    "subject": "Algebra",
+                    "chapter": "Introduction to Algebra",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C6-AL-001",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Algebra",
+                      "chapter": "Introduction to Algebra",
+                      "chapterNumber": 11,
+                      "topic": "Introduction to Algebra",
+                      "name": "Variable and Constant",
+                      "formulaName": "Variable and Constant",
+                      "formula": "A variable is a letter that stands for a number; a constant is a fixed number.",
+                      "latex": "\\text{variable}=x,\\;\\text{constant}=c",
+                      "variables": [
+                        {
+                          "symbol": "x",
+                          "meaning": "Variable"
+                        },
+                        {
+                          "symbol": "c",
+                          "meaning": "Constant"
+                        }
+                      ],
+                      "description": "A variable is a letter that stands for a number; a constant is a fixed number.",
+                      "example": "In 5x + 3, x is a variable and 5, 3 are constants.",
+                      "notes": null,
+                      "practiceQuestions": [
+                        {
+                          "question": "Use: Variable and Constant",
+                          "answer": "In 5x + 3, x is a variable and 5, 3 are constants."
+                        }
+                      ],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Algebra"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 11: Introduction to Algebra"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 11: Introduction to Algebra",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-AL-002"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AL-002"
+                      ],
+                      "keywords": [
+                        "algebra",
+                        "introduction to algebra",
+                        "variable",
+                        "and",
+                        "constant"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C6-AL-002",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Algebra",
+                      "chapter": "Introduction to Algebra",
+                      "chapterNumber": 11,
+                      "topic": "Introduction to Algebra",
+                      "name": "Algebraic Expression",
+                      "formulaName": "Algebraic Expression",
+                      "formula": "An algebraic expression is a combination of variables, constants and operations.",
+                      "latex": "ax+b",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Coefficient / constant"
+                        },
+                        {
+                          "symbol": "x",
+                          "meaning": "Variable"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Constant term"
+                        }
+                      ],
+                      "description": "An algebraic expression is a combination of variables, constants and operations.",
+                      "example": "2x + 7 is an algebraic expression.",
+                      "notes": null,
+                      "practiceQuestions": [
+                        {
+                          "question": "Use: Algebraic Expression",
+                          "answer": "2x + 7 is an algebraic expression."
+                        }
+                      ],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Algebra"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 11: Introduction to Algebra"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 11: Introduction to Algebra",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-AL-001",
+                        "CBSE-C6-AL-003"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AL-001",
+                        "CBSE-C6-AL-003"
+                      ],
+                      "keywords": [
+                        "algebra",
+                        "introduction to algebra",
+                        "algebraic",
+                        "expression"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C6-AL-003",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Algebra",
+                      "chapter": "Introduction to Algebra",
+                      "chapterNumber": 11,
+                      "topic": "Introduction to Algebra",
+                      "name": "Like Terms",
+                      "formulaName": "Like Terms",
+                      "formula": "Like terms have the same variable raised to the same power (e.g. 2a and 3a).",
+                      "latex": "2a,\\;3a",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Common variable of like terms"
+                        }
+                      ],
+                      "description": "Like terms have the same variable raised to the same power (e.g. 2a and 3a).",
+                      "example": "2a and 5a are like terms.",
+                      "notes": null,
+                      "practiceQuestions": [
+                        {
+                          "question": "Use: Like Terms",
+                          "answer": "2a and 5a are like terms."
+                        }
+                      ],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Algebra"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 11: Introduction to Algebra"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 11: Introduction to Algebra",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-AL-004",
+                        "CBSE-C6-AL-005"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AL-004",
+                        "CBSE-C6-AL-005"
+                      ],
+                      "keywords": [
+                        "algebra",
+                        "introduction to algebra",
+                        "like",
+                        "terms"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C6-AL-004",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Algebra",
+                      "chapter": "Introduction to Algebra",
+                      "chapterNumber": 11,
+                      "topic": "Introduction to Algebra",
+                      "name": "Unlike Terms",
+                      "formulaName": "Unlike Terms",
+                      "formula": "Unlike terms have different variables or powers (e.g. 2a and 3b).",
+                      "latex": "2a,\\;3b",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "First variable"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Second variable"
+                        }
+                      ],
+                      "description": "Unlike terms have different variables or powers (e.g. 2a and 3b).",
+                      "example": "2a and 3b are unlike terms.",
+                      "notes": null,
+                      "practiceQuestions": [
+                        {
+                          "question": "Use: Unlike Terms",
+                          "answer": "2a and 3b are unlike terms."
+                        }
+                      ],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Algebra"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 11: Introduction to Algebra"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 11: Introduction to Algebra",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-AL-003"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AL-003"
+                      ],
+                      "keywords": [
+                        "algebra",
+                        "introduction to algebra",
+                        "unlike",
+                        "terms"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C6-AL-005",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Algebra",
+                      "chapter": "Introduction to Algebra",
+                      "chapterNumber": 11,
+                      "topic": "Introduction to Algebra",
+                      "name": "Combine Like Terms",
+                      "formulaName": "Combine Like Terms",
+                      "formula": "Add or subtract coefficients of like terms: pa ± qa = (p ± q)a",
+                      "latex": "pa\\pm qa=(p\\pm q)a",
+                      "variables": [
+                        {
+                          "symbol": "p",
+                          "meaning": "First coefficient"
+                        },
+                        {
+                          "symbol": "q",
+                          "meaning": "Second coefficient"
+                        },
+                        {
+                          "symbol": "a",
+                          "meaning": "Common variable"
+                        }
+                      ],
+                      "description": "Add or subtract coefficients of like terms: pa ± qa = (p ± q)a",
+                      "example": "2a + 3a = 5a",
+                      "notes": null,
+                      "practiceQuestions": [
+                        {
+                          "question": "Use: Combine Like Terms",
+                          "answer": "2a + 3a = 5a"
+                        }
+                      ],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Algebra"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 11: Introduction to Algebra"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 11: Introduction to Algebra",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-AL-003",
+                        "CBSE-C6-AL-002"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AL-003",
+                        "CBSE-C6-AL-002"
+                      ],
+                      "keywords": [
+                        "algebra",
+                        "introduction to algebra",
+                        "combine",
+                        "like",
+                        "terms"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C6-AL-006",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Algebra",
+                      "chapter": "Introduction to Algebra",
+                      "chapterNumber": 11,
+                      "topic": "Introduction to Algebra",
+                      "name": "Evaluate an Expression",
+                      "formulaName": "Evaluate an Expression",
+                      "formula": "Substitute the given value of the variable and simplify.",
+                      "latex": "\\text{evaluate }f(x)\\text{ at }x=k",
+                      "variables": [
+                        {
+                          "symbol": "x",
+                          "meaning": "Variable"
+                        },
+                        {
+                          "symbol": "k",
+                          "meaning": "Given value of the variable"
+                        }
+                      ],
+                      "description": "Substitute the given value of the variable and simplify.",
+                      "example": "If x = 4, then 2x + 3 = 2×4 + 3 = 11.",
+                      "notes": null,
+                      "practiceQuestions": [
+                        {
+                          "question": "Use: Evaluate an Expression",
+                          "answer": "If x = 4, then 2x + 3 = 2×4 + 3 = 11."
+                        }
+                      ],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Algebra"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 11: Introduction to Algebra"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 11: Introduction to Algebra",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-AL-002"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AL-002"
+                      ],
+                      "keywords": [
+                        "algebra",
+                        "introduction to algebra",
+                        "evaluate",
+                        "expression"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                },
+                {
+                  "id": "simple-equations",
+                  "title": "Simple Equations",
+                  "chapterNumber": 12,
+                  "chapterCode": "CBSE-C6-AL-CH02",
+                  "board": "CBSE",
+                  "class": "Class 6",
+                  "subject": "Algebra",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "60 min",
+                  "referenceBooks": [
+                    "NCERT",
+                    "Ganita Prakash"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 6",
+                    "subject": "Algebra",
+                    "chapter": "Simple Equations",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C6-AL-007",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Algebra",
+                      "chapter": "Simple Equations",
+                      "chapterNumber": 12,
+                      "topic": "Simple Equations",
+                      "name": "Simple Linear Equation (One Variable)",
+                      "formulaName": "Simple Linear Equation (One Variable)",
+                      "formula": "ax + b = c  (a ≠ 0)",
+                      "latex": "ax+b=c\\;(a\\neq 0)",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Coefficient of x (a ≠ 0)"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Constant on LHS"
+                        },
+                        {
+                          "symbol": "c",
+                          "meaning": "Constant on RHS"
+                        },
+                        {
+                          "symbol": "x",
+                          "meaning": "Unknown"
+                        }
+                      ],
+                      "description": "ax + b = c  (a ≠ 0)",
+                      "example": "Solve 2x + 3 = 11. Then x = 4.",
+                      "notes": null,
+                      "practiceQuestions": [
+                        {
+                          "question": "Use: Simple Linear Equation (One Variable)",
+                          "answer": "Solve 2x + 3 = 11. Then x = 4."
+                        }
+                      ],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Algebra"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 12: Simple Equations"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 12: Simple Equations",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-AL-008",
+                        "CBSE-C6-AL-009"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AL-008",
+                        "CBSE-C6-AL-009"
+                      ],
+                      "keywords": [
+                        "algebra",
+                        "simple equations",
+                        "simple",
+                        "linear",
+                        "equation",
+                        "(one",
+                        "variable)"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C6-AL-008",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Algebra",
+                      "chapter": "Simple Equations",
+                      "chapterNumber": 12,
+                      "topic": "Simple Equations",
+                      "name": "Addition / Subtraction Property of Equality",
+                      "formulaName": "Addition / Subtraction Property of Equality",
+                      "formula": "If a = b, then a ± k = b ± k",
+                      "latex": "a=b\\Rightarrow a\\pm k=b\\pm k",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Left side value"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Right side value"
+                        },
+                        {
+                          "symbol": "k",
+                          "meaning": "Number added or subtracted"
+                        }
+                      ],
+                      "description": "If a = b, then a ± k = b ± k",
+                      "example": "From 2x + 3 = 11, subtract 3: 2x = 8.",
+                      "notes": null,
+                      "practiceQuestions": [
+                        {
+                          "question": "Use: Addition / Subtraction Property of Equality",
+                          "answer": "From 2x + 3 = 11, subtract 3: 2x = 8."
+                        }
+                      ],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Algebra"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 12: Simple Equations"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 12: Simple Equations",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-AL-007",
+                        "CBSE-C6-AL-009"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AL-007",
+                        "CBSE-C6-AL-009"
+                      ],
+                      "keywords": [
+                        "algebra",
+                        "simple equations",
+                        "addition",
+                        "subtraction",
+                        "property",
+                        "equality"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C6-AL-009",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Algebra",
+                      "chapter": "Simple Equations",
+                      "chapterNumber": 12,
+                      "topic": "Simple Equations",
+                      "name": "Multiplication / Division Property of Equality",
+                      "formulaName": "Multiplication / Division Property of Equality",
+                      "formula": "If a = b and k ≠ 0, then a × k = b × k and a ÷ k = b ÷ k",
+                      "latex": "a=b,\\;k\\neq 0\\Rightarrow ak=bk,\\;\\frac{a}{k}=\\frac{b}{k}",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Left side value"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Right side value"
+                        },
+                        {
+                          "symbol": "k",
+                          "meaning": "Non-zero multiplier / divisor"
+                        }
+                      ],
+                      "description": "If a = b and k ≠ 0, then a × k = b × k and a ÷ k = b ÷ k",
+                      "example": "From 2x = 8, divide by 2: x = 4.",
+                      "notes": null,
+                      "practiceQuestions": [
+                        {
+                          "question": "Use: Multiplication / Division Property of Equality",
+                          "answer": "From 2x = 8, divide by 2: x = 4."
+                        }
+                      ],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Algebra"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 12: Simple Equations"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 12: Simple Equations",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-AL-007",
+                        "CBSE-C6-AL-008"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AL-007",
+                        "CBSE-C6-AL-008"
+                      ],
+                      "keywords": [
+                        "algebra",
+                        "simple equations",
+                        "multiplication",
+                        "division",
+                        "property",
+                        "equality"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C6-AL-010",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 6",
+                      "subject": "Algebra",
+                      "chapter": "Simple Equations",
+                      "chapterNumber": 12,
+                      "topic": "Simple Equations",
+                      "name": "Missing Number Problem",
+                      "formulaName": "Missing Number Problem",
+                      "formula": "Find the unknown that makes the number sentence true.",
+                      "latex": "\\square + a = b",
+                      "variables": [
+                        {
+                          "symbol": "□",
+                          "meaning": "Missing number"
+                        },
+                        {
+                          "symbol": "a",
+                          "meaning": "Known addend"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Sum"
+                        }
+                      ],
+                      "description": "Find the unknown that makes the number sentence true.",
+                      "example": "Find □ in □ + 5 = 12. Missing number = 7.",
+                      "notes": null,
+                      "practiceQuestions": [
+                        {
+                          "question": "Use: Missing Number Problem",
+                          "answer": "Find □ in □ + 5 = 12. Missing number = 7."
+                        }
+                      ],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 6",
+                        "Algebra"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 6 Mathematics — Chapter 12: Simple Equations"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 12: Simple Equations",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C6-AL-007"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C6-AL-007"
+                      ],
+                      "keywords": [
+                        "algebra",
+                        "simple equations",
+                        "missing",
+                        "number",
+                        "problem"
                       ],
                       "isFavourite": false,
                       "viewCount": 0,
@@ -3332,7 +5102,595 @@
                 "subject": "Arithmetic",
                 "syllabusYear": "2026-27"
               },
-              "chapters": []
+              "chapters": [
+                {
+                  "id": "integers",
+                  "title": "Integers",
+                  "chapterNumber": 1,
+                  "chapterCode": "CBSE-C7-AR-CH01",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Arithmetic",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Arithmetic",
+                    "chapter": "Integers",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C7-AR-001",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Arithmetic",
+                      "chapter": "Integers",
+                      "chapterNumber": 1,
+                      "topic": "Integer operations",
+                      "name": "Addition of Integers",
+                      "formulaName": "Addition of Integers",
+                      "formula": "a + (−b) = a − b",
+                      "latex": "a+(-b)=a-b",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "First integer"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Positive integer being subtracted"
+                        }
+                      ],
+                      "description": "Adding the additive inverse of b is the same as subtracting b.",
+                      "example": "7 + (−3) = 7 − 3 = 4",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Integers"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Integers"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Integers",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AR-002"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AR-002"
+                      ],
+                      "keywords": [
+                        "integers",
+                        "addition",
+                        "negative"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C7-AR-002",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Arithmetic",
+                      "chapter": "Integers",
+                      "chapterNumber": 1,
+                      "topic": "Integer operations",
+                      "name": "Product of Integers (Sign Rule)",
+                      "formulaName": "Product of Integers (Sign Rule)",
+                      "formula": "(−a)×(−b)=ab; (−a)×b=−(ab)",
+                      "latex": "(-a)(-b)=ab,\\;(-a)b=-(ab)",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Positive integer"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Positive integer"
+                        }
+                      ],
+                      "description": "Same signs give a positive product; different signs give a negative product.",
+                      "example": "(−4)×(−5)=20; (−4)×5=−20",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Integers"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Integers"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Integers",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AR-001"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AR-001"
+                      ],
+                      "keywords": [
+                        "integers",
+                        "multiplication",
+                        "sign"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                },
+                {
+                  "id": "fractions-and-decimals",
+                  "title": "Fractions and Decimals",
+                  "chapterNumber": 2,
+                  "chapterCode": "CBSE-C7-AR-CH02",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Arithmetic",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Arithmetic",
+                    "chapter": "Fractions and Decimals",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C7-AR-003",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Arithmetic",
+                      "chapter": "Fractions and Decimals",
+                      "chapterNumber": 2,
+                      "topic": "Fraction multiplication",
+                      "name": "Multiplication of Fractions",
+                      "formulaName": "Multiplication of Fractions",
+                      "formula": "(a/b)×(c/d)=(ac)/(bd)",
+                      "latex": "\\frac{a}{b}\\times\\frac{c}{d}=\\frac{ac}{bd}",
+                      "variables": [
+                        {
+                          "symbol": "a/b",
+                          "meaning": "First fraction"
+                        },
+                        {
+                          "symbol": "c/d",
+                          "meaning": "Second fraction"
+                        }
+                      ],
+                      "description": "Multiply numerators together and denominators together.",
+                      "example": "(2/3)×(3/5)=6/15=2/5",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Fractions"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 2: Fractions and Decimals"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Fractions and Decimals",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AR-004"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AR-004"
+                      ],
+                      "keywords": [
+                        "fraction",
+                        "multiply",
+                        "product"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C7-AR-004",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Arithmetic",
+                      "chapter": "Fractions and Decimals",
+                      "chapterNumber": 2,
+                      "topic": "Fraction division",
+                      "name": "Division of Fractions",
+                      "formulaName": "Division of Fractions",
+                      "formula": "(a/b)÷(c/d)=(a/b)×(d/c)",
+                      "latex": "\\frac{a}{b}\\div\\frac{c}{d}=\\frac{a}{b}\\times\\frac{d}{c}",
+                      "variables": [
+                        {
+                          "symbol": "a/b",
+                          "meaning": "Dividend"
+                        },
+                        {
+                          "symbol": "c/d",
+                          "meaning": "Divisor (≠ 0)"
+                        }
+                      ],
+                      "description": "Divide by a fraction by multiplying by its reciprocal.",
+                      "example": "(2/3)÷(4/5)=(2/3)×(5/4)=10/12=5/6",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Fractions"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 2: Fractions and Decimals"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Fractions and Decimals",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AR-003"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AR-003"
+                      ],
+                      "keywords": [
+                        "fraction",
+                        "divide",
+                        "reciprocal"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                },
+                {
+                  "id": "comparing-quantities",
+                  "title": "Comparing Quantities",
+                  "chapterNumber": 3,
+                  "chapterCode": "CBSE-C7-AR-CH03",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Arithmetic",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Arithmetic",
+                    "chapter": "Comparing Quantities",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C7-AR-005",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Arithmetic",
+                      "chapter": "Comparing Quantities",
+                      "chapterNumber": 3,
+                      "topic": "Percentage",
+                      "name": "Percentage",
+                      "formulaName": "Percentage",
+                      "formula": "x% of N = (x/100)×N",
+                      "latex": "x\\%\\text{ of }N=\\frac{x}{100}\\times N",
+                      "variables": [
+                        {
+                          "symbol": "x",
+                          "meaning": "Percentage"
+                        },
+                        {
+                          "symbol": "N",
+                          "meaning": "Base quantity"
+                        }
+                      ],
+                      "description": "A percentage is a fraction with denominator 100.",
+                      "example": "20% of 150 = (20/100)×150 = 30",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Percentage"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 3: Comparing Quantities"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 3: Comparing Quantities",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AR-006"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AR-006"
+                      ],
+                      "keywords": [
+                        "percent",
+                        "percentage",
+                        "ratio"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C7-AR-006",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Arithmetic",
+                      "chapter": "Comparing Quantities",
+                      "chapterNumber": 3,
+                      "topic": "Simple interest",
+                      "name": "Simple Interest",
+                      "formulaName": "Simple Interest",
+                      "formula": "SI = (P × R × T)/100",
+                      "latex": "SI=\\frac{PRT}{100}",
+                      "variables": [
+                        {
+                          "symbol": "P",
+                          "meaning": "Principal"
+                        },
+                        {
+                          "symbol": "R",
+                          "meaning": "Rate percent per annum"
+                        },
+                        {
+                          "symbol": "T",
+                          "meaning": "Time in years"
+                        },
+                        {
+                          "symbol": "SI",
+                          "meaning": "Simple interest"
+                        }
+                      ],
+                      "description": "Simple interest is proportional to principal, rate and time.",
+                      "example": "P=1000, R=5%, T=2 ⇒ SI=(1000×5×2)/100=100",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Interest"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 3: Comparing Quantities"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 3: Comparing Quantities",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AR-005"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AR-005"
+                      ],
+                      "keywords": [
+                        "interest",
+                        "principal",
+                        "rate",
+                        "SI"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                },
+                {
+                  "id": "rational-numbers",
+                  "title": "Rational Numbers",
+                  "chapterNumber": 4,
+                  "chapterCode": "CBSE-C7-AR-CH04",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Arithmetic",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Arithmetic",
+                    "chapter": "Rational Numbers",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C7-AR-007",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Arithmetic",
+                      "chapter": "Rational Numbers",
+                      "chapterNumber": 4,
+                      "topic": "Rational numbers",
+                      "name": "Rational Number Form",
+                      "formulaName": "Rational Number Form",
+                      "formula": "A rational number = p/q where p, q are integers and q ≠ 0",
+                      "latex": "\\frac{p}{q},\\;q\\neq 0",
+                      "variables": [
+                        {
+                          "symbol": "p",
+                          "meaning": "Integer numerator"
+                        },
+                        {
+                          "symbol": "q",
+                          "meaning": "Non-zero integer denominator"
+                        }
+                      ],
+                      "description": "Integers and fractions are rational numbers of the form p/q.",
+                      "example": "−3/4 and 5 (=5/1) are rational numbers.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Rational Numbers"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 4: Rational Numbers"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 4: Rational Numbers",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [],
+                      "relatedFormulaIds": [],
+                      "keywords": [
+                        "rational",
+                        "p/q",
+                        "integer"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": "algebra",
@@ -3344,7 +5702,516 @@
                 "subject": "Algebra",
                 "syllabusYear": "2026-27"
               },
-              "chapters": []
+              "chapters": [
+                {
+                  "id": "simple-equations",
+                  "title": "Simple Equations",
+                  "chapterNumber": 1,
+                  "chapterCode": "CBSE-C7-AL-CH01",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Algebra",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Algebra",
+                    "chapter": "Simple Equations",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C7-AL-001",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Algebra",
+                      "chapter": "Simple Equations",
+                      "chapterNumber": 1,
+                      "topic": "Linear equations",
+                      "name": "Simple Linear Equation",
+                      "formulaName": "Simple Linear Equation",
+                      "formula": "ax + b = c (a ≠ 0)",
+                      "latex": "ax+b=c\\;(a\\neq 0)",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Coefficient of x"
+                        },
+                        {
+                          "symbol": "x",
+                          "meaning": "Unknown"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Constant on LHS"
+                        },
+                        {
+                          "symbol": "c",
+                          "meaning": "RHS constant"
+                        }
+                      ],
+                      "description": "A first-degree equation in one variable.",
+                      "example": "3x + 4 = 19 ⇒ x = 5",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Equations"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Simple Equations"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Simple Equations",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AL-002"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AL-002"
+                      ],
+                      "keywords": [
+                        "equation",
+                        "linear",
+                        "solve"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C7-AL-002",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Algebra",
+                      "chapter": "Simple Equations",
+                      "chapterNumber": 1,
+                      "topic": "Linear equations",
+                      "name": "Transposition",
+                      "formulaName": "Transposition",
+                      "formula": "Moving a term to the other side changes its sign",
+                      "latex": "a+b=c\\Rightarrow a=c-b",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Term kept on left"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Term transposed"
+                        },
+                        {
+                          "symbol": "c",
+                          "meaning": "Other side"
+                        }
+                      ],
+                      "description": "Transposition is a shortcut for adding/subtracting the same number on both sides.",
+                      "example": "x + 5 = 12 ⇒ x = 12 − 5 = 7",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Equations"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Simple Equations"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Simple Equations",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AL-001"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AL-001"
+                      ],
+                      "keywords": [
+                        "transposition",
+                        "equation"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                },
+                {
+                  "id": "algebraic-expressions",
+                  "title": "Algebraic Expressions",
+                  "chapterNumber": 2,
+                  "chapterCode": "CBSE-C7-AL-CH02",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Algebra",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Algebra",
+                    "chapter": "Algebraic Expressions",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C7-AL-003",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Algebra",
+                      "chapter": "Algebraic Expressions",
+                      "chapterNumber": 2,
+                      "topic": "Like terms",
+                      "name": "Combine Like Terms",
+                      "formulaName": "Combine Like Terms",
+                      "formula": "pa ± qa = (p ± q)a",
+                      "latex": "pa\\pm qa=(p\\pm q)a",
+                      "variables": [
+                        {
+                          "symbol": "p",
+                          "meaning": "First coefficient"
+                        },
+                        {
+                          "symbol": "q",
+                          "meaning": "Second coefficient"
+                        },
+                        {
+                          "symbol": "a",
+                          "meaning": "Common literal factor"
+                        }
+                      ],
+                      "description": "Only like terms can be added or subtracted.",
+                      "example": "5m − 2m = 3m",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Expressions"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 2: Algebraic Expressions"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Algebraic Expressions",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AL-004"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AL-004"
+                      ],
+                      "keywords": [
+                        "like terms",
+                        "simplify",
+                        "expression"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C7-AL-004",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Algebra",
+                      "chapter": "Algebraic Expressions",
+                      "chapterNumber": 2,
+                      "topic": "Degree",
+                      "name": "Degree of a Polynomial (one variable)",
+                      "formulaName": "Degree of a Polynomial (one variable)",
+                      "formula": "Degree = highest power of the variable in the expression",
+                      "latex": "\\deg(a_nx^n+\\cdots+a_0)=n\\;(a_n\\neq 0)",
+                      "variables": [
+                        {
+                          "symbol": "n",
+                          "meaning": "Highest power with non-zero coefficient"
+                        }
+                      ],
+                      "description": "For Class 7, identify degree of simple expressions in one variable.",
+                      "example": "Degree of 4x³ − x + 7 is 3.",
+                      "notes": "Identification only — solving higher-degree equations is out of Class 7 solver scope.",
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Expressions"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 2: Algebraic Expressions"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Algebraic Expressions",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AL-003"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AL-003"
+                      ],
+                      "keywords": [
+                        "degree",
+                        "polynomial",
+                        "power"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                },
+                {
+                  "id": "exponents-and-powers",
+                  "title": "Exponents and Powers",
+                  "chapterNumber": 3,
+                  "chapterCode": "CBSE-C7-AL-CH03",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Algebra",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Algebra",
+                    "chapter": "Exponents and Powers",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C7-AL-005",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Algebra",
+                      "chapter": "Exponents and Powers",
+                      "chapterNumber": 3,
+                      "topic": "Laws of exponents",
+                      "name": "Product Rule of Exponents",
+                      "formulaName": "Product Rule of Exponents",
+                      "formula": "a^m × a^n = a^(m+n)",
+                      "latex": "a^m a^n = a^{m+n}",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Base (a ≠ 0)"
+                        },
+                        {
+                          "symbol": "m",
+                          "meaning": "First exponent"
+                        },
+                        {
+                          "symbol": "n",
+                          "meaning": "Second exponent"
+                        }
+                      ],
+                      "description": "When multiplying the same base, add the exponents.",
+                      "example": "2³ × 2⁴ = 2⁷ = 128",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Exponents"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 3: Exponents and Powers"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 3: Exponents and Powers",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AL-006"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AL-006"
+                      ],
+                      "keywords": [
+                        "exponent",
+                        "product rule",
+                        "powers"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C7-AL-006",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Algebra",
+                      "chapter": "Exponents and Powers",
+                      "chapterNumber": 3,
+                      "topic": "Laws of exponents",
+                      "name": "Quotient Rule of Exponents",
+                      "formulaName": "Quotient Rule of Exponents",
+                      "formula": "a^m ÷ a^n = a^(m−n) (a ≠ 0)",
+                      "latex": "\\frac{a^m}{a^n}=a^{m-n}",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Base"
+                        },
+                        {
+                          "symbol": "m",
+                          "meaning": "Numerator exponent"
+                        },
+                        {
+                          "symbol": "n",
+                          "meaning": "Denominator exponent"
+                        }
+                      ],
+                      "description": "When dividing the same base, subtract the exponents.",
+                      "example": "5^6 ÷ 5^2 = 5^4 = 625",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Exponents"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 3: Exponents and Powers"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 3: Exponents and Powers",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-AL-005"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AL-005"
+                      ],
+                      "keywords": [
+                        "exponent",
+                        "quotient rule",
+                        "powers"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": "geometry",
@@ -3356,7 +6223,324 @@
                 "subject": "Geometry",
                 "syllabusYear": "2026-27"
               },
-              "chapters": []
+              "chapters": [
+                {
+                  "id": "lines-and-angles",
+                  "title": "Lines and Angles",
+                  "chapterNumber": 1,
+                  "chapterCode": "CBSE-C7-GE-CH01",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Geometry",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Geometry",
+                    "chapter": "Lines and Angles",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C7-GE-001",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 1,
+                      "topic": "Angles on a straight line",
+                      "name": "Linear Pair",
+                      "formulaName": "Linear Pair",
+                      "formula": "If two angles form a linear pair, their sum is 180°",
+                      "latex": "\\angle A+\\angle B=180^\\circ",
+                      "variables": [
+                        {
+                          "symbol": "∠A",
+                          "meaning": "First angle of the linear pair"
+                        },
+                        {
+                          "symbol": "∠B",
+                          "meaning": "Second angle of the linear pair"
+                        }
+                      ],
+                      "description": "Adjacent angles on a straight line add to a straight angle.",
+                      "example": "If ∠A = 110°, then ∠B = 70°.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Angles"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-GE-002"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-GE-002"
+                      ],
+                      "keywords": [
+                        "linear pair",
+                        "straight line",
+                        "180"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C7-GE-002",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Geometry",
+                      "chapter": "Lines and Angles",
+                      "chapterNumber": 1,
+                      "topic": "Vertically opposite angles",
+                      "name": "Vertically Opposite Angles",
+                      "formulaName": "Vertically Opposite Angles",
+                      "formula": "Vertically opposite angles are equal",
+                      "latex": "\\angle A=\\angle C,\\;\\angle B=\\angle D",
+                      "variables": [
+                        {
+                          "symbol": "∠A,∠C",
+                          "meaning": "One pair of vertically opposite angles"
+                        }
+                      ],
+                      "description": "When two lines intersect, opposite angles are equal.",
+                      "example": "If one angle is 65°, its vertically opposite angle is 65°.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Angles"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Lines and Angles"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Lines and Angles",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-GE-001"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-GE-001"
+                      ],
+                      "keywords": [
+                        "vertically opposite",
+                        "intersect"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                },
+                {
+                  "id": "triangle-properties",
+                  "title": "The Triangle and its Properties",
+                  "chapterNumber": 2,
+                  "chapterCode": "CBSE-C7-GE-CH02",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Geometry",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Geometry",
+                    "chapter": "The Triangle and its Properties",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C7-GE-003",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Geometry",
+                      "chapter": "The Triangle and its Properties",
+                      "chapterNumber": 2,
+                      "topic": "Angle sum",
+                      "name": "Angle Sum Property of a Triangle",
+                      "formulaName": "Angle Sum Property of a Triangle",
+                      "formula": "∠A + ∠B + ∠C = 180°",
+                      "latex": "\\angle A+\\angle B+\\angle C=180^\\circ",
+                      "variables": [
+                        {
+                          "symbol": "∠A,∠B,∠C",
+                          "meaning": "Interior angles of △ABC"
+                        }
+                      ],
+                      "description": "The sum of the interior angles of any triangle is 180°.",
+                      "example": "If ∠A=50° and ∠B=60°, then ∠C=70°.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Triangles"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 2: The Triangle and its Properties"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: The Triangle and its Properties",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-GE-004"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-GE-004"
+                      ],
+                      "keywords": [
+                        "triangle",
+                        "angle sum",
+                        "180"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C7-GE-004",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Geometry",
+                      "chapter": "The Triangle and its Properties",
+                      "chapterNumber": 2,
+                      "topic": "Exterior angle",
+                      "name": "Exterior Angle Property",
+                      "formulaName": "Exterior Angle Property",
+                      "formula": "Exterior angle = sum of two remote interior angles",
+                      "latex": "\\angle_{ext}=\\angle B+\\angle C",
+                      "variables": [
+                        {
+                          "symbol": "∠ext",
+                          "meaning": "Exterior angle at A"
+                        },
+                        {
+                          "symbol": "∠B,∠C",
+                          "meaning": "Interior opposite angles"
+                        }
+                      ],
+                      "description": "An exterior angle equals the sum of the two non-adjacent interior angles.",
+                      "example": "If ∠B=40° and ∠C=65°, exterior at A = 105°.",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Triangles"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 2: The Triangle and its Properties"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: The Triangle and its Properties",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-GE-003"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-GE-003"
+                      ],
+                      "keywords": [
+                        "exterior angle",
+                        "triangle"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": "mensuration",
@@ -3368,7 +6552,250 @@
                 "subject": "Mensuration",
                 "syllabusYear": "2026-27"
               },
-              "chapters": []
+              "chapters": [
+                {
+                  "id": "perimeter-and-area",
+                  "title": "Perimeter and Area",
+                  "chapterNumber": 1,
+                  "chapterCode": "CBSE-C7-ME-CH01",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Mensuration",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Mensuration",
+                    "chapter": "Perimeter and Area",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C7-ME-001",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Mensuration",
+                      "chapter": "Perimeter and Area",
+                      "chapterNumber": 1,
+                      "topic": "Parallelogram",
+                      "name": "Area of a Parallelogram",
+                      "formulaName": "Area of a Parallelogram",
+                      "formula": "A = b × h",
+                      "latex": "A=bh",
+                      "variables": [
+                        {
+                          "symbol": "b",
+                          "meaning": "Base"
+                        },
+                        {
+                          "symbol": "h",
+                          "meaning": "Corresponding height"
+                        },
+                        {
+                          "symbol": "A",
+                          "meaning": "Area"
+                        }
+                      ],
+                      "description": "Area equals base times the perpendicular height.",
+                      "example": "b=8 cm, h=5 cm ⇒ A=40 cm²",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Mensuration"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Perimeter and Area"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Perimeter and Area",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-ME-002"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-ME-002"
+                      ],
+                      "keywords": [
+                        "parallelogram",
+                        "area",
+                        "base",
+                        "height"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C7-ME-002",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Mensuration",
+                      "chapter": "Perimeter and Area",
+                      "chapterNumber": 1,
+                      "topic": "Circle",
+                      "name": "Circumference of a Circle",
+                      "formulaName": "Circumference of a Circle",
+                      "formula": "C = 2πr",
+                      "latex": "C=2\\pi r",
+                      "variables": [
+                        {
+                          "symbol": "r",
+                          "meaning": "Radius"
+                        },
+                        {
+                          "symbol": "C",
+                          "meaning": "Circumference"
+                        },
+                        {
+                          "symbol": "π",
+                          "meaning": "Pi (≈ 22/7 or 3.14)"
+                        }
+                      ],
+                      "description": "The perimeter of a circle is 2π times its radius.",
+                      "example": "r=7 cm, π=22/7 ⇒ C=2×22/7×7=44 cm",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Mensuration"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Perimeter and Area"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Perimeter and Area",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-ME-003"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-ME-003"
+                      ],
+                      "keywords": [
+                        "circle",
+                        "circumference",
+                        "perimeter"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C7-ME-003",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Mensuration",
+                      "chapter": "Perimeter and Area",
+                      "chapterNumber": 1,
+                      "topic": "Circle",
+                      "name": "Area of a Circle",
+                      "formulaName": "Area of a Circle",
+                      "formula": "A = πr²",
+                      "latex": "A=\\pi r^2",
+                      "variables": [
+                        {
+                          "symbol": "r",
+                          "meaning": "Radius"
+                        },
+                        {
+                          "symbol": "A",
+                          "meaning": "Area"
+                        }
+                      ],
+                      "description": "Area of a circle is π times the square of the radius.",
+                      "example": "r=7 cm, π=22/7 ⇒ A=154 cm²",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Mensuration"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Perimeter and Area"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Perimeter and Area",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-ME-002"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-ME-002"
+                      ],
+                      "keywords": [
+                        "circle",
+                        "area",
+                        "pi"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": "statistics",
@@ -3380,7 +6807,175 @@
                 "subject": "Statistics",
                 "syllabusYear": "2026-27"
               },
-              "chapters": []
+              "chapters": [
+                {
+                  "id": "data-handling",
+                  "title": "Data Handling",
+                  "chapterNumber": 1,
+                  "chapterCode": "CBSE-C7-ST-CH01",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Statistics",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Statistics",
+                    "chapter": "Data Handling",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "id": "CBSE-C7-ST-001",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Statistics",
+                      "chapter": "Data Handling",
+                      "chapterNumber": 1,
+                      "topic": "Mean",
+                      "name": "Arithmetic Mean",
+                      "formulaName": "Arithmetic Mean",
+                      "formula": "Mean = (sum of observations) / (number of observations)",
+                      "latex": "\\bar{x}=\\frac{\\sum x_i}{n}",
+                      "variables": [
+                        {
+                          "symbol": "x_i",
+                          "meaning": "Each observation"
+                        },
+                        {
+                          "symbol": "n",
+                          "meaning": "Number of observations"
+                        },
+                        {
+                          "symbol": "x̄",
+                          "meaning": "Mean"
+                        }
+                      ],
+                      "description": "The mean is the average of a data set.",
+                      "example": "Data 2, 4, 6 ⇒ mean = 12/3 = 4",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Statistics"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Data Handling"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Data Handling",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-ST-002"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-ST-002"
+                      ],
+                      "keywords": [
+                        "mean",
+                        "average",
+                        "data"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    },
+                    {
+                      "id": "CBSE-C7-ST-002",
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "class": "Class 7",
+                      "subject": "Statistics",
+                      "chapter": "Data Handling",
+                      "chapterNumber": 1,
+                      "topic": "Range",
+                      "name": "Range of Data",
+                      "formulaName": "Range of Data",
+                      "formula": "Range = highest value − lowest value",
+                      "latex": "R=x_{max}-x_{min}",
+                      "variables": [
+                        {
+                          "symbol": "x_max",
+                          "meaning": "Largest observation"
+                        },
+                        {
+                          "symbol": "x_min",
+                          "meaning": "Smallest observation"
+                        }
+                      ],
+                      "description": "Range measures the spread of data.",
+                      "example": "Data 3, 8, 5 ⇒ range = 8 − 3 = 5",
+                      "notes": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "difficulty": "Easy",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Statistics"
+                      ],
+                      "verification": "Reviewed",
+                      "createdAt": "2026-07-26T12:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
+                      "version": 1,
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 1: Data Handling"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 1: Data Handling",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "relatedFormulas": [
+                        "CBSE-C7-ST-001"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-ST-001"
+                      ],
+                      "keywords": [
+                        "range",
+                        "spread",
+                        "data"
+                      ],
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -4723,5 +8318,6 @@
       "enabled": false,
       "classes": []
     }
-  ]
+  ],
+  "updatedAt": "2026-07-26T18:00:00.000Z"
 }

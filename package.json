@@ -12,8 +12,12 @@
     "dev": "electron .",
     "test:local-rule-engine": "node scripts/test-local-rule-engine.js",
     "test:ocr-solve": "node scripts/test-ocr-solve-pipeline.js",
+    "test:solver-validation": "node scripts/test-solver-validation.js",
+    "test:formula-library": "node scripts/expand-formula-library-8b5.js && node scripts/validate-formula-library.js && node scripts/test-formula-library-8b5.js",
     "test:algebra": "node scripts/test-algebra-rule-engine.js",
-    "test:solver": "npm run test:local-rule-engine && npm run test:ocr-solve && npm run test:solver-validation && npm run test:algebra",
+    "test:curriculum-mapper": "node scripts/test-curriculum-mapper.js",
+    "test:geometry": "node scripts/expand-geometry-formulas-8c.js && node scripts/test-geometry-rule-engine.js",
+    "test:solver": "npm run test:local-rule-engine && npm run test:ocr-solve && npm run test:solver-validation && npm run test:algebra && npm run test:formula-library && npm run test:curriculum-mapper && npm run test:geometry",
     "build": "electron-builder",
     "dist": "electron-builder --win"
   },

@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "pack": "intro-algebra-c6-c7",
-  "description": "Introductory Algebra formulas for Local Rule Engine (Phase 8B.4). IDs resolve via Formula Catalog — solver does not hardcode formula text.",
+  "description": "SEED / MIGRATION ONLY. Canonical formulas live in formula-library.json (CBSE Class 6 Algebra). Do not treat this file as the source of truth for solvers.",
   "formulas": [
     {
       "id": "CBSE-C6-AL-001",
@@ -103,5 +103,9 @@
       "formula": "Find the unknown that makes the number sentence true.",
       "latex": "\\square + a = b"
     }
-  ]
+  ],
+  "role": "migration-seed",
+  "status": "merged-into-formula-library",
+  "mergedAt": "2026-07-26T12:00:00.000Z",
+  "canonicalLibrary": "resources/app/data/formula-library.json"
 }

@@ -1,1035 +1,1310 @@
 {
-  "generatedAt": "2026-07-26T00:00:00.000Z",
-  "totalEntries": 41,
-  "entries": [
+  "version": "4.1",
+  "generatedAt": "2026-07-26T18:00:00.000Z",
+  "count": 83,
+  "formulas": [
     {
       "id": "CBSE-C6-AR-001",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "patterns-in-mathematics",
-      "chapter": "Patterns in Mathematics",
-      "chapterNumber": 1,
       "name": "nth Odd Number",
-      "formula": "nth odd number = 2n − 1",
+      "formulaName": "nth Odd Number",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Patterns in Mathematics",
+      "topic": "Patterns in Mathematics",
       "keywords": [
         "odd",
         "pattern",
         "sequence",
         "2n-1"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Patterns"
-      ],
-      "difficulty": "Easy",
-      "searchText": "nth odd number nth odd number = 2n − 1 a_n = 2n - 1 odd numbers form the sequence 1, 3, 5, 7, … the nth odd number is obtained by doubling n and subtracting 1. find the 8th odd number. a_8 = 2×8 − 1 = 16 − 1 = 15. so the 8th odd number is 15. class 6 pattern rule only — not an algebraic identity of higher classes. arithmetic patterns in mathematics class 6 cbse odd pattern sequence 2n-1 cbse class 6 patterns"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-002",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "patterns-in-mathematics",
-      "chapter": "Patterns in Mathematics",
-      "chapterNumber": 1,
       "name": "nth Even Number",
-      "formula": "nth even number = 2n",
+      "formulaName": "nth Even Number",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Patterns in Mathematics",
+      "topic": "Patterns in Mathematics",
       "keywords": [
         "even",
         "pattern",
         "sequence",
         "2n"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Patterns"
-      ],
-      "difficulty": "Easy",
-      "searchText": "nth even number nth even number = 2n a_n = 2n even numbers form the sequence 2, 4, 6, 8, … the nth even number is twice n. find the 9th even number. a_9 = 2×9 = 18. for n = 1, the first even counting number in this pattern is taken as 2. arithmetic patterns in mathematics class 6 cbse even pattern sequence 2n cbse class 6 patterns"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-003",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "patterns-in-mathematics",
-      "chapter": "Patterns in Mathematics",
-      "chapterNumber": 1,
       "name": "nth Triangular Number",
-      "formula": "T_n = n(n + 1)/2",
+      "formulaName": "nth Triangular Number",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Patterns in Mathematics",
+      "topic": "Patterns in Mathematics",
       "keywords": [
         "triangular",
         "pattern",
         "T_n"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Patterns"
-      ],
-      "difficulty": "Medium",
-      "searchText": "nth triangular number t_n = n(n + 1)/2 t_n = \\frac{n(n+1)}{2} triangular numbers count dots arranged in a triangular pattern: 1, 3, 6, 10, 15, … find t_5. t_5 = 5×6/2 = 15. this is a class 6 pattern formula, not a mensuration area formula. arithmetic patterns in mathematics class 6 cbse triangular pattern t_n cbse class 6 patterns"
+      "difficulty": "Medium"
     },
     {
       "id": "CBSE-C6-AR-004",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "patterns-in-mathematics",
-      "chapter": "Patterns in Mathematics",
-      "chapterNumber": 1,
       "name": "nth Square Number",
-      "formula": "S_n = n²",
+      "formulaName": "nth Square Number",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Patterns in Mathematics",
+      "topic": "Patterns in Mathematics",
       "keywords": [
         "square number",
         "pattern"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Patterns"
-      ],
-      "difficulty": "Easy",
-      "searchText": "nth square number s_n = n² s_n = n^2 square numbers are 1, 4, 9, 16, 25, … obtained by multiplying a number by itself. find the 6th square number. s_6 = 6² = 36. arithmetic patterns in mathematics class 6 cbse square number pattern cbse class 6 patterns"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-005",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "patterns-in-mathematics",
-      "chapter": "Patterns in Mathematics",
-      "chapterNumber": 1,
       "name": "nth Cube Number",
-      "formula": "C_n = n³",
+      "formulaName": "nth Cube Number",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Patterns in Mathematics",
+      "topic": "Patterns in Mathematics",
       "keywords": [
         "cube number",
         "pattern"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Patterns"
-      ],
-      "difficulty": "Easy",
-      "searchText": "nth cube number c_n = n³ c_n = n^3 cube numbers are 1, 8, 27, 64, … obtained by multiplying a number by itself three times. find the 4th cube number. c_4 = 4³ = 64. cube numbers as patterns only; solid volume formulas belong to higher classes. arithmetic patterns in mathematics class 6 cbse cube number pattern cbse class 6 patterns"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-006",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "patterns-in-mathematics",
-      "chapter": "Patterns in Mathematics",
-      "chapterNumber": 1,
       "name": "Fibonacci Sequence Rule",
-      "formula": "F_n = F_{n−1} + F_{n−2} (with F_1 = 1, F_2 = 1)",
+      "formulaName": "Fibonacci Sequence Rule",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Patterns in Mathematics",
+      "topic": "Patterns in Mathematics",
       "keywords": [
         "fibonacci",
         "pattern",
         "sequence"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Patterns"
-      ],
-      "difficulty": "Medium",
-      "searchText": "fibonacci sequence rule f_n = f_{n−1} + f_{n−2} (with f_1 = 1, f_2 = 1) f_n = f_{n-1} + f_{n-2},\\quad f_1=1,\\ f_2=1 each fibonacci number is the sum of the two numbers before it: 1, 1, 2, 3, 5, 8, 13, … find f_7. sequence: 1, 1, 2, 3, 5, 8, 13. so f_7 = 13. starting values may be shown as 1, 1 or 0, 1 depending on convention. arithmetic patterns in mathematics class 6 cbse fibonacci pattern sequence cbse class 6 patterns"
+      "difficulty": "Medium"
     },
     {
       "id": "CBSE-C6-AR-007",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "number-play",
-      "chapter": "Number Play",
-      "chapterNumber": 3,
       "name": "Place Value of a Digit",
-      "formula": "Place value = digit × value of its place",
+      "formulaName": "Place Value of a Digit",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Number Play",
+      "topic": "Number Play",
       "keywords": [
         "place value",
         "digit",
         "number"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Number Play"
-      ],
-      "difficulty": "Easy",
-      "searchText": "place value of a digit place value = digit × value of its place \\text{place value} = d \\times 10^{k} the place value of a digit depends on its position in the number (ones, tens, hundreds, …). in 4,582 the place value of 5 is 5 × 100 = 500. face value of a digit is the digit itself; place value depends on position. arithmetic number play class 6 cbse place value digit number cbse class 6 number play"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-008",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "number-play",
-      "chapter": "Number Play",
-      "chapterNumber": 3,
       "name": "Expanded Form of a Number",
-      "formula": "Number = sum of (each digit × its place value)",
+      "formulaName": "Expanded Form of a Number",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Number Play",
+      "topic": "Number Play",
       "keywords": [
         "expanded form",
         "place value"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Number Play"
-      ],
-      "difficulty": "Easy",
-      "searchText": "expanded form of a number number = sum of (each digit × its place value) n = \\sum d_i \\times 10^{i} expanded form writes a number as the sum of the place values of its digits. 3,406 = 3×1000 + 4×100 + 0×10 + 6×1 = 3000 + 400 + 6. arithmetic number play class 6 cbse expanded form place value cbse class 6 number play"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-009",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "prime-time",
-      "chapter": "Prime Time",
-      "chapterNumber": 5,
       "name": "Factor Relation",
-      "formula": "If a is a factor of b, then b = a × k for some whole number k",
+      "formulaName": "Factor Relation",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Prime Time",
+      "topic": "Prime Time",
       "keywords": [
         "factor",
         "divides"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Factors"
-      ],
-      "difficulty": "Easy",
-      "searchText": "factor relation if a is a factor of b, then b = a × k for some whole number k b = a \\times k a factor of a number divides it exactly, leaving no remainder. 4 is a factor of 20 because 20 = 4 × 5. 1 is a factor of every whole number; every number is a factor of itself. arithmetic prime time class 6 cbse factor divides cbse class 6 factors"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-010",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "prime-time",
-      "chapter": "Prime Time",
-      "chapterNumber": 5,
       "name": "Multiple Relation",
-      "formula": "Multiples of a = a, 2a, 3a, 4a, …",
+      "formulaName": "Multiple Relation",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Prime Time",
+      "topic": "Prime Time",
       "keywords": [
         "multiple",
         "times table",
         "common multiple"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Multiples"
-      ],
-      "difficulty": "Easy",
-      "searchText": "multiple relation multiples of a = a, 2a, 3a, 4a, … m = a \\times n \\ (n = 1,2,3,\\ldots) multiples of a number are obtained by multiplying it by 1, 2, 3, … multiples of 5 include 5, 10, 15, 20, … arithmetic prime time class 6 cbse multiple times table common multiple cbse class 6 multiples"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-011",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "prime-time",
-      "chapter": "Prime Time",
-      "chapterNumber": 5,
       "name": "Divisibility Rule for 2",
-      "formula": "A number is divisible by 2 if its ones digit is 0, 2, 4, 6 or 8",
+      "formulaName": "Divisibility Rule for 2",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Prime Time",
+      "topic": "Prime Time",
       "keywords": [
         "divisibility",
         "divisible by 2"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Divisibility"
-      ],
-      "difficulty": "Easy",
-      "searchText": "divisibility rule for 2 a number is divisible by 2 if its ones digit is 0, 2, 4, 6 or 8 \\text{ones digit} \\in \\{0,2,4,6,8\\} even numbers are exactly the numbers divisible by 2. 148 ends with 8, so 148 is divisible by 2. arithmetic prime time class 6 cbse divisibility divisible by 2 cbse class 6 divisibility"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-012",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "prime-time",
-      "chapter": "Prime Time",
-      "chapterNumber": 5,
       "name": "Divisibility Rule for 3",
-      "formula": "A number is divisible by 3 if the sum of its digits is divisible by 3",
+      "formulaName": "Divisibility Rule for 3",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Prime Time",
+      "topic": "Prime Time",
       "keywords": [
         "divisibility by 3"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Divisibility"
-      ],
-      "difficulty": "Easy",
-      "searchText": "divisibility rule for 3 a number is divisible by 3 if the sum of its digits is divisible by 3 \\sum \\text{digits} \\equiv 0 \\pmod{3} check divisibility by 3 without long division. for 252: 2+5+2=9, and 9 is divisible by 3, so 252 is divisible by 3. you may repeatedly sum digits until a single digit remains. arithmetic prime time class 6 cbse divisibility by 3 cbse class 6 divisibility"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-013",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "prime-time",
-      "chapter": "Prime Time",
-      "chapterNumber": 5,
       "name": "Divisibility Rule for 5",
-      "formula": "A number is divisible by 5 if its ones digit is 0 or 5",
+      "formulaName": "Divisibility Rule for 5",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Prime Time",
+      "topic": "Prime Time",
       "keywords": [
         "divisibility by 5"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Divisibility"
-      ],
-      "difficulty": "Easy",
-      "searchText": "divisibility rule for 5 a number is divisible by 5 if its ones digit is 0 or 5 \\text{ones digit} \\in \\{0,5\\} numbers ending in 0 or 5 are divisible by 5. 680 ends with 0, so it is divisible by 5. arithmetic prime time class 6 cbse divisibility by 5 cbse class 6 divisibility"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-014",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "prime-time",
-      "chapter": "Prime Time",
-      "chapterNumber": 5,
       "name": "Divisibility Rule for 9",
-      "formula": "A number is divisible by 9 if the sum of its digits is divisible by 9",
+      "formulaName": "Divisibility Rule for 9",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Prime Time",
+      "topic": "Prime Time",
       "keywords": [
         "divisibility by 9"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Divisibility"
-      ],
-      "difficulty": "Easy",
-      "searchText": "divisibility rule for 9 a number is divisible by 9 if the sum of its digits is divisible by 9 \\sum \\text{digits} \\equiv 0 \\pmod{9} similar to the rule for 3, but the digit sum must be divisible by 9. for 729: 7+2+9=18, and 18 is divisible by 9, so 729 is divisible by 9. arithmetic prime time class 6 cbse divisibility by 9 cbse class 6 divisibility"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-015",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "prime-time",
-      "chapter": "Prime Time",
-      "chapterNumber": 5,
       "name": "Divisibility Rule for 10",
-      "formula": "A number is divisible by 10 if its ones digit is 0",
+      "formulaName": "Divisibility Rule for 10",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Prime Time",
+      "topic": "Prime Time",
       "keywords": [
         "divisibility by 10"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Divisibility"
-      ],
-      "difficulty": "Easy",
-      "searchText": "divisibility rule for 10 a number is divisible by 10 if its ones digit is 0 \\text{ones digit} = 0 a number ending with 0 is divisible by 10. 940 ends with 0, so it is divisible by 10. arithmetic prime time class 6 cbse divisibility by 10 cbse class 6 divisibility"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-016",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "prime-time",
-      "chapter": "Prime Time",
-      "chapterNumber": 5,
       "name": "HCF × LCM Relation (Two Numbers)",
-      "formula": "HCF(a, b) × LCM(a, b) = a × b",
+      "formulaName": "HCF × LCM Relation (Two Numbers)",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Prime Time",
+      "topic": "Prime Time",
       "keywords": [
         "HCF",
         "LCM"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "HCF",
-        "LCM"
-      ],
-      "difficulty": "Medium",
-      "searchText": "hcf × lcm relation (two numbers) hcf(a, b) × lcm(a, b) = a × b \\mathrm{hcf}(a,b)\\times \\mathrm{lcm}(a,b)=a\\times b for any two positive integers, the product of their hcf and lcm equals the product of the numbers. for 12 and 18: hcf=6, lcm=36. check: 6×36=216 and 12×18=216. this relation is stated for two numbers. arithmetic prime time class 6 cbse hcf lcm cbse class 6 hcf lcm"
+      "difficulty": "Medium"
     },
     {
       "id": "CBSE-C6-AR-017",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "fractions",
-      "chapter": "Fractions",
-      "chapterNumber": 7,
       "name": "Fraction Notation",
-      "formula": "Fraction = a/b (b ≠ 0)",
+      "formulaName": "Fraction Notation",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Fractions",
+      "topic": "Fractions",
       "keywords": [
         "fraction",
         "numerator",
         "denominator"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Fractions"
-      ],
-      "difficulty": "Easy",
-      "searchText": "fraction notation fraction = a/b (b ≠ 0) \\frac{a}{b},\\quad b \\neq 0 a fraction represents equal parts of a whole. 3 equal slices out of 8 give the fraction 3/8. denominator cannot be zero. arithmetic fractions class 6 cbse fraction numerator denominator cbse class 6 fractions"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-018",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "fractions",
-      "chapter": "Fractions",
-      "chapterNumber": 7,
       "name": "Equivalent Fractions",
-      "formula": "a/b = (a × k)/(b × k) for any natural number k",
+      "formulaName": "Equivalent Fractions",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Fractions",
+      "topic": "Fractions",
       "keywords": [
         "equivalent fractions"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Fractions"
-      ],
-      "difficulty": "Easy",
-      "searchText": "equivalent fractions a/b = (a × k)/(b × k) for any natural number k \\frac{a}{b} = \\frac{a \\times k}{b \\times k} multiplying numerator and denominator by the same non-zero number gives an equivalent fraction. 2/3 = (2×4)/(3×4) = 8/12. arithmetic fractions class 6 cbse equivalent fractions cbse class 6 fractions"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-019",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "fractions",
-      "chapter": "Fractions",
-      "chapterNumber": 7,
       "name": "Addition of Like Fractions",
-      "formula": "a/c + b/c = (a + b)/c",
+      "formulaName": "Addition of Like Fractions",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Fractions",
+      "topic": "Fractions",
       "keywords": [
         "add fractions",
         "like fractions"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Fractions"
-      ],
-      "difficulty": "Easy",
-      "searchText": "addition of like fractions a/c + b/c = (a + b)/c \\frac{a}{c}+\\frac{b}{c}=\\frac{a+b}{c} when denominators are the same, add the numerators and keep the denominator. 2/7 + 3/7 = 5/7. for unlike fractions, first make denominators equal. arithmetic fractions class 6 cbse add fractions like fractions cbse class 6 fractions"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-020",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "fractions",
-      "chapter": "Fractions",
-      "chapterNumber": 7,
       "name": "Subtraction of Like Fractions",
-      "formula": "a/c − b/c = (a − b)/c",
+      "formulaName": "Subtraction of Like Fractions",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Fractions",
+      "topic": "Fractions",
       "keywords": [
         "subtract fractions"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Fractions"
-      ],
-      "difficulty": "Easy",
-      "searchText": "subtraction of like fractions a/c − b/c = (a − b)/c \\frac{a}{c}-\\frac{b}{c}=\\frac{a-b}{c} when denominators are the same, subtract the numerators and keep the denominator. 7/10 − 3/10 = 4/10 = 2/5. arithmetic fractions class 6 cbse subtract fractions cbse class 6 fractions"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-021",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "fractions",
-      "chapter": "Fractions",
-      "chapterNumber": 7,
       "name": "Improper Fraction to Mixed Number",
-      "formula": "a/b = q + r/b, where a = q×b + r",
+      "formulaName": "Improper Fraction to Mixed Number",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "Fractions",
+      "topic": "Fractions",
       "keywords": [
         "improper fraction",
         "mixed number"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Fractions"
-      ],
-      "difficulty": "Medium",
-      "searchText": "improper fraction to mixed number a/b = q + r/b, where a = q×b + r \\frac{a}{b} = q + \\frac{r}{b},\\quad a = qb + r divide numerator by denominator; quotient is the whole part and remainder forms the fractional part. 17/5 = 3 + 2/5, because 17 = 3×5 + 2 (mixed number: 3 2/5). arithmetic fractions class 6 cbse improper fraction mixed number cbse class 6 fractions"
+      "difficulty": "Medium"
     },
     {
       "id": "CBSE-C6-AR-022",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "the-other-side-of-zero",
-      "chapter": "The Other Side of Zero",
-      "chapterNumber": 10,
       "name": "Absolute Value",
-      "formula": "|a| = distance of a from 0 on the number line",
+      "formulaName": "Absolute Value",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "The Other Side of Zero",
+      "topic": "The Other Side of Zero",
       "keywords": [
         "absolute value",
         "integers"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Integers"
-      ],
-      "difficulty": "Easy",
-      "searchText": "absolute value |a| = distance of a from 0 on the number line |a| = a \\text{ if } a \\ge 0;\\quad |a| = -a \\text{ if } a < 0 absolute value measures how far a number is from zero, ignoring direction. |−7| = 7 and |7| = 7. absolute value is never negative. arithmetic the other side of zero class 6 cbse absolute value integers cbse class 6 integers"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-023",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "the-other-side-of-zero",
-      "chapter": "The Other Side of Zero",
-      "chapterNumber": 10,
       "name": "Additive Inverse",
-      "formula": "a + (−a) = 0",
+      "formulaName": "Additive Inverse",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "The Other Side of Zero",
+      "topic": "The Other Side of Zero",
       "keywords": [
         "additive inverse",
         "integers"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Integers"
-      ],
-      "difficulty": "Easy",
-      "searchText": "additive inverse a + (−a) = 0 a+(-a)=0 every integer has an opposite that sums with it to zero. the additive inverse of 9 is −9 because 9+(−9)=0. the additive inverse of 0 is 0. arithmetic the other side of zero class 6 cbse additive inverse integers cbse class 6 integers"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-AR-024",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "arithmetic",
-      "subject": "Arithmetic",
-      "chapterId": "the-other-side-of-zero",
-      "chapter": "The Other Side of Zero",
-      "chapterNumber": 10,
       "name": "Integer Addition on the Number Line",
-      "formula": "Add +k → move k units right; add −k → move k units left",
+      "formulaName": "Integer Addition on the Number Line",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Arithmetic",
+      "chapter": "The Other Side of Zero",
+      "topic": "The Other Side of Zero",
       "keywords": [
         "integer addition",
         "number line"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Integers"
-      ],
-      "difficulty": "Medium",
-      "searchText": "integer addition on the number line add +k → move k units right; add −k → move k units left a+(+k)\\rightarrow\\text{right};\\ a+(-k)\\rightarrow\\text{left} integer addition can be modelled by moves on the number line. start at 3; add −5 → move 5 left → −2. so 3+(−5)=−2. class 6 emphasises number-line understanding of integer operations. arithmetic the other side of zero class 6 cbse integer addition number line cbse class 6 integers"
+      "difficulty": "Medium"
     },
     {
       "id": "CBSE-C6-GE-001",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "geometry",
-      "subject": "Geometry",
-      "chapterId": "lines-and-angles",
-      "chapter": "Lines and Angles",
-      "chapterNumber": 2,
       "name": "Right Angle",
-      "formula": "Right angle = 90°",
+      "formulaName": "Right Angle",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
       "keywords": [
         "right angle",
         "90 degrees"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Angles"
-      ],
-      "difficulty": "Easy",
-      "searchText": "right angle right angle = 90° \\angle=90^\\circ an angle that measures exactly 90° is a right angle. the corner of a square page is a right angle (90°). acute < 90°, obtuse between 90° and 180°. geometry lines and angles class 6 cbse right angle 90 degrees cbse class 6 angles"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-GE-002",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "geometry",
-      "subject": "Geometry",
-      "chapterId": "lines-and-angles",
-      "chapter": "Lines and Angles",
-      "chapterNumber": 2,
       "name": "Straight Angle",
-      "formula": "Straight angle = 180°",
+      "formulaName": "Straight Angle",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
       "keywords": [
         "straight angle",
         "180 degrees"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Angles"
-      ],
-      "difficulty": "Easy",
-      "searchText": "straight angle straight angle = 180° \\angle=180^\\circ an angle that forms a straight line measures 180°. a straight angle looks like a straight line and measures 180°. geometry lines and angles class 6 cbse straight angle 180 degrees cbse class 6 angles"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-GE-003",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "geometry",
-      "subject": "Geometry",
-      "chapterId": "lines-and-angles",
-      "chapter": "Lines and Angles",
-      "chapterNumber": 2,
       "name": "Complete Angle",
-      "formula": "Complete angle = 360°",
+      "formulaName": "Complete Angle",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
       "keywords": [
         "complete angle",
         "360 degrees"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Angles"
-      ],
-      "difficulty": "Easy",
-      "searchText": "complete angle complete angle = 360° \\angle=360^\\circ a complete angle is one full rotation about a point. turning fully around to the same direction is a 360° turn. geometry lines and angles class 6 cbse complete angle 360 degrees cbse class 6 angles"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-GE-004",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "geometry",
-      "subject": "Geometry",
-      "chapterId": "lines-and-angles",
-      "chapter": "Lines and Angles",
-      "chapterNumber": 2,
       "name": "Complementary Angles",
-      "formula": "∠A + ∠B = 90°",
+      "formulaName": "Complementary Angles",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
       "keywords": [
         "complementary angles"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Angles"
-      ],
-      "difficulty": "Easy",
-      "searchText": "complementary angles ∠a + ∠b = 90° \\angle a+\\angle b=90^\\circ two angles are complementary if their measures sum to 90°. if ∠a = 35°, complement = 90° − 35° = 55°. complementary angles need not be adjacent. geometry lines and angles class 6 cbse complementary angles cbse class 6 angles"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-GE-005",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "geometry",
-      "subject": "Geometry",
-      "chapterId": "lines-and-angles",
-      "chapter": "Lines and Angles",
-      "chapterNumber": 2,
       "name": "Supplementary Angles",
-      "formula": "∠A + ∠B = 180°",
+      "formulaName": "Supplementary Angles",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
       "keywords": [
         "supplementary angles"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Angles"
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-GE-010",
+      "name": "Point",
+      "formulaName": "Point",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
+      "keywords": [
+        "point",
+        "location"
       ],
-      "difficulty": "Easy",
-      "searchText": "supplementary angles ∠a + ∠b = 180° \\angle a+\\angle b=180^\\circ two angles are supplementary if their measures sum to 180°. if ∠a = 110°, supplement = 180° − 110° = 70°. angles on a straight line are supplementary. geometry lines and angles class 6 cbse supplementary angles cbse class 6 angles"
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-GE-011",
+      "name": "Line",
+      "formulaName": "Line",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
+      "keywords": [
+        "line",
+        "straight line"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-GE-012",
+      "name": "Ray",
+      "formulaName": "Ray",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
+      "keywords": [
+        "ray",
+        "endpoint"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-GE-013",
+      "name": "Line Segment",
+      "formulaName": "Line Segment",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
+      "keywords": [
+        "line segment",
+        "segment",
+        "endpoints"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-GE-014",
+      "name": "Parallel Lines",
+      "formulaName": "Parallel Lines",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
+      "keywords": [
+        "parallel",
+        "never meet"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-GE-015",
+      "name": "Intersecting Lines",
+      "formulaName": "Intersecting Lines",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
+      "keywords": [
+        "intersecting",
+        "cross",
+        "intersection"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-GE-016",
+      "name": "Acute Angle",
+      "formulaName": "Acute Angle",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
+      "keywords": [
+        "acute",
+        "acute angle"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-GE-017",
+      "name": "Obtuse Angle",
+      "formulaName": "Obtuse Angle",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
+      "keywords": [
+        "obtuse",
+        "obtuse angle"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-GE-018",
+      "name": "Reflex Angle",
+      "formulaName": "Reflex Angle",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Lines and Angles",
+      "keywords": [
+        "reflex",
+        "reflex angle"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-GE-019",
+      "name": "Triangle Basics",
+      "formulaName": "Triangle Basics",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Triangle Basics",
+      "keywords": [
+        "triangle",
+        "equilateral",
+        "isosceles",
+        "scalene"
+      ],
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-GE-006",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "geometry",
-      "subject": "Geometry",
-      "chapterId": "playing-with-constructions",
-      "chapter": "Playing with Constructions",
-      "chapterNumber": 8,
       "name": "Circle Defined by Radius",
-      "formula": "A circle is the set of all points at fixed distance r from centre O",
+      "formulaName": "Circle Defined by Radius",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Playing with Constructions",
+      "topic": "Playing with Constructions",
       "keywords": [
         "circle",
         "radius",
         "construction"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Constructions"
-      ],
-      "difficulty": "Easy",
-      "searchText": "circle defined by radius a circle is the set of all points at fixed distance r from centre o \\{p: op=r\\} with compass and ruler, a circle is drawn by keeping a constant radius from the centre. if radius is 4 cm, every point on the circle is 4 cm from the centre. class 6 focuses on construction; π-based circumference depth belongs later. geometry playing with constructions class 6 cbse circle radius construction cbse class 6 constructions"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-GE-007",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "geometry",
-      "subject": "Geometry",
-      "chapterId": "playing-with-constructions",
-      "chapter": "Playing with Constructions",
-      "chapterNumber": 8,
       "name": "Perpendicular Bisector Property",
-      "formula": "Any point on the perpendicular bisector of AB is equidistant from A and B",
+      "formulaName": "Perpendicular Bisector Property",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Playing with Constructions",
+      "topic": "Playing with Constructions",
       "keywords": [
         "perpendicular bisector",
         "construction"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Constructions"
-      ],
-      "difficulty": "Medium",
-      "searchText": "perpendicular bisector property any point on the perpendicular bisector of ab is equidistant from a and b pa=pb\\text{ for }p\\text{ on the perpendicular bisector of }ab the perpendicular bisector meets a segment at its midpoint at 90° and is the locus of equidistant points. if m is midpoint of ab and line l ⊥ ab at m, then for any p on l, pa = pb. geometry playing with constructions class 6 cbse perpendicular bisector construction cbse class 6 constructions"
+      "difficulty": "Medium"
     },
     {
       "id": "CBSE-C6-GE-008",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "geometry",
-      "subject": "Geometry",
-      "chapterId": "symmetry",
-      "chapter": "Symmetry",
-      "chapterNumber": 9,
       "name": "Line of Symmetry",
-      "formula": "A line of symmetry divides a figure into two mirror-image halves",
+      "formulaName": "Line of Symmetry",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Symmetry",
+      "topic": "Symmetry",
       "keywords": [
         "line symmetry",
         "mirror"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Symmetry"
-      ],
-      "difficulty": "Easy",
-      "searchText": "line of symmetry a line of symmetry divides a figure into two mirror-image halves \\text{reflection across }\\ell\\text{ maps the figure onto itself} if one half of a figure is the mirror image of the other across a line, that line is a line of symmetry. a square has 4 lines of symmetry; a non-equilateral isosceles triangle has 1. some figures have no line of symmetry. geometry symmetry class 6 cbse line symmetry mirror cbse class 6 symmetry"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-GE-009",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "geometry",
-      "subject": "Geometry",
-      "chapterId": "symmetry",
-      "chapter": "Symmetry",
-      "chapterNumber": 9,
       "name": "Order of Rotational Symmetry",
-      "formula": "Order = 360° ÷ (smallest angle of rotation that maps the figure onto itself)",
+      "formulaName": "Order of Rotational Symmetry",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Geometry",
+      "chapter": "Symmetry",
+      "topic": "Symmetry",
       "keywords": [
         "rotational symmetry",
         "order"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Symmetry"
-      ],
-      "difficulty": "Medium",
-      "searchText": "order of rotational symmetry order = 360° ÷ (smallest angle of rotation that maps the figure onto itself) \\text{order}=\\frac{360^\\circ}{\\theta} rotational symmetry exists when a figure looks the same after a turn less than 360° about its centre. a square matches every 90°, so order = 360/90 = 4. every figure has order at least 1. geometry symmetry class 6 cbse rotational symmetry order cbse class 6 symmetry"
+      "difficulty": "Medium"
     },
     {
       "id": "CBSE-C6-ME-001",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "mensuration",
-      "subject": "Mensuration",
-      "chapterId": "perimeter-and-area",
-      "chapter": "Perimeter and Area",
-      "chapterNumber": 6,
       "name": "Perimeter of a Rectangle",
-      "formula": "P = 2(l + b)",
+      "formulaName": "Perimeter of a Rectangle",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Mensuration",
+      "chapter": "Perimeter and Area",
+      "topic": "Perimeter and Area",
       "keywords": [
         "perimeter",
         "rectangle"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Perimeter"
-      ],
-      "difficulty": "Easy",
-      "searchText": "perimeter of a rectangle p = 2(l + b) p=2(l+b) perimeter is the total boundary length. a rectangle has two lengths and two breadths. if l=12 cm and b=5 cm, p=2(12+5)=34 cm. perimeter units are units of length. mensuration perimeter and area class 6 cbse perimeter rectangle cbse class 6 perimeter"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-ME-002",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "mensuration",
-      "subject": "Mensuration",
-      "chapterId": "perimeter-and-area",
-      "chapter": "Perimeter and Area",
-      "chapterNumber": 6,
       "name": "Perimeter of a Square",
-      "formula": "P = 4a",
+      "formulaName": "Perimeter of a Square",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Mensuration",
+      "chapter": "Perimeter and Area",
+      "topic": "Perimeter and Area",
       "keywords": [
         "perimeter",
         "square"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Perimeter"
-      ],
-      "difficulty": "Easy",
-      "searchText": "perimeter of a square p = 4a p=4a all four sides of a square are equal, so perimeter is four times one side. if a=6 cm, p=4×6=24 cm. mensuration perimeter and area class 6 cbse perimeter square cbse class 6 perimeter"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-ME-003",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "mensuration",
-      "subject": "Mensuration",
-      "chapterId": "perimeter-and-area",
-      "chapter": "Perimeter and Area",
-      "chapterNumber": 6,
       "name": "Perimeter of a Triangle",
-      "formula": "P = a + b + c",
+      "formulaName": "Perimeter of a Triangle",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Mensuration",
+      "chapter": "Perimeter and Area",
+      "topic": "Perimeter and Area",
       "keywords": [
         "perimeter",
         "triangle"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Perimeter"
-      ],
-      "difficulty": "Easy",
-      "searchText": "perimeter of a triangle p = a + b + c p=a+b+c the perimeter of a triangle is the sum of its three sides. sides 3 cm, 4 cm, 5 cm ⇒ p=12 cm. mensuration perimeter and area class 6 cbse perimeter triangle cbse class 6 perimeter"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-ME-004",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "mensuration",
-      "subject": "Mensuration",
-      "chapterId": "perimeter-and-area",
-      "chapter": "Perimeter and Area",
-      "chapterNumber": 6,
       "name": "Area of a Rectangle",
-      "formula": "A = l × b",
+      "formulaName": "Area of a Rectangle",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Mensuration",
+      "chapter": "Perimeter and Area",
+      "topic": "Perimeter and Area",
       "keywords": [
         "area",
         "rectangle"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Area"
-      ],
-      "difficulty": "Easy",
-      "searchText": "area of a rectangle a = l × b a=l\\times b area measures the enclosed region. for a rectangle, area is length times breadth. if l=10 cm and b=4 cm, a=40 cm². area units are square units. perimeter and area are independent measures. mensuration perimeter and area class 6 cbse area rectangle cbse class 6 area"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-ME-005",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "mensuration",
-      "subject": "Mensuration",
-      "chapterId": "perimeter-and-area",
-      "chapter": "Perimeter and Area",
-      "chapterNumber": 6,
       "name": "Area of a Square",
-      "formula": "A = a²",
+      "formulaName": "Area of a Square",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Mensuration",
+      "chapter": "Perimeter and Area",
+      "topic": "Perimeter and Area",
       "keywords": [
         "area",
         "square"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Area"
-      ],
-      "difficulty": "Easy",
-      "searchText": "area of a square a = a² a=a^2 area of a square is the side multiplied by itself. if a=9 cm, a=81 cm². a larger perimeter does not always mean a larger area. mensuration perimeter and area class 6 cbse area square cbse class 6 area"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-DH-001",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "data-handling",
-      "subject": "Data Handling",
-      "chapterId": "data-handling-and-presentation",
-      "chapter": "Data Handling and Presentation",
-      "chapterNumber": 4,
       "name": "Frequency",
-      "formula": "Frequency of an item = number of times it occurs in the data",
+      "formulaName": "Frequency",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Data Handling",
+      "chapter": "Data Handling and Presentation",
+      "topic": "Data Handling and Presentation",
       "keywords": [
         "frequency",
         "tally",
         "data"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Data Handling"
-      ],
-      "difficulty": "Easy",
-      "searchText": "frequency frequency of an item = number of times it occurs in the data f(x)=\\text{count of }x tally marks help count how often each value appears; that count is the frequency. in {2,3,2,2,5}, frequency of 2 is 3. tally marks are usually grouped in fives. data handling data handling and presentation class 6 cbse frequency tally data cbse class 6 data handling"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-DH-002",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "data-handling",
-      "subject": "Data Handling",
-      "chapterId": "data-handling-and-presentation",
-      "chapter": "Data Handling and Presentation",
-      "chapterNumber": 4,
       "name": "Pictograph Scale",
-      "formula": "Actual value = (number of symbols) × (value of one symbol)",
+      "formulaName": "Pictograph Scale",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Data Handling",
+      "chapter": "Data Handling and Presentation",
+      "topic": "Data Handling and Presentation",
       "keywords": [
         "pictograph",
         "scale"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Data Handling"
-      ],
-      "difficulty": "Easy",
-      "searchText": "pictograph scale actual value = (number of symbols) × (value of one symbol) v=n\\times s in a pictograph, each picture stands for a fixed number of items according to the scale. if 1 symbol = 10 students and 4 symbols are shown, value = 40. always read the key/scale before interpreting. data handling data handling and presentation class 6 cbse pictograph scale cbse class 6 data handling"
+      "difficulty": "Easy"
     },
     {
       "id": "CBSE-C6-DH-003",
-      "boardId": "cbse",
-      "board": "CBSE",
-      "classId": "6",
-      "class": "Class 6",
-      "subjectId": "data-handling",
-      "subject": "Data Handling",
-      "chapterId": "data-handling-and-presentation",
-      "chapter": "Data Handling and Presentation",
-      "chapterNumber": 4,
       "name": "Bar Graph Reading",
-      "formula": "Value = (bar height in axis units) × (scale of the axis)",
+      "formulaName": "Bar Graph Reading",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Data Handling",
+      "chapter": "Data Handling and Presentation",
+      "topic": "Data Handling and Presentation",
       "keywords": [
         "bar graph",
         "scale"
       ],
-      "examTags": [
-        "CBSE",
-        "Class 6",
-        "Data Handling"
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-AL-001",
+      "name": "Variable and Constant",
+      "formulaName": "Variable and Constant",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "topic": "Introduction to Algebra",
+      "keywords": [
+        "algebra",
+        "introduction to algebra",
+        "variable",
+        "and",
+        "constant"
       ],
-      "difficulty": "Easy",
-      "searchText": "bar graph reading value = (bar height in axis units) × (scale of the axis) v=h\\times s a bar graph uses bars of equal width; bar length represents the value for each category. if scale is 1 unit = 5 and bar reaches 6 units, value = 30. bars should be equally spaced with clear labels. data handling data handling and presentation class 6 cbse bar graph scale cbse class 6 data handling"
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-AL-002",
+      "name": "Algebraic Expression",
+      "formulaName": "Algebraic Expression",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "topic": "Introduction to Algebra",
+      "keywords": [
+        "algebra",
+        "introduction to algebra",
+        "algebraic",
+        "expression"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-AL-003",
+      "name": "Like Terms",
+      "formulaName": "Like Terms",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "topic": "Introduction to Algebra",
+      "keywords": [
+        "algebra",
+        "introduction to algebra",
+        "like",
+        "terms"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-AL-004",
+      "name": "Unlike Terms",
+      "formulaName": "Unlike Terms",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "topic": "Introduction to Algebra",
+      "keywords": [
+        "algebra",
+        "introduction to algebra",
+        "unlike",
+        "terms"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-AL-005",
+      "name": "Combine Like Terms",
+      "formulaName": "Combine Like Terms",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "topic": "Introduction to Algebra",
+      "keywords": [
+        "algebra",
+        "introduction to algebra",
+        "combine",
+        "like",
+        "terms"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-AL-006",
+      "name": "Evaluate an Expression",
+      "formulaName": "Evaluate an Expression",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Introduction to Algebra",
+      "topic": "Introduction to Algebra",
+      "keywords": [
+        "algebra",
+        "introduction to algebra",
+        "evaluate",
+        "expression"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-AL-007",
+      "name": "Simple Linear Equation (One Variable)",
+      "formulaName": "Simple Linear Equation (One Variable)",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Simple Equations",
+      "topic": "Simple Equations",
+      "keywords": [
+        "algebra",
+        "simple equations",
+        "simple",
+        "linear",
+        "equation",
+        "(one",
+        "variable)"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-AL-008",
+      "name": "Addition / Subtraction Property of Equality",
+      "formulaName": "Addition / Subtraction Property of Equality",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Simple Equations",
+      "topic": "Simple Equations",
+      "keywords": [
+        "algebra",
+        "simple equations",
+        "addition",
+        "subtraction",
+        "property",
+        "equality"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-AL-009",
+      "name": "Multiplication / Division Property of Equality",
+      "formulaName": "Multiplication / Division Property of Equality",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Simple Equations",
+      "topic": "Simple Equations",
+      "keywords": [
+        "algebra",
+        "simple equations",
+        "multiplication",
+        "division",
+        "property",
+        "equality"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C6-AL-010",
+      "name": "Missing Number Problem",
+      "formulaName": "Missing Number Problem",
+      "board": "CBSE",
+      "class": "Class 6",
+      "subject": "Algebra",
+      "chapter": "Simple Equations",
+      "topic": "Simple Equations",
+      "keywords": [
+        "algebra",
+        "simple equations",
+        "missing",
+        "number",
+        "problem"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AR-001",
+      "name": "Addition of Integers",
+      "formulaName": "Addition of Integers",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Arithmetic",
+      "chapter": "Integers",
+      "topic": "Integer operations",
+      "keywords": [
+        "integers",
+        "addition",
+        "negative"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AR-002",
+      "name": "Product of Integers (Sign Rule)",
+      "formulaName": "Product of Integers (Sign Rule)",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Arithmetic",
+      "chapter": "Integers",
+      "topic": "Integer operations",
+      "keywords": [
+        "integers",
+        "multiplication",
+        "sign"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AR-003",
+      "name": "Multiplication of Fractions",
+      "formulaName": "Multiplication of Fractions",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Arithmetic",
+      "chapter": "Fractions and Decimals",
+      "topic": "Fraction multiplication",
+      "keywords": [
+        "fraction",
+        "multiply",
+        "product"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AR-004",
+      "name": "Division of Fractions",
+      "formulaName": "Division of Fractions",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Arithmetic",
+      "chapter": "Fractions and Decimals",
+      "topic": "Fraction division",
+      "keywords": [
+        "fraction",
+        "divide",
+        "reciprocal"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AR-005",
+      "name": "Percentage",
+      "formulaName": "Percentage",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Arithmetic",
+      "chapter": "Comparing Quantities",
+      "topic": "Percentage",
+      "keywords": [
+        "percent",
+        "percentage",
+        "ratio"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AR-006",
+      "name": "Simple Interest",
+      "formulaName": "Simple Interest",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Arithmetic",
+      "chapter": "Comparing Quantities",
+      "topic": "Simple interest",
+      "keywords": [
+        "interest",
+        "principal",
+        "rate",
+        "SI"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AR-007",
+      "name": "Rational Number Form",
+      "formulaName": "Rational Number Form",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Arithmetic",
+      "chapter": "Rational Numbers",
+      "topic": "Rational numbers",
+      "keywords": [
+        "rational",
+        "p/q",
+        "integer"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AL-001",
+      "name": "Simple Linear Equation",
+      "formulaName": "Simple Linear Equation",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Algebra",
+      "chapter": "Simple Equations",
+      "topic": "Linear equations",
+      "keywords": [
+        "equation",
+        "linear",
+        "solve"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AL-002",
+      "name": "Transposition",
+      "formulaName": "Transposition",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Algebra",
+      "chapter": "Simple Equations",
+      "topic": "Linear equations",
+      "keywords": [
+        "transposition",
+        "equation"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AL-003",
+      "name": "Combine Like Terms",
+      "formulaName": "Combine Like Terms",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Algebra",
+      "chapter": "Algebraic Expressions",
+      "topic": "Like terms",
+      "keywords": [
+        "like terms",
+        "simplify",
+        "expression"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AL-004",
+      "name": "Degree of a Polynomial (one variable)",
+      "formulaName": "Degree of a Polynomial (one variable)",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Algebra",
+      "chapter": "Algebraic Expressions",
+      "topic": "Degree",
+      "keywords": [
+        "degree",
+        "polynomial",
+        "power"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AL-005",
+      "name": "Product Rule of Exponents",
+      "formulaName": "Product Rule of Exponents",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Algebra",
+      "chapter": "Exponents and Powers",
+      "topic": "Laws of exponents",
+      "keywords": [
+        "exponent",
+        "product rule",
+        "powers"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-AL-006",
+      "name": "Quotient Rule of Exponents",
+      "formulaName": "Quotient Rule of Exponents",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Algebra",
+      "chapter": "Exponents and Powers",
+      "topic": "Laws of exponents",
+      "keywords": [
+        "exponent",
+        "quotient rule",
+        "powers"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-GE-001",
+      "name": "Linear Pair",
+      "formulaName": "Linear Pair",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Angles on a straight line",
+      "keywords": [
+        "linear pair",
+        "straight line",
+        "180"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-GE-002",
+      "name": "Vertically Opposite Angles",
+      "formulaName": "Vertically Opposite Angles",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Geometry",
+      "chapter": "Lines and Angles",
+      "topic": "Vertically opposite angles",
+      "keywords": [
+        "vertically opposite",
+        "intersect"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-GE-003",
+      "name": "Angle Sum Property of a Triangle",
+      "formulaName": "Angle Sum Property of a Triangle",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Geometry",
+      "chapter": "The Triangle and its Properties",
+      "topic": "Angle sum",
+      "keywords": [
+        "triangle",
+        "angle sum",
+        "180"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-GE-004",
+      "name": "Exterior Angle Property",
+      "formulaName": "Exterior Angle Property",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Geometry",
+      "chapter": "The Triangle and its Properties",
+      "topic": "Exterior angle",
+      "keywords": [
+        "exterior angle",
+        "triangle"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-ME-001",
+      "name": "Area of a Parallelogram",
+      "formulaName": "Area of a Parallelogram",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Mensuration",
+      "chapter": "Perimeter and Area",
+      "topic": "Parallelogram",
+      "keywords": [
+        "parallelogram",
+        "area",
+        "base",
+        "height"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-ME-002",
+      "name": "Circumference of a Circle",
+      "formulaName": "Circumference of a Circle",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Mensuration",
+      "chapter": "Perimeter and Area",
+      "topic": "Circle",
+      "keywords": [
+        "circle",
+        "circumference",
+        "perimeter"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-ME-003",
+      "name": "Area of a Circle",
+      "formulaName": "Area of a Circle",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Mensuration",
+      "chapter": "Perimeter and Area",
+      "topic": "Circle",
+      "keywords": [
+        "circle",
+        "area",
+        "pi"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-ST-001",
+      "name": "Arithmetic Mean",
+      "formulaName": "Arithmetic Mean",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Statistics",
+      "chapter": "Data Handling",
+      "topic": "Mean",
+      "keywords": [
+        "mean",
+        "average",
+        "data"
+      ],
+      "difficulty": "Easy"
+    },
+    {
+      "id": "CBSE-C7-ST-002",
+      "name": "Range of Data",
+      "formulaName": "Range of Data",
+      "board": "CBSE",
+      "class": "Class 7",
+      "subject": "Statistics",
+      "chapter": "Data Handling",
+      "topic": "Range",
+      "keywords": [
+        "range",
+        "spread",
+        "data"
+      ],
+      "difficulty": "Easy"
     }
   ]
 }

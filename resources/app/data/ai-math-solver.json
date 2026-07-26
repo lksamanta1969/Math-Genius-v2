@@ -1,7 +1,7 @@
 {
   "feature": "AI Math Solver",
-  "version": "8B.4",
-  "phase": "8B.4",
+  "version": "8C",
+  "phase": "8C",
   "architecture": "plugin-based",
   "productModel": "learning-platform",
   "security": {
@@ -84,8 +84,8 @@
       "mini-quiz"
     ],
     "localRuleEngine": {
-      "phase": "8B.1",
-      "scope": "CBSE Class 6 Arithmetic",
+      "phase": "8C",
+      "scope": "CBSE Class 6 Arithmetic + Intro Algebra + Geometry basics",
       "supported": [
         "Addition",
         "Subtraction",
@@ -100,9 +100,19 @@
         "Even / Odd",
         "Fractions",
         "Simplification",
-        "Intro Algebra (variables, like terms, linear equations)"
+        "Intro Algebra (variables, like terms, linear equations)",
+        "Geometry (point, line, ray, segment, parallel/intersecting, angles, triangle basics)"
       ],
-      "unsupported": ["Geometry", "Mensuration", "Quadratic", "Simultaneous", "Cloud AI"]
+      "unsupported": [
+        "Mensuration",
+        "Coordinate Geometry",
+        "Congruence Proofs",
+        "Transformations",
+        "Circle Theorems",
+        "Quadratic",
+        "Simultaneous",
+        "Cloud AI"
+      ]
     },
     "providers": [
       { "id": "local-rule-engine", "label": "Local Rule Engine", "available": true, "local": true },
@@ -316,7 +326,7 @@
       ]
     },
     "8B.4": {
-      "status": "active",
+      "status": "complete",
       "features": [
         "algebraRuleEngine",
         "likeTerms",
@@ -325,15 +335,40 @@
         "missingNumber"
       ]
     },
+    "8B.5": {
+      "status": "complete",
+      "features": [
+        "formulaLibraryExpansion",
+        "cbseClass6Complete",
+        "cbseClass7Formulas",
+        "algebraMergedIntoLibrary",
+        "searchIndexRegenerated"
+      ]
+    },
+    "8B.6": {
+      "status": "complete",
+      "features": [
+        "curriculumMapper",
+        "solverFormulaIdsOnly",
+        "richFormulaHydration",
+        "structuredCurriculumErrors"
+      ]
+    },
     "8C": {
-      "status": "planned",
-      "features": ["pdfEnhancements", "docx"]
+      "status": "active",
+      "features": [
+        "geometryRuleEngine",
+        "angleIdentification",
+        "triangleBasics",
+        "parallelIntersectingLines",
+        "geometryFormulaRecommendations"
+      ]
     },
     "8D": {
       "status": "planned",
-      "features": ["history", "export", "share", "print"]
+      "features": ["history", "export", "share", "print", "pdfEnhancements", "docx"]
     }
   },
   "disabledInPhase8A": ["history", "export", "share", "print"],
-  "disabledUntilLater": ["cloudAiSolve", "algebra", "geometrySolver"]
+  "disabledUntilLater": ["cloudAiSolve", "mensurationSolver"]
 }
