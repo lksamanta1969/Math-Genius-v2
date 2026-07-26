@@ -10,6 +10,7 @@
 
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/cards.css">
 <link rel="stylesheet" href="../css/formula.css">
 
 </head>
@@ -18,45 +19,88 @@
 
 <div class="page-header">
 
-<button class="back-btn" onclick="history.back()">
+<button type="button" class="back-btn" id="formulaBackBtn">
 ← Back
 </button>
 
 </div>
 
-<div class="container">
+<div class="container formula-library-page">
 
 <h1>📚 Formula Library</h1>
 
 <p class="page-desc">
-Quick access to all important mathematical formulas in one place.
+CBSE &amp; ICSE Mathematics — Board → Class → Subject → Chapter → Formula.
 </p>
 
-<section class="search-section">
+<nav id="formulaBreadcrumb" class="formula-breadcrumb" aria-label="Formula Library path">
+</nav>
+
+<div id="syllabusMeta" class="syllabus-meta" hidden aria-label="Syllabus metadata"></div>
+
+<section class="search-section filter-section" id="searchSection">
+
+<div class="filter-grid" role="search" aria-label="Formula filters">
+
+<select id="filterBoard" aria-label="Filter by board">
+<option value="">Board</option>
+</select>
+
+<select id="filterClass" aria-label="Filter by class">
+<option value="">Class</option>
+</select>
+
+<select id="filterSubject" aria-label="Filter by subject">
+<option value="">Subject</option>
+</select>
+
+<select id="filterChapter" aria-label="Filter by chapter">
+<option value="">Chapter</option>
+</select>
+
+<select id="filterDifficulty" aria-label="Filter by difficulty">
+<option value="">Difficulty</option>
+</select>
 
 <input
 type="text"
 id="searchInput"
-placeholder="Search Formula..."
+placeholder="Keyword..."
+autocomplete="off"
+aria-label="Filter by keyword"
 >
 
-<button id="showAllBtn">
-Show All
+</div>
+
+<div class="filter-actions">
+
+<button type="button" id="applyFiltersBtn">
+Apply Filters
 </button>
 
-</section>
+<button type="button" id="clearFiltersBtn" class="btn-secondary">
+Clear
+</button>
 
-<section class="topic-section">
+<button type="button" id="resetNavBtn" class="btn-secondary">
+All Boards
+</button>
 
-<h2>📂 Categories</h2>
-
-<div id="categoryList"
-class="category-grid">
 </div>
 
 </section>
 
-<section class="topic-section">
+<section class="topic-section" id="navSection">
+
+<h2 id="navSectionTitle">Select Board</h2>
+
+<div id="navGrid" class="nav-grid"></div>
+
+<p id="emptyState" class="empty-state" hidden></p>
+
+</section>
+
+<section class="topic-section" id="formulaSection" hidden>
 
 <h2>
 📖 Formulas
@@ -67,6 +111,18 @@ class="category-grid">
 id="formulaList"
 class="formula-grid">
 </div>
+
+</section>
+
+<section class="topic-section" id="formulaDetailSection" hidden>
+
+<h2>📘 Formula Details</h2>
+
+<div id="formulaDetailActions" class="formula-detail-actions" aria-label="Formula actions">
+</div>
+
+<article id="formulaDetailContent" class="formula-detail">
+</article>
 
 </section>
 
