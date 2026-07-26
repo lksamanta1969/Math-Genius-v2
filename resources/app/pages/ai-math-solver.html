@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Math Solver - Math Genius</title>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/formula.css">
+<link rel="stylesheet" href="../css/ai-math-solver.css">
+</head>
+
+<body>
+
+<div class="page-header">
+<button type="button" class="back-btn" onclick="location.href='home.html'">← Back</button>
+</div>
+
+<div class="container solver-page">
+
+<header class="solver-header">
+<h1>🧠 AI Math Solver</h1>
+<p class="page-desc">Phase 8A — Local upload, OCR, and question detection. Solving arrives in Phase 8B.</p>
+<div class="phase-banner">
+<span class="phase-chip phase-active">8A OCR + Detect</span>
+<span class="phase-chip">8B Solver</span>
+<span class="phase-chip">8C PDF+</span>
+<span class="phase-chip">8D History</span>
+</div>
+</header>
+
+<section class="upload-bar">
+<label class="solver-btn primary" for="fileInput">Upload Image / PDF</label>
+<input id="fileInput" type="file" accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf" hidden>
+
+<button type="button" class="solver-btn" id="cameraBtn">Camera</button>
+<button type="button" class="solver-btn" id="runPipelineBtn" disabled>Run OCR + Detect</button>
+<button type="button" class="solver-btn" id="clearBtn">Clear</button>
+
+<label class="provider-label" for="ocrProvider">OCR Engine</label>
+<select id="ocrProvider" class="provider-select" aria-label="OCR provider"></select>
+</section>
+
+<div id="cameraPanel" class="camera-panel" hidden>
+<video id="cameraVideo" autoplay playsinline></video>
+<canvas id="cameraCanvas" hidden></canvas>
+<div class="toolbar">
+<button type="button" class="solver-btn primary" id="captureBtn">Capture</button>
+<button type="button" class="solver-btn" id="closeCameraBtn">Close</button>
+</div>
+</div>
+
+<div class="workspace">
+
+<aside class="panel panel-left" aria-label="Uploaded document">
+<h2>Document</h2>
+<div id="dropZone" class="drop-zone" tabindex="0">
+<p><strong>Drop</strong> JPG, PNG, WEBP, or PDF here</p>
+<p class="muted">Everything stays on your device</p>
+</div>
+
+<div id="imageTools" class="toolbar" hidden>
+<button type="button" class="solver-btn" id="rotateLeftBtn" title="Rotate left">⟲ Rotate</button>
+<button type="button" class="solver-btn" id="rotateRightBtn" title="Rotate right">⟳ Rotate</button>
+<button type="button" class="solver-btn" id="cropToggleBtn">Crop</button>
+<button type="button" class="solver-btn primary" id="applyCropBtn" hidden>Apply Crop</button>
+<button type="button" class="solver-btn" id="cancelCropBtn" hidden>Cancel Crop</button>
+</div>
+
+<div id="pageNav" class="toolbar" hidden>
+<button type="button" class="solver-btn" id="prevPageBtn">◀ Page</button>
+<span id="pageLabel" class="page-label">Page 1 / 1</span>
+<button type="button" class="solver-btn" id="nextPageBtn">Page ▶</button>
+</div>
+
+<div class="canvas-wrap">
+<canvas id="docCanvas" tabindex="0" aria-label="Document preview. Use zoom controls when available."></canvas>
+</div>
+<div class="toolbar" id="a11yTools">
+<button type="button" class="solver-btn" id="zoomOutBtn" aria-label="Zoom out">Zoom −</button>
+<button type="button" class="solver-btn" id="zoomInBtn" aria-label="Zoom in">Zoom +</button>
+<button type="button" class="solver-btn" id="zoomResetBtn" aria-label="Reset zoom">Reset Zoom</button>
+</div>
+<p id="docMeta" class="muted"></p>
+</aside>
+
+<aside class="panel panel-right" aria-label="Detected questions">
+<h2>Detected Questions <span id="questionCount">(0)</span></h2>
+<div id="questionList" class="question-list">
+<p class="empty-state">Run OCR to detect questions.</p>
+</div>
+
+<div id="questionPreview" class="question-preview" hidden>
+<h3>Question Preview</h3>
+<pre id="previewText"></pre>
+<dl class="preview-meta" id="previewMeta"></dl>
+<div class="toolbar">
+<button type="button" class="solver-btn" disabled title="Phase 8B">AI Solve</button>
+<button type="button" class="solver-btn" disabled title="Phase 8B">Steps</button>
+</div>
+</div>
+</aside>
+
+</div>
+
+<footer class="ocr-footer" aria-label="OCR status">
+<div class="ocr-footer-row">
+<span id="ocrStatus">Ready — select a local image or PDF.</span>
+<span id="ocrConfidence">Confidence: —</span>
+</div>
+<div class="progress-track">
+<div id="ocrProgressBar" class="progress-bar"></div>
+</div>
+<div class="toolbar disabled-actions">
+<button type="button" class="solver-btn" disabled>History</button>
+<button type="button" class="solver-btn" disabled>Export PDF</button>
+<button type="button" class="solver-btn" disabled>Print</button>
+<button type="button" class="solver-btn" disabled>Share</button>
+</div>
+</footer>
+
+</div>
+
+<script src="../vendor/tesseract/tesseract.min.js"></script>
+<script src="../js/ai-math-solver/core/events.js"></script>
+<script src="../js/ai-math-solver/core/errors.js"></script>
+<script src="../js/ai-math-solver/core/cache.js"></script>
+<script src="../js/ai-math-solver/document/document-types.js"></script>
+<script src="../js/ai-math-solver/document/document-manager.js"></script>
+<script src="../js/ai-math-solver/question/question-schema.js"></script>
+<script src="../js/ai-math-solver/math/expression-parser-interface.js"></script>
+<script src="../js/ai-math-solver/math-detector.js"></script>
+<script src="../js/ocr/ocr-provider-interface.js"></script>
+<script src="../js/ocr/ocr-engine.js"></script>
+<script src="../js/ocr/providers/tesseract-provider.js"></script>
+<script src="../js/ocr/providers/stub-providers.js"></script>
+<script src="../js/ai-math-solver/question-detector.js"></script>
+<script src="../js/ai-math-solver/pdf-renderer.js"></script>
+<script src="../js/solver/solver-provider-interface.js"></script>
+<script src="../js/solver/solution-presentation-schema.js"></script>
+<script src="../js/solver/solution-schema.js"></script>
+<script src="../js/solver/solver-engine.js"></script>
+<script src="../js/solver/solution-pipeline.js"></script>
+<script src="../js/solver/providers/stub-providers.js"></script>
+<script src="../js/teacher/exam-readiness-schema.js"></script>
+<script src="../js/teacher/teacher-modes.js"></script>
+<script src="../js/teacher/knowledge-graph-schema.js"></script>
+<script src="../js/teacher/misconception-schema.js"></script>
+<script src="../js/teacher/learning-path-schema.js"></script>
+<script src="../js/teacher/personalisation-schema.js"></script>
+<script src="../js/teacher/achievement-schema.js"></script>
+<script src="../js/learning/concept-schema.js"></script>
+<script src="../js/learning/learning-insights-schema.js"></script>
+<script src="../js/learning/practice-generator-schema.js"></script>
+<script src="../js/learning/adaptive-learning.js"></script>
+<script src="../js/learning/learning-analytics.js"></script>
+<script src="../js/learning/learning-pipeline.js"></script>
+<script src="../js/learning/register-learning-stages.js"></script>
+<script src="../js/teacher/teacher-engine.js"></script>
+<script src="../js/teacher/register-teacher-stages.js"></script>
+<script src="../js/ai-math-solver.js"></script>
+
+</body>
+</html>

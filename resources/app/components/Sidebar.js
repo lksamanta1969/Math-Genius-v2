@@ -10,7 +10,9 @@ function loadSidebar() {
 
       <a href="pages/classes.html">🎓 Classes</a>
 
-      <a href="pages/formulas.html">📖 Formula Library</a>
+      <a href="pages/formula-library.html">📖 Formula Library</a>
+
+      <a href="pages/ai-math-solver.html">🧠 AI Math Solver</a>
 
       <a href="pages/calculator.html">🧮 Calculator</a>
 

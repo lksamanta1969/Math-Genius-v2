@@ -106,5 +106,11 @@
     "category": "Tools",
     "keywords": ["formula", "library"],
     "url": "formula-library.html"
+  },
+  {
+    "title": "AI Math Solver",
+    "category": "Tools",
+    "keywords": ["ai", "solver", "ocr", "scan", "camera", "handwriting", "equation"],
+    "url": "ai-math-solver.html"
   }
 ]

@@ -1,0 +1,291 @@
+{
+  "feature": "AI Math Solver",
+  "version": "8A.6",
+  "phase": "8A",
+  "architecture": "plugin-based",
+  "productModel": "learning-platform",
+  "security": {
+    "localOnly": true,
+    "allowCloudOcr": false,
+    "note": "Local processing by default. Cloud OCR requires explicit enablement."
+  },
+  "accessibility": {
+    "keyboardNavigation": true,
+    "zoom": true,
+    "darkMode": true,
+    "highContrast": true
+  },
+  "performance": {
+    "asyncOcr": true,
+    "pageByPagePdf": true,
+    "emitProgressEvents": true
+  },
+  "caching": {
+    "enabled": true,
+    "backend": "memory",
+    "note": "Same document fingerprint skips OCR unless changed."
+  },
+  "limits": {
+    "maxPdfSizeMb": 20,
+    "maxImageSizeMb": 15,
+    "maxPdfPages": 50,
+    "ocrTimeoutMs": 120000,
+    "lowConfidenceThreshold": 40
+  },
+  "documentManager": {
+    "current": ["image", "pdf", "camera-stream"],
+    "future": ["docx", "scanned-book"]
+  },
+  "acceptedFormats": {
+    "images": ["image/jpeg", "image/png", "image/webp"],
+    "extensions": [".jpg", ".jpeg", ".png", ".webp", ".pdf"],
+    "pdf": ["application/pdf"]
+  },
+  "ocr": {
+    "defaultProvider": "tesseract",
+    "enabledCloudProviders": [],
+    "providers": [
+      { "id": "tesseract", "label": "Tesseract (Local)", "available": true, "local": true },
+      { "id": "custom-local-ocr", "label": "Custom Local OCR", "available": false, "local": true },
+      { "id": "google-vision", "label": "Google Vision", "available": false, "local": false },
+      { "id": "azure-vision", "label": "Azure Vision", "available": false, "local": false },
+      { "id": "openai-vision", "label": "OpenAI Vision (Future)", "available": false, "local": false }
+    ]
+  },
+  "solver": {
+    "defaultProvider": null,
+    "runtimeMode": "auto",
+    "allowCloudSolver": false,
+    "enabledCloudProviders": [],
+    "retryCount": 1,
+    "supportsCancellation": true,
+    "supportsStreaming": true,
+    "defaultExplanationMode": "Standard",
+    "defaultLanguage": "en",
+    "explanationModes": ["Beginner", "Standard", "Exam Style", "Teacher Mode"],
+    "languages": [
+      { "id": "en", "label": "English" },
+      { "id": "bn", "label": "বাংলা" },
+      { "id": "hi", "label": "Hindi" }
+    ],
+    "verificationStatuses": ["Verified", "Needs Review", "AI Generated"],
+    "presentationOrder": [
+      "question",
+      "given",
+      "find",
+      "concept",
+      "formula-used",
+      "steps",
+      "final-answer",
+      "verification",
+      "common-mistakes",
+      "related-formula",
+      "practice-questions",
+      "mini-quiz"
+    ],
+    "providers": [
+      { "id": "local-rule-engine", "label": "Local Rule Engine", "available": false, "local": true },
+      { "id": "ollama-local-llm", "label": "Ollama / Local LLM", "available": false, "local": true },
+      { "id": "openai", "label": "OpenAI", "available": false, "local": false },
+      { "id": "azure-openai", "label": "Azure OpenAI", "available": false, "local": false },
+      { "id": "google-gemini", "label": "Google Gemini", "available": false, "local": false },
+      { "id": "anthropic-claude", "label": "Anthropic Claude", "available": false, "local": false }
+    ]
+  },
+  "learning": {
+    "enabled": true,
+    "skipSolverUntilPhase8B": true,
+    "pipeline": [
+      "concept-detection",
+      "topic-mapping",
+      "formula-recommendation",
+      "ai-solver",
+      "step-generator",
+      "explanation-generator",
+      "learning-insights",
+      "practice-generator",
+      "quiz-recommendation",
+      "final-ui"
+    ],
+    "conceptSchema": {
+      "fields": [
+        "id",
+        "board",
+        "class",
+        "subject",
+        "chapter",
+        "topic",
+        "subTopic",
+        "difficulty",
+        "prerequisites",
+        "learningObjectives",
+        "examReadiness"
+      ]
+    },
+    "insightsSchema": {
+      "fields": [
+        "conceptUsed",
+        "formulaUsed",
+        "commonMistakes",
+        "examTips",
+        "timeSavingTips",
+        "alternativeMethod",
+        "relatedTopics"
+      ]
+    },
+    "practiceGenerator": {
+      "status": "architecture",
+      "levels": ["Easy", "Medium", "Hard"],
+      "patterns": ["Standard", "Previous Year Pattern", "Olympiad Practice"]
+    },
+    "adaptiveLearning": {
+      "status": "architecture",
+      "readyFor": [
+        "weakTopics",
+        "strongTopics",
+        "revisionSuggestions",
+        "studyPlan",
+        "progressTracking"
+      ]
+    },
+    "analytics": {
+      "scope": "local-only",
+      "storageKey": "mathGenius.learningAnalytics.v1",
+      "tracks": [
+        "topicsSolved",
+        "accuracy",
+        "averageTime",
+        "favouriteTopics",
+        "recentlySolved"
+      ]
+    }
+  },
+  "teacher": {
+    "enabled": true,
+    "skipSolverUntilPhase8B": true,
+    "model": "human-teacher",
+    "pipeline": [
+      "concept-detection",
+      "knowledge-graph",
+      "prerequisite-check",
+      "learning-path",
+      "formula-recommendation",
+      "ai-solver",
+      "explanation",
+      "misconception-detection",
+      "practice-recommendation",
+      "quiz-recommendation",
+      "revision-recommendation",
+      "progress-update"
+    ],
+    "modes": ["Tutor Mode", "Exam Mode", "Revision Mode", "Challenge Mode"],
+    "knowledgeGraph": {
+      "status": "architecture",
+      "nodeFields": [
+        "parentTopic",
+        "childTopics",
+        "prerequisites",
+        "relatedTopics",
+        "examImportance",
+        "difficulty"
+      ]
+    },
+    "misconceptionEngine": {
+      "status": "architecture",
+      "categories": [
+        "Calculation Mistake",
+        "Formula Selection Error",
+        "Concept Error",
+        "Sign Error",
+        "Unit Error",
+        "Logic Error"
+      ]
+    },
+    "learningPath": {
+      "status": "architecture",
+      "actions": [
+        "Learn Next Topic",
+        "Revise Previous Topic",
+        "Practice Weak Area",
+        "Skip Already Mastered"
+      ]
+    },
+    "examReadiness": {
+      "fields": [
+        "boardWeightage",
+        "jeeFoundationImportance",
+        "olympiadImportance",
+        "expectedDifficulty"
+      ]
+    },
+    "personalisation": {
+      "status": "architecture",
+      "readyFor": [
+        "studentProfile",
+        "learningSpeed",
+        "preferredLanguage",
+        "preferredExplanationStyle",
+        "targetExam"
+      ]
+    },
+    "achievements": {
+      "status": "architecture",
+      "readyFor": ["badges", "dailyStreak", "weeklyGoals", "milestones"]
+    }
+  },
+  "mathExpressionTypes": [
+    "Equation",
+    "Fraction",
+    "Matrix",
+    "Integral",
+    "Summation",
+    "Limit",
+    "Geometry",
+    "Table"
+  ],
+  "phases": {
+    "8A": {
+      "status": "active",
+      "features": [
+        "upload",
+        "pdf",
+        "crop",
+        "rotate",
+        "ocr",
+        "questionDetection",
+        "pluginArchitecture",
+        "solverArchitecture",
+        "learningPipelineArchitecture",
+        "teacherEngineArchitecture",
+        "solutionPresentationArchitecture"
+      ]
+    },
+    "8B": {
+      "status": "planned",
+      "features": [
+        "aiSolve",
+        "stepGenerator",
+        "explanation",
+        "streaming",
+        "retry",
+        "cancellation",
+        "conceptDetection",
+        "learningInsights",
+        "practiceGenerator",
+        "knowledgeGraph",
+        "misconceptionDetection",
+        "learningPath",
+        "teacherModes"
+      ]
+    },
+    "8C": {
+      "status": "planned",
+      "features": ["pdfEnhancements", "docx"]
+    },
+    "8D": {
+      "status": "planned",
+      "features": ["history", "export", "share", "print"]
+    }
+  },
+  "disabledInPhase8A": ["aiSolve", "stepGenerator", "history", "export", "share", "print"]
+}
