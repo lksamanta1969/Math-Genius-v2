@@ -3,6 +3,7 @@
  * Milestone 1: arithmetic / fractions / HCF-LCM
  * Milestone 2: integers (ops, absolute value, compare, order)
  * Milestone 3: decimals (ops, compare, order, round, place value, conversions)
+ * Milestone 4: advanced decimal arithmetic (precision, arbitrary length, sci notation)
  * Run: node scripts/test-numbers-rule-engine.js
  */
 "use strict";
@@ -31,6 +32,7 @@ loadScript("resources/app/js/solver/providers/local-rule-engine/formula-catalog.
 loadScript("resources/app/js/solver/providers/local-rule-engine/math-utils.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/expression.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/normalize.js");
+loadScript("resources/app/js/solver/providers/local-rule-engine/decimal-math.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/numbers.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/handlers.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/provider.js");
@@ -187,6 +189,82 @@ const decimalEdgeCases = [
     text: "place value of 9 in 12.345",
     expectUnsupported: true
   }
+];
+
+const advancedDecimalCases = [
+  { name: "float trap 0.1+0.2", text: "0.1 + 0.2", expect: "0.3", opKey: "decimal_addition" },
+  { name: "neg decimal add", text: "-2.5 + 1.25", expect: "-1.25", opKey: "decimal_addition" },
+  { name: "neg decimal sub", text: "-8.5 - 1.25", expect: "-9.75", opKey: "decimal_subtraction" },
+  { name: "neg decimal mul", text: "-1.5 × 2.4", expect: "-3.6", opKey: "decimal_multiplication" },
+  { name: "neg decimal div", text: "-9.6 ÷ 3.2", expect: "-3", opKey: "decimal_division" },
+  { name: "leading zeros", text: "00.50 + 0.25", expect: "0.75", opKey: "decimal_addition" },
+  { name: "trailing zeros", text: "1.2500 + 2.7500", expect: "4", opKey: "decimal_addition" },
+  {
+    name: "large values",
+    text: "999999999999.999 + 0.001",
+    expect: "1000000000000",
+    opKey: "decimal_addition"
+  },
+  {
+    name: "small values",
+    text: "0.000001 × 0.000001",
+    expect: "0.000000000001",
+    opKey: "decimal_multiplication"
+  },
+  { name: "mixed int/decimal", text: "12 + 0.75", expect: "12.75", opKey: "decimal_addition" },
+  {
+    name: "div precision 4",
+    text: "1 ÷ 3 to 4 decimal places",
+    expect: "0.3333",
+    opKey: "decimal_division"
+  },
+  {
+    name: "div precision 3 half-up",
+    text: "22 ÷ 7 to 3 decimal places",
+    expect: "3.143",
+    opKey: "decimal_division"
+  },
+  {
+    name: "divide by wording",
+    text: "divide 2 by 3 correct to 2 decimal places",
+    expect: "0.67",
+    opKey: "decimal_division"
+  },
+  {
+    name: "sci notation add",
+    text: "1.5e2 + 2.5e1",
+    expect: "175",
+    opKey: "decimal_addition"
+  },
+  {
+    name: "sci notation small",
+    text: "2.5e-2 + 1.5e-2",
+    expect: "0.04",
+    opKey: "decimal_addition"
+  },
+  {
+    name: "round half-up 5",
+    text: "round 2.5 to nearest whole",
+    expect: "3",
+    opKey: "decimal_round"
+  },
+  {
+    name: "round advanced value",
+    text: "round 3.14159 to 4 decimal places",
+    expect: "3.1416",
+    opKey: "decimal_round"
+  },
+  {
+    name: "add then round wording",
+    text: "1.234 + 2.345 to 2 decimal places",
+    expect: "3.58",
+    opKey: "decimal_addition"
+  }
+];
+
+const advancedDecimalEdgeCases = [
+  { name: "invalid decimal format", text: "1.2.3 + 4", expectUnsupported: true },
+  { name: "precision div by zero", text: "5 ÷ 0 to 2 decimal places", expectUnsupported: true }
 ];
 
 const unsupportedCases = [
@@ -352,6 +430,39 @@ async function run() {
     });
   }
 
+  // Milestone 4 — Advanced decimal arithmetic
+  for (const c of advancedDecimalCases) {
+    total += 1;
+    const sol = Numbers.trySolve(c.text);
+    const ok =
+      sol &&
+      !sol.unsupported &&
+      sol.verified !== false &&
+      Array.isArray(sol.steps) &&
+      sol.steps.length > 0 &&
+      checkAnswer(sol, c) &&
+      (c.opKey ? sol.operationKey === c.opKey : true);
+    mark("AdvDecimal." + c.name, ok, {
+      answer: sol && sol.finalAnswer,
+      expected: c.expect,
+      opKey: sol && sol.operationKey,
+      reason: sol && sol.reason
+    });
+  }
+
+  for (const c of advancedDecimalCases.slice(0, 5)) {
+    total += 1;
+    const sol = await runProviderCase(c);
+    const ok =
+      sol.status === "complete" &&
+      sol.verification === "Verified" &&
+      checkAnswer(sol, c);
+    mark("Provider.AdvDecimal." + c.name, ok, {
+      answer: sol.finalAnswer,
+      expected: c.expect
+    });
+  }
+
   // Formula IDs for absolute value
   total += 1;
   {
@@ -391,7 +502,9 @@ async function run() {
   }
 
   // Edge cases
-  for (const c of integerEdgeCases.concat(decimalEdgeCases)) {
+  for (const c of integerEdgeCases
+    .concat(decimalEdgeCases)
+    .concat(advancedDecimalEdgeCases)) {
     total += 1;
     const sol = Numbers.trySolve(c.text);
     const ok = !!(sol && sol.unsupported);
@@ -419,6 +532,8 @@ async function run() {
     Numbers.looksLikeNumbers("convert 0.25 to fraction") &&
     Numbers.looksLikeNumbers("round 2.678 to 2 decimal places") &&
     Numbers.looksLikeNumbers("place value of 5 in 12.345") &&
+    Numbers.looksLikeNumbers("1 ÷ 3 to 4 decimal places") &&
+    Numbers.looksLikeNumbers("1.5e2 + 2.5e1") &&
     !Numbers.looksLikeNumbers("Find the mean of 1,2,3");
   mark("looksLikeNumbers", looksOk);
 

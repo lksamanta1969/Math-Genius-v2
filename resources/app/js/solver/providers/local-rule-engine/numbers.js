@@ -4,9 +4,10 @@
  * Natural numbers, whole numbers, integers, fractions, HCF/LCM,
  * factors, multiples, prime, even/odd, BODMAS, absolute value,
  * integer comparison/ordering, decimals (ops, compare, order,
- * place value, rounding, terminating decimal ↔ fraction).
+ * place value, rounding, terminating decimal ↔ fraction),
+ * and advanced decimal arithmetic with configurable precision.
  *
- * Reuses math-utils.js, expression.js, normalize.js.
+ * Reuses math-utils.js, expression.js, normalize.js, decimal-math.js.
  * Ratio, proportion, percentage, advanced fractions — later milestones.
  */
 (function (root, factory) {
@@ -15,19 +16,22 @@
     module.exports = factory(
       require("./math-utils"),
       require("./expression"),
-      require("./normalize")
+      require("./normalize"),
+      require("./decimal-math")
     );
   } else {
     root.LocalRuleNumbers = factory(
       root.LocalRuleMath,
       root.LocalRuleExpression,
-      root.LocalRuleNormalize
+      root.LocalRuleNormalize,
+      root.LocalRuleDecimalMath
     );
   }
 })(typeof window !== "undefined" ? window : globalThis, function (
   MathUtils,
   Expression,
-  Normalize
+  Normalize,
+  DecimalMath
 ) {
   "use strict";
 
@@ -54,12 +58,15 @@
     "decimal_place_value",
     "decimal_round",
     "decimal_to_fraction",
-    "fraction_to_decimal"
+    "fraction_to_decimal",
+    "decimal_division_precision",
+    "decimal_binary_precision"
   ]);
 
-  const NUM_TOKEN = "-?\\d+(?:\\.\\d+)?";
+  const NUM_TOKEN = "-?(?:\\d+\\.?\\d*|\\.\\d+)(?:[eE][+-]?\\d+)?";
   const NUM_RE = new RegExp(NUM_TOKEN, "g");
   const NUM_ONE = new RegExp("^" + NUM_TOKEN + "$");
+  const DEC_MATH = DecimalMath || null;
 
   function step(n, title, description, extra) {
     const e = extra || {};
@@ -123,7 +130,23 @@
   }
 
   function expressionHasDecimal(expr) {
-    return /\d+\.\d+/.test(String(expr || ""));
+    const s = String(expr || "");
+    return /\d+\.\d+/.test(s) || /[eE][+-]?\d+/.test(s);
+  }
+
+  function matchBinaryDecimalExpression(exprNorm) {
+    const m = String(exprNorm || "").match(
+      new RegExp("^(" + NUM_TOKEN + ")([+\\-*/])(" + NUM_TOKEN + ")$")
+    );
+    if (!m) return null;
+    return { a: m[1], op: m[2], b: m[3] };
+  }
+
+  function shouldUseDecimalMath(expression) {
+    if (!DEC_MATH) return false;
+    if (expressionHasDecimal(expression)) return true;
+    // Integer division needing precision is handled via dedicated intent.
+    return false;
   }
 
   function resolveArithmeticOperationKey(baseType, expression) {
@@ -216,7 +239,12 @@
     ) {
       return true;
     }
-    if (/\d+\.\d+/.test(compact)) return true;
+    if (
+      /\b(to|correct\s+to)\s+\d+\s*(?:decimal\s+places?|d\.?p\.?)\b/i.test(compact)
+    ) {
+      return true;
+    }
+    if (/\d+\.\d+/.test(compact) || /[eE][+-]?\d+/.test(compact)) return true;
 
     let expr = compact
       .replace(/^(find|calculate|evaluate|simplify|what\s+is|solve)\s*[:=]?\s*/i, "")
@@ -377,24 +405,84 @@
 
     // Rounding
     m = compact.match(
-      /\bround\s+(-?\d+(?:\.\d+)?)\s+to\s+(\d+)\s+decimal\s+places?\b/i
+      /\bround\s+(-?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)\s+to\s+(\d+)\s+decimal\s+places?\b/i
     );
     if (m) {
       return {
         type: "decimal_round",
-        value: Number(m[1]),
+        value: m[1],
         places: Number(m[2]),
         text: compact
       };
     }
     m = compact.match(
-      /\bround\s+(-?\d+(?:\.\d+)?)\s+to\s+(?:the\s+)?(?:nearest\s+)?(?:whole|integer|ones?)\b/i
+      /\bround\s+(-?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)\s+to\s+(?:the\s+)?(?:nearest\s+)?(?:whole|integer|ones?)\b/i
     );
     if (m) {
       return {
         type: "decimal_round",
-        value: Number(m[1]),
+        value: m[1],
         places: 0,
+        text: compact
+      };
+    }
+
+    // Division / binary op with configurable precision
+    m = compact.match(
+      new RegExp(
+        "(" +
+          NUM_TOKEN +
+          ")\\s*[÷/]\\s*(" +
+          NUM_TOKEN +
+          ")\\s+(?:to|correct\\s+to|rounded?\\s+to)\\s+(\\d+)\\s*(?:decimal\\s+places?|d\\.?p\\.?)\\b",
+        "i"
+      )
+    );
+    if (m) {
+      return {
+        type: "decimal_division_precision",
+        a: m[1],
+        b: m[2],
+        places: Number(m[3]),
+        text: compact
+      };
+    }
+    m = compact.match(
+      new RegExp(
+        "\\bdivide\\s+(" +
+          NUM_TOKEN +
+          ")\\s+by\\s+(" +
+          NUM_TOKEN +
+          ")\\s+(?:to|correct\\s+to|rounded?\\s+to)\\s+(\\d+)\\s*(?:decimal\\s+places?|d\\.?p\\.?)\\b",
+        "i"
+      )
+    );
+    if (m) {
+      return {
+        type: "decimal_division_precision",
+        a: m[1],
+        b: m[2],
+        places: Number(m[3]),
+        text: compact
+      };
+    }
+    m = compact.match(
+      new RegExp(
+        "(" +
+          NUM_TOKEN +
+          ")\\s*([+\\-×*])\\s*(" +
+          NUM_TOKEN +
+          ")\\s+(?:to|correct\\s+to|rounded?\\s+to)\\s+(\\d+)\\s*(?:decimal\\s+places?|d\\.?p\\.?)\\b",
+        "i"
+      )
+    );
+    if (m) {
+      return {
+        type: "decimal_binary_precision",
+        a: m[1],
+        op: m[2] === "×" ? "*" : m[2],
+        b: m[3],
+        places: Number(m[4]),
         text: compact
       };
     }
@@ -480,6 +568,21 @@
     if (/=/.test(expr)) expr = expr.split("=")[0].trim();
 
     const exprNorm = Normalize.normalize(expr).replace(/\s+/g, "");
+
+    // Binary decimal / scientific notation (DecimalMath path)
+    const binaryDec = matchBinaryDecimalExpression(exprNorm);
+    if (
+      binaryDec &&
+      (expressionHasDecimal(exprNorm) || /[eE]/.test(exprNorm))
+    ) {
+      let opType = "bodmas";
+      if (binaryDec.op === "+") opType = "addition";
+      else if (binaryDec.op === "-") opType = "subtraction";
+      else if (binaryDec.op === "*") opType = "multiplication";
+      else if (binaryDec.op === "/") opType = "division";
+      return { type: opType, expression: exprNorm, text: compact };
+    }
+
     if (Expression.isPureArithmetic(exprNorm)) {
       const binaryForm = stripUnaryForCount(exprNorm);
       const ops = (binaryForm.match(/[+\-*/]/g) || []).length;
@@ -1088,44 +1191,320 @@
   }
 
   function solveDecimalRound(intent) {
-    const value = intent.value;
     const places = intent.places;
-    if (!isFinite(value) || places == null || places < 0 || !Number.isInteger(places)) {
+    if (places == null || places < 0 || !Number.isInteger(places)) {
+      return {
+        unsupported: true,
+        reason: "Rounding requires a number and a non-negative place count"
+      };
+    }
+
+    if (DEC_MATH) {
+      try {
+        const answer = DEC_MATH.format(intent.value, { places: places });
+        const placeLabel =
+          places === 0
+            ? "nearest whole number"
+            : places === 1
+              ? "1 decimal place"
+              : places + " decimal places";
+        const given = DEC_MATH.format(intent.value);
+        const steps = [
+          step(1, "Identify place", "Round " + given + " to " + placeLabel + "."),
+          step(
+            2,
+            "Look at the next digit",
+            "If the next digit is 5 or more, round up; otherwise keep the digit."
+          ),
+          step(3, "Result", answer)
+        ];
+        return {
+          operationKey: "decimal_round",
+          given: given,
+          find: "Rounded to " + placeLabel,
+          steps: steps,
+          finalAnswer: answer,
+          verifyFn: function () {
+            return DEC_MATH.format(intent.value, { places: places });
+          },
+          verified: true
+        };
+      } catch (err) {
+        return {
+          unsupported: true,
+          reason: (err && err.message) || "Invalid rounding input"
+        };
+      }
+    }
+
+    const value = Number(intent.value);
+    if (!isFinite(value)) {
       return {
         unsupported: true,
         reason: "Rounding requires a number and a non-negative place count"
       };
     }
     const factor = Math.pow(10, places);
-    const rounded = Math.round((value + Number.EPSILON * (value >= 0 ? 1 : -1)) * factor) / factor;
+    const rounded = Math.round(value * factor) / factor;
     const answer = places === 0 ? String(Math.round(value)) : rounded.toFixed(places);
-    const placeLabel =
-      places === 0
-        ? "nearest whole number"
-        : places === 1
-          ? "1 decimal place"
-          : places + " decimal places";
-    const steps = [
-      step(1, "Identify place", "Round " + formatNum(value) + " to " + placeLabel + "."),
-      step(
-        2,
-        "Look at the next digit",
-        "If the next digit is 5 or more, round up; otherwise keep the digit."
-      ),
-      step(3, "Result", answer)
-    ];
     return {
       operationKey: "decimal_round",
       given: formatNum(value),
-      find: "Rounded to " + placeLabel,
-      steps: steps,
+      find: "Rounded value",
+      steps: [step(1, "Round", answer)],
       finalAnswer: answer,
       verifyFn: function () {
-        const r = Math.round(value * factor) / factor;
-        return places === 0 ? String(Math.round(value)) : r.toFixed(places);
+        return answer;
       },
       verified: true
     };
+  }
+
+  function solveDecimalPrecisionOp(intent) {
+    if (!DEC_MATH) {
+      return {
+        unsupported: true,
+        reason: "Advanced decimal arithmetic is unavailable"
+      };
+    }
+    const places = intent.places;
+    const op = intent.op || "/";
+    try {
+      const result = DEC_MATH.evaluateBinary(intent.a, op, intent.b, places);
+      const answer =
+        op === "/" || op === "÷"
+          ? DEC_MATH.format(result, { places: places })
+          : DEC_MATH.format(DEC_MATH.round(result, places), { places: places });
+      const sym = op === "*" ? "×" : op === "/" ? "÷" : op;
+      const steps = [
+        step(
+          1,
+          "Write the expression",
+          intent.a + " " + sym + " " + intent.b + " (to " + places + " decimal places)"
+        ),
+        step(
+          2,
+          op === "/" || op === "÷" ? "Divide with precision" : "Compute then round",
+          "Use half-up rounding to " + places + " decimal places."
+        ),
+        step(3, "Result", answer)
+      ];
+      return {
+        operationKey:
+          op === "/" || op === "÷" ? "decimal_division" : resolveArithmeticOperationKey(
+            op === "+" ? "addition" : op === "-" ? "subtraction" : op === "*" ? "multiplication" : "division",
+            intent.a + op + intent.b
+          ),
+        given: intent.a + " " + sym + " " + intent.b,
+        find: "Value to " + places + " decimal places",
+        steps: steps,
+        finalAnswer: answer,
+        verifyFn: function () {
+          const r = DEC_MATH.evaluateBinary(intent.a, op, intent.b, places);
+          return op === "/" || op === "÷"
+            ? DEC_MATH.format(r, { places: places })
+            : DEC_MATH.format(DEC_MATH.round(r, places), { places: places });
+        },
+        verified: true
+      };
+    } catch (err) {
+      return {
+        unsupported: true,
+        reason: (err && err.message) || "Invalid decimal operation"
+      };
+    }
+  }
+
+  function solveArithmetic(intent) {
+    const expression = intent.expression;
+    const isDecimalOp = shouldUseDecimalMath(expression);
+    const binary = isDecimalOp ? matchBinaryDecimalExpression(expression) : null;
+
+    // Advanced decimal path: string/BigInt-backed binary arithmetic
+    if (DEC_MATH && binary) {
+      try {
+        const result = DEC_MATH.evaluateBinary(binary.a, binary.op, binary.b);
+        const answer = DEC_MATH.format(result);
+        const sym =
+          binary.op === "*" ? "×" : binary.op === "/" ? "÷" : binary.op;
+        const steps = [
+          step(1, "Write the expression", "Evaluate: " + binary.a + " " + sym + " " + binary.b),
+          step(
+            2,
+            "Align decimal places",
+            "Compute exactly using decimal place alignment (half-up only when precision is requested)."
+          ),
+          step(
+            3,
+            "Compute " + binary.a + " " + sym + " " + binary.b,
+            binary.a + " " + sym + " " + binary.b + " = " + answer
+          ),
+          step(4, "Final result", "Answer = " + answer)
+        ];
+        let findLabel = "Value of the expression";
+        if (intent.type === "addition") findLabel = "Sum";
+        if (intent.type === "subtraction") findLabel = "Difference";
+        if (intent.type === "multiplication") findLabel = "Product";
+        if (intent.type === "division") findLabel = "Quotient";
+        return {
+          operationKey: resolveArithmeticOperationKey(intent.type, expression),
+          given: expression,
+          find: findLabel,
+          steps: steps,
+          finalAnswer: answer,
+          verifyFn: function () {
+            return DEC_MATH.format(
+              DEC_MATH.evaluateBinary(binary.a, binary.op, binary.b)
+            );
+          },
+          verified: true
+        };
+      } catch (err) {
+        return {
+          unsupported: true,
+          reason: (err && err.message) || "Invalid decimal expression"
+        };
+      }
+    }
+
+    let evaluated;
+    try {
+      evaluated = Expression.evaluate(expression);
+    } catch (err) {
+      return {
+        unsupported: true,
+        reason: (err && err.message) || "Invalid arithmetic expression"
+      };
+    }
+
+    const steps = [];
+    const isIntegerOp = !expressionHasDecimal(expression) && expressionHasNegative(expression);
+    steps.push(
+      step(1, "Write the expression", "Evaluate: " + expression, {
+        latex: expression.replace(/\*/g, "\\times ").replace(/\//g, "\\div ")
+      })
+    );
+
+    if (expressionHasDecimal(expression)) {
+      steps.push(
+        step(
+          2,
+          "Align decimal places",
+          "Keep track of decimal places while adding, subtracting, multiplying or dividing."
+        )
+      );
+    } else if (isIntegerOp) {
+      steps.push(
+        step(
+          2,
+          "Use integer number-line rules",
+          "Positive moves right; negative moves left. Same signs multiply/divide to positive; different signs give negative."
+        )
+      );
+    } else if (intent.type === "bodmas" || (evaluated.ops && evaluated.ops.length > 1)) {
+      steps.push(
+        step(
+          2,
+          "Apply BODMAS / order of operations",
+          "Brackets, Orders, Division/Multiplication, Addition/Subtraction."
+        )
+      );
+    }
+
+    let n = steps.length + 1;
+    evaluated.ops.forEach(function (op) {
+      const sym = op.op === "*" ? "×" : op.op === "/" ? "÷" : op.op;
+      steps.push(
+        step(
+          n,
+          "Compute " + formatNum(op.a) + " " + sym + " " + formatNum(op.b),
+          formatNum(op.a) + " " + sym + " " + formatNum(op.b) + " = " + formatNum(op.result)
+        )
+      );
+      n += 1;
+    });
+
+    const answer = formatNum(evaluated.value);
+    steps.push(step(n, "Final result", "Answer = " + answer));
+
+    let findLabel = "Value of the expression";
+    if (intent.type === "addition") findLabel = "Sum";
+    if (intent.type === "subtraction") findLabel = "Difference";
+    if (intent.type === "multiplication") findLabel = "Product";
+    if (intent.type === "division") findLabel = "Quotient";
+
+    return {
+      operationKey: resolveArithmeticOperationKey(intent.type, expression),
+      given: expression,
+      find: findLabel,
+      steps: steps,
+      finalAnswer: answer,
+      verifyFn: function () {
+        return formatNum(Expression.evaluate(expression).value);
+      },
+      verified: true
+    };
+  }
+
+  function solveIntent(intent) {
+    if (!intent || intent.type === "unsupported") {
+      return {
+        unsupported: true,
+        reason: (intent && intent.reason) || "Unsupported"
+      };
+    }
+
+    switch (intent.type) {
+      case "hcf":
+        return solveHcf(intent);
+      case "lcm":
+        return solveLcm(intent);
+      case "factors":
+        return solveFactors(intent);
+      case "multiples":
+        return solveMultiples(intent);
+      case "prime":
+        return solvePrime(intent);
+      case "even_odd":
+        return solveEvenOdd(intent);
+      case "fraction_simplify":
+        return solveFractionSimplify(intent);
+      case "fraction_binary":
+        return solveFractionBinary(intent);
+      case "absolute_value":
+        return solveAbsoluteValue(intent);
+      case "integer_compare":
+        return solveIntegerCompare(intent);
+      case "integer_order":
+        return solveIntegerOrder(intent);
+      case "decimal_compare":
+        return solveDecimalCompare(intent);
+      case "decimal_order":
+        return solveDecimalOrder(intent);
+      case "decimal_to_fraction":
+        return solveDecimalToFraction(intent);
+      case "fraction_to_decimal":
+        return solveFractionToDecimal(intent);
+      case "decimal_round":
+        return solveDecimalRound(intent);
+      case "decimal_place_value":
+        return solveDecimalPlaceValue(intent);
+      case "decimal_division_precision":
+      case "decimal_binary_precision":
+        return solveDecimalPrecisionOp(intent);
+      case "addition":
+      case "subtraction":
+      case "multiplication":
+      case "division":
+      case "bodmas":
+      case "simplification":
+        return solveArithmetic(intent);
+      default:
+        return {
+          unsupported: true,
+          reason: "Unsupported number operation: " + intent.type
+        };
+    }
   }
 
   function solveDecimalPlaceValue(intent) {
@@ -1194,147 +1573,6 @@
       },
       verified: true
     };
-  }
-
-  function solveArithmetic(intent) {
-    let evaluated;
-    try {
-      evaluated = Expression.evaluate(intent.expression);
-    } catch (err) {
-      return {
-        unsupported: true,
-        reason: (err && err.message) || "Invalid arithmetic expression"
-      };
-    }
-
-    const steps = [];
-    const isDecimalOp = expressionHasDecimal(intent.expression);
-    const isIntegerOp = !isDecimalOp && expressionHasNegative(intent.expression);
-    steps.push(
-      step(1, "Write the expression", "Evaluate: " + intent.expression, {
-        latex: intent.expression.replace(/\*/g, "\\times ").replace(/\//g, "\\div ")
-      })
-    );
-
-    if (isDecimalOp) {
-      steps.push(
-        step(
-          2,
-          "Align decimal places",
-          "Keep track of decimal places while adding, subtracting, multiplying or dividing."
-        )
-      );
-    } else if (isIntegerOp) {
-      steps.push(
-        step(
-          2,
-          "Use integer number-line rules",
-          "Positive moves right; negative moves left. Same signs multiply/divide to positive; different signs give negative."
-        )
-      );
-    } else if (intent.type === "bodmas" || (evaluated.ops && evaluated.ops.length > 1)) {
-      steps.push(
-        step(
-          2,
-          "Apply BODMAS / order of operations",
-          "Brackets, Orders, Division/Multiplication, Addition/Subtraction."
-        )
-      );
-    }
-
-    let n = steps.length + 1;
-    evaluated.ops.forEach(function (op) {
-      const sym = op.op === "*" ? "×" : op.op === "/" ? "÷" : op.op;
-      steps.push(
-        step(
-          n,
-          "Compute " + formatNum(op.a) + " " + sym + " " + formatNum(op.b),
-          formatNum(op.a) + " " + sym + " " + formatNum(op.b) + " = " + formatNum(op.result)
-        )
-      );
-      n += 1;
-    });
-
-    const answer = formatNum(evaluated.value);
-    steps.push(step(n, "Final result", "Answer = " + answer));
-
-    let findLabel = "Value of the expression";
-    if (intent.type === "addition") findLabel = "Sum";
-    if (intent.type === "subtraction") findLabel = "Difference";
-    if (intent.type === "multiplication") findLabel = "Product";
-    if (intent.type === "division") findLabel = "Quotient";
-
-    const operationKey = resolveArithmeticOperationKey(intent.type, intent.expression);
-
-    return {
-      operationKey: operationKey,
-      given: intent.expression,
-      find: findLabel,
-      steps: steps,
-      finalAnswer: answer,
-      verifyFn: function () {
-        return formatNum(Expression.evaluate(intent.expression).value);
-      },
-      verified: true
-    };
-  }
-
-  function solveIntent(intent) {
-    if (!intent || intent.type === "unsupported") {
-      return {
-        unsupported: true,
-        reason: (intent && intent.reason) || "Unsupported"
-      };
-    }
-
-    switch (intent.type) {
-      case "hcf":
-        return solveHcf(intent);
-      case "lcm":
-        return solveLcm(intent);
-      case "factors":
-        return solveFactors(intent);
-      case "multiples":
-        return solveMultiples(intent);
-      case "prime":
-        return solvePrime(intent);
-      case "even_odd":
-        return solveEvenOdd(intent);
-      case "fraction_simplify":
-        return solveFractionSimplify(intent);
-      case "fraction_binary":
-        return solveFractionBinary(intent);
-      case "absolute_value":
-        return solveAbsoluteValue(intent);
-      case "integer_compare":
-        return solveIntegerCompare(intent);
-      case "integer_order":
-        return solveIntegerOrder(intent);
-      case "decimal_compare":
-        return solveDecimalCompare(intent);
-      case "decimal_order":
-        return solveDecimalOrder(intent);
-      case "decimal_to_fraction":
-        return solveDecimalToFraction(intent);
-      case "fraction_to_decimal":
-        return solveFractionToDecimal(intent);
-      case "decimal_round":
-        return solveDecimalRound(intent);
-      case "decimal_place_value":
-        return solveDecimalPlaceValue(intent);
-      case "addition":
-      case "subtraction":
-      case "multiplication":
-      case "division":
-      case "bodmas":
-      case "simplification":
-        return solveArithmetic(intent);
-      default:
-        return {
-          unsupported: true,
-          reason: "Unsupported number operation: " + intent.type
-        };
-    }
   }
 
   function trySolve(rawText) {

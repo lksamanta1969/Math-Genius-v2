@@ -33,6 +33,7 @@ loadScript("resources/app/js/solver/solver-engine.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/formula-catalog.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/math-utils.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/expression.js");
+loadScript("resources/app/js/solver/providers/local-rule-engine/decimal-math.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/numbers.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/handlers.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/provider.js");
