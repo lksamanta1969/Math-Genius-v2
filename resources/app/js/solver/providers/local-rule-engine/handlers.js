@@ -71,6 +71,19 @@
       return { type: "geometry", text: compact };
     }
 
+    // Number system (Phase 9) — before algebra so worded integer
+    // questions (absolute value, compare, order) are not misrouted.
+    if (Numbers && Numbers.isUnsupportedNumbers) {
+      const numBad = Numbers.isUnsupportedNumbers(compact);
+      if (numBad && Numbers.looksLikeNumbers(compact)) {
+        return { type: "unsupported", reason: numBad };
+      }
+    }
+    if (Numbers && Numbers.looksLikeNumbers(compact)) {
+      const numIntent = Numbers.classify(compact);
+      if (numIntent) return numIntent;
+    }
+
     // Unsupported advanced algebra → explicit unsupported
     if (Algebra && Algebra.isUnsupportedAlgebra) {
       const bad = Algebra.isUnsupportedAlgebra(compact);
@@ -89,18 +102,6 @@
     // Intro algebra (equations / like terms)
     if (Algebra && Algebra.looksLikeIntroAlgebra(compact)) {
       return { type: "algebra", text: compact };
-    }
-
-    // Number system (Phase 9) — arithmetic, fractions, HCF/LCM, etc.
-    if (Numbers && Numbers.isUnsupportedNumbers) {
-      const numBad = Numbers.isUnsupportedNumbers(compact);
-      if (numBad && Numbers.looksLikeNumbers(compact)) {
-        return { type: "unsupported", reason: numBad };
-      }
-    }
-    if (Numbers && Numbers.looksLikeNumbers(compact)) {
-      const numIntent = Numbers.classify(compact);
-      if (numIntent) return numIntent;
     }
 
     return {

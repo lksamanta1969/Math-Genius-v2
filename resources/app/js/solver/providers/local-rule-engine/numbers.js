@@ -2,10 +2,11 @@
  * Number System Rule Engine (Phase 9)
  *
  * Natural numbers, whole numbers, integers, fractions, HCF/LCM,
- * factors, multiples, prime, even/odd, BODMAS.
+ * factors, multiples, prime, even/odd, BODMAS, absolute value,
+ * integer comparison and ordering.
  *
  * Reuses math-utils.js, expression.js, normalize.js.
- * Ratio, proportion, percentage, and advanced decimals — Milestone 2+.
+ * Ratio, proportion, percentage, and advanced decimals — later milestones.
  */
 (function (root, factory) {
   "use strict";
@@ -43,7 +44,10 @@
     "multiplication",
     "division",
     "bodmas",
-    "simplification"
+    "simplification",
+    "absolute_value",
+    "integer_compare",
+    "integer_order"
   ]);
 
   function step(n, title, description, extra) {
@@ -87,6 +91,25 @@
     return NUMBER_INTENT_TYPES.indexOf(type) >= 0;
   }
 
+  /** Strip unary +/− so binary operator counting is accurate for integers. */
+  function stripUnaryForCount(expr) {
+    return String(expr || "").replace(/(^|[+\-*/(])([+\-])/g, "$1");
+  }
+
+  function expressionHasNegative(expr) {
+    return /(^|[+\-*/(])-\d/.test(String(expr || ""));
+  }
+
+  function integerOperationKey(baseType, expression) {
+    if (!expressionHasNegative(expression)) return baseType;
+    if (baseType === "addition") return "integer_addition";
+    if (baseType === "subtraction") return "integer_subtraction";
+    if (baseType === "multiplication") return "integer_multiplication";
+    if (baseType === "division") return "integer_division";
+    if (baseType === "bodmas") return "integer_bodmas";
+    return baseType;
+  }
+
   /** Topics deferred to later Phase 9 milestones */
   function isUnsupportedNumbers(text) {
     const t = String(text || "").toLowerCase();
@@ -122,6 +145,21 @@
     if (/\bsimplif\w*\b/i.test(compact) && /\d+\s*\/\s*\d+/.test(compact)) return true;
     if (matchFractionBinary(compact.replace(/^=.*$/, "").split("=")[0].trim())) return true;
     if (/\d+\s*\/\s*\d+/.test(compact)) return true;
+    if (
+      /\babsolute\s+value\b/i.test(compact) ||
+      /\|-?\d+\|/.test(compact) ||
+      /\babs\s*\(/i.test(compact)
+    ) {
+      return true;
+    }
+    if (
+      /\bcompare\b/i.test(compact) ||
+      /\barrange\b/i.test(compact) ||
+      /\b(ascending|descending)\s+order\b/i.test(compact) ||
+      /\border\s+(?:the\s+)?(?:integers?|numbers?)\b/i.test(compact)
+    ) {
+      return true;
+    }
 
     let expr = compact
       .replace(/^(find|calculate|evaluate|simplify|what\s+is|solve)\s*[:=]?\s*/i, "")
@@ -237,6 +275,69 @@
       };
     }
 
+    // Absolute value: |−25|, abs(-25), absolute value of -25
+    m =
+      compact.match(/\babsolute\s+value\s+of\s+(-?\d+)/i) ||
+      compact.match(/\babs\s*\(\s*(-?\d+)\s*\)/i) ||
+      compact.match(/\|(-?\d+)\|/) ||
+      compact.match(/\bfind\s+\|(-?\d+)\|/i);
+    if (m) {
+      return { type: "absolute_value", n: Number(m[1]), text: compact };
+    }
+
+    // Compare two integers
+    m = compact.match(/\bcompare\s+(-?\d+)\s+(?:and|with|,)\s+(-?\d+)/i);
+    if (m) {
+      return {
+        type: "integer_compare",
+        a: Number(m[1]),
+        b: Number(m[2]),
+        op: null,
+        text: compact
+      };
+    }
+    m = compact.match(
+      /\bwhich\s+is\s+(?:greater|larger|smaller|less)\s*[?:]?\s*(-?\d+)\s+(?:and|or|,)\s+(-?\d+)/i
+    );
+    if (m) {
+      return {
+        type: "integer_compare",
+        a: Number(m[1]),
+        b: Number(m[2]),
+        op: null,
+        text: compact
+      };
+    }
+    m = compact.match(/(-?\d+)\s*(>=|<=|≠|!=|>|<|=)\s*(-?\d+)/);
+    if (m) {
+      return {
+        type: "integer_compare",
+        a: Number(m[1]),
+        b: Number(m[3]),
+        op: m[2],
+        text: compact
+      };
+    }
+
+    // Arrange / order integers on the number line
+    if (
+      /\b(arrange|order|sort)\b/i.test(compact) ||
+      /\b(ascending|descending)\s+order\b/i.test(compact)
+    ) {
+      const nums = parseNumberList(compact);
+      if (nums.length >= 2) {
+        const descending =
+          /\bdescending\b/i.test(compact) ||
+          /\bfrom\s+(?:largest|greatest)\s+to\s+(?:smallest|least)\b/i.test(compact);
+        return {
+          type: "integer_order",
+          values: nums,
+          order: descending ? "descending" : "ascending",
+          text: compact
+        };
+      }
+    }
+
     let expr = compact
       .replace(/^(find|calculate|evaluate|simplify|what\s+is|solve)\s*[:=]?\s*/i, "")
       .replace(/\?+\s*$/, "")
@@ -246,14 +347,14 @@
 
     const exprNorm = Normalize.normalize(expr).replace(/\s+/g, "");
     if (Expression.isPureArithmetic(exprNorm)) {
-      const ops = (exprNorm.match(/[+\-*/]/g) || []).length;
+      const binaryForm = stripUnaryForCount(exprNorm);
+      const ops = (binaryForm.match(/[+\-*/]/g) || []).length;
       let opType = "bodmas";
       if (ops === 1) {
-        if (exprNorm.indexOf("+") >= 0) opType = "addition";
-        else if (exprNorm.indexOf("-") >= 0 && !/^-/.test(exprNorm))
-          opType = "subtraction";
-        else if (exprNorm.indexOf("*") >= 0) opType = "multiplication";
-        else if (exprNorm.indexOf("/") >= 0) opType = "division";
+        if (binaryForm.indexOf("+") >= 0) opType = "addition";
+        else if (binaryForm.indexOf("-") >= 0) opType = "subtraction";
+        else if (binaryForm.indexOf("*") >= 0) opType = "multiplication";
+        else if (binaryForm.indexOf("/") >= 0) opType = "division";
       } else if (ops > 1) {
         opType = "bodmas";
       } else if (ops === 0) {
@@ -589,16 +690,187 @@
     };
   }
 
+  function solveAbsoluteValue(intent) {
+    const n = intent.n;
+    if (typeof n !== "number" || !isFinite(n) || !Number.isInteger(n)) {
+      return {
+        unsupported: true,
+        reason: "Absolute value requires an integer"
+      };
+    }
+    const answer = Math.abs(n);
+    const steps = [
+      step(
+        1,
+        "Recall absolute value",
+        "The absolute value of an integer is its distance from 0 on the number line."
+      ),
+      step(
+        2,
+        "Locate " + n + " on the number line",
+        n >= 0
+          ? n + " is " + n + " units to the right of 0."
+          : n + " is " + answer + " units to the left of 0."
+      ),
+      step(
+        3,
+        "Result",
+        "|" + n + "| = " + answer,
+        {
+          latex: "\\left|" + n + "\\right|=" + answer,
+          hint: "Absolute value is never negative."
+        }
+      )
+    ];
+    return {
+      operationKey: "absolute_value",
+      given: "n = " + n,
+      find: "|" + n + "|",
+      steps: steps,
+      finalAnswer: answer,
+      verifyFn: function () {
+        return Math.abs(n);
+      },
+      verified: true
+    };
+  }
+
+  function solveIntegerCompare(intent) {
+    const a = intent.a;
+    const b = intent.b;
+    if (
+      typeof a !== "number" ||
+      typeof b !== "number" ||
+      !isFinite(a) ||
+      !isFinite(b) ||
+      !Number.isInteger(a) ||
+      !Number.isInteger(b)
+    ) {
+      return {
+        unsupported: true,
+        reason: "Integer comparison requires two integers"
+      };
+    }
+
+    let relation;
+    let description;
+    if (a > b) {
+      relation = a + " > " + b;
+      description = a + " lies to the right of " + b + " on the number line, so " + a + " is greater.";
+    } else if (a < b) {
+      relation = a + " < " + b;
+      description = a + " lies to the left of " + b + " on the number line, so " + a + " is smaller.";
+    } else {
+      relation = a + " = " + b;
+      description = a + " and " + b + " are at the same point on the number line.";
+    }
+
+    const steps = [
+      step(1, "Place on the number line", "Integers farther right are greater."),
+      step(2, "Compare " + a + " and " + b, description),
+      step(3, "Result", relation, { latex: relation.replace(/>/g, ">").replace(/</g, "<") })
+    ];
+
+    return {
+      operationKey: "integer_compare",
+      given: "a = " + a + ", b = " + b,
+      find: "Compare " + a + " and " + b,
+      steps: steps,
+      finalAnswer: relation,
+      verifyFn: function () {
+        if (a > b) return a + " > " + b;
+        if (a < b) return a + " < " + b;
+        return a + " = " + b;
+      },
+      verified: true
+    };
+  }
+
+  function solveIntegerOrder(intent) {
+    const values = Array.isArray(intent.values) ? intent.values.slice() : [];
+    if (values.length < 2) {
+      return {
+        unsupported: true,
+        reason: "Ordering requires at least two integers"
+      };
+    }
+    for (let i = 0; i < values.length; i += 1) {
+      if (!Number.isInteger(values[i])) {
+        return {
+          unsupported: true,
+          reason: "Ordering requires integers only"
+        };
+      }
+    }
+
+    const descending = intent.order === "descending";
+    const sorted = values.slice().sort(function (x, y) {
+      return descending ? y - x : x - y;
+    });
+    const answer = sorted.join(", ");
+    const orderLabel = descending ? "descending" : "ascending";
+
+    const steps = [
+      step(
+        1,
+        "Number line rule",
+        descending
+          ? "On the number line, larger integers are farther right. List from right to left."
+          : "On the number line, smaller integers are farther left. List from left to right."
+      ),
+      step(2, "Given integers", values.join(", ")),
+      step(
+        3,
+        "Arrange in " + orderLabel + " order",
+        answer,
+        { hint: "Moving right on the number line increases the value." }
+      )
+    ];
+
+    return {
+      operationKey: "integer_order",
+      given: values.join(", "),
+      find: "Integers in " + orderLabel + " order",
+      steps: steps,
+      finalAnswer: answer,
+      verifyFn: function () {
+        const check = values.slice().sort(function (x, y) {
+          return descending ? y - x : x - y;
+        });
+        return check.join(", ");
+      },
+      verified: true
+    };
+  }
+
   function solveArithmetic(intent) {
-    const evaluated = Expression.evaluate(intent.expression);
+    let evaluated;
+    try {
+      evaluated = Expression.evaluate(intent.expression);
+    } catch (err) {
+      return {
+        unsupported: true,
+        reason: (err && err.message) || "Invalid arithmetic expression"
+      };
+    }
+
     const steps = [];
+    const isIntegerOp = expressionHasNegative(intent.expression);
     steps.push(
       step(1, "Write the expression", "Evaluate: " + intent.expression, {
         latex: intent.expression.replace(/\*/g, "\\times ").replace(/\//g, "\\div ")
       })
     );
 
-    if (intent.type === "bodmas" || (evaluated.ops && evaluated.ops.length > 1)) {
+    if (isIntegerOp) {
+      steps.push(
+        step(
+          2,
+          "Use integer number-line rules",
+          "Positive moves right; negative moves left. Same signs multiply/divide to positive; different signs give negative."
+        )
+      );
+    } else if (intent.type === "bodmas" || (evaluated.ops && evaluated.ops.length > 1)) {
       steps.push(
         step(
           2,
@@ -630,8 +902,10 @@
     if (intent.type === "multiplication") findLabel = "Product";
     if (intent.type === "division") findLabel = "Quotient";
 
+    const operationKey = integerOperationKey(intent.type, intent.expression);
+
     return {
-      operationKey: intent.type,
+      operationKey: operationKey,
       given: intent.expression,
       find: findLabel,
       steps: steps,
@@ -668,6 +942,12 @@
         return solveFractionSimplify(intent);
       case "fraction_binary":
         return solveFractionBinary(intent);
+      case "absolute_value":
+        return solveAbsoluteValue(intent);
+      case "integer_compare":
+        return solveIntegerCompare(intent);
+      case "integer_order":
+        return solveIntegerOrder(intent);
       case "addition":
       case "subtraction":
       case "multiplication":
