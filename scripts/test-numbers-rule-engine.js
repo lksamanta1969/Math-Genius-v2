@@ -2,6 +2,7 @@
  * Phase 9 — Number System Rule Engine tests (Node).
  * Milestone 1: arithmetic / fractions / HCF-LCM
  * Milestone 2: integers (ops, absolute value, compare, order)
+ * Milestone 3: decimals (ops, compare, order, round, place value, conversions)
  * Run: node scripts/test-numbers-rule-engine.js
  */
 "use strict";
@@ -97,6 +98,93 @@ const integerEdgeCases = [
   {
     name: "order needs two numbers",
     text: "arrange 5 in ascending order",
+    expectUnsupported: true
+  }
+];
+
+const decimalCases = [
+  { name: "dec add", text: "2.5 + 1.75", expect: "4.25", opKey: "decimal_addition" },
+  { name: "dec sub", text: "8.2 - 3.45", expect: "4.75", opKey: "decimal_subtraction" },
+  { name: "dec mul", text: "1.5 × 2", expect: "3", opKey: "decimal_multiplication" },
+  { name: "dec div", text: "7.5 ÷ 2.5", expect: "3", opKey: "decimal_division" },
+  {
+    name: "dec compare",
+    text: "compare 2.35 and 2.305",
+    expect: "2.35 > 2.305",
+    opKey: "decimal_compare"
+  },
+  {
+    name: "dec order asc",
+    text: "arrange 2.5, 1.75, 3.1 in ascending order",
+    expect: "1.75, 2.5, 3.1",
+    opKey: "decimal_order"
+  },
+  {
+    name: "dec order desc",
+    text: "arrange 2.5, 1.75, 3.1 in descending order",
+    expect: "3.1, 2.5, 1.75",
+    opKey: "decimal_order"
+  },
+  {
+    name: "dec to fraction 0.25",
+    text: "convert 0.25 to fraction",
+    expect: "1/4",
+    opKey: "decimal_to_fraction"
+  },
+  {
+    name: "dec to fraction 0.5",
+    text: "convert 0.5 to fraction",
+    expect: "1/2",
+    opKey: "decimal_to_fraction"
+  },
+  {
+    name: "fraction to decimal 3/4",
+    text: "convert 3/4 to decimal",
+    expect: "0.75",
+    opKey: "fraction_to_decimal"
+  },
+  {
+    name: "round 2 dp",
+    text: "round 2.678 to 2 decimal places",
+    expect: "2.68",
+    opKey: "decimal_round"
+  },
+  {
+    name: "round 1 dp",
+    text: "round 2.678 to 1 decimal place",
+    expect: "2.7",
+    opKey: "decimal_round"
+  },
+  {
+    name: "round whole",
+    text: "round 2.678 to nearest whole",
+    expect: "3",
+    opKey: "decimal_round"
+  },
+  {
+    name: "place value thousandths",
+    text: "place value of 5 in 12.345",
+    expect: "0.005",
+    opKey: "decimal_place_value"
+  },
+  {
+    name: "place value tenths",
+    text: "place value of 3 in 12.345",
+    expect: "0.3",
+    opKey: "decimal_place_value"
+  }
+];
+
+const decimalEdgeCases = [
+  { name: "decimal div by zero", text: "2.5 / 0", expectUnsupported: true },
+  {
+    name: "non-terminating fraction",
+    text: "convert 1/3 to decimal",
+    expectUnsupported: true
+  },
+  {
+    name: "digit missing place value",
+    text: "place value of 9 in 12.345",
     expectUnsupported: true
   }
 ];
@@ -220,6 +308,50 @@ async function run() {
     });
   }
 
+  // Milestone 3 — Decimal cases
+  for (const c of decimalCases) {
+    total += 1;
+    const sol = Numbers.trySolve(c.text);
+    const ok =
+      sol &&
+      !sol.unsupported &&
+      sol.verified !== false &&
+      Array.isArray(sol.steps) &&
+      sol.steps.length > 0 &&
+      checkAnswer(sol, c) &&
+      (c.opKey ? sol.operationKey === c.opKey : true);
+    mark("Decimal." + c.name, ok, {
+      answer: sol && sol.finalAnswer,
+      expected: c.expect,
+      opKey: sol && sol.operationKey
+    });
+  }
+
+  const decimalProviderCases = decimalCases.slice(0, 6);
+  for (const c of decimalProviderCases) {
+    total += 1;
+    const intent = Handlers.classify(c.text);
+    const sol = Handlers.solveIntent(intent);
+    const ok = sol && !sol.unsupported && checkAnswer(sol, c);
+    mark("Handlers.Decimal." + c.name, ok, {
+      answer: sol && sol.finalAnswer,
+      expected: c.expect
+    });
+  }
+
+  for (const c of decimalProviderCases) {
+    total += 1;
+    const sol = await runProviderCase(c);
+    const ok =
+      sol.status === "complete" &&
+      sol.verification === "Verified" &&
+      checkAnswer(sol, c);
+    mark("Provider.Decimal." + c.name, ok, {
+      answer: sol.finalAnswer,
+      expected: c.expect
+    });
+  }
+
   // Formula IDs for absolute value
   total += 1;
   {
@@ -239,8 +371,27 @@ async function run() {
     mark("Provider.absolute_value formula ID", ok, { ids: ids, answer: sol.finalAnswer });
   }
 
+  // Formula IDs for decimal → fraction
+  total += 1;
+  {
+    const sol = await runProviderCase({
+      name: "dec-frac-formula",
+      text: "convert 0.25 to fraction"
+    });
+    const ids = (sol.formulaIds || []).concat(
+      (sol.formulaUsed || []).map(function (f) {
+        return f && (f.formulaId || f.id);
+      })
+    );
+    const ok =
+      sol.status === "complete" &&
+      String(sol.finalAnswer) === "1/4" &&
+      ids.indexOf("CBSE-C6-AR-017") >= 0;
+    mark("Provider.decimal_to_fraction formula ID", ok, { ids: ids, answer: sol.finalAnswer });
+  }
+
   // Edge cases
-  for (const c of integerEdgeCases) {
+  for (const c of integerEdgeCases.concat(decimalEdgeCases)) {
     total += 1;
     const sol = Numbers.trySolve(c.text);
     const ok = !!(sol && sol.unsupported);
@@ -264,6 +415,10 @@ async function run() {
     Numbers.looksLikeNumbers("absolute value of -25") &&
     Numbers.looksLikeNumbers("compare -4 and 7") &&
     Numbers.looksLikeNumbers("arrange -3, 5, -9, 2 in ascending order") &&
+    Numbers.looksLikeNumbers("2.5 + 1.75") &&
+    Numbers.looksLikeNumbers("convert 0.25 to fraction") &&
+    Numbers.looksLikeNumbers("round 2.678 to 2 decimal places") &&
+    Numbers.looksLikeNumbers("place value of 5 in 12.345") &&
     !Numbers.looksLikeNumbers("Find the mean of 1,2,3");
   mark("looksLikeNumbers", looksOk);
 
