@@ -31,6 +31,7 @@ loadScript("resources/app/js/solver/providers/local-rule-engine/formula-catalog.
 loadScript("resources/app/js/solver/providers/local-rule-engine/math-utils.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/expression.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/normalize.js");
+loadScript("resources/app/js/solver/providers/local-rule-engine/numbers.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/algebra.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/handlers.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/provider.js");
