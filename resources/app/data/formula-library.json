@@ -1,7 +1,7 @@
 {
-  "version": "4.4",
+  "version": "4.5",
   "app": "Math Genius",
-  "phase": "phase-8f-probability-rule-engine",
+  "phase": "phase-9m6-ratio-proportion-formula-catalog",
   "syllabusStandard": {
     "description": "Formula Library follows the latest board Mathematics syllabi. Each class contains only formulas prescribed for that class.",
     "hierarchy": "boards[] → classes[] → subjects[] → chapters[] → formulas[]",
@@ -5638,10 +5638,14 @@
                         "totalQuestions": 0
                       },
                       "relatedFormulas": [
-                        "CBSE-C7-AR-006"
+                        "CBSE-C7-AR-006",
+                        "CBSE-C7-CQ-001",
+                        "CBSE-C7-CQ-002"
                       ],
                       "relatedFormulaIds": [
-                        "CBSE-C7-AR-006"
+                        "CBSE-C7-AR-006",
+                        "CBSE-C7-CQ-001",
+                        "CBSE-C7-CQ-002"
                       ],
                       "keywords": [
                         "percent",
@@ -5730,6 +5734,152 @@
                       "isFavourite": false,
                       "viewCount": 0,
                       "lastViewed": null
+                    },
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-08-30T18:00:00.000Z",
+                      "updatedAt": "2026-08-30T18:00:00.000Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": null,
+                      "example": "12:18 → HCF(12,18)=6 → 12:18 = 2:3",
+                      "latex": "a:b=\\frac{a\\div h}{b\\div h},\\;h=\\mathrm{HCF}",
+                      "variables": [
+                        {
+                          "symbol": "a, b",
+                          "meaning": "Terms of the ratio"
+                        },
+                        {
+                          "symbol": "HCF",
+                          "meaning": "Highest common factor of all terms"
+                        }
+                      ],
+                      "relatedFormulas": [
+                        "CBSE-C7-CQ-002",
+                        "CBSE-C7-AR-005"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-CQ-002",
+                        "CBSE-C7-AR-005"
+                      ],
+                      "keywords": [
+                        "ratio",
+                        "simplest form",
+                        "HCF",
+                        "comparing quantities"
+                      ],
+                      "formulaName": "Ratio in Simplest Form",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Arithmetic"
+                      ],
+                      "id": "CBSE-C7-CQ-001",
+                      "class": "Class 7",
+                      "subject": "Arithmetic",
+                      "chapter": "Comparing Quantities",
+                      "chapterNumber": 3,
+                      "topic": "Ratio",
+                      "name": "Ratio in Simplest Form",
+                      "formula": "Simplest ratio a:b = (a÷HCF):(b÷HCF), where HCF is the highest common factor of all terms",
+                      "description": "A ratio compares two or more quantities of the same kind. Divide every term by their HCF to get the simplest form.",
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 3: Comparing Quantities"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 3: Comparing Quantities",
+                        "exercise": null,
+                        "page": null
+                      }
+                    },
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-08-30T18:00:00.000Z",
+                      "updatedAt": "2026-08-30T18:00:00.000Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": null,
+                      "example": "2:3 = x:12 ⇒ 2×12 = 3×x ⇒ x = 8",
+                      "latex": "a:b=c:d\\Rightarrow ad=bc",
+                      "variables": [
+                        {
+                          "symbol": "a, d",
+                          "meaning": "Extremes of the proportion"
+                        },
+                        {
+                          "symbol": "b, c",
+                          "meaning": "Means of the proportion"
+                        }
+                      ],
+                      "relatedFormulas": [
+                        "CBSE-C7-CQ-001",
+                        "CBSE-C7-AR-005"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-CQ-001",
+                        "CBSE-C7-AR-005"
+                      ],
+                      "keywords": [
+                        "proportion",
+                        "cross multiply",
+                        "extremes",
+                        "means"
+                      ],
+                      "formulaName": "Proportion",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Arithmetic"
+                      ],
+                      "id": "CBSE-C7-CQ-002",
+                      "class": "Class 7",
+                      "subject": "Arithmetic",
+                      "chapter": "Comparing Quantities",
+                      "chapterNumber": 3,
+                      "topic": "Proportion",
+                      "name": "Proportion",
+                      "formula": "If a:b = c:d then a × d = b × c (product of extremes = product of means)",
+                      "description": "A proportion states that two ratios are equal. Cross-multiply to find an unknown when three values are known.",
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 3: Comparing Quantities"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 3: Comparing Quantities",
+                        "exercise": null,
+                        "page": null
+                      }
                     }
                   ]
                 },
@@ -8761,5 +8911,5 @@
       "classes": []
     }
   ],
-  "updatedAt": "2026-08-30T12:00:00.000Z"
+  "updatedAt": "2026-08-30T18:00:00.000Z"
 }

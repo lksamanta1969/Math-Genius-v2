@@ -1,7 +1,7 @@
 {
-  "version": "4.4",
-  "generatedAt": "2026-08-30T12:00:00.000Z",
-  "totalEntries": 88,
+  "version": "4.5",
+  "generatedAt": "2026-08-30T18:00:00.000Z",
+  "totalEntries": 90,
   "entries": [
     {
       "id": "CBSE-C6-AR-001",
@@ -1885,6 +1885,64 @@
       ],
       "difficulty": "Easy",
       "searchText": "simple interest simple interest si = (p × r × t)/100 si=\\frac{prt}{100} simple interest is proportional to principal, rate and time. p=1000, r=5%, t=2 ⇒ si=(1000×5×2)/100=100 arithmetic comparing quantities simple interest class 7 cbse interest principal rate si cbse class 7 interest"
+    },
+    {
+      "id": "CBSE-C7-CQ-001",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "7",
+      "class": "Class 7",
+      "subjectId": "arithmetic",
+      "subject": "Arithmetic",
+      "chapterId": "comparing-quantities",
+      "chapter": "Comparing Quantities",
+      "chapterNumber": 3,
+      "topic": "Ratio",
+      "name": "Ratio in Simplest Form",
+      "formulaName": "Ratio in Simplest Form",
+      "formula": "Simplest ratio a:b = (a÷HCF):(b÷HCF), where HCF is the highest common factor of all terms",
+      "keywords": [
+        "ratio",
+        "simplest form",
+        "HCF",
+        "comparing quantities"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 7",
+        "Arithmetic"
+      ],
+      "difficulty": "Easy",
+      "searchText": "ratio in simplest form ratio in simplest form simplest ratio a:b = (a÷hcf):(b÷hcf), where hcf is the highest common factor of all terms a:b=\\frac{a\\div h}{b\\div h},\\;h=\\mathrm{hcf} a ratio compares two or more quantities of the same kind. divide every term by their hcf to get the simplest form. 12:18 → hcf(12,18)=6 → 12:18 = 2:3 arithmetic comparing quantities ratio class 7 cbse ratio simplest form hcf comparing quantities cbse class 7 arithmetic"
+    },
+    {
+      "id": "CBSE-C7-CQ-002",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "7",
+      "class": "Class 7",
+      "subjectId": "arithmetic",
+      "subject": "Arithmetic",
+      "chapterId": "comparing-quantities",
+      "chapter": "Comparing Quantities",
+      "chapterNumber": 3,
+      "topic": "Proportion",
+      "name": "Proportion",
+      "formulaName": "Proportion",
+      "formula": "If a:b = c:d then a × d = b × c (product of extremes = product of means)",
+      "keywords": [
+        "proportion",
+        "cross multiply",
+        "extremes",
+        "means"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 7",
+        "Arithmetic"
+      ],
+      "difficulty": "Easy",
+      "searchText": "proportion proportion if a:b = c:d then a × d = b × c (product of extremes = product of means) a:b=c:d\\rightarrow ad=bc a proportion states that two ratios are equal. cross-multiply to find an unknown when three values are known. 2:3 = x:12 ⇒ 2×12 = 3×x ⇒ x = 8 arithmetic comparing quantities proportion class 7 cbse proportion cross multiply extremes means cbse class 7 arithmetic"
     },
     {
       "id": "CBSE-C7-AR-007",

@@ -278,22 +278,22 @@ const advancedFractionCases = [
 ];
 
 const ratioProportionCases = [
-  { name: "ratio simplify", text: "simplify ratio 12:18", expect: "2:3", opKey: "ratio_simplify" },
-  { name: "ratio three terms", text: "simplify ratio 12:18:24", expect: "2:3:4", opKey: "ratio_simplify" },
-  { name: "proportion colon", text: "2:3 = x:12 find x", expect: "8", opKey: "proportion_solve" },
-  { name: "proportion fraction", text: "2/3 = x/12 find x", expect: "8", opKey: "proportion_solve" },
-  { name: "proportion unknown denom", text: "3:4 = 9:x find x", expect: "12", opKey: "proportion_solve" }
+  { name: "ratio simplify", text: "simplify ratio 12:18", expect: "2:3", opKey: "ratio_simplify", formulaId: "CBSE-C7-CQ-001" },
+  { name: "ratio three terms", text: "simplify ratio 12:18:24", expect: "2:3:4", opKey: "ratio_simplify", formulaId: "CBSE-C7-CQ-001" },
+  { name: "proportion colon", text: "2:3 = x:12 find x", expect: "8", opKey: "proportion_solve", formulaId: "CBSE-C7-CQ-002" },
+  { name: "proportion fraction", text: "2/3 = x/12 find x", expect: "8", opKey: "proportion_solve", formulaId: "CBSE-C7-CQ-002" },
+  { name: "proportion unknown denom", text: "3:4 = 9:x find x", expect: "12", opKey: "proportion_solve", formulaId: "CBSE-C7-CQ-002" }
 ];
 
 const percentageCases = [
-  { name: "percent of", text: "find 20% of 150", expect: "30", opKey: "percentage_of" },
-  { name: "percent of wording", text: "25% of 80", expect: "20", opKey: "percentage_of" },
-  { name: "what percent", text: "30 is what percent of 150", expect: "20%", opKey: "percentage_find" },
-  { name: "what percent alt", text: "what percent is 15 of 60", expect: "25%", opKey: "percentage_find" },
-  { name: "percent to fraction", text: "convert 25% to fraction", expect: "1/4", opKey: "percentage_convert" },
-  { name: "percent to decimal", text: "convert 25% to decimal", expect: "0.25", opKey: "percentage_convert" },
-  { name: "decimal to percent", text: "convert 0.75 to percent", expect: "75%", opKey: "percentage_convert" },
-  { name: "fraction to percent", text: "convert 3/4 to percent", expect: "75%", opKey: "percentage_convert" }
+  { name: "percent of", text: "find 20% of 150", expect: "30", opKey: "percentage_of", formulaId: "CBSE-C7-AR-005" },
+  { name: "percent of wording", text: "25% of 80", expect: "20", opKey: "percentage_of", formulaId: "CBSE-C7-AR-005" },
+  { name: "what percent", text: "30 is what percent of 150", expect: "20%", opKey: "percentage_find", formulaId: "CBSE-C7-AR-005" },
+  { name: "what percent alt", text: "what percent is 15 of 60", expect: "25%", opKey: "percentage_find", formulaId: "CBSE-C7-AR-005" },
+  { name: "percent to fraction", text: "convert 25% to fraction", expect: "1/4", opKey: "percentage_convert", formulaId: "CBSE-C7-AR-005" },
+  { name: "percent to decimal", text: "convert 25% to decimal", expect: "0.25", opKey: "percentage_convert", formulaId: "CBSE-C7-AR-005" },
+  { name: "decimal to percent", text: "convert 0.75 to percent", expect: "75%", opKey: "percentage_convert", formulaId: "CBSE-C7-AR-005" },
+  { name: "fraction to percent", text: "convert 3/4 to percent", expect: "75%", opKey: "percentage_convert", formulaId: "CBSE-C7-AR-005" }
 ];
 
 const milestone5EdgeCases = [
@@ -322,6 +322,18 @@ function checkAnswer(sol, c) {
     return String(sol.finalAnswer).indexOf(c.expectContains) >= 0;
   }
   return String(sol.finalAnswer) === String(c.expect);
+}
+
+function collectFormulaIds(sol) {
+  return (sol.formulaIds || []).concat(
+    (sol.formulaUsed || []).map(function (f) {
+      return f && (f.formulaId || f.id);
+    })
+  );
+}
+
+function catalogMapsTo(opKey, formulaId) {
+  return g.FormulaCatalog.resolveIdsForOperation(opKey).indexOf(formulaId) >= 0;
 }
 
 async function run() {
@@ -538,6 +550,8 @@ async function run() {
   for (const c of advancedFractionCases.concat(ratioProportionCases, percentageCases)) {
     total += 1;
     const sol = Numbers.trySolve(c.text);
+    const catalogOk =
+      c.formulaId && c.opKey ? catalogMapsTo(c.opKey, c.formulaId) : true;
     const ok =
       sol &&
       !sol.unsupported &&
@@ -545,11 +559,14 @@ async function run() {
       Array.isArray(sol.steps) &&
       sol.steps.length > 0 &&
       checkAnswer(sol, c) &&
-      (c.opKey ? sol.operationKey === c.opKey : true);
+      (c.opKey ? sol.operationKey === c.opKey : true) &&
+      catalogOk;
     mark("M5." + c.name, ok, {
       answer: sol && sol.finalAnswer,
       expected: c.expect,
-      opKey: sol && sol.operationKey
+      opKey: sol && sol.operationKey,
+      formulaId: c.formulaId,
+      catalogOk: catalogOk
     });
   }
 
@@ -559,34 +576,54 @@ async function run() {
   for (const c of m5ProviderCases) {
     total += 1;
     const sol = await runProviderCase(c);
+    const ids = collectFormulaIds(sol);
+    const formulaOk = c.formulaId ? ids.indexOf(c.formulaId) >= 0 : true;
     const ok =
       sol.status === "complete" &&
       sol.verification === "Verified" &&
-      checkAnswer(sol, c);
+      checkAnswer(sol, c) &&
+      formulaOk;
     mark("Provider.M5." + c.name, ok, {
       answer: sol.finalAnswer,
       expected: c.expect,
-      formulas: sol.formulaIds
+      formulas: sol.formulaIds,
+      formulaId: c.formulaId
     });
   }
 
-  // Formula ID for percentage
-  total += 1;
-  {
-    const sol = await runProviderCase({
-      name: "percent-formula",
-      text: "find 20% of 150"
-    });
-    const ids = (sol.formulaIds || []).concat(
-      (sol.formulaUsed || []).map(function (f) {
-        return f && (f.formulaId || f.id);
-      })
-    );
+  const formulaIdCases = [
+    {
+      name: "ratio formula ID",
+      text: "simplify ratio 12:18",
+      expect: "2:3",
+      formulaId: "CBSE-C7-CQ-001",
+      opKey: "ratio_simplify"
+    },
+    {
+      name: "proportion formula ID",
+      text: "2:3 = x:12 find x",
+      expect: "8",
+      formulaId: "CBSE-C7-CQ-002",
+      opKey: "proportion_solve"
+    },
+    {
+      name: "percentage formula ID",
+      text: "find 20% of 150",
+      expect: "30",
+      formulaId: "CBSE-C7-AR-005",
+      opKey: "percentage_of"
+    }
+  ];
+  for (const c of formulaIdCases) {
+    total += 1;
+    const sol = await runProviderCase(c);
+    const ids = collectFormulaIds(sol);
     const ok =
       sol.status === "complete" &&
-      String(sol.finalAnswer) === "30" &&
-      ids.indexOf("CBSE-C7-AR-005") >= 0;
-    mark("Provider.percentage formula ID", ok, { ids: ids, answer: sol.finalAnswer });
+      checkAnswer(sol, c) &&
+      catalogMapsTo(c.opKey, c.formulaId) &&
+      ids.indexOf(c.formulaId) >= 0;
+    mark("Provider." + c.name, ok, { ids: ids, answer: sol.finalAnswer });
   }
 
   // Milestone 5 edge cases

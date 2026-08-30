@@ -20,7 +20,7 @@
     "test:mensuration": "node scripts/expand-mensuration-formulas-8d.js && node scripts/test-mensuration-rule-engine.js",
     "test:statistics": "node scripts/expand-statistics-formulas-8e.js && node scripts/test-statistics-rule-engine.js",
     "test:probability": "node scripts/expand-probability-formulas-8f.js && node scripts/test-probability-rule-engine.js",
-    "test:numbers": "node scripts/test-numbers-rule-engine.js",
+    "test:numbers": "node scripts/expand-ratio-proportion-formulas-9m6.js && node scripts/test-numbers-rule-engine.js",
     "test:solver": "npm run test:local-rule-engine && npm run test:ocr-solve && npm run test:solver-validation && npm run test:algebra && npm run test:formula-library && npm run test:curriculum-mapper && npm run test:geometry && npm run test:mensuration && npm run test:statistics && npm run test:probability && npm run test:numbers",
     "build": "electron-builder",
     "dist": "electron-builder --win"
