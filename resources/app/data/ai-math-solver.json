@@ -100,7 +100,7 @@
         "Even / Odd",
         "Fractions",
         "Simplification",
-        "Number System (integers, decimals, ratio, proportion, percentage)",
+        "Number System (integers, decimals, ratio, proportion, percentage, simple interest)",
         "Intro Algebra (variables, like terms, linear equations)",
         "Geometry (point, line, ray, segment, parallel/intersecting, angles, triangle basics)",
         "Mensuration (square, rectangle, triangle, circle — perimeter/area/circumference)",
@@ -405,7 +405,8 @@
         "advancedFractions",
         "decimalsPrecision",
         "ratioProportionPercentage",
-        "numberSystemFormulaIds"
+        "numberSystemFormulaIds",
+        "simpleInterest"
       ]
     },
     "8F": {

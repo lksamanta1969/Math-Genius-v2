@@ -97,6 +97,7 @@
     percentage_of: ["CBSE-C7-AR-005"],
     percentage_find: ["CBSE-C7-AR-005"],
     percentage_convert: ["CBSE-C7-AR-005"],
+    simple_interest: ["CBSE-C7-AR-006"],
     algebra_variable_constant: ["CBSE-C6-AL-001"],
     algebra_expression: ["CBSE-C6-AL-002"],
     algebra_like_terms: ["CBSE-C6-AL-003"],

@@ -4,7 +4,7 @@
  * Natural numbers, whole numbers, integers, fractions (add/sub/mul/div,
  * simplify, mixed numbers), HCF/LCM, factors, multiples, prime, even/odd,
  * BODMAS, absolute value, comparison/ordering, decimals, ratio, proportion,
- * and percentage.
+ * and percentage, simple interest.
  *
  * Reuses math-utils.js, expression.js, normalize.js, decimal-math.js.
  */
@@ -67,7 +67,8 @@
     "fraction_mul",
     "fraction_div",
     "mixed_number_convert",
-    "mixed_number_binary"
+    "mixed_number_binary",
+    "simple_interest"
   ]);
 
   const NUM_TOKEN = "-?(?:\\d+\\.?\\d*|\\.\\d+)(?:[eE][+-]?\\d+)?";
@@ -360,11 +361,36 @@
 
   /** Topics not yet in scope for the number system engine */
   function isUnsupportedNumbers(text) {
-    const t = String(text || "").toLowerCase();
-    if (/\bsimple\s+interest\b/.test(t) || /\bSI\s*=/.test(t)) {
-      return "Simple interest will be supported in a later phase";
-    }
     return null;
+  }
+
+  function parseSimpleInterestParams(text) {
+    const compact = String(text || "").replace(/\s+/g, " ");
+    let p =
+      compact.match(/\bP\s*=\s*(-?\d+(?:\.\d+)?)/i) ||
+      compact.match(/\bprincipal\s*(?:is|=|:)\s*(-?\d+(?:\.\d+)?)/i);
+    let r =
+      compact.match(/\bR\s*=\s*(-?\d+(?:\.\d+)?)\s*%?/i) ||
+      compact.match(/\brate\s*(?:is|=|:)\s*(-?\d+(?:\.\d+)?)\s*%?/i);
+    let tm =
+      compact.match(/\bT\s*=\s*(-?\d+(?:\.\d+)?)/i) ||
+      compact.match(/\btime\s*(?:is|=|:)\s*(-?\d+(?:\.\d+)?)/i);
+
+    const onAtFor = compact.match(
+      /\bon\s+(-?\d+(?:\.\d+)?)\s+at\s+(-?\d+(?:\.\d+)?)\s*%?\s+for\s+(-?\d+(?:\.\d+)?)/i
+    );
+    if (onAtFor) {
+      p = onAtFor;
+      r = [null, onAtFor[2]];
+      tm = [null, onAtFor[3]];
+    }
+
+    if (!p || !r || !tm) return null;
+    return {
+      P: Number(p[1]),
+      R: Number(r[1]),
+      T: Number(tm[1])
+    };
   }
 
   function looksLikeNumbers(text) {
@@ -410,6 +436,7 @@
     }
     if (/\d+\.\d+/.test(compact) || /[eE][+-]?\d+/.test(compact)) return true;
     if (/\bpercent(age)?\b/.test(compact) || /%/.test(compact)) return true;
+    if (/\bsimple\s+interest\b/i.test(compact)) return true;
     if (/\b(ratio|proportion)\b/.test(compact) && /\d+\s*:\s*\d+/.test(compact)) {
       return true;
     }
@@ -608,6 +635,24 @@
         parts: fracProp.parts,
         form: fracProp.form,
         text: compact
+      };
+    }
+
+    // Simple interest — before percentage (rate may contain %)
+    if (/\bsimple\s+interest\b/i.test(compact)) {
+      const si = parseSimpleInterestParams(compact);
+      if (si) {
+        return {
+          type: "simple_interest",
+          principal: si.P,
+          rate: si.R,
+          time: si.T,
+          text: compact
+        };
+      }
+      return {
+        type: "unsupported",
+        reason: "Could not read principal, rate and time for simple interest"
       };
     }
 
@@ -1896,6 +1941,68 @@
     };
   }
 
+  function solveSimpleInterest(intent) {
+    const P = intent.principal;
+    const R = intent.rate;
+    const T = intent.time;
+    if (!isFinite(P) || !isFinite(R) || !isFinite(T)) {
+      return {
+        unsupported: true,
+        reason: "Principal, rate and time must be valid numbers"
+      };
+    }
+    if (P < 0) {
+      return { unsupported: true, reason: "Principal cannot be negative" };
+    }
+    if (R < 0) {
+      return { unsupported: true, reason: "Rate cannot be negative" };
+    }
+    if (T < 0) {
+      return { unsupported: true, reason: "Time cannot be negative" };
+    }
+    const si = (P * R * T) / 100;
+    const answer = formatNum(si);
+    const steps = [
+      step(
+        1,
+        "Identify values",
+        "Principal P = " +
+          formatNum(P) +
+          ", rate R = " +
+          formatNum(R) +
+          "%, time T = " +
+          formatNum(T)
+      ),
+      step(
+        2,
+        "Apply formula",
+        "SI = (P × R × T) / 100 = (" +
+          formatNum(P) +
+          " × " +
+          formatNum(R) +
+          " × " +
+          formatNum(T) +
+          ") / 100",
+        {
+          latex: "SI=\\frac{PRT}{100}",
+          hint: "Simple interest is proportional to principal, rate and time."
+        }
+      ),
+      step(3, "Calculate", "SI = " + answer)
+    ];
+    return {
+      operationKey: "simple_interest",
+      given: "P = " + formatNum(P) + ", R = " + formatNum(R) + "%, T = " + formatNum(T),
+      find: "Simple interest (SI)",
+      steps: steps,
+      finalAnswer: answer,
+      verifyFn: function () {
+        return formatNum((P * R * T) / 100);
+      },
+      verified: true
+    };
+  }
+
   function solvePercentageOf(intent) {
     const pct = intent.percent;
     const base = intent.base;
@@ -2258,6 +2365,8 @@
         return solveRatioSimplify(intent);
       case "proportion_solve":
         return solveProportion(intent);
+      case "simple_interest":
+        return solveSimpleInterest(intent);
       case "percentage_of":
         return solvePercentageOf(intent);
       case "percentage_find":

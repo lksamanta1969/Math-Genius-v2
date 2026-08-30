@@ -5,6 +5,7 @@
  * Milestone 3: decimals (ops, compare, order, round, place value, conversions)
  * Milestone 4: advanced decimal arithmetic (precision, arbitrary length, sci notation)
  * Milestone 5: ratio, proportion, percentage, advanced fractions, mixed numbers
+ * Milestone 7: simple interest
  * Run: node scripts/test-numbers-rule-engine.js
  */
 "use strict";
@@ -302,9 +303,38 @@ const milestone5EdgeCases = [
   { name: "fraction div by zero", text: "2/3/0/5", expectUnsupported: true }
 ];
 
-const unsupportedCases = [
-  { name: "simple interest rejected", text: "find simple interest P=1000 R=5 T=2" }
+const simpleInterestCases = [
+  {
+    name: "SI labeled PRT",
+    text: "find simple interest P=1000 R=5 T=2",
+    expect: "100",
+    opKey: "simple_interest",
+    formulaId: "CBSE-C7-AR-006"
+  },
+  {
+    name: "SI worded",
+    text: "find simple interest on 1000 at 5% for 2 years",
+    expect: "100",
+    opKey: "simple_interest",
+    formulaId: "CBSE-C7-AR-006"
+  }
 ];
+
+const simpleInterestEdgeCases = [
+  { name: "SI missing time", text: "find simple interest P=1000 R=5", expectUnsupported: true },
+  {
+    name: "SI negative principal",
+    text: "find simple interest P=-1000 R=5 T=2",
+    expectUnsupported: true
+  },
+  {
+    name: "SI negative rate",
+    text: "find simple interest P=1000 R=-5 T=2",
+    expectUnsupported: true
+  }
+];
+
+const unsupportedCases = [];
 
 async function runProviderCase(c) {
   const question = {
@@ -612,6 +642,13 @@ async function run() {
       expect: "30",
       formulaId: "CBSE-C7-AR-005",
       opKey: "percentage_of"
+    },
+    {
+      name: "simple interest formula ID",
+      text: "find simple interest P=1000 R=5 T=2",
+      expect: "100",
+      formulaId: "CBSE-C7-AR-006",
+      opKey: "simple_interest"
     }
   ];
   for (const c of formulaIdCases) {
@@ -624,6 +661,49 @@ async function run() {
       catalogMapsTo(c.opKey, c.formulaId) &&
       ids.indexOf(c.formulaId) >= 0;
     mark("Provider." + c.name, ok, { ids: ids, answer: sol.finalAnswer });
+  }
+
+  // Milestone 7 — Simple interest
+  for (const c of simpleInterestCases) {
+    total += 1;
+    const sol = Numbers.trySolve(c.text);
+    const catalogOk =
+      c.formulaId && c.opKey ? catalogMapsTo(c.opKey, c.formulaId) : true;
+    const ok =
+      sol &&
+      !sol.unsupported &&
+      sol.verified !== false &&
+      Array.isArray(sol.steps) &&
+      sol.steps.length >= 3 &&
+      checkAnswer(sol, c) &&
+      (c.opKey ? sol.operationKey === c.opKey : true) &&
+      catalogOk;
+    mark("M7." + c.name, ok, {
+      answer: sol && sol.finalAnswer,
+      expected: c.expect,
+      opKey: sol && sol.operationKey
+    });
+  }
+
+  for (const c of simpleInterestCases) {
+    total += 1;
+    const sol = await runProviderCase(c);
+    const ids = collectFormulaIds(sol);
+    const ok =
+      sol.status === "complete" &&
+      sol.verification === "Verified" &&
+      checkAnswer(sol, c) &&
+      ids.indexOf(c.formulaId) >= 0;
+    mark("Provider.M7." + c.name, ok, {
+      answer: sol.finalAnswer,
+      formulas: sol.formulaIds
+    });
+  }
+
+  for (const c of simpleInterestEdgeCases) {
+    total += 1;
+    const sol = Numbers.trySolve(c.text);
+    mark("Edge.M7." + c.name, !!(sol && sol.unsupported), { sol: sol });
   }
 
   // Milestone 5 edge cases
@@ -677,6 +757,7 @@ async function run() {
     Numbers.looksLikeNumbers("1.5e2 + 2.5e1") &&
     Numbers.looksLikeNumbers("simplify ratio 12:18") &&
     Numbers.looksLikeNumbers("find 20% of 150") &&
+    Numbers.looksLikeNumbers("find simple interest P=1000 R=5 T=2") &&
     Numbers.looksLikeNumbers("2:3 = x:12 find x") &&
     Numbers.looksLikeNumbers("2 1/3 + 1 1/2") &&
     !Numbers.looksLikeNumbers("Find the mean of 1,2,3");
