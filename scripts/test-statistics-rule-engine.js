@@ -33,6 +33,7 @@ loadScript("resources/app/js/solver/providers/local-rule-engine/numbers.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/algebra.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/geometry.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/mensuration.js");
+loadScript("resources/app/js/solver/providers/local-rule-engine/probability.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/statistics.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/handlers.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/provider.js");
@@ -87,10 +88,6 @@ const cases = [
 ];
 
 const unsupportedCases = [
-  {
-    name: "Unsupported Probability",
-    text: "What is the probability of getting a head when a coin is tossed?"
-  },
   {
     name: "Unsupported variance",
     text: "Find the variance of the data 2, 4, 6, 8"

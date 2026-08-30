@@ -141,7 +141,10 @@
     statistics_frequency: ["CBSE-C6-DH-001"],
     statistics_frequency_table: ["CBSE-C6-DH-001"],
     statistics_pictograph: ["CBSE-C6-DH-002"],
-    statistics_bar_graph: ["CBSE-C6-DH-003"]
+    statistics_bar_graph: ["CBSE-C6-DH-003"],
+    // Phase 8F — Classical Probability (M1)
+    probability_single_event: ["CBSE-C7-PR-001"],
+    probability_complement: ["CBSE-C7-PR-002"]
   });
 
   function ingestFormulasArray(list) {

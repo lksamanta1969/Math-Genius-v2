@@ -1,7 +1,7 @@
 {
-  "version": "4.3",
+  "version": "4.4",
   "app": "Math Genius",
-  "phase": "phase-8e-statistics-rule-engine",
+  "phase": "phase-8f-probability-rule-engine",
   "syllabusStandard": {
     "description": "Formula Library follows the latest board Mathematics syllabi. Each class contains only formulas prescribed for that class.",
     "hierarchy": "boards[] → classes[] → subjects[] → chapters[] → formulas[]",
@@ -2546,7 +2546,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T18:00:00.000Z",
-                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2613,7 +2613,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T18:00:00.000Z",
-                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2682,7 +2682,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T18:00:00.000Z",
-                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2751,7 +2751,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T18:00:00.000Z",
-                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2819,7 +2819,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T18:00:00.000Z",
-                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2886,7 +2886,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T18:00:00.000Z",
-                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -2954,7 +2954,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T18:00:00.000Z",
-                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -3021,7 +3021,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T18:00:00.000Z",
-                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -3090,7 +3090,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T18:00:00.000Z",
-                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -3157,7 +3157,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T18:00:00.000Z",
-                      "updatedAt": "2026-07-26T18:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -4013,7 +4013,7 @@
                       ],
                       "verification": "Reviewed",
                       "createdAt": "2026-07-26T20:00:00.000Z",
-                      "updatedAt": "2026-07-26T20:00:00.000Z",
+                      "updatedAt": "2026-07-26T12:00:00.000Z",
                       "version": 1,
                       "source": {
                         "board": "CBSE",
@@ -7248,6 +7248,174 @@
                       }
                     }
                   ]
+                },
+                {
+                  "id": "probability",
+                  "title": "Probability",
+                  "chapterNumber": 2,
+                  "chapterCode": "CBSE-C7-PR-CH01",
+                  "board": "CBSE",
+                  "class": "Class 7",
+                  "subject": "Statistics",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "30 min",
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 7",
+                    "subject": "Statistics",
+                    "chapter": "Probability",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-08-30T12:00:00.000Z",
+                      "updatedAt": "2026-08-30T12:00:00.000Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": "All outcomes must be equally likely.",
+                      "example": "A fair coin: P(head) = 1/2",
+                      "latex": "P(E)=\\frac{\\text{favorable outcomes}}{\\text{total outcomes}}",
+                      "variables": [
+                        {
+                          "symbol": "P(E)",
+                          "meaning": "Probability of event E"
+                        },
+                        {
+                          "symbol": "favorable outcomes",
+                          "meaning": "Outcomes in which event E happens"
+                        },
+                        {
+                          "symbol": "total outcomes",
+                          "meaning": "All equally likely outcomes in the sample space"
+                        }
+                      ],
+                      "relatedFormulas": [
+                        "CBSE-C7-PR-002"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-PR-002"
+                      ],
+                      "keywords": [
+                        "probability",
+                        "classical",
+                        "coin",
+                        "die",
+                        "equally likely"
+                      ],
+                      "formulaName": "Classical Probability",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Statistics",
+                        "Probability"
+                      ],
+                      "id": "CBSE-C7-PR-001",
+                      "class": "Class 7",
+                      "subject": "Statistics",
+                      "chapter": "Probability",
+                      "chapterNumber": 2,
+                      "topic": "Classical Probability",
+                      "name": "Classical Probability",
+                      "formula": "P(E) = (number of favorable outcomes) / (total number of equally likely outcomes)",
+                      "description": "For equally likely outcomes, probability is the ratio of favorable outcomes to total outcomes.",
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Probability (introductory)"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Probability",
+                        "exercise": null,
+                        "page": null
+                      }
+                    },
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-08-30T12:00:00.000Z",
+                      "updatedAt": "2026-08-30T12:00:00.000Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": null,
+                      "example": "Fair die: P(not 6) = 1 − 1/6 = 5/6",
+                      "latex": "P(\\overline{E})=1-P(E)",
+                      "variables": [
+                        {
+                          "symbol": "P(not E)",
+                          "meaning": "Probability that event E does not occur"
+                        },
+                        {
+                          "symbol": "P(E)",
+                          "meaning": "Probability of event E"
+                        }
+                      ],
+                      "relatedFormulas": [
+                        "CBSE-C7-PR-001"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-PR-001"
+                      ],
+                      "keywords": [
+                        "complement",
+                        "not",
+                        "probability"
+                      ],
+                      "formulaName": "Complementary Probability",
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Statistics",
+                        "Probability"
+                      ],
+                      "id": "CBSE-C7-PR-002",
+                      "class": "Class 7",
+                      "subject": "Statistics",
+                      "chapter": "Probability",
+                      "chapterNumber": 2,
+                      "topic": "Complementary Probability",
+                      "name": "Complementary Probability",
+                      "formula": "P(not E) = 1 − P(E)",
+                      "description": "The complement of an event is everything in the sample space except the event.",
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Probability (introductory)"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Probability",
+                        "exercise": null,
+                        "page": null
+                      }
+                    }
+                  ]
                 }
               ]
             }
@@ -8593,5 +8761,5 @@
       "classes": []
     }
   ],
-  "updatedAt": "2026-07-26T21:00:00.000Z"
+  "updatedAt": "2026-08-30T12:00:00.000Z"
 }

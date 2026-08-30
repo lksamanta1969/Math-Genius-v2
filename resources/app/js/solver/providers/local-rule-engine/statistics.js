@@ -4,7 +4,8 @@
  * Supported: Tally / Frequency table, Pictograph, Bar graph,
  * Mean, Median, Mode, Range.
  *
- * Rejects: Probability, Standard Deviation, Variance,
+ * Rejects: Standard Deviation, Variance,
+ * (Classical probability is handled by probability.js)
  * Pie Charts, Histograms, Box Plots.
  *
  * Formula text from Formula Library via FormulaCatalog IDs only.
@@ -95,13 +96,6 @@
 
   function isUnsupportedStatistics(text) {
     const t = String(text || "").toLowerCase();
-    if (
-      /\bprobabilit\w*\b/.test(t) ||
-      /\b(chance|likelihood|odds)\b/.test(t) ||
-      /\b(dice|coin\s+toss|deck\s+of\s+cards)\b/.test(t)
-    ) {
-      return "Probability is not supported in Phase 8E";
-    }
     if (
       /\bstandard\s+deviation\b/.test(t) ||
       /\bvariance\b/.test(t) ||

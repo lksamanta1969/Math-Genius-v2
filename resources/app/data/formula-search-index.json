@@ -1,7 +1,7 @@
 {
-  "version": "4.3",
-  "generatedAt": "2026-08-30T14:47:04.967Z",
-  "totalEntries": 86,
+  "version": "4.4",
+  "generatedAt": "2026-08-30T12:00:00.000Z",
+  "totalEntries": 88,
   "entries": [
     {
       "id": "CBSE-C6-AR-001",
@@ -2387,6 +2387,66 @@
       ],
       "difficulty": "Easy",
       "searchText": "mode of data mode of data mode = observation with the highest frequency \\mathrm{mode}=\\arg\\max f(x) the mode is the most frequent observation. a data set may have more than one mode, or no mode if all frequencies are 1. data 2, 3, 2, 5, 2 ⇒ mode = 2 statistics data handling mode class 7 cbse mode frequency data cbse class 7 statistics"
+    },
+    {
+      "id": "CBSE-C7-PR-001",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "7",
+      "class": "Class 7",
+      "subjectId": "statistics",
+      "subject": "Statistics",
+      "chapterId": "probability",
+      "chapter": "Probability",
+      "chapterNumber": 2,
+      "topic": "Classical Probability",
+      "name": "Classical Probability",
+      "formulaName": "Classical Probability",
+      "formula": "P(E) = (number of favorable outcomes) / (total number of equally likely outcomes)",
+      "keywords": [
+        "probability",
+        "classical",
+        "coin",
+        "die",
+        "equally likely"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 7",
+        "Statistics",
+        "Probability"
+      ],
+      "difficulty": "Easy",
+      "searchText": "classical probability classical probability p(e) = (number of favorable outcomes) / (total number of equally likely outcomes) p(e)=\\frac{\\text{favorable outcomes}}{\\text{total outcomes}} for equally likely outcomes, probability is the ratio of favorable outcomes to total outcomes. a fair coin: p(head) = 1/2 all outcomes must be equally likely. statistics probability classical probability class 7 cbse probability classical coin die equally likely cbse class 7 statistics probability"
+    },
+    {
+      "id": "CBSE-C7-PR-002",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "7",
+      "class": "Class 7",
+      "subjectId": "statistics",
+      "subject": "Statistics",
+      "chapterId": "probability",
+      "chapter": "Probability",
+      "chapterNumber": 2,
+      "topic": "Complementary Probability",
+      "name": "Complementary Probability",
+      "formulaName": "Complementary Probability",
+      "formula": "P(not E) = 1 − P(E)",
+      "keywords": [
+        "complement",
+        "not",
+        "probability"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 7",
+        "Statistics",
+        "Probability"
+      ],
+      "difficulty": "Easy",
+      "searchText": "complementary probability complementary probability p(not e) = 1 − p(e) p(\\overline{e})=1-p(e) the complement of an event is everything in the sample space except the event. fair die: p(not 6) = 1 − 1/6 = 5/6 statistics probability complementary probability class 7 cbse complement not probability cbse class 7 statistics probability"
     }
   ],
   "searchableFields": [

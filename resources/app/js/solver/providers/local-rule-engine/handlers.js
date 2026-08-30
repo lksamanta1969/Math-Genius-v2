@@ -1,5 +1,5 @@
 /**
- * Topic handlers — Numbers + Algebra + Geometry + Mensuration + Statistics.
+ * Topic handlers — Numbers + Algebra + Geometry + Mensuration + Probability + Statistics.
  */
 (function (root, factory) {
   "use strict";
@@ -10,6 +10,7 @@
       require("./algebra"),
       require("./geometry"),
       require("./mensuration"),
+      require("./probability"),
       require("./statistics")
     );
   } else {
@@ -19,6 +20,7 @@
       root.LocalRuleAlgebra,
       root.LocalRuleGeometry,
       root.LocalRuleMensuration,
+      root.LocalRuleProbability,
       root.LocalRuleStatistics
     );
   }
@@ -28,6 +30,7 @@
   Algebra,
   Geometry,
   Mensuration,
+  Probability,
   Statistics
 ) {
   "use strict";
@@ -35,6 +38,18 @@
   function classify(rawText) {
     const text = Normalize.normalize(rawText);
     const compact = text.replace(/\s+/g, " ");
+
+    // Probability (Phase 8F M1) — before statistics
+    if (Probability && Probability.isUnsupportedProbability) {
+      const prBad = Probability.isUnsupportedProbability(compact);
+      if (prBad && Probability.looksLikeProbability(compact)) {
+        return { type: "unsupported", reason: prBad };
+      }
+    }
+    if (Probability && Probability.looksLikeProbability(compact)) {
+      const prIntent = Probability.classify(compact);
+      if (prIntent) return prIntent;
+    }
 
     // Statistics / data handling (before mensuration — "range" is stats not geometry)
     if (Statistics && Statistics.isUnsupportedStatistics) {
@@ -116,6 +131,29 @@
         unsupported: true,
         reason: (intent && intent.reason) || "Unsupported"
       };
+    }
+
+    if (intent.type === "probability" && Probability && Probability.trySolve) {
+      const pr = Probability.trySolve(intent.text || "");
+      if (pr && pr.unsupported) {
+        return {
+          unsupported: true,
+          reason: pr.reason || "Unsupported probability"
+        };
+      }
+      if (pr) return pr;
+      return {
+        unsupported: true,
+        reason: "Unsupported probability question type"
+      };
+    }
+
+    if (
+      Probability &&
+      Probability.isProbabilityIntent &&
+      Probability.isProbabilityIntent(intent.type)
+    ) {
+      return Probability.solveIntent(intent);
     }
 
     if (intent.type === "statistics" && Statistics && Statistics.trySolve) {

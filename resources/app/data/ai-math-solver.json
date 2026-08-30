@@ -1,7 +1,7 @@
 {
   "feature": "AI Math Solver",
-  "version": "8E",
-  "phase": "8E",
+  "version": "8F",
+  "phase": "8F",
   "architecture": "plugin-based",
   "productModel": "learning-platform",
   "security": {
@@ -84,8 +84,8 @@
       "mini-quiz"
     ],
     "localRuleEngine": {
-      "phase": "8E",
-      "scope": "CBSE Class 6–7 Arithmetic + Algebra + Geometry + Mensuration + Data Handling/Statistics",
+      "phase": "8F",
+      "scope": "CBSE Class 6–7 Arithmetic + Algebra + Geometry + Mensuration + Data Handling/Statistics + Classical Probability",
       "supported": [
         "Addition",
         "Subtraction",
@@ -100,14 +100,15 @@
         "Even / Odd",
         "Fractions",
         "Simplification",
+        "Number System (integers, decimals, ratio, proportion, percentage)",
         "Intro Algebra (variables, like terms, linear equations)",
         "Geometry (point, line, ray, segment, parallel/intersecting, angles, triangle basics)",
         "Mensuration (square, rectangle, triangle, circle — perimeter/area/circumference)",
         "Data Handling (tally, frequency table, pictograph, bar graph)",
-        "Statistics (mean, median, mode, range)"
+        "Statistics (mean, median, mode, range)",
+        "Probability (classical single event, complement — coin, die, bag, spinner)"
       ],
       "unsupported": [
-        "Probability",
         "Standard Deviation",
         "Variance",
         "Pie Charts",
@@ -408,10 +409,15 @@
       ]
     },
     "8F": {
-      "status": "planned",
-      "features": ["history", "export", "share", "print", "pdfEnhancements", "docx", "numberSystem", "probability"]
+      "status": "active",
+      "features": [
+        "probabilityRuleEngine",
+        "classicalProbability",
+        "complementaryProbability",
+        "probabilityFormulaIds"
+      ]
     }
   },
   "disabledInPhase8A": ["history", "export", "share", "print"],
-  "disabledUntilLater": ["cloudAiSolve", "probabilitySolver", "3dMensuration"]
+  "disabledUntilLater": ["cloudAiSolve", "3dMensuration"]
 }
