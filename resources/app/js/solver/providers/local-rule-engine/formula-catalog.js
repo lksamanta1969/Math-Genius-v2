@@ -86,6 +86,16 @@
     decimal_round: ["CBSE-C6-AR-007"],
     decimal_to_fraction: ["CBSE-C6-AR-017", "CBSE-C6-AR-018"],
     fraction_to_decimal: ["CBSE-C6-AR-017"],
+    // Phase 9 — Advanced fractions, ratio, proportion, percentage (Milestone 5)
+    fraction_mul: ["CBSE-C6-AR-018"],
+    fraction_div: ["CBSE-C6-AR-018"],
+    mixed_number_convert: ["CBSE-C6-AR-021"],
+    mixed_number_binary: ["CBSE-C6-AR-019", "CBSE-C6-AR-020", "CBSE-C6-AR-021"],
+    ratio_simplify: ["CBSE-C7-AR-005"],
+    proportion_solve: ["CBSE-C7-AR-005"],
+    percentage_of: ["CBSE-C7-AR-005"],
+    percentage_find: ["CBSE-C7-AR-005"],
+    percentage_convert: ["CBSE-C7-AR-005"],
     algebra_variable_constant: ["CBSE-C6-AL-001"],
     algebra_expression: ["CBSE-C6-AL-002"],
     algebra_like_terms: ["CBSE-C6-AL-003"],
@@ -236,7 +246,12 @@
      */
     resolveForOperation: function (operationKey) {
       return this.resolveIdsForOperation(operationKey).map(function (id) {
-        return { formulaId: id };
+        const entry = indexById[id];
+        const ref = { formulaId: id };
+        if (entry) {
+          ref.formulaName = entry.formulaName || entry.name || null;
+        }
+        return ref;
       });
     },
 

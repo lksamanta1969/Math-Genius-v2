@@ -87,6 +87,48 @@
     return f.num + "/" + f.den;
   }
 
+  function multiplyFractions(a, b) {
+    return simplifyFraction(a.num * b.num, a.den * b.den);
+  }
+
+  function divideFractions(a, b) {
+    if (b.num === 0) throw new Error("Division by zero in fraction");
+    return simplifyFraction(a.num * b.den, a.den * b.num);
+  }
+
+  function improperToMixed(num, den) {
+    const simp = simplifyFraction(num, den);
+    const absNum = Math.abs(simp.num);
+    const q = Math.floor(absNum / simp.den);
+    const r = absNum % simp.den;
+    const sign = simp.num < 0 ? -1 : 1;
+    return {
+      whole: sign * q,
+      num: r,
+      den: simp.den,
+      sign: sign
+    };
+  }
+
+  function mixedToImproper(whole, num, den) {
+    if (den === 0) throw new Error("Division by zero in fraction");
+    const w = Math.trunc(whole);
+    const n = Math.abs(Math.trunc(num));
+    const d = Math.abs(Math.trunc(den));
+    const sign = w < 0 || num < 0 ? -1 : 1;
+    const absWhole = Math.abs(w);
+    const improperNum = sign * (absWhole * d + n);
+    return simplifyFraction(improperNum, d);
+  }
+
+  function mixedToString(m) {
+    if (!m || m.num === 0) return String(m.whole || 0);
+    if (!m.whole) {
+      return fractionToString({ num: (m.sign || 1) * m.num, den: m.den });
+    }
+    return m.whole + " " + m.num + "/" + m.den;
+  }
+
   function nearlyEqual(a, b, eps) {
     const e = eps != null ? eps : 1e-9;
     if (typeof a === "number" && typeof b === "number") {
@@ -105,6 +147,11 @@
     isEven: isEven,
     simplifyFraction: simplifyFraction,
     fractionToString: fractionToString,
+    multiplyFractions: multiplyFractions,
+    divideFractions: divideFractions,
+    improperToMixed: improperToMixed,
+    mixedToImproper: mixedToImproper,
+    mixedToString: mixedToString,
     nearlyEqual: nearlyEqual
   };
 });

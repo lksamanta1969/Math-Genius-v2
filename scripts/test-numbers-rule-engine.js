@@ -4,6 +4,7 @@
  * Milestone 2: integers (ops, absolute value, compare, order)
  * Milestone 3: decimals (ops, compare, order, round, place value, conversions)
  * Milestone 4: advanced decimal arithmetic (precision, arbitrary length, sci notation)
+ * Milestone 5: ratio, proportion, percentage, advanced fractions, mixed numbers
  * Run: node scripts/test-numbers-rule-engine.js
  */
 "use strict";
@@ -267,10 +268,42 @@ const advancedDecimalEdgeCases = [
   { name: "precision div by zero", text: "5 ÷ 0 to 2 decimal places", expectUnsupported: true }
 ];
 
+const advancedFractionCases = [
+  { name: "fraction mul 2/3*4/5", text: "2/3*4/5", expect: "8/15", opKey: "fraction_mul" },
+  { name: "fraction div 2/3/4/5", text: "2/3/4/5", expect: "5/6", opKey: "fraction_div" },
+  { name: "mixed to improper", text: "convert 2 1/3 to improper fraction", expect: "7/3", opKey: "mixed_number_convert" },
+  { name: "improper to mixed", text: "convert 14/3 to mixed number", expect: "4 2/3", opKey: "mixed_number_convert" },
+  { name: "mixed add", text: "2 1/3 + 1 1/2", expect: "3 5/6", opKey: "mixed_number_binary" },
+  { name: "mixed sub", text: "3 1/2 - 1 1/4", expect: "2 1/4", opKey: "mixed_number_binary" }
+];
+
+const ratioProportionCases = [
+  { name: "ratio simplify", text: "simplify ratio 12:18", expect: "2:3", opKey: "ratio_simplify" },
+  { name: "ratio three terms", text: "simplify ratio 12:18:24", expect: "2:3:4", opKey: "ratio_simplify" },
+  { name: "proportion colon", text: "2:3 = x:12 find x", expect: "8", opKey: "proportion_solve" },
+  { name: "proportion fraction", text: "2/3 = x/12 find x", expect: "8", opKey: "proportion_solve" },
+  { name: "proportion unknown denom", text: "3:4 = 9:x find x", expect: "12", opKey: "proportion_solve" }
+];
+
+const percentageCases = [
+  { name: "percent of", text: "find 20% of 150", expect: "30", opKey: "percentage_of" },
+  { name: "percent of wording", text: "25% of 80", expect: "20", opKey: "percentage_of" },
+  { name: "what percent", text: "30 is what percent of 150", expect: "20%", opKey: "percentage_find" },
+  { name: "what percent alt", text: "what percent is 15 of 60", expect: "25%", opKey: "percentage_find" },
+  { name: "percent to fraction", text: "convert 25% to fraction", expect: "1/4", opKey: "percentage_convert" },
+  { name: "percent to decimal", text: "convert 25% to decimal", expect: "0.25", opKey: "percentage_convert" },
+  { name: "decimal to percent", text: "convert 0.75 to percent", expect: "75%", opKey: "percentage_convert" },
+  { name: "fraction to percent", text: "convert 3/4 to percent", expect: "75%", opKey: "percentage_convert" }
+];
+
+const milestone5EdgeCases = [
+  { name: "proportion two unknowns", text: "x:3 = y:12", expectUnsupported: true },
+  { name: "percent of zero base", text: "20% of 0", expect: "0", opKey: "percentage_of" },
+  { name: "fraction div by zero", text: "2/3/0/5", expectUnsupported: true }
+];
+
 const unsupportedCases = [
-  { name: "ratio rejected", text: "simplify ratio 12:18" },
-  { name: "percentage rejected", text: "find 20% of 150" },
-  { name: "mixed number rejected", text: "2 1/3 + 1 1/2" }
+  { name: "simple interest rejected", text: "find simple interest P=1000 R=5 T=2" }
 ];
 
 async function runProviderCase(c) {
@@ -501,6 +534,77 @@ async function run() {
     mark("Provider.decimal_to_fraction formula ID", ok, { ids: ids, answer: sol.finalAnswer });
   }
 
+  // Milestone 5 — Advanced fractions, ratio, proportion, percentage
+  for (const c of advancedFractionCases.concat(ratioProportionCases, percentageCases)) {
+    total += 1;
+    const sol = Numbers.trySolve(c.text);
+    const ok =
+      sol &&
+      !sol.unsupported &&
+      sol.verified !== false &&
+      Array.isArray(sol.steps) &&
+      sol.steps.length > 0 &&
+      checkAnswer(sol, c) &&
+      (c.opKey ? sol.operationKey === c.opKey : true);
+    mark("M5." + c.name, ok, {
+      answer: sol && sol.finalAnswer,
+      expected: c.expect,
+      opKey: sol && sol.operationKey
+    });
+  }
+
+  const m5ProviderCases = advancedFractionCases.slice(0, 3)
+    .concat(ratioProportionCases.slice(0, 2))
+    .concat(percentageCases.slice(0, 3));
+  for (const c of m5ProviderCases) {
+    total += 1;
+    const sol = await runProviderCase(c);
+    const ok =
+      sol.status === "complete" &&
+      sol.verification === "Verified" &&
+      checkAnswer(sol, c);
+    mark("Provider.M5." + c.name, ok, {
+      answer: sol.finalAnswer,
+      expected: c.expect,
+      formulas: sol.formulaIds
+    });
+  }
+
+  // Formula ID for percentage
+  total += 1;
+  {
+    const sol = await runProviderCase({
+      name: "percent-formula",
+      text: "find 20% of 150"
+    });
+    const ids = (sol.formulaIds || []).concat(
+      (sol.formulaUsed || []).map(function (f) {
+        return f && (f.formulaId || f.id);
+      })
+    );
+    const ok =
+      sol.status === "complete" &&
+      String(sol.finalAnswer) === "30" &&
+      ids.indexOf("CBSE-C7-AR-005") >= 0;
+    mark("Provider.percentage formula ID", ok, { ids: ids, answer: sol.finalAnswer });
+  }
+
+  // Milestone 5 edge cases
+  for (const c of milestone5EdgeCases) {
+    total += 1;
+    const sol = Numbers.trySolve(c.text);
+    if (c.expectUnsupported) {
+      mark("Edge.M5." + c.name, !!(sol && sol.unsupported), { sol: sol });
+    } else {
+      const ok =
+        sol &&
+        !sol.unsupported &&
+        checkAnswer(sol, c) &&
+        (c.opKey ? sol.operationKey === c.opKey : true);
+      mark("Edge.M5." + c.name, ok, { answer: sol && sol.finalAnswer, expected: c.expect });
+    }
+  }
+
   // Edge cases
   for (const c of integerEdgeCases
     .concat(decimalEdgeCases)
@@ -534,6 +638,10 @@ async function run() {
     Numbers.looksLikeNumbers("place value of 5 in 12.345") &&
     Numbers.looksLikeNumbers("1 ÷ 3 to 4 decimal places") &&
     Numbers.looksLikeNumbers("1.5e2 + 2.5e1") &&
+    Numbers.looksLikeNumbers("simplify ratio 12:18") &&
+    Numbers.looksLikeNumbers("find 20% of 150") &&
+    Numbers.looksLikeNumbers("2:3 = x:12 find x") &&
+    Numbers.looksLikeNumbers("2 1/3 + 1 1/2") &&
     !Numbers.looksLikeNumbers("Find the mean of 1,2,3");
   mark("looksLikeNumbers", looksOk);
 

@@ -6,6 +6,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { writeSearchIndex } = require("./lib/formula-search-index");
 
 const ROOT = path.join(__dirname, "..");
 const DATA_PATH = path.join(ROOT, "resources", "app", "data", "formula-library.json");
@@ -205,44 +206,6 @@ db.version = "4.3";
 db.phase = "phase-8e-statistics-rule-engine";
 db.updatedAt = NOW;
 
-function walkFormulas(node, out) {
-  if (!node || typeof node !== "object") return;
-  if (Array.isArray(node)) {
-    node.forEach(function (n) {
-      walkFormulas(n, out);
-    });
-    return;
-  }
-  if (typeof node.id === "string" && typeof node.name === "string" && node.formula) {
-    out.push({
-      id: node.id,
-      name: node.name,
-      formulaName: node.formulaName || node.name,
-      board: node.board || null,
-      class: node.class || null,
-      subject: node.subject || null,
-      chapter: node.chapter || null,
-      topic: node.topic || null,
-      keywords: node.keywords || [],
-      difficulty: node.difficulty || null
-    });
-  }
-  Object.keys(node).forEach(function (k) {
-    if (k === "id" || k === "name" || k === "formula") return;
-    walkFormulas(node[k], out);
-  });
-}
-
-const entries = [];
-walkFormulas(db, entries);
+const index = writeSearchIndex(db, INDEX_PATH, NOW);
 fs.writeFileSync(DATA_PATH, JSON.stringify(db, null, 2) + "\n", "utf8");
-fs.writeFileSync(
-  INDEX_PATH,
-  JSON.stringify(
-    { version: db.version, generatedAt: NOW, count: entries.length, formulas: entries },
-    null,
-    2
-  ) + "\n",
-  "utf8"
-);
-console.log("Library v" + db.version + ", index count=" + entries.length);
+console.log("Library v" + db.version + ", index count=" + index.totalEntries);

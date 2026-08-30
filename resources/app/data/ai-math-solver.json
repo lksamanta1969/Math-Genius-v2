@@ -396,11 +396,22 @@
         "dataHandlingFormulas"
       ]
     },
+    "9": {
+      "status": "active",
+      "features": [
+        "numberSystemEngine",
+        "naturalWholeIntegers",
+        "advancedFractions",
+        "decimalsPrecision",
+        "ratioProportionPercentage",
+        "numberSystemFormulaIds"
+      ]
+    },
     "8F": {
       "status": "planned",
       "features": ["history", "export", "share", "print", "pdfEnhancements", "docx", "numberSystem", "probability"]
     }
   },
   "disabledInPhase8A": ["history", "export", "share", "print"],
-  "disabledUntilLater": ["cloudAiSolve", "probabilitySolver", "numberSystemSolver", "3dMensuration"]
+  "disabledUntilLater": ["cloudAiSolve", "probabilitySolver", "3dMensuration"]
 }

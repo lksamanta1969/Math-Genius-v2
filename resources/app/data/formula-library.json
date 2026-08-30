@@ -2528,7 +2528,12 @@
                       "name": "Point",
                       "formula": "A point marks a location (no length or width)",
                       "latex": "P",
-                      "variables": [],
+                      "variables": [
+                        {
+                          "symbol": "P",
+                          "meaning": "Point label"
+                        }
+                      ],
                       "description": "A point is an exact position in space. It has no size.",
                       "example": "Point A marks the tip of a pencil on paper.",
                       "notes": null,
@@ -2590,7 +2595,12 @@
                       "name": "Line",
                       "formula": "A line extends endlessly in both directions",
                       "latex": "\\overleftrightarrow{AB}",
-                      "variables": [],
+                      "variables": [
+                        {
+                          "symbol": "AB",
+                          "meaning": "Line through points A and B"
+                        }
+                      ],
                       "description": "A straight line has no endpoints and infinite length.",
                       "example": "Line AB passes through points A and B and goes on forever.",
                       "notes": null,
@@ -2654,7 +2664,12 @@
                       "name": "Ray",
                       "formula": "A ray has one endpoint and extends in one direction",
                       "latex": "\\overrightarrow{AB}",
-                      "variables": [],
+                      "variables": [
+                        {
+                          "symbol": "AB",
+                          "meaning": "Ray starting at A through B"
+                        }
+                      ],
                       "description": "Ray AB starts at A and passes through B without end.",
                       "example": "A sunbeam can be modelled as a ray.",
                       "notes": null,
@@ -2718,7 +2733,12 @@
                       "name": "Line Segment",
                       "formula": "A line segment joins two endpoints and has fixed length",
                       "latex": "\\overline{AB}",
-                      "variables": [],
+                      "variables": [
+                        {
+                          "symbol": "AB",
+                          "meaning": "Endpoints A and B of the segment"
+                        }
+                      ],
                       "description": "Segment AB is the part of a line between A and B.",
                       "example": "The edge of a ruler between two marks is a line segment.",
                       "notes": null,
@@ -2781,7 +2801,12 @@
                       "name": "Parallel Lines",
                       "formula": "Parallel lines never meet and stay the same distance apart",
                       "latex": "l \\parallel m",
-                      "variables": [],
+                      "variables": [
+                        {
+                          "symbol": "l, m",
+                          "meaning": "Parallel lines"
+                        }
+                      ],
                       "description": "Two lines in a plane that do not intersect are parallel.",
                       "example": "Opposite edges of a ruler are parallel.",
                       "notes": null,
@@ -2843,7 +2868,12 @@
                       "name": "Intersecting Lines",
                       "formula": "Intersecting lines meet at exactly one point",
                       "latex": "l \\cap m = \\{P\\}",
-                      "variables": [],
+                      "variables": [
+                        {
+                          "symbol": "P",
+                          "meaning": "Point of intersection"
+                        }
+                      ],
                       "description": "Two lines that cross form angles at their intersection point.",
                       "example": "The letter X is formed by intersecting line segments.",
                       "notes": null,
@@ -2906,7 +2936,12 @@
                       "name": "Acute Angle",
                       "formula": "0° < acute angle < 90°",
                       "latex": "0^\\circ < \\angle < 90^\\circ",
-                      "variables": [],
+                      "variables": [
+                        {
+                          "symbol": "θ",
+                          "meaning": "Acute angle measure in degrees"
+                        }
+                      ],
                       "description": "An acute angle is smaller than a right angle.",
                       "example": "45° is an acute angle.",
                       "notes": null,
@@ -2968,7 +3003,12 @@
                       "name": "Obtuse Angle",
                       "formula": "90° < obtuse angle < 180°",
                       "latex": "90^\\circ < \\angle < 180^\\circ",
-                      "variables": [],
+                      "variables": [
+                        {
+                          "symbol": "θ",
+                          "meaning": "Obtuse angle measure in degrees"
+                        }
+                      ],
                       "description": "An obtuse angle is larger than a right angle but smaller than a straight angle.",
                       "example": "120° is an obtuse angle.",
                       "notes": null,
@@ -3032,7 +3072,12 @@
                       "name": "Reflex Angle",
                       "formula": "180° < reflex angle < 360°",
                       "latex": "180^\\circ < \\angle < 360^\\circ",
-                      "variables": [],
+                      "variables": [
+                        {
+                          "symbol": "θ",
+                          "meaning": "Reflex angle measure in degrees"
+                        }
+                      ],
                       "description": "A reflex angle is greater than a straight angle and less than a complete angle.",
                       "example": "270° is a reflex angle.",
                       "notes": null,
@@ -3094,7 +3139,12 @@
                       "name": "Triangle Basics",
                       "formula": "Triangle: 3 sides, 3 vertices, 3 angles; angle sum = 180°",
                       "latex": "\\angle A+\\angle B+\\angle C=180^\\circ",
-                      "variables": [],
+                      "variables": [
+                        {
+                          "symbol": "A, B, C",
+                          "meaning": "Vertices of triangle ABC"
+                        }
+                      ],
                       "description": "A triangle is a closed three-sided figure. Triangles are classified by sides (equilateral, isosceles, scalene) or by angles (acute, right, obtuse).",
                       "example": "A triangle with sides 3, 4, 5 is scalene; angles 40°, 60°, 80° form an acute triangle.",
                       "notes": null,

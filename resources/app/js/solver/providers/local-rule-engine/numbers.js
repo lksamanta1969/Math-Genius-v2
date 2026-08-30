@@ -1,14 +1,12 @@
 /**
  * Number System Rule Engine (Phase 9)
  *
- * Natural numbers, whole numbers, integers, fractions, HCF/LCM,
- * factors, multiples, prime, even/odd, BODMAS, absolute value,
- * integer comparison/ordering, decimals (ops, compare, order,
- * place value, rounding, terminating decimal ↔ fraction),
- * and advanced decimal arithmetic with configurable precision.
+ * Natural numbers, whole numbers, integers, fractions (add/sub/mul/div,
+ * simplify, mixed numbers), HCF/LCM, factors, multiples, prime, even/odd,
+ * BODMAS, absolute value, comparison/ordering, decimals, ratio, proportion,
+ * and percentage.
  *
  * Reuses math-utils.js, expression.js, normalize.js, decimal-math.js.
- * Ratio, proportion, percentage, advanced fractions — later milestones.
  */
 (function (root, factory) {
   "use strict";
@@ -60,7 +58,16 @@
     "decimal_to_fraction",
     "fraction_to_decimal",
     "decimal_division_precision",
-    "decimal_binary_precision"
+    "decimal_binary_precision",
+    "ratio_simplify",
+    "proportion_solve",
+    "percentage_of",
+    "percentage_find",
+    "percentage_convert",
+    "fraction_mul",
+    "fraction_div",
+    "mixed_number_convert",
+    "mixed_number_binary"
   ]);
 
   const NUM_TOKEN = "-?(?:\\d+\\.?\\d*|\\.\\d+)(?:[eE][+-]?\\d+)?";
@@ -108,6 +115,169 @@
       op: m[3],
       b: { num: Number(m[4]), den: Number(m[5]) }
     };
+  }
+
+  /** Parse mixed number: whole num/den */
+  function parseMixedNumberToken(token) {
+    const t = String(token || "").trim();
+    let m = t.match(/^(-?\d+)\s+(\d+)\s*\/\s*(\d+)$/);
+    if (m) {
+      return {
+        whole: Number(m[1]),
+        num: Number(m[2]),
+        den: Number(m[3]),
+        isMixed: true
+      };
+    }
+    m = t.match(/^(-?\d+)\s*\/\s*(\d+)$/);
+    if (m) {
+      return {
+        whole: 0,
+        num: Number(m[1]),
+        den: Number(m[2]),
+        isMixed: false
+      };
+    }
+    m = t.match(/^(-?\d+)$/);
+    if (m) {
+      return {
+        whole: Number(m[1]),
+        num: 0,
+        den: 1,
+        isMixed: false
+      };
+    }
+    return null;
+  }
+
+  /** Match mixed-number binary op: 2 1/3 + 1 1/2 */
+  function matchMixedNumberBinary(text) {
+    const m = String(text).match(
+      /^(-?\d+\s+\d+\s*\/\s*\d+|-?\d+\s*\/\s*\d+|-?\d+)\s*([+\-])\s*(-?\d+\s+\d+\s*\/\s*\d+|-?\d+\s*\/\s*\d+|-?\d+)$/
+    );
+    if (!m) return null;
+    const leftStr = m[1];
+    const rightStr = m[3];
+    function isFractionOrMixed(s) {
+      return /\d+\s+\d+\s*\/\s*\d+/.test(s) || /\d+\s*\/\s*\d+/.test(s);
+    }
+    if (!isFractionOrMixed(leftStr) && !isFractionOrMixed(rightStr)) return null;
+    const left = parseMixedNumberToken(leftStr);
+    const right = parseMixedNumberToken(rightStr);
+    if (!left || !right) return null;
+    return { a: left, op: m[2], b: right };
+  }
+
+  function mixedTokenToFraction(token) {
+    if (token.isMixed || (token.whole !== 0 && token.num !== 0)) {
+      return MathUtils.mixedToImproper(token.whole, token.num, token.den);
+    }
+    if (token.num !== 0 && token.den !== 1) {
+      return MathUtils.simplifyFraction(token.num, token.den);
+    }
+    return { num: token.whole, den: 1 };
+  }
+
+  function parseRatioTerms(text) {
+    const m = String(text || "").match(/(-?\d+(?:\.\d+)?(?::-?\d+(?:\.\d+)?)+)/);
+    if (!m) return null;
+    const parts = m[1].split(":").map(Number);
+    if (parts.some(function (n) {
+      return !isFinite(n);
+    })) {
+      return null;
+    }
+    return parts;
+  }
+
+  function simplifyRatioTerms(terms) {
+    const ints = terms.map(function (n) {
+      return Math.abs(n);
+    });
+    const g = MathUtils.gcdMany(ints);
+    if (!g) return terms.slice();
+    return terms.map(function (n) {
+      const sign = n < 0 ? -1 : 1;
+      return sign * (Math.abs(n) / g);
+    });
+  }
+
+  function formatRatio(terms) {
+    return terms.map(formatNum).join(":");
+  }
+
+  function parseProportionToken(token) {
+    const t = String(token || "").trim().toLowerCase();
+    if (t === "x" || t === "?") return { unknown: true, value: null };
+    const n = Number(t);
+    if (!isFinite(n)) return null;
+    return { unknown: false, value: n };
+  }
+
+  /** Colon proportion: a:b = c:d */
+  function matchColonProportion(text) {
+    const m = String(text).match(
+      /([x\d.]+)\s*:\s*([x\d.]+)\s*(?:=|::)\s*([x\d.]+)\s*:\s*([x\d.]+)/i
+    );
+    if (!m) return null;
+    const parts = [m[1], m[2], m[3], m[4]].map(parseProportionToken);
+    if (parts.some(function (p) {
+      return !p;
+    })) {
+      return null;
+    }
+    const unknownCount = parts.filter(function (p) {
+      return p.unknown;
+    }).length;
+    if (unknownCount !== 1) return null;
+    return { parts: parts, form: "colon" };
+  }
+
+  /** Fraction proportion: a/b = x/c */
+  function matchFractionProportion(text) {
+    const m = String(text).match(
+      /(-?\d+|x|\?)\s*\/\s*(-?\d+|x|\?)\s*=\s*(-?\d+|x|\?)\s*\/\s*(-?\d+|x|\?)/i
+    );
+    if (!m) return null;
+    const parts = [m[1], m[2], m[3], m[4]].map(parseProportionToken);
+    if (parts.some(function (p) {
+      return !p;
+    })) {
+      return null;
+    }
+    const unknownCount = parts.filter(function (p) {
+      return p.unknown;
+    }).length;
+    if (unknownCount !== 1) return null;
+    return { parts: parts, form: "fraction" };
+  }
+
+  function solveProportionValue(parts) {
+    const vals = parts.map(function (p) {
+      return p.unknown ? null : p.value;
+    });
+    let answer;
+    let unknownIndex = -1;
+    for (let i = 0; i < parts.length; i += 1) {
+      if (parts[i].unknown) unknownIndex = i;
+    }
+    if (unknownIndex < 0) return null;
+
+    if (parts.length === 4 && parts.every(function (p, i) {
+      return i % 2 === 1 || !p.unknown || p.unknown;
+    })) {
+      // colon a:b = c:d  OR fraction num/den = num/den
+      const a = vals[0];
+      const b = vals[1];
+      const c = vals[2];
+      const d = vals[3];
+      if (unknownIndex === 0 && b && c && d) answer = (b * c) / d;
+      else if (unknownIndex === 1 && a && c && d) answer = (a * d) / c;
+      else if (unknownIndex === 2 && a && b && d) answer = (a * d) / b;
+      else if (unknownIndex === 3 && a && b && c) answer = (b * c) / a;
+    }
+    if (answer == null || !isFinite(answer)) return null;
+    return answer;
   }
 
   function formatNum(v) {
@@ -188,17 +358,11 @@
     return MathUtils.simplifyFraction(num, den);
   }
 
-  /** Topics deferred to later Phase 9 milestones */
+  /** Topics not yet in scope for the number system engine */
   function isUnsupportedNumbers(text) {
     const t = String(text || "").toLowerCase();
-    if (/\b(ratio|proportion)\b/.test(t) && /\d+\s*:\s*\d+/.test(t)) {
-      return "Ratio and proportion will be supported in a later Phase 9 milestone";
-    }
-    if (/\bpercent(age)?\b/.test(t) || /%/.test(t)) {
-      return "Percentage calculations will be supported in a later Phase 9 milestone";
-    }
-    if (/\bmixed\s+number\b/.test(t) || /\d+\s+\d+\s*\/\s*\d+/.test(t)) {
-      return "Mixed number operations will be supported in a later Phase 9 milestone";
+    if (/\bsimple\s+interest\b/.test(t) || /\bSI\s*=/.test(t)) {
+      return "Simple interest will be supported in a later phase";
     }
     return null;
   }
@@ -245,6 +409,18 @@
       return true;
     }
     if (/\d+\.\d+/.test(compact) || /[eE][+-]?\d+/.test(compact)) return true;
+    if (/\bpercent(age)?\b/.test(compact) || /%/.test(compact)) return true;
+    if (/\b(ratio|proportion)\b/.test(compact) && /\d+\s*:\s*\d+/.test(compact)) {
+      return true;
+    }
+    if (/\d+\s*:\s*\d+/.test(compact) && (/\b(ratio|simplest|lowest)\b/i.test(compact) || /::/.test(compact))) {
+      return true;
+    }
+    if (/\d+\s*:\s*[x?]\b/i.test(compact) || /[x?]\s*:\s*\d+/i.test(compact)) return true;
+    if (/\d+\s*\/\s*\d+\s*=\s*[x?]\s*\/\s*\d+/i.test(compact)) return true;
+    if (/\d+\s+\d+\s*\/\s*\d+/.test(compact)) return true;
+    if (/\bconvert\b/i.test(compact) && /\bmixed\s+number\b/i.test(compact)) return true;
+    if (/\bconvert\b/i.test(compact) && /\bimproper\s+fraction\b/i.test(compact)) return true;
 
     let expr = compact
       .replace(/^(find|calculate|evaluate|simplify|what\s+is|solve)\s*[:=]?\s*/i, "")
@@ -343,6 +519,178 @@
       return {
         type: "fraction_simplify",
         frac: { num: Number(m[1]), den: Number(m[2]) },
+        text: compact
+      };
+    }
+
+    // Mixed number ↔ improper fraction conversion
+    m = compact.match(
+      /\bconvert\s+(-?\d+)\s*\/\s*(-?\d+)\s+to\s+(?:a\s+)?mixed\s+number\b/i
+    );
+    if (m) {
+      return {
+        type: "mixed_number_convert",
+        mode: "to_mixed",
+        num: Number(m[1]),
+        den: Number(m[2]),
+        text: compact
+      };
+    }
+    m = compact.match(
+      /\bconvert\s+(-?\d+)\s+(\d+)\s*\/\s*(\d+)\s+to\s+(?:an\s+)?improper\s+fraction\b/i
+    );
+    if (m) {
+      return {
+        type: "mixed_number_convert",
+        mode: "to_improper",
+        whole: Number(m[1]),
+        num: Number(m[2]),
+        den: Number(m[3]),
+        text: compact
+      };
+    }
+    m = compact.match(
+      /\b(-?\d+)\s*\/\s*(-?\d+)\s+(?:as|to)\s+(?:a\s+)?mixed\s+number\b/i
+    );
+    if (m) {
+      return {
+        type: "mixed_number_convert",
+        mode: "to_mixed",
+        num: Number(m[1]),
+        den: Number(m[2]),
+        text: compact
+      };
+    }
+
+    // Mixed-number binary addition/subtraction
+    const mixedBin = matchMixedNumberBinary(compact);
+    if (mixedBin) {
+      return {
+        type: "mixed_number_binary",
+        a: mixedBin.a,
+        op: mixedBin.op,
+        b: mixedBin.b,
+        text: compact
+      };
+    }
+
+    // Ratio simplify
+    if (
+      (/\b(ratio|ratios)\b/i.test(compact) || /\b(simplest|lowest)\b/i.test(compact)) &&
+      /\d+\s*:\s*\d+/.test(compact)
+    ) {
+      const terms = parseRatioTerms(compact);
+      if (terms && terms.length >= 2) {
+        return { type: "ratio_simplify", terms: terms, text: compact };
+      }
+    }
+    if (/^\s*\d+(?:\.\d+)?(?:\s*:\s*\d+(?:\.\d+)?)+\s*(?:in\s+)?(?:simplest|lowest)\s+form/i.test(compact)) {
+      const terms = parseRatioTerms(compact);
+      if (terms && terms.length >= 2) {
+        return { type: "ratio_simplify", terms: terms, text: compact };
+      }
+    }
+
+    // Proportion
+    const colonProp = matchColonProportion(compact);
+    if (colonProp) {
+      return {
+        type: "proportion_solve",
+        parts: colonProp.parts,
+        form: colonProp.form,
+        text: compact
+      };
+    }
+    const fracProp = matchFractionProportion(compact);
+    if (fracProp) {
+      return {
+        type: "proportion_solve",
+        parts: fracProp.parts,
+        form: fracProp.form,
+        text: compact
+      };
+    }
+
+    // Percentage — x% of N
+    m = compact.match(
+      /\b(?:(?:find|what\s+is|calculate)\s+)?(-?\d+(?:\.\d+)?)\s*%\s+of\s+(-?\d+(?:\.\d+)?)\b/i
+    );
+    if (m) {
+      return {
+        type: "percentage_of",
+        percent: Number(m[1]),
+        base: Number(m[2]),
+        text: compact
+      };
+    }
+
+    // Percentage — what percent is A of B
+    m = compact.match(
+      /\b(-?\d+(?:\.\d+)?)\s+is\s+what\s+percent(?:age)?\s+of\s+(-?\d+(?:\.\d+)?)\b/i
+    );
+    if (m) {
+      return {
+        type: "percentage_find",
+        part: Number(m[1]),
+        whole: Number(m[2]),
+        text: compact
+      };
+    }
+    m = compact.match(
+      /\bwhat\s+percent(?:age)?\s+is\s+(-?\d+(?:\.\d+)?)\s+of\s+(-?\d+(?:\.\d+)?)\b/i
+    );
+    if (m) {
+      return {
+        type: "percentage_find",
+        part: Number(m[1]),
+        whole: Number(m[2]),
+        text: compact
+      };
+    }
+
+    // Percentage conversion
+    m = compact.match(
+      /\bconvert\s+(-?\d+(?:\.\d+)?)\s*%\s+to\s+(fraction|decimal)\b/i
+    );
+    if (m) {
+      return {
+        type: "percentage_convert",
+        mode: m[2].toLowerCase() === "fraction" ? "percent_to_fraction" : "percent_to_decimal",
+        value: m[1],
+        text: compact
+      };
+    }
+    m = compact.match(
+      /\bconvert\s+(-?\d+(?:\.\d+)?)\s+to\s+percent(?:age)?\b/i
+    );
+    if (m) {
+      return {
+        type: "percentage_convert",
+        mode: "to_percent",
+        value: m[1],
+        text: compact
+      };
+    }
+    m = compact.match(
+      /\bconvert\s+(-?\d+)\s*\/\s*(-?\d+)\s+to\s+percent(?:age)?\b/i
+    );
+    if (m) {
+      return {
+        type: "percentage_convert",
+        mode: "fraction_to_percent",
+        num: Number(m[1]),
+        den: Number(m[2]),
+        text: compact
+      };
+    }
+    m = compact.match(
+      /\b(-?\d+(?:\.\d+)?)\s*%\s+as\s+(?:a\s+)?(fraction|decimal)\b/i
+    );
+    if (m) {
+      return {
+        type: "percentage_convert",
+        mode: m[2].toLowerCase() === "fraction" ? "percent_to_fraction" : "percent_to_decimal",
+        value: m[1],
         text: compact
       };
     }
@@ -843,12 +1191,6 @@
     const a = intent.a;
     const b = intent.b;
     const op = intent.op;
-    if (op !== "+" && op !== "-") {
-      return {
-        unsupported: true,
-        reason: "Only fraction addition and subtraction are supported in Phase 8B.1"
-      };
-    }
 
     const steps = [];
     steps.push(
@@ -861,7 +1203,45 @@
 
     let operationKey;
     let result;
-    if (a.den === b.den) {
+
+    if (op === "*") {
+      operationKey = "fraction_mul";
+      steps.push(
+        step(
+          2,
+          "Multiply numerators and denominators",
+          "(" + a.num + "×" + b.num + ")/(" + a.den + "×" + b.den + ")",
+          {
+            latex:
+              "\\frac{" + a.num + "}{" + a.den + "}\\times\\frac{" + b.num + "}{" + b.den + "}"
+          }
+        )
+      );
+      result = MathUtils.multiplyFractions(a, b);
+      steps.push(step(3, "Simplify", "Result = " + MathUtils.fractionToString(result)));
+    } else if (op === "/") {
+      if (b.num === 0) {
+        return { unsupported: true, reason: "Division by zero" };
+      }
+      operationKey = "fraction_div";
+      steps.push(
+        step(
+          2,
+          "Invert the divisor and multiply",
+          MathUtils.fractionToString(a) + " ÷ " + MathUtils.fractionToString(b) +
+            " = " + MathUtils.fractionToString(a) + " × " +
+            MathUtils.fractionToString({ num: b.den, den: b.num }),
+          { hint: "Keep, change, flip." }
+        )
+      );
+      result = MathUtils.divideFractions(a, b);
+      steps.push(step(3, "Simplify", "Result = " + MathUtils.fractionToString(result)));
+    } else if (op !== "+" && op !== "-") {
+      return {
+        unsupported: true,
+        reason: "Unsupported fraction operation: " + op
+      };
+    } else if (a.den === b.den) {
       operationKey = op === "+" ? "fraction_add_like" : "fraction_sub_like";
       const num = op === "+" ? a.num + b.num : a.num - b.num;
       steps.push(
@@ -917,6 +1297,12 @@
       steps: steps,
       finalAnswer: MathUtils.fractionToString(result),
       verifyFn: function () {
+        if (op === "*") {
+          return MathUtils.fractionToString(MathUtils.multiplyFractions(a, b));
+        }
+        if (op === "/") {
+          return MathUtils.fractionToString(MathUtils.divideFractions(a, b));
+        }
         const L = MathUtils.lcm(a.den, b.den);
         const n1 = a.num * (L / a.den);
         const n2 = b.num * (L / b.den);
@@ -1446,6 +1832,382 @@
     };
   }
 
+  function solveRatioSimplify(intent) {
+    const terms = intent.terms || [];
+    if (terms.length < 2) {
+      return { unsupported: true, reason: "Ratio requires at least two terms" };
+    }
+    const simplified = simplifyRatioTerms(terms);
+    const g = MathUtils.gcdMany(terms.map(Math.abs));
+    const answer = formatRatio(simplified);
+    const steps = [
+      step(1, "Write the ratio", formatRatio(terms)),
+      step(
+        2,
+        "Find HCF of terms",
+        "HCF(" + terms.map(formatNum).join(", ") + ") = " + g + ".",
+        { hint: "Divide every term by the HCF." }
+      ),
+      step(3, "Simplest form", answer)
+    ];
+    return {
+      operationKey: "ratio_simplify",
+      given: formatRatio(terms),
+      find: "Simplest form of the ratio",
+      steps: steps,
+      finalAnswer: answer,
+      verifyFn: function () {
+        return formatRatio(simplifyRatioTerms(terms));
+      },
+      verified: true
+    };
+  }
+
+  function solveProportion(intent) {
+    const answer = solveProportionValue(intent.parts || []);
+    if (answer == null) {
+      return { unsupported: true, reason: "Could not solve proportion" };
+    }
+    const formatted = formatNum(answer);
+    const given =
+      intent.form === "fraction"
+        ? "Fraction proportion with one unknown"
+        : "Ratio proportion with one unknown";
+    const steps = [
+      step(
+        1,
+        "Cross multiply",
+        "In a proportion, the product of extremes equals the product of means.",
+        { hint: "a × d = b × c for a:b = c:d" }
+      ),
+      step(2, "Solve for the unknown", "x = " + formatted),
+      step(3, "Result", formatted)
+    ];
+    return {
+      operationKey: "proportion_solve",
+      given: given,
+      find: "Unknown value",
+      steps: steps,
+      finalAnswer: formatted,
+      verifyFn: function () {
+        return formatted;
+      },
+      verified: true
+    };
+  }
+
+  function solvePercentageOf(intent) {
+    const pct = intent.percent;
+    const base = intent.base;
+    if (!isFinite(pct) || !isFinite(base)) {
+      return { unsupported: true, reason: "Percentage requires valid numbers" };
+    }
+    const answerNum = (pct / 100) * base;
+    const answer = formatNum(answerNum);
+    const steps = [
+      step(
+        1,
+        "Recall the formula",
+        pct + "% of " + base + " = (" + pct + "/100) × " + base,
+        {
+          latex: pct + "\\%\\text{ of }" + base + "=\\frac{" + pct + "}{100}\\times" + base,
+          hint: "A percent is a fraction with denominator 100."
+        }
+      ),
+      step(
+        2,
+        "Multiply",
+        "(" + pct + "/100) × " + base + " = " + answer
+      ),
+      step(3, "Result", answer)
+    ];
+    return {
+      operationKey: "percentage_of",
+      given: pct + "%, base = " + base,
+      find: pct + "% of " + base,
+      steps: steps,
+      finalAnswer: answer,
+      verifyFn: function () {
+        return formatNum((pct / 100) * base);
+      },
+      verified: true
+    };
+  }
+
+  function solvePercentageFind(intent) {
+    const part = intent.part;
+    const whole = intent.whole;
+    if (!isFinite(part) || !isFinite(whole) || whole === 0) {
+      return {
+        unsupported: true,
+        reason: "Finding a percentage requires a non-zero whole"
+      };
+    }
+    const pct = (part / whole) * 100;
+    const answer = formatNum(pct) + "%";
+    const steps = [
+      step(
+        1,
+        "Set up the fraction",
+        part + " out of " + whole + " = " + part + "/" + whole
+      ),
+      step(
+        2,
+        "Convert to percent",
+        "(" + part + "/" + whole + ") × 100 = " + formatNum(pct) + "%"
+      ),
+      step(3, "Result", answer)
+    ];
+    return {
+      operationKey: "percentage_find",
+      given: "part = " + part + ", whole = " + whole,
+      find: "What percent is " + part + " of " + whole,
+      steps: steps,
+      finalAnswer: answer,
+      verifyFn: function () {
+        return formatNum((part / whole) * 100) + "%";
+      },
+      verified: true
+    };
+  }
+
+  function solvePercentageConvert(intent) {
+    const mode = intent.mode;
+    if (mode === "percent_to_fraction") {
+      const pct = Number(String(intent.value).replace(/%$/, ""));
+      if (!isFinite(pct)) {
+        return { unsupported: true, reason: "Invalid percentage value" };
+      }
+      const frac = MathUtils.simplifyFraction(pct, 100);
+      const answer = MathUtils.fractionToString(frac);
+      const steps = [
+        step(1, "Write as fraction over 100", pct + "% = " + pct + "/100"),
+        step(2, "Simplify", answer)
+      ];
+      return {
+        operationKey: "percentage_convert",
+        given: pct + "%",
+        find: "Fraction form",
+        steps: steps,
+        finalAnswer: answer,
+        verifyFn: function () {
+          return MathUtils.fractionToString(MathUtils.simplifyFraction(pct, 100));
+        },
+        verified: true
+      };
+    }
+    if (mode === "percent_to_decimal") {
+      const pct = Number(String(intent.value).replace(/%$/, ""));
+      if (!isFinite(pct)) {
+        return { unsupported: true, reason: "Invalid percentage value" };
+      }
+      const answer = formatNum(pct / 100);
+      const steps = [
+        step(1, "Divide by 100", pct + "% = " + pct + " ÷ 100 = " + answer)
+      ];
+      return {
+        operationKey: "percentage_convert",
+        given: pct + "%",
+        find: "Decimal form",
+        steps: steps,
+        finalAnswer: answer,
+        verifyFn: function () {
+          return formatNum(pct / 100);
+        },
+        verified: true
+      };
+    }
+    if (mode === "fraction_to_percent") {
+      const num = intent.num;
+      const den = intent.den;
+      if (!Number.isInteger(num) || !Number.isInteger(den) || den === 0) {
+        return { unsupported: true, reason: "Invalid fraction for percent conversion" };
+      }
+      const pct = (num / den) * 100;
+      const answer = formatNum(pct) + "%";
+      const steps = [
+        step(1, "Divide and multiply by 100", "(" + num + "/" + den + ") × 100 = " + answer)
+      ];
+      return {
+        operationKey: "percentage_convert",
+        given: num + "/" + den,
+        find: "Percentage form",
+        steps: steps,
+        finalAnswer: answer,
+        verifyFn: function () {
+          return formatNum((num / den) * 100) + "%";
+        },
+        verified: true
+      };
+    }
+    if (mode === "to_percent") {
+      const raw = String(intent.value || "").trim();
+      if (raw.indexOf("/") >= 0) {
+        const parts = raw.split("/");
+        return solvePercentageConvert({
+          mode: "fraction_to_percent",
+          num: Number(parts[0]),
+          den: Number(parts[1])
+        });
+      }
+      const n = Number(raw);
+      if (!isFinite(n)) {
+        return { unsupported: true, reason: "Invalid value for percent conversion" };
+      }
+      const answer = formatNum(n * 100) + "%";
+      const steps = [
+        step(1, "Multiply by 100", raw + " × 100 = " + answer)
+      ];
+      return {
+        operationKey: "percentage_convert",
+        given: raw,
+        find: "Percentage form",
+        steps: steps,
+        finalAnswer: answer,
+        verifyFn: function () {
+          return formatNum(n * 100) + "%";
+        },
+        verified: true
+      };
+    }
+    return { unsupported: true, reason: "Unsupported percentage conversion" };
+  }
+
+  function solveMixedNumberConvert(intent) {
+    if (intent.mode === "to_mixed") {
+      const num = intent.num;
+      const den = intent.den;
+      if (!Number.isInteger(num) || !Number.isInteger(den) || den === 0) {
+        return { unsupported: true, reason: "Invalid fraction for mixed-number conversion" };
+      }
+      const mixed = MathUtils.improperToMixed(num, den);
+      const answer = MathUtils.mixedToString(mixed);
+      const q = Math.abs(Math.trunc(num / den));
+      const r = Math.abs(num % den);
+      const steps = [
+        step(
+          1,
+          "Divide numerator by denominator",
+          num + " ÷ " + den + " gives quotient " + q + " and remainder " + r + ".",
+          { hint: "Quotient is the whole part; remainder over denominator is the fraction part." }
+        ),
+        step(2, "Write mixed number", answer)
+      ];
+      return {
+        operationKey: "mixed_number_convert",
+        given: num + "/" + den,
+        find: "Mixed number form",
+        steps: steps,
+        finalAnswer: answer,
+        verifyFn: function () {
+          return MathUtils.mixedToString(MathUtils.improperToMixed(num, den));
+        },
+        verified: true
+      };
+    }
+    if (intent.mode === "to_improper") {
+      const whole = intent.whole;
+      const num = intent.num;
+      const den = intent.den;
+      if (!Number.isInteger(whole) || !Number.isInteger(num) || !Number.isInteger(den) || den === 0) {
+        return { unsupported: true, reason: "Invalid mixed number" };
+      }
+      const improper = MathUtils.mixedToImproper(whole, num, den);
+      const answer = MathUtils.fractionToString(improper);
+      const absWhole = Math.abs(whole);
+      const steps = [
+        step(
+          1,
+          "Multiply whole part by denominator",
+          absWhole + " × " + den + " + " + num + " = " + (absWhole * den + num)
+        ),
+        step(2, "Write improper fraction", answer)
+      ];
+      return {
+        operationKey: "mixed_number_convert",
+        given: whole + " " + num + "/" + den,
+        find: "Improper fraction form",
+        steps: steps,
+        finalAnswer: answer,
+        verifyFn: function () {
+          return MathUtils.fractionToString(
+            MathUtils.mixedToImproper(whole, num, den)
+          );
+        },
+        verified: true
+      };
+    }
+    return { unsupported: true, reason: "Unsupported mixed-number conversion" };
+  }
+
+  function mixedTokenLabel(token) {
+    if (token.isMixed || (token.whole !== 0 && token.num !== 0)) {
+      return token.whole + " " + token.num + "/" + token.den;
+    }
+    if (token.num !== 0 && token.den !== 1) {
+      return MathUtils.fractionToString({ num: token.num, den: token.den });
+    }
+    return String(token.whole);
+  }
+
+  function solveMixedNumberBinary(intent) {
+    const aFrac = mixedTokenToFraction(intent.a);
+    const bFrac = mixedTokenToFraction(intent.b);
+    const op = intent.op;
+    const fracIntent = {
+      a: aFrac,
+      b: bFrac,
+      op: op
+    };
+    const base = solveFractionBinary(fracIntent);
+    if (base.unsupported) return base;
+    const steps = [
+      step(
+        1,
+        "Convert to improper fractions",
+        mixedTokenLabel(intent.a) + " = " + MathUtils.fractionToString(aFrac) + ", " +
+          mixedTokenLabel(intent.b) + " = " + MathUtils.fractionToString(bFrac)
+      )
+    ].concat(base.steps.slice(1));
+    const improper = MathUtils.simplifyFraction(
+      op === "+" ? aFrac.num * bFrac.den + bFrac.num * aFrac.den :
+        op === "-" ? aFrac.num * bFrac.den - bFrac.num * aFrac.den : aFrac.num,
+      op === "+" || op === "-" ? aFrac.den * bFrac.den : 1
+    );
+    let answer = base.finalAnswer;
+    if (Math.abs(improper.num) >= improper.den) {
+      const mixed = MathUtils.improperToMixed(improper.num, improper.den);
+      answer = MathUtils.mixedToString(mixed);
+      steps.push(
+        step(
+          steps.length + 1,
+          "Write as mixed number",
+          MathUtils.fractionToString(improper) + " = " + answer
+        )
+      );
+    }
+    return {
+      operationKey: "mixed_number_binary",
+      given: mixedTokenLabel(intent.a) + " " + op + " " + mixedTokenLabel(intent.b),
+      find: "Value of the mixed-number expression",
+      steps: steps,
+      finalAnswer: answer,
+      verifyFn: function () {
+        const solved = solveFractionBinary(fracIntent);
+        const imp = MathUtils.simplifyFraction(
+          op === "+" ? aFrac.num * bFrac.den + bFrac.num * aFrac.den :
+            aFrac.num * bFrac.den - bFrac.num * aFrac.den,
+          aFrac.den * bFrac.den
+        );
+        if (Math.abs(imp.num) >= imp.den) {
+          return MathUtils.mixedToString(MathUtils.improperToMixed(imp.num, imp.den));
+        }
+        return solved.finalAnswer;
+      },
+      verified: true
+    };
+  }
+
   function solveIntent(intent) {
     if (!intent || intent.type === "unsupported") {
       return {
@@ -1492,6 +2254,20 @@
       case "decimal_division_precision":
       case "decimal_binary_precision":
         return solveDecimalPrecisionOp(intent);
+      case "ratio_simplify":
+        return solveRatioSimplify(intent);
+      case "proportion_solve":
+        return solveProportion(intent);
+      case "percentage_of":
+        return solvePercentageOf(intent);
+      case "percentage_find":
+        return solvePercentageFind(intent);
+      case "percentage_convert":
+        return solvePercentageConvert(intent);
+      case "mixed_number_convert":
+        return solveMixedNumberConvert(intent);
+      case "mixed_number_binary":
+        return solveMixedNumberBinary(intent);
       case "addition":
       case "subtraction":
       case "multiplication":
