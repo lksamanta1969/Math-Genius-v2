@@ -1,12 +1,13 @@
 /**
- * Classical Probability Rule Engine (Phase 8F / M1)
+ * Classical Probability Rule Engine (Phase 8F / M1–M2)
  *
  * Supported: P(E) = favorable / total equally-likely outcomes
- * (coin, single die, bag draw, spinner / count-based).
+ * (coin, single die face, single-die even/odd, bag draw, spinner / count-based).
  * Complement: P(not E) = 1 − P(E) when event counts are known.
  *
  * Rejects: conditional probability, permutations/combinations,
- * two-dice distributions, deck/card games, Class 9+ probability.
+ * two-dice distributions, deck/card games, Class 9+ probability,
+ * unknown single-die events (no guessing).
  *
  * Formula text from Formula Library via FormulaCatalog IDs only.
  */
@@ -271,6 +272,35 @@
     return null;
   }
 
+  /** M2 — classical multi-favorable single-die events on a fair six-sided die */
+  function parseDieMultiFavorableEvent(text) {
+    const t = String(text || "").toLowerCase();
+    if (!/\b(die|dice)\b/.test(t) || /\b(two|2)\s+dice\b/.test(t)) {
+      return null;
+    }
+    if (/\beven\b/.test(t)) {
+      return { favorable: 3, total: 6, event: "even number" };
+    }
+    if (/\bodd\b/.test(t)) {
+      return { favorable: 3, total: 6, event: "odd number" };
+    }
+    return null;
+  }
+
+  function parseSingleDieEventCounts(text) {
+    const t = String(text || "").toLowerCase();
+    if (!/\b(die|dice)\b/.test(t) || /\b(two|2)\s+dice\b/.test(t)) {
+      return null;
+    }
+    const face = parseDieFace(t);
+    if (face) {
+      return { favorable: 1, total: 6, event: "face " + face };
+    }
+    const multi = parseDieMultiFavorableEvent(t);
+    if (multi) return multi;
+    return null;
+  }
+
   function detectCoinEvent(text) {
     const t = String(text || "").toLowerCase();
     if (/\bheads?\b/.test(t)) return "head";
@@ -321,14 +351,8 @@
       };
     }
 
-    if (/\b(die|dice)\b/.test(t) && !/\b(two|2)\s+dice\b/.test(t)) {
-      const face = parseDieFace(t);
-      return {
-        favorable: 1,
-        total: 6,
-        event: face ? "face " + face : "specified face"
-      };
-    }
+    const dieEvent = parseSingleDieEventCounts(t);
+    if (dieEvent) return dieEvent;
 
     const counts = parseColorCounts(text);
     const total = totalFromCounts(counts);

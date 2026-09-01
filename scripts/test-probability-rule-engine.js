@@ -1,5 +1,5 @@
 /**
- * Phase 8F M1 — Classical Probability Rule Engine tests
+ * Phase 8F M1–M2 — Classical Probability Rule Engine tests
  * Run: node scripts/test-probability-rule-engine.js
  */
 "use strict";
@@ -95,6 +95,27 @@ const solveCases = [
     expect: "1/2",
     formulaId: "CBSE-C7-PR-002",
     op: "probability_complement"
+  },
+  {
+    name: "Die even number",
+    text: "What is the probability of rolling an even number on a fair die?",
+    expect: "1/2",
+    formulaId: "CBSE-C7-PR-001",
+    op: "probability_single_event"
+  },
+  {
+    name: "Die odd number",
+    text: "Find the probability of getting an odd number when a fair die is rolled.",
+    expect: "1/2",
+    formulaId: "CBSE-C7-PR-001",
+    op: "probability_single_event"
+  },
+  {
+    name: "Complement die not even",
+    text: "What is the probability of not rolling an even number on a fair die?",
+    expect: "1/2",
+    formulaId: "CBSE-C7-PR-002",
+    op: "probability_complement"
   }
 ];
 
@@ -126,6 +147,22 @@ const engineEdgeCases = [
     name: "Engine two dice",
     fn: function () {
       return Pr.trySolve("Find the probability of sum 7 when rolling two dice");
+    },
+    expectUnsupported: true
+  },
+  {
+    name: "Engine unknown die event",
+    fn: function () {
+      return Pr.trySolve(
+        "What is the probability of rolling a prime number on a fair die?"
+      );
+    },
+    expectUnsupported: true
+  },
+  {
+    name: "Engine die without event",
+    fn: function () {
+      return Pr.trySolve("What is the probability of rolling on a fair die?");
     },
     expectUnsupported: true
   }
