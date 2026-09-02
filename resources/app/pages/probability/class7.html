@@ -15,12 +15,243 @@
 </div>
 
 <div class="container">
+
     <h1>Probability</h1>
     <h2>Class 7</h2>
-    <hr>
-    <p class="page-desc">Content is under development.</p>
-    <hr>
+
+    <p class="page-desc">
+        Introductory classical probability for CBSE Class 7 — equally likely outcomes,
+        single events, and complements. Worked examples below use the same offline
+        Probability engine as the AI Math Solver (Phase 8F).
+    </p>
+
+    <section class="topic-section" aria-labelledby="prob-basics">
+        <h2 id="prob-basics">1. Probability basics</h2>
+        <div class="formula-box">
+            <p>
+                <strong>Experiment</strong> — an action with uncertain results (toss a coin, roll a die).
+            </p>
+            <p>
+                <strong>Outcome</strong> — one possible result (head, tail, 4, even number, …).
+            </p>
+            <p>
+                <strong>Sample space</strong> — the set of all possible outcomes.
+            </p>
+            <p>
+                <strong>Event</strong> — a collection of outcomes we are interested in
+                (e.g. “getting a head”, “rolling an even number”).
+            </p>
+            <p>
+                <strong>Favorable outcomes</strong> — outcomes that make the event happen.
+            </p>
+            <p>
+                <strong>Equally likely</strong> — each outcome has the same chance
+                (fair coin, fair die, equal sections on a spinner).
+            </p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="prob-formula">
+        <h2 id="prob-formula">2. Classical probability formula</h2>
+        <div class="formula-box">
+            <p><strong>Classical probability</strong> <span class="muted-tag">CBSE-C7-PR-001</span></p>
+            <p class="formula-line">P(E) = (number of favorable outcomes) ÷ (total number of equally likely outcomes)</p>
+            <hr>
+            <p><strong>Complementary probability</strong> <span class="muted-tag">CBSE-C7-PR-002</span></p>
+            <p class="formula-line">P(not E) = 1 − P(E)</p>
+            <p class="formula-note">
+                “Not E” means the event does <em>not</em> happen. All probabilities here assume outcomes are equally likely.
+            </p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="prob-supported">
+        <h2 id="prob-supported">3. Supported Class 7 question types</h2>
+        <ul class="practice-list">
+            <li><strong>Fair coin</strong> — head or tail (P = 1/2 each).</li>
+            <li><strong>Fair six-sided die</strong> — a specific face (P = 1/6).</li>
+            <li><strong>Even or odd on a die</strong> — faces 2, 4, 6 or 1, 3, 5 (P = 3/6 = 1/2).</li>
+            <li><strong>Complement</strong> — e.g. not rolling a 6, not getting a head.</li>
+            <li><strong>Bag / spinner</strong> — when counts of colours or sections are given.</li>
+            <li><strong>Explicit counts</strong> — “3 favorable outcomes out of 8 equally likely outcomes”.</li>
+        </ul>
+        <p class="formula-note">
+            Advanced topics such as two dice, conditional probability, card decks, and
+            permutations/combinations are not covered on this Class 7 page.
+        </p>
+    </section>
+
+    <section class="topic-section" aria-labelledby="prob-worked">
+        <h2 id="prob-worked">4. Worked examples</h2>
+
+        <div class="formula-box example-block">
+            <p><strong>Example A — Fair coin</strong></p>
+            <p>What is the probability of getting a head when a fair coin is tossed?</p>
+            <p>Sample space: {H, T} → total = 2. Favorable for head = 1.</p>
+            <p><strong>P(head) = 1/2</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example B — Die face</strong></p>
+            <p>Find the probability of rolling a 4 on a fair die.</p>
+            <p>Sample space: {1, 2, 3, 4, 5, 6} → total = 6. Favorable = 1.</p>
+            <p><strong>P(4) = 1/6</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example C — Even number on a die</strong></p>
+            <p>What is the probability of rolling an even number on a fair die?</p>
+            <p>Even faces: 2, 4, 6 → favorable = 3, total = 6.</p>
+            <p><strong>P(even) = 3/6 = 1/2</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example D — Odd number on a die</strong></p>
+            <p>Find the probability of getting an odd number when a fair die is rolled.</p>
+            <p>Odd faces: 1, 3, 5 → favorable = 3, total = 6.</p>
+            <p><strong>P(odd) = 3/6 = 1/2</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example E — Complement</strong></p>
+            <p>What is the probability of not rolling a 6 on a fair die?</p>
+            <p>P(6) = 1/6, so P(not 6) = 1 − 1/6 = <strong>5/6</strong>.</p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example F — Bag of balls</strong></p>
+            <p>A bag has 3 red and 5 blue balls. One ball is drawn at random. Find P(red).</p>
+            <p>Total = 8, favorable for red = 3.</p>
+            <p><strong>P(red) = 3/8</strong></p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="prob-try">
+        <h2 id="prob-try">5. Try it — interactive examples</h2>
+        <p class="formula-note">
+            Choose a preset question or type your own. Answers are computed locally by the
+            Probability rule engine (no cloud AI).
+        </p>
+
+        <div class="formula-box prob-try-panel">
+            <label for="probQuestionInput" class="prob-label">Question</label>
+            <input
+                type="text"
+                id="probQuestionInput"
+                class="prob-input"
+                placeholder="e.g. What is the probability of rolling an even number on a fair die?"
+                autocomplete="off"
+                aria-label="Probability question"
+            >
+
+            <div class="formula-buttons prob-example-buttons">
+                <button type="button" data-prob-example="What is the probability of getting a head when a coin is tossed?">Coin — head</button>
+                <button type="button" data-prob-example="Find the probability of rolling a 4 on a fair die.">Die — face 4</button>
+                <button type="button" data-prob-example="What is the probability of rolling an even number on a fair die?">Die — even</button>
+                <button type="button" data-prob-example="Find the probability of getting an odd number when a fair die is rolled.">Die — odd</button>
+                <button type="button" data-prob-example="What is the probability of not rolling a 6 on a fair die?">Complement — not 6</button>
+            </div>
+
+            <div class="formula-buttons">
+                <button type="button" id="probSolveBtn">Solve with Probability Engine</button>
+            </div>
+
+            <div id="probSolveOutput" class="prob-output" hidden aria-live="polite"></div>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="prob-more">
+        <h2 id="prob-more">6. Practice more</h2>
+        <ul class="topic-list">
+            <li><a href="../ai-math-solver.html">Open AI Math Solver</a> — upload or type questions with full step-by-step solutions.</li>
+            <li><a href="../formula-library.html">Browse Formula Library</a> — Classical Probability &amp; Complementary Probability (Class 7).</li>
+        </ul>
+    </section>
+
 </div>
+
+<style>
+.muted-tag {
+    color: #8eb4e8;
+    font-size: 14px;
+    font-weight: normal;
+}
+.formula-line {
+    font-size: 17px;
+    margin: 10px 0;
+}
+.formula-note {
+    color: #C8D4F0;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+.example-block {
+    margin-bottom: 16px;
+}
+.example-block p {
+    color: #C8D4F0;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+.prob-try-panel .prob-label {
+    display: block;
+    color: #32c5ff;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.prob-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #2C4D8C;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #0E1C4D;
+    color: #ffffff;
+    margin-bottom: 14px;
+}
+.prob-example-buttons {
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.prob-example-buttons button {
+    flex: 1 1 180px;
+    font-size: 14px;
+}
+.prob-output {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #325a8a;
+    color: #C8D4F0;
+    line-height: 1.6;
+}
+.prob-result-ok {
+    color: #7dffb3;
+    font-size: 18px;
+}
+.prob-result-error {
+    color: #ffb4b4;
+}
+.prob-result-meta {
+    margin: 8px 0;
+}
+.prob-steps {
+    margin: 12px 0 0 20px;
+    padding: 0;
+}
+.prob-steps li {
+    margin-bottom: 8px;
+}
+.topic-list a {
+    color: #7ecbff;
+    text-decoration: underline;
+}
+</style>
+
+<script src="../../js/solver/providers/local-rule-engine/math-utils.js"></script>
+<script src="../../js/solver/providers/local-rule-engine/formula-catalog.js"></script>
+<script src="../../js/solver/providers/local-rule-engine/probability.js"></script>
+<script src="../../js/probability-class7.js"></script>
 
 </body>
 </html>
