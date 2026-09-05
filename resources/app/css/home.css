@@ -31,3 +31,91 @@
     margin-right:auto;
     color:#D4E4FF;
 }
+
+.hero-subtitle{
+    font-size:22px;
+    font-weight:600;
+    margin-top:20px;
+    color:#FFFFFF;
+    letter-spacing:0.4px;
+}
+
+.header-nav{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.header-link{
+    color:#D4E4FF;
+    font-size:15px;
+    font-weight:600;
+    padding:8px 16px;
+    border-radius:20px;
+    border:1px solid #2a4f8f;
+    background:#16356f;
+    transition:background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.header-link:hover{
+    background:#1a3f80;
+    border-color:#4db8ff;
+    transform:translateY(-1px);
+}
+
+.topic-card{
+    text-align:left;
+    padding:22px 20px;
+}
+
+.topic-index{
+    color:#35C3FF;
+    font-weight:700;
+    margin-right:4px;
+}
+
+/* Class cover — 4 cards + 3 centered (VI–IX, then X–XII) */
+.class-cover-grid.card-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    max-width:940px;
+    margin-top:28px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-bottom:8px;
+    grid-template-columns:unset;
+}
+
+.class-cover-grid .card{
+    flex:0 1 220px;
+    width:220px;
+    max-width:100%;
+    box-sizing:border-box;
+}
+
+@media (max-width:960px){
+    .class-cover-grid{
+        max-width:710px;
+    }
+}
+
+@media (max-width:720px){
+    .class-cover-grid{
+        max-width:480px;
+    }
+}
+
+@media (max-width:480px){
+    .class-cover-grid{
+        max-width:100%;
+        padding-left:12px;
+        padding-right:12px;
+    }
+
+    .class-cover-grid .card{
+        width:100%;
+        flex-basis:100%;
+    }
+}

@@ -19,28 +19,28 @@
 
 </head>
 
-<body>
-
-    <!-- Header -->
+<body data-nav-base="">
 
     <header class="app-header">
 
-        <div class="logo">
+        <a href="home.html" class="logo">
             Math Genius
-        </div>
+        </a>
 
         <div class="search-box">
 
             <input
                 type="text"
-              placeholder="Search..."
+                placeholder="Search...">
 
         </div>
 
+        <nav class="header-nav">
+            <a href="tools.html" class="header-link">Tools</a>
+        </nav>
+
     </header>
 
-
-    <!-- Hero -->
 
     <section class="hero">
 
@@ -52,97 +52,18 @@
 
         </p>
 
+        <p class="hero-subtitle">
+
+            Choose your Class
+
+        </p>
+
     </section>
 
 
-    <!-- Dashboard -->
-
     <div class="container">
 
-   <div class="card-grid">
-
-
-    <a href="arithmetic/index.html" class="card">
-        ➕
-        <br><br>
-        Arithmetic
-    </a>
-
-
-    <a href="algebra/index.html" class="card">
-        📐
-        <br><br>
-        Algebra
-    </a>
-
-    
-    <a href="geometry/index.html" class="card">
-        📏
-        <br><br>
-        Geometry
-    </a>
-
-    <a href="mensuration/index.html" class="card">
-        📦
-        <br><br>
-        Mensuration
-    </a>
-
-    <a href="trigonometry/index.html" class="card">
-        📈
-        <br><br>
-        Trigonometry
-    </a>
-
-    <a href="statistics/index.html" class="card">
-        📊
-        <br><br>
-        Statistics
-    </a>
-
-    <a href="probability/index.html" class="card">
-        🎲
-        <br><br>
-        Probability
-    </a>
-
-    <a href="calculus/index.html" class="card">
-        ∫
-        <br><br>
-        Calculus
-    </a>
-
-    <a href="formula-library.html" class="card">
-        📚
-        <br><br>
-        Formula Library
-    </a>
-
-    <a href="ai-math-solver.html" class="card">
-        🧠
-        <br><br>
-        AI Math Solver
-    </a>
-
-    <a href="calculator.html" class="card">
-        🧮
-        <br><br>
-        Calculator
-    </a>
-
-    <a href="quiz.html" class="card">
-        📝
-        <br><br>
-        Quiz
-    </a>
-
-    <a href="mock-test.html" class="card">
-        📄
-        <br><br>
-        Mock Test
-    </a>
-
-</div>     
+        <div id="class-grid" class="card-grid class-cover-grid"></div>
 
     </div>
 
@@ -153,9 +74,9 @@
 
     </footer>
 
+    <script src="../data/navigation.js"></script>
+    <script src="../js/home-page.js"></script>
     <script src="../js/app.js"></script>
-
- <script src="../js/search.js"></script>
 
 </body>
 

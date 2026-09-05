@@ -8,7 +8,7 @@ function loadSidebar() {
 
       <a href="index.html">🏠 Home</a>
 
-      <a href="pages/classes.html">🎓 Classes</a>
+      <a href="pages/tools.html">🛠 Tools</a>
 
       <a href="pages/formula-library.html">📖 Formula Library</a>
 
