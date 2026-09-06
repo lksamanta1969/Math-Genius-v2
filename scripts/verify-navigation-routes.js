@@ -39,7 +39,9 @@ const corePages = [
   "pages/tools.html",
   "pages/formula-library.html",
   "pages/probability/class7.html",
-  "pages/probability/index.html"
+  "pages/probability/index.html",
+  "pages/statistics/class7.html",
+  "pages/statistics/index.html"
 ];
 
 for (const rel of corePages) {
@@ -73,7 +75,7 @@ console.log("\n=== Available study-material navigation cards ===");
 let manifestCount = 0;
 const expectedCounts = {
   6: 0,
-  7: 1,
+  7: 2,
   8: 0,
   9: 0,
   10: 0,
@@ -156,10 +158,10 @@ if (
 
 console.log("\n=== Summary ===");
 console.log("Navigation cards exposed:", manifestCount);
-console.log("Expected navigation cards:", 1);
+console.log("Expected navigation cards:", 2);
 
-if (manifestCount !== 1) {
-  fail("Expected exactly 1 navigation card across all classes, got " + manifestCount);
+if (manifestCount !== 2) {
+  fail("Expected exactly 2 navigation cards across all classes, got " + manifestCount);
 }
 
 console.log(failed ? "\nFAILED: " + failed + " issues" : "\nAll navigation checks passed.");

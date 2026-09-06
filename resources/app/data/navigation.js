@@ -29,6 +29,17 @@ const STUDY_PAGE_STATUS_AVAILABLE = "available";
  * Key format: "{topicId}:{classLevel}"
  */
 const STUDY_PAGE_REGISTRY = {
+  "statistics:7": {
+    id: "statistics:7",
+    topicId: "statistics",
+    classLevel: 7,
+    path: "../statistics/class7.html",
+    status: STUDY_PAGE_STATUS_AVAILABLE,
+    title: "Statistics",
+    icon: "📊",
+    category: STUDY_MATERIAL_CATEGORY,
+    boards: null
+  },
   "probability:7": {
     id: "probability:7",
     topicId: "probability",
