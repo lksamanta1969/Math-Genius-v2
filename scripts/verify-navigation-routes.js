@@ -12,7 +12,10 @@ function loadNavigationApi() {
   vm.runInContext(
     script +
       "\nthis.CLASS_LEVELS = CLASS_LEVELS;" +
-      "\nthis.getClassStudyMaterials = getClassStudyMaterials;",
+      "\nthis.getClassStudyMaterials = getClassStudyMaterials;" +
+      "\nthis.validateStudyReturnPath = validateStudyReturnPath;" +
+      "\nthis.buildClassFirstStudyHref = buildClassFirstStudyHref;" +
+      "\nthis.classMathematicsReturnPath = classMathematicsReturnPath;",
     context
   );
   return context;
@@ -20,6 +23,15 @@ function loadNavigationApi() {
 
 const nav = loadNavigationApi();
 let failed = 0;
+
+function fail(message) {
+  console.log("FAIL  " + message);
+  failed++;
+}
+
+function ok(message) {
+  console.log("OK  " + message);
+}
 
 console.log("=== Core pages ===");
 const corePages = [
@@ -57,12 +69,29 @@ for (const level of nav.CLASS_LEVELS) {
   }
 }
 
-console.log("\n=== Manifest study-material paths ===");
+console.log("\n=== Available study-material navigation cards ===");
 let manifestCount = 0;
+const expectedCounts = {
+  6: 0,
+  7: 1,
+  8: 0,
+  9: 0,
+  10: 0,
+  11: 0,
+  12: 0
+};
 
 for (const level of nav.CLASS_LEVELS) {
   const materials = nav.getClassStudyMaterials(level);
   console.log("\nClass " + level + " (" + materials.length + " topics):");
+
+  if (materials.length !== expectedCounts[level]) {
+    fail(
+      "Class " + level + " expected " + expectedCounts[level] + " cards, got " + materials.length
+    );
+  } else {
+    ok("Class " + level + " card count matches expectation (" + materials.length + ")");
+  }
 
   for (const entry of materials) {
     manifestCount++;
@@ -78,19 +107,61 @@ for (const level of nav.CLASS_LEVELS) {
         " -> " +
         rel
     );
-    if (!exists) failed++;
+
+    if (!exists) {
+      failed++;
+    }
+
+    const html = exists ? fs.readFileSync(full, "utf8") : "";
+    if (html.indexOf("Content is under development") !== -1) {
+      fail("Placeholder page exposed in navigation: " + rel);
+    }
+
+    if (!entry.href || entry.href.indexOf("nav=class-first") === -1) {
+      fail("Missing class-first navigation context on href for " + entry.title);
+    } else {
+      ok("Class-first href present for " + entry.title);
+    }
   }
 }
 
-console.log("\n=== Summary ===");
-console.log("Manifest entries:", manifestCount);
-console.log("Expected study pages:", manifestCount);
-
-if (manifestCount !== 56) {
-  console.log("WARNING: expected 56 manifest entries, got " + manifestCount);
-  failed++;
+console.log("\n=== Back-navigation helpers ===");
+if (nav.validateStudyReturnPath("../class7/mathematics.html")) {
+  ok("validateStudyReturnPath accepts class mathematics return path");
+} else {
+  fail("validateStudyReturnPath rejected valid class mathematics return path");
 }
 
-console.log(failed ? "\nFAILED: " + failed + " issues" : "\nAll manifest routes valid.");
+if (!nav.validateStudyReturnPath("https://evil.example/phish")) {
+  ok("validateStudyReturnPath rejects external URL");
+} else {
+  fail("validateStudyReturnPath accepted external URL");
+}
+
+if (!nav.validateStudyReturnPath("//evil.example/phish")) {
+  ok("validateStudyReturnPath rejects protocol-relative URL");
+} else {
+  fail("validateStudyReturnPath accepted protocol-relative URL");
+}
+
+const classFirstHref = nav.buildClassFirstStudyHref("../probability/class7.html", 7);
+if (
+  classFirstHref.indexOf("nav=class-first") !== -1 &&
+  classFirstHref.indexOf(encodeURIComponent("../class7/mathematics.html")) !== -1
+) {
+  ok("buildClassFirstStudyHref encodes class-first return context");
+} else {
+  fail("buildClassFirstStudyHref missing expected query parameters");
+}
+
+console.log("\n=== Summary ===");
+console.log("Navigation cards exposed:", manifestCount);
+console.log("Expected navigation cards:", 1);
+
+if (manifestCount !== 1) {
+  fail("Expected exactly 1 navigation card across all classes, got " + manifestCount);
+}
+
+console.log(failed ? "\nFAILED: " + failed + " issues" : "\nAll navigation checks passed.");
 
 process.exit(failed ? 1 : 0);
