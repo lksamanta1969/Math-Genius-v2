@@ -1,7 +1,7 @@
 {
-  "version": "4.5",
-  "generatedAt": "2026-08-30T18:00:00.000Z",
-  "totalEntries": 90,
+  "version": "4.6",
+  "generatedAt": "2026-09-07T14:16:34.531Z",
+  "totalEntries": 98,
   "entries": [
     {
       "id": "CBSE-C6-AR-001",
@@ -2084,6 +2084,36 @@
       "searchText": "degree of a polynomial (one variable) degree of a polynomial (one variable) degree = highest power of the variable in the expression \\deg(a_nx^n+\\cdots+a_0)=n\\;(a_n\\neq 0) for class 7, identify degree of simple expressions in one variable. degree of 4x³ − x + 7 is 3. identification only — solving higher-degree equations is out of class 7 solver scope. algebra algebraic expressions degree class 7 cbse degree polynomial power cbse class 7 expressions"
     },
     {
+      "id": "CBSE-C7-AL-007",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "7",
+      "class": "Class 7",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "algebraic-expressions",
+      "chapter": "Algebraic Expressions",
+      "chapterNumber": 2,
+      "topic": "Distributive Property",
+      "name": "Distributive Law",
+      "formulaName": "Distributive Law",
+      "formula": "a(b + c) = ab + ac",
+      "keywords": [
+        "distributive",
+        "property",
+        "expand",
+        "expression",
+        "algebraic expressions"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 7",
+        "Expressions"
+      ],
+      "difficulty": "Easy",
+      "searchText": "distributive law distributive law a(b + c) = ab + ac a(b+c)=ab+ac to multiply a number or coefficient by a bracketed sum, multiply it by each term inside the bracket and add the results. 3(x + 4) = 3x + 12 algebra algebraic expressions distributive property class 7 cbse distributive property expand expression algebraic expressions cbse class 7 expressions"
+    },
+    {
       "id": "CBSE-C7-AL-005",
       "boardId": "cbse",
       "board": "CBSE",
@@ -2505,6 +2535,207 @@
       ],
       "difficulty": "Easy",
       "searchText": "complementary probability complementary probability p(not e) = 1 − p(e) p(\\overline{e})=1-p(e) the complement of an event is everything in the sample space except the event. fair die: p(not 6) = 1 − 1/6 = 5/6 statistics probability complementary probability class 7 cbse complement not probability cbse class 7 statistics probability"
+    },
+    {
+      "id": "CBSE-C8-AL-001",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "8",
+      "class": "Class 8",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "algebraic-identities",
+      "chapter": "Algebraic Identities",
+      "chapterNumber": 1,
+      "topic": "Standard Algebraic Identities",
+      "name": "Difference of Squares",
+      "formulaName": "Difference of Squares",
+      "formula": "a² − b² = (a + b)(a − b)",
+      "keywords": [
+        "identity",
+        "difference of squares",
+        "factorisation",
+        "a²-b²"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 8",
+        "Identities"
+      ],
+      "difficulty": "Easy",
+      "searchText": "difference of squares difference of squares a² − b² = (a + b)(a − b) a^2-b^2=(a+b)(a-b) the difference of two squares factors into the product of their sum and difference. x² − 9 = (x + 3)(x − 3) algebra algebraic identities standard algebraic identities class 8 cbse identity difference of squares factorisation a²-b² cbse class 8 identities"
+    },
+    {
+      "id": "CBSE-C8-AL-002",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "8",
+      "class": "Class 8",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "algebraic-identities",
+      "chapter": "Algebraic Identities",
+      "chapterNumber": 1,
+      "topic": "Standard Algebraic Identities",
+      "name": "Square of a Sum",
+      "formulaName": "Square of a Sum",
+      "formula": "(a + b)² = a² + 2ab + b²",
+      "keywords": [
+        "identity",
+        "perfect square",
+        "expand",
+        "(a+b)²"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 8",
+        "Identities"
+      ],
+      "difficulty": "Easy",
+      "searchText": "square of a sum square of a sum (a + b)² = a² + 2ab + b² (a+b)^2=a^2+2ab+b^2 expanding the square of a binomial sum gives three terms: both squares plus twice their product. (x + 3)² = x² + 6x + 9 algebra algebraic identities standard algebraic identities class 8 cbse identity perfect square expand (a+b)² cbse class 8 identities"
+    },
+    {
+      "id": "CBSE-C8-AL-003",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "8",
+      "class": "Class 8",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "algebraic-identities",
+      "chapter": "Algebraic Identities",
+      "chapterNumber": 1,
+      "topic": "Standard Algebraic Identities",
+      "name": "Square of a Difference",
+      "formulaName": "Square of a Difference",
+      "formula": "(a − b)² = a² − 2ab + b²",
+      "keywords": [
+        "identity",
+        "perfect square",
+        "expand",
+        "(a-b)²"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 8",
+        "Identities"
+      ],
+      "difficulty": "Easy",
+      "searchText": "square of a difference square of a difference (a − b)² = a² − 2ab + b² (a-b)^2=a^2-2ab+b^2 expanding the square of a binomial difference gives both squares minus twice their product. (2x − 1)² = 4x² − 4x + 1 algebra algebraic identities standard algebraic identities class 8 cbse identity perfect square expand (a-b)² cbse class 8 identities"
+    },
+    {
+      "id": "CBSE-C8-AL-004",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "8",
+      "class": "Class 8",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "exponents-and-powers",
+      "chapter": "Exponents and Powers",
+      "chapterNumber": 2,
+      "topic": "Laws of Exponents",
+      "name": "Power of a Power",
+      "formulaName": "Power of a Power",
+      "formula": "(a^m)^n = a^(mn)",
+      "keywords": [
+        "exponent",
+        "power of a power",
+        "laws of exponents"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 8",
+        "Exponents"
+      ],
+      "difficulty": "Easy",
+      "searchText": "power of a power power of a power (a^m)^n = a^(mn) (a^m)^n=a^{mn} when raising a power to another power, multiply the exponents. (2³)² = 2⁶ = 64 algebra exponents and powers laws of exponents class 8 cbse exponent power of a power laws of exponents cbse class 8 exponents"
+    },
+    {
+      "id": "CBSE-C8-AL-005",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "8",
+      "class": "Class 8",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "exponents-and-powers",
+      "chapter": "Exponents and Powers",
+      "chapterNumber": 2,
+      "topic": "Laws of Exponents",
+      "name": "Power of a Product",
+      "formulaName": "Power of a Product",
+      "formula": "(ab)^n = a^n b^n",
+      "keywords": [
+        "exponent",
+        "power of a product",
+        "laws of exponents"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 8",
+        "Exponents"
+      ],
+      "difficulty": "Easy",
+      "searchText": "power of a product power of a product (ab)^n = a^n b^n (ab)^n=a^n b^n a power of a product equals the product of each factor raised to that power. (2 × 5)³ = 2³ × 5³ = 8 × 125 = 1000 algebra exponents and powers laws of exponents class 8 cbse exponent power of a product laws of exponents cbse class 8 exponents"
+    },
+    {
+      "id": "CBSE-C8-AL-006",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "8",
+      "class": "Class 8",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "exponents-and-powers",
+      "chapter": "Exponents and Powers",
+      "chapterNumber": 2,
+      "topic": "Laws of Exponents",
+      "name": "Power of a Quotient",
+      "formulaName": "Power of a Quotient",
+      "formula": "(a/b)^n = a^n/b^n  (b ≠ 0)",
+      "keywords": [
+        "exponent",
+        "power of a quotient",
+        "laws of exponents",
+        "fraction"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 8",
+        "Exponents"
+      ],
+      "difficulty": "Easy",
+      "searchText": "power of a quotient power of a quotient (a/b)^n = a^n/b^n  (b ≠ 0) \\left(\\frac{a}{b}\\right)^n=\\frac{a^n}{b^n}\\;(b\\neq 0) a power of a quotient equals the numerator and denominator each raised to that power. (3/2)² = 3²/2² = 9/4 the denominator b must not be zero. algebra exponents and powers laws of exponents class 8 cbse exponent power of a quotient laws of exponents fraction cbse class 8 exponents"
+    },
+    {
+      "id": "CBSE-C8-AL-007",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "8",
+      "class": "Class 8",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "exponents-and-powers",
+      "chapter": "Exponents and Powers",
+      "chapterNumber": 2,
+      "topic": "Negative Exponents",
+      "name": "Negative Exponent",
+      "formulaName": "Negative Exponent",
+      "formula": "a^(−n) = 1/a^n  (a ≠ 0)",
+      "keywords": [
+        "exponent",
+        "negative exponent",
+        "reciprocal",
+        "laws of exponents"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 8",
+        "Exponents"
+      ],
+      "difficulty": "Easy",
+      "searchText": "negative exponent negative exponent a^(−n) = 1/a^n  (a ≠ 0) a^{-n}=\\frac{1}{a^n}\\;(a\\neq 0) a negative exponent means take the reciprocal of the base raised to the positive exponent. 2^(−3) = 1/2³ = 1/8 the base a must not be zero. algebra exponents and powers negative exponents class 8 cbse exponent negative exponent reciprocal laws of exponents cbse class 8 exponents"
     }
   ],
   "searchableFields": [

@@ -1,7 +1,7 @@
 {
-  "version": "4.5",
+  "version": "4.6",
   "app": "Math Genius",
-  "phase": "phase-9m6-ratio-proportion-formula-catalog",
+  "phase": "phase-inventory-a-class7-8-algebra",
   "syllabusStandard": {
     "description": "Formula Library follows the latest board Mathematics syllabi. Each class contains only formulas prescribed for that class.",
     "hierarchy": "boards[] → classes[] → subjects[] → chapters[] → formulas[]",
@@ -6319,6 +6319,84 @@
                       "isFavourite": false,
                       "viewCount": 0,
                       "lastViewed": null
+                    },
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-09-07T14:16:34.531Z",
+                      "updatedAt": "2026-09-07T14:16:34.531Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": null,
+                      "examTags": [
+                        "CBSE",
+                        "Class 7",
+                        "Expressions"
+                      ],
+                      "id": "CBSE-C7-AL-007",
+                      "class": "Class 7",
+                      "subject": "Algebra",
+                      "chapter": "Algebraic Expressions",
+                      "chapterNumber": 2,
+                      "topic": "Distributive Property",
+                      "name": "Distributive Law",
+                      "formula": "a(b + c) = ab + ac",
+                      "latex": "a(b+c)=ab+ac",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Multiplier (coefficient or number)"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "First term inside the bracket"
+                        },
+                        {
+                          "symbol": "c",
+                          "meaning": "Second term inside the bracket"
+                        }
+                      ],
+                      "description": "To multiply a number or coefficient by a bracketed sum, multiply it by each term inside the bracket and add the results.",
+                      "example": "3(x + 4) = 3x + 12",
+                      "keywords": [
+                        "distributive",
+                        "property",
+                        "expand",
+                        "expression",
+                        "algebraic expressions"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C7-AL-003",
+                        "CBSE-C7-AL-004"
+                      ],
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 7 Mathematics — Chapter 2: Algebraic Expressions (Golden Art #44)"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 2: Algebraic Expressions",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "formulaName": "Distributive Law",
+                      "relatedFormulas": [
+                        "CBSE-C7-AL-003",
+                        "CBSE-C7-AL-004"
+                      ]
                     }
                   ]
                 },
@@ -7613,7 +7691,587 @@
                 "subject": "Algebra",
                 "syllabusYear": "2026-27"
               },
-              "chapters": []
+              "chapters": [
+                {
+                  "id": "algebraic-identities",
+                  "title": "Algebraic Identities",
+                  "chapterNumber": 1,
+                  "chapterCode": "CBSE-C8-AL-CH01",
+                  "board": "CBSE",
+                  "class": "Class 8",
+                  "subject": "Algebra",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 8",
+                    "subject": "Algebra",
+                    "chapter": "Algebraic Identities",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-09-07T14:16:34.531Z",
+                      "updatedAt": "2026-09-07T14:16:34.531Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": null,
+                      "examTags": [
+                        "CBSE",
+                        "Class 8",
+                        "Identities"
+                      ],
+                      "class": "Class 8",
+                      "subject": "Algebra",
+                      "id": "CBSE-C8-AL-001",
+                      "chapter": "Algebraic Identities",
+                      "chapterNumber": 1,
+                      "topic": "Standard Algebraic Identities",
+                      "name": "Difference of Squares",
+                      "formula": "a² − b² = (a + b)(a − b)",
+                      "latex": "a^2-b^2=(a+b)(a-b)",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "First term"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Second term"
+                        }
+                      ],
+                      "description": "The difference of two squares factors into the product of their sum and difference.",
+                      "example": "x² − 9 = (x + 3)(x − 3)",
+                      "keywords": [
+                        "identity",
+                        "difference of squares",
+                        "factorisation",
+                        "a²-b²"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C8-AL-002",
+                        "CBSE-C8-AL-003"
+                      ],
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 8 Mathematics — Chapter 9: Algebraic Expressions and Identities (Golden Art #67)"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 9: Algebraic Expressions and Identities",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "formulaName": "Difference of Squares",
+                      "relatedFormulas": [
+                        "CBSE-C8-AL-002",
+                        "CBSE-C8-AL-003"
+                      ]
+                    },
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-09-07T14:16:34.531Z",
+                      "updatedAt": "2026-09-07T14:16:34.531Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": null,
+                      "examTags": [
+                        "CBSE",
+                        "Class 8",
+                        "Identities"
+                      ],
+                      "class": "Class 8",
+                      "subject": "Algebra",
+                      "id": "CBSE-C8-AL-002",
+                      "chapter": "Algebraic Identities",
+                      "chapterNumber": 1,
+                      "topic": "Standard Algebraic Identities",
+                      "name": "Square of a Sum",
+                      "formula": "(a + b)² = a² + 2ab + b²",
+                      "latex": "(a+b)^2=a^2+2ab+b^2",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "First term"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Second term"
+                        }
+                      ],
+                      "description": "Expanding the square of a binomial sum gives three terms: both squares plus twice their product.",
+                      "example": "(x + 3)² = x² + 6x + 9",
+                      "keywords": [
+                        "identity",
+                        "perfect square",
+                        "expand",
+                        "(a+b)²"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C8-AL-001",
+                        "CBSE-C8-AL-003"
+                      ],
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 8 Mathematics — Chapter 9: Algebraic Expressions and Identities (Golden Art #68)"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 9: Algebraic Expressions and Identities",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "formulaName": "Square of a Sum",
+                      "relatedFormulas": [
+                        "CBSE-C8-AL-001",
+                        "CBSE-C8-AL-003"
+                      ]
+                    },
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-09-07T14:16:34.531Z",
+                      "updatedAt": "2026-09-07T14:16:34.531Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": null,
+                      "examTags": [
+                        "CBSE",
+                        "Class 8",
+                        "Identities"
+                      ],
+                      "class": "Class 8",
+                      "subject": "Algebra",
+                      "id": "CBSE-C8-AL-003",
+                      "chapter": "Algebraic Identities",
+                      "chapterNumber": 1,
+                      "topic": "Standard Algebraic Identities",
+                      "name": "Square of a Difference",
+                      "formula": "(a − b)² = a² − 2ab + b²",
+                      "latex": "(a-b)^2=a^2-2ab+b^2",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "First term"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Second term"
+                        }
+                      ],
+                      "description": "Expanding the square of a binomial difference gives both squares minus twice their product.",
+                      "example": "(2x − 1)² = 4x² − 4x + 1",
+                      "keywords": [
+                        "identity",
+                        "perfect square",
+                        "expand",
+                        "(a-b)²"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C8-AL-001",
+                        "CBSE-C8-AL-002"
+                      ],
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 8 Mathematics — Chapter 9: Algebraic Expressions and Identities (Golden Art #69)"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 9: Algebraic Expressions and Identities",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "formulaName": "Square of a Difference",
+                      "relatedFormulas": [
+                        "CBSE-C8-AL-001",
+                        "CBSE-C8-AL-002"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "exponents-and-powers",
+                  "title": "Exponents and Powers",
+                  "chapterNumber": 2,
+                  "chapterCode": "CBSE-C8-AL-CH02",
+                  "board": "CBSE",
+                  "class": "Class 8",
+                  "subject": "Algebra",
+                  "difficulty": "Easy",
+                  "estimatedStudyTime": "45 min",
+                  "referenceBooks": [
+                    "NCERT"
+                  ],
+                  "syllabus": {
+                    "board": "CBSE",
+                    "class": "Class 8",
+                    "subject": "Algebra",
+                    "chapter": "Exponents and Powers",
+                    "syllabusYear": "2026-27"
+                  },
+                  "formulas": [
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-09-07T14:16:34.531Z",
+                      "updatedAt": "2026-09-07T14:16:34.531Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": null,
+                      "examTags": [
+                        "CBSE",
+                        "Class 8",
+                        "Exponents"
+                      ],
+                      "class": "Class 8",
+                      "subject": "Algebra",
+                      "id": "CBSE-C8-AL-004",
+                      "chapter": "Exponents and Powers",
+                      "chapterNumber": 2,
+                      "topic": "Laws of Exponents",
+                      "name": "Power of a Power",
+                      "formula": "(a^m)^n = a^(mn)",
+                      "latex": "(a^m)^n=a^{mn}",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Base (a ≠ 0)"
+                        },
+                        {
+                          "symbol": "m",
+                          "meaning": "Inner exponent"
+                        },
+                        {
+                          "symbol": "n",
+                          "meaning": "Outer exponent"
+                        }
+                      ],
+                      "description": "When raising a power to another power, multiply the exponents.",
+                      "example": "(2³)² = 2⁶ = 64",
+                      "keywords": [
+                        "exponent",
+                        "power of a power",
+                        "laws of exponents"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C8-AL-005",
+                        "CBSE-C8-AL-006",
+                        "CBSE-C8-AL-007",
+                        "CBSE-C7-AL-005"
+                      ],
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 8 Mathematics — Chapter 12: Exponents and Powers (Golden Art #84)"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 12: Exponents and Powers",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "formulaName": "Power of a Power",
+                      "relatedFormulas": [
+                        "CBSE-C8-AL-005",
+                        "CBSE-C8-AL-006",
+                        "CBSE-C8-AL-007",
+                        "CBSE-C7-AL-005"
+                      ]
+                    },
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-09-07T14:16:34.531Z",
+                      "updatedAt": "2026-09-07T14:16:34.531Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": null,
+                      "examTags": [
+                        "CBSE",
+                        "Class 8",
+                        "Exponents"
+                      ],
+                      "class": "Class 8",
+                      "subject": "Algebra",
+                      "id": "CBSE-C8-AL-005",
+                      "chapter": "Exponents and Powers",
+                      "chapterNumber": 2,
+                      "topic": "Laws of Exponents",
+                      "name": "Power of a Product",
+                      "formula": "(ab)^n = a^n b^n",
+                      "latex": "(ab)^n=a^n b^n",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "First factor of the base"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Second factor of the base"
+                        },
+                        {
+                          "symbol": "n",
+                          "meaning": "Exponent"
+                        }
+                      ],
+                      "description": "A power of a product equals the product of each factor raised to that power.",
+                      "example": "(2 × 5)³ = 2³ × 5³ = 8 × 125 = 1000",
+                      "keywords": [
+                        "exponent",
+                        "power of a product",
+                        "laws of exponents"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C8-AL-004",
+                        "CBSE-C8-AL-006",
+                        "CBSE-C8-AL-007"
+                      ],
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 8 Mathematics — Chapter 12: Exponents and Powers (Golden Art #85)"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 12: Exponents and Powers",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "formulaName": "Power of a Product",
+                      "relatedFormulas": [
+                        "CBSE-C8-AL-004",
+                        "CBSE-C8-AL-006",
+                        "CBSE-C8-AL-007"
+                      ]
+                    },
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-09-07T14:16:34.531Z",
+                      "updatedAt": "2026-09-07T14:16:34.531Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": "The denominator b must not be zero.",
+                      "examTags": [
+                        "CBSE",
+                        "Class 8",
+                        "Exponents"
+                      ],
+                      "class": "Class 8",
+                      "subject": "Algebra",
+                      "id": "CBSE-C8-AL-006",
+                      "chapter": "Exponents and Powers",
+                      "chapterNumber": 2,
+                      "topic": "Laws of Exponents",
+                      "name": "Power of a Quotient",
+                      "formula": "(a/b)^n = a^n/b^n  (b ≠ 0)",
+                      "latex": "\\left(\\frac{a}{b}\\right)^n=\\frac{a^n}{b^n}\\;(b\\neq 0)",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Numerator of the base"
+                        },
+                        {
+                          "symbol": "b",
+                          "meaning": "Denominator of the base (b ≠ 0)"
+                        },
+                        {
+                          "symbol": "n",
+                          "meaning": "Exponent"
+                        }
+                      ],
+                      "description": "A power of a quotient equals the numerator and denominator each raised to that power.",
+                      "example": "(3/2)² = 3²/2² = 9/4",
+                      "keywords": [
+                        "exponent",
+                        "power of a quotient",
+                        "laws of exponents",
+                        "fraction"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C8-AL-004",
+                        "CBSE-C8-AL-005",
+                        "CBSE-C8-AL-007"
+                      ],
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 8 Mathematics — Chapter 12: Exponents and Powers (Golden Art #86)"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 12: Exponents and Powers",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "formulaName": "Power of a Quotient",
+                      "relatedFormulas": [
+                        "CBSE-C8-AL-004",
+                        "CBSE-C8-AL-005",
+                        "CBSE-C8-AL-007"
+                      ]
+                    },
+                    {
+                      "board": "CBSE",
+                      "syllabusYear": "2026-27",
+                      "difficulty": "Easy",
+                      "verification": "Reviewed",
+                      "createdAt": "2026-09-07T14:16:34.531Z",
+                      "updatedAt": "2026-09-07T14:16:34.531Z",
+                      "version": 1,
+                      "videoExplanation": null,
+                      "quiz": {
+                        "enabled": false,
+                        "totalQuestions": 0
+                      },
+                      "isFavourite": false,
+                      "viewCount": 0,
+                      "lastViewed": null,
+                      "practiceQuestions": [],
+                      "practiceQuestionIds": [],
+                      "notes": "The base a must not be zero.",
+                      "examTags": [
+                        "CBSE",
+                        "Class 8",
+                        "Exponents"
+                      ],
+                      "class": "Class 8",
+                      "subject": "Algebra",
+                      "id": "CBSE-C8-AL-007",
+                      "chapter": "Exponents and Powers",
+                      "chapterNumber": 2,
+                      "topic": "Negative Exponents",
+                      "name": "Negative Exponent",
+                      "formula": "a^(−n) = 1/a^n  (a ≠ 0)",
+                      "latex": "a^{-n}=\\frac{1}{a^n}\\;(a\\neq 0)",
+                      "variables": [
+                        {
+                          "symbol": "a",
+                          "meaning": "Base (a ≠ 0)"
+                        },
+                        {
+                          "symbol": "n",
+                          "meaning": "Positive exponent"
+                        }
+                      ],
+                      "description": "A negative exponent means take the reciprocal of the base raised to the positive exponent.",
+                      "example": "2^(−3) = 1/2³ = 1/8",
+                      "keywords": [
+                        "exponent",
+                        "negative exponent",
+                        "reciprocal",
+                        "laws of exponents"
+                      ],
+                      "relatedFormulaIds": [
+                        "CBSE-C8-AL-004",
+                        "CBSE-C8-AL-005",
+                        "CBSE-C8-AL-006",
+                        "CBSE-C7-AL-006"
+                      ],
+                      "source": {
+                        "board": "CBSE",
+                        "syllabusYear": "2026-27",
+                        "referenceBook": "NCERT",
+                        "chapterReference": "Class 8 Mathematics — Chapter 12: Exponents and Powers (Golden Art #89)"
+                      },
+                      "ncertReference": {
+                        "book": null,
+                        "chapter": "Chapter 12: Exponents and Powers",
+                        "exercise": null,
+                        "page": null
+                      },
+                      "formulaName": "Negative Exponent",
+                      "relatedFormulas": [
+                        "CBSE-C8-AL-004",
+                        "CBSE-C8-AL-005",
+                        "CBSE-C8-AL-006",
+                        "CBSE-C7-AL-006"
+                      ]
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": "geometry",
@@ -8911,5 +9569,5 @@
       "classes": []
     }
   ],
-  "updatedAt": "2026-08-30T18:00:00.000Z"
+  "updatedAt": "2026-09-07T14:16:34.531Z"
 }
