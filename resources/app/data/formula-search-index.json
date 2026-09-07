@@ -1,7 +1,7 @@
 {
-  "version": "4.6",
-  "generatedAt": "2026-09-07T14:16:34.531Z",
-  "totalEntries": 98,
+  "version": "4.7",
+  "generatedAt": "2026-09-07T15:18:18.528Z",
+  "totalEntries": 112,
   "entries": [
     {
       "id": "CBSE-C6-AR-001",
@@ -2736,6 +2736,417 @@
       ],
       "difficulty": "Easy",
       "searchText": "negative exponent negative exponent a^(−n) = 1/a^n  (a ≠ 0) a^{-n}=\\frac{1}{a^n}\\;(a\\neq 0) a negative exponent means take the reciprocal of the base raised to the positive exponent. 2^(−3) = 1/2³ = 1/8 the base a must not be zero. algebra exponents and powers negative exponents class 8 cbse exponent negative exponent reciprocal laws of exponents cbse class 8 exponents"
+    },
+    {
+      "id": "CBSE-C9-AL-001",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "polynomials",
+      "chapter": "Polynomials",
+      "chapterNumber": 1,
+      "topic": "Polynomials in One Variable",
+      "name": "Degree of a Polynomial",
+      "formulaName": "Degree of a Polynomial",
+      "formula": "deg(p) = highest power of x with a non-zero coefficient",
+      "keywords": [
+        "polynomial",
+        "degree",
+        "leading coefficient",
+        "cubic",
+        "quadratic"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Polynomials"
+      ],
+      "difficulty": "Easy",
+      "searchText": "degree of a polynomial degree of a polynomial deg(p) = highest power of x with a non-zero coefficient \\deg p(x)=n\\;\\text{if}\\;p(x)=a_n x^n+\\cdots+a_0,\\;a_n\\neq 0 the degree of a polynomial is the highest power of the variable whose coefficient is not zero. a non-zero constant polynomial has degree 0. for p(x) = 4x³ − 2x + 7, deg(p) = 3 (cubic polynomial). the zero polynomial is not assigned a degree in class 9. algebra polynomials polynomials in one variable class 9 cbse polynomial degree leading coefficient cubic quadratic cbse class 9 polynomials"
+    },
+    {
+      "id": "CBSE-C9-AL-002",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "polynomials",
+      "chapter": "Polynomials",
+      "chapterNumber": 1,
+      "topic": "Zeroes of a Polynomial",
+      "name": "Zero of a Polynomial",
+      "formulaName": "Zero of a Polynomial",
+      "formula": "p(α) = 0",
+      "keywords": [
+        "zero",
+        "root",
+        "polynomial",
+        "value of a polynomial"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Polynomials"
+      ],
+      "difficulty": "Easy",
+      "searchText": "zero of a polynomial zero of a polynomial p(α) = 0 p(\\alpha)=0 a number α is a zero of the polynomial p(x) if substituting x = α makes the polynomial equal to zero. for p(x) = x − 2, p(2) = 0, so 2 is a zero of p(x). algebra polynomials zeroes of a polynomial class 9 cbse zero root polynomial value of a polynomial cbse class 9 polynomials"
+    },
+    {
+      "id": "CBSE-C9-AL-003",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "polynomials",
+      "chapter": "Polynomials",
+      "chapterNumber": 1,
+      "topic": "Remainder Theorem",
+      "name": "Remainder Theorem",
+      "formulaName": "Remainder Theorem",
+      "formula": "If p(x) is divided by (x − a), then remainder = p(a)",
+      "keywords": [
+        "remainder theorem",
+        "polynomial",
+        "division",
+        "evaluate"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Polynomials"
+      ],
+      "difficulty": "Medium",
+      "searchText": "remainder theorem remainder theorem if p(x) is divided by (x − a), then remainder = p(a) p(x)=(x-a)q(x)+p(a) when a polynomial p(x) is divided by the linear polynomial (x − a), the remainder is the constant p(a). for p(x) = x² + 3x + 2 divided by (x − 1), remainder = p(1) = 1 + 3 + 2 = 6. the divisor must be linear of the form x − a. if the divisor is x + a, rewrite it as x − (−a) and evaluate p(−a). algebra polynomials remainder theorem class 9 cbse remainder theorem polynomial division evaluate cbse class 9 polynomials"
+    },
+    {
+      "id": "CBSE-C9-AL-004",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "polynomials",
+      "chapter": "Polynomials",
+      "chapterNumber": 1,
+      "topic": "Factor Theorem",
+      "name": "Factor Theorem",
+      "formulaName": "Factor Theorem",
+      "formula": "(x − a) is a factor of p(x) ⇔ p(a) = 0",
+      "keywords": [
+        "factor theorem",
+        "factorisation",
+        "zero",
+        "linear factor"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Polynomials"
+      ],
+      "difficulty": "Medium",
+      "searchText": "factor theorem factor theorem (x − a) is a factor of p(x) ⇔ p(a) = 0 (x-a)\\text{ is a factor of }p(x)\\iff p(a)=0 a linear polynomial (x − a) is a factor of p(x) if and only if p(a) = 0. this is the remainder theorem when the remainder is zero. for p(x) = x² − 5x + 6, p(2) = 4 − 10 + 6 = 0, so (x − 2) is a factor. indeed p(x) = (x − 2)(x − 3). algebra polynomials factor theorem class 9 cbse factor theorem factorisation zero linear factor cbse class 9 polynomials"
+    },
+    {
+      "id": "CBSE-C9-AL-005",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "polynomials",
+      "chapter": "Polynomials",
+      "chapterNumber": 1,
+      "topic": "Algebraic Identities",
+      "name": "Square of a Trinomial",
+      "formulaName": "Square of a Trinomial",
+      "formula": "(x + y + z)² = x² + y² + z² + 2xy + 2yz + 2zx",
+      "keywords": [
+        "identity",
+        "trinomial",
+        "square",
+        "(x+y+z)²",
+        "polynomials"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Identities"
+      ],
+      "difficulty": "Medium",
+      "searchText": "square of a trinomial square of a trinomial (x + y + z)² = x² + y² + z² + 2xy + 2yz + 2zx (x+y+z)^2=x^2+y^2+z^2+2xy+2yz+2zx the square of a three-term sum is the sum of the three squares plus twice each pairwise product. this extends the class 8 identity (a + b)² to three terms. (1 + 2 + 3)² = 36, and 1 + 4 + 9 + 2(1)(2) + 2(2)(3) + 2(3)(1) = 14 + 4 + 12 + 6 = 36. algebra polynomials algebraic identities class 9 cbse identity trinomial square (x+y+z)² polynomials cbse class 9 identities"
+    },
+    {
+      "id": "CBSE-C9-AL-006",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "polynomials",
+      "chapter": "Polynomials",
+      "chapterNumber": 1,
+      "topic": "Algebraic Identities",
+      "name": "Cube of a Sum",
+      "formulaName": "Cube of a Sum",
+      "formula": "(x + y)³ = x³ + y³ + 3xy(x + y)",
+      "keywords": [
+        "identity",
+        "cube",
+        "(x+y)³",
+        "binomial",
+        "polynomials"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Identities"
+      ],
+      "difficulty": "Medium",
+      "searchText": "cube of a sum cube of a sum (x + y)³ = x³ + y³ + 3xy(x + y) (x+y)^3=x^3+y^3+3xy(x+y) the cube of a binomial sum expands to the two cubes plus three times the product of the terms times their sum. equivalently, (x + y)³ = x³ + 3x²y + 3xy² + y³. (2 + 1)³ = 27, and 2³ + 1³ + 3(2)(1)(2 + 1) = 8 + 1 + 18 = 27. algebra polynomials algebraic identities class 9 cbse identity cube (x+y)³ binomial polynomials cbse class 9 identities"
+    },
+    {
+      "id": "CBSE-C9-AL-007",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "polynomials",
+      "chapter": "Polynomials",
+      "chapterNumber": 1,
+      "topic": "Algebraic Identities",
+      "name": "Cube of a Difference",
+      "formulaName": "Cube of a Difference",
+      "formula": "(x − y)³ = x³ − y³ − 3xy(x − y)",
+      "keywords": [
+        "identity",
+        "cube",
+        "(x-y)³",
+        "binomial",
+        "polynomials"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Identities"
+      ],
+      "difficulty": "Medium",
+      "searchText": "cube of a difference cube of a difference (x − y)³ = x³ − y³ − 3xy(x − y) (x-y)^3=x^3-y^3-3xy(x-y) the cube of a binomial difference expands to the two cubes minus three times the product of the terms times their difference. equivalently, (x − y)³ = x³ − 3x²y + 3xy² − y³. (3 − 1)³ = 8, and 3³ − 1³ − 3(3)(1)(3 − 1) = 27 − 1 − 18 = 8. algebra polynomials algebraic identities class 9 cbse identity cube (x-y)³ binomial polynomials cbse class 9 identities"
+    },
+    {
+      "id": "CBSE-C9-AL-008",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "polynomials",
+      "chapter": "Polynomials",
+      "chapterNumber": 1,
+      "topic": "Algebraic Identities",
+      "name": "Sum of Cubes",
+      "formulaName": "Sum of Cubes",
+      "formula": "x³ + y³ = (x + y)(x² − xy + y²)",
+      "keywords": [
+        "identity",
+        "sum of cubes",
+        "factorisation",
+        "x³+y³"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Identities"
+      ],
+      "difficulty": "Medium",
+      "searchText": "sum of cubes sum of cubes x³ + y³ = (x + y)(x² − xy + y²) x^3+y^3=(x+y)(x^2-xy+y^2) the sum of two cubes factors as the sum of the terms times a quadratic factor x² − xy + y². linked to the cube-of-a-sum identity. 2³ + 3³ = 8 + 27 = 35, and (2 + 3)(4 − 6 + 9) = 5 × 7 = 35. algebra polynomials algebraic identities class 9 cbse identity sum of cubes factorisation x³+y³ cbse class 9 identities"
+    },
+    {
+      "id": "CBSE-C9-AL-009",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "polynomials",
+      "chapter": "Polynomials",
+      "chapterNumber": 1,
+      "topic": "Algebraic Identities",
+      "name": "Difference of Cubes",
+      "formulaName": "Difference of Cubes",
+      "formula": "x³ − y³ = (x − y)(x² + xy + y²)",
+      "keywords": [
+        "identity",
+        "difference of cubes",
+        "factorisation",
+        "x³-y³"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Identities"
+      ],
+      "difficulty": "Medium",
+      "searchText": "difference of cubes difference of cubes x³ − y³ = (x − y)(x² + xy + y²) x^3-y^3=(x-y)(x^2+xy+y^2) the difference of two cubes factors as the difference of the terms times a quadratic factor x² + xy + y². this is the class 9 cube analogue of the class 8 difference of squares. 3³ − 2³ = 27 − 8 = 19, and (3 − 2)(9 + 6 + 4) = 1 × 19 = 19. algebra polynomials algebraic identities class 9 cbse identity difference of cubes factorisation x³-y³ cbse class 9 identities"
+    },
+    {
+      "id": "CBSE-C9-AL-010",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "polynomials",
+      "chapter": "Polynomials",
+      "chapterNumber": 1,
+      "topic": "Algebraic Identities",
+      "name": "Sum of Cubes of Three Terms",
+      "formulaName": "Sum of Cubes of Three Terms",
+      "formula": "x³ + y³ + z³ − 3xyz = (x + y + z)(x² + y² + z² − xy − yz − zx)",
+      "keywords": [
+        "identity",
+        "three cubes",
+        "3xyz",
+        "polynomials",
+        "factorisation"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Identities"
+      ],
+      "difficulty": "Medium",
+      "searchText": "sum of cubes of three terms sum of cubes of three terms x³ + y³ + z³ − 3xyz = (x + y + z)(x² + y² + z² − xy − yz − zx) x^3+y^3+z^3-3xyz=(x+y+z)(x^2+y^2+z^2-xy-yz-zx) the sum of three cubes minus three times their product factors using the sum of the terms and a quadratic expression in the pairwise products. for x = 1, y = 2, z = 3: 1 + 8 + 27 − 18 = 18, and (1 + 2 + 3)(1 + 4 + 9 − 2 − 6 − 3) = 6 × 3 = 18. if x + y + z = 0, then x³ + y³ + z³ = 3xyz. algebra polynomials algebraic identities class 9 cbse identity three cubes 3xyz polynomials factorisation cbse class 9 identities"
+    },
+    {
+      "id": "CBSE-C9-AL-011",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "linear-equations-in-two-variables",
+      "chapter": "Linear Equations in Two Variables",
+      "chapterNumber": 2,
+      "topic": "Standard Form",
+      "name": "Linear Equation in Two Variables",
+      "formulaName": "Linear Equation in Two Variables",
+      "formula": "ax + by + c = 0  (a and b not both zero)",
+      "keywords": [
+        "linear equation",
+        "two variables",
+        "standard form",
+        "degree 1"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Linear Equations"
+      ],
+      "difficulty": "Easy",
+      "searchText": "linear equation in two variables linear equation in two variables ax + by + c = 0  (a and b not both zero) ax+by+c=0\\;(a,b\\text{ not both zero}) a linear equation in two variables is an equation of the first degree in x and y. any equation that can be rewritten in this form is linear in two variables. 2x + 3y − 6 = 0 is linear in two variables, with a = 2, b = 3, c = −6. the graph of ax + by + c = 0 is a straight line. this extends the class 7 one-variable equation ax + b = c. algebra linear equations in two variables standard form class 9 cbse linear equation two variables standard form degree 1 cbse class 9 linear equations"
+    },
+    {
+      "id": "CBSE-C9-AL-012",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "linear-equations-in-two-variables",
+      "chapter": "Linear Equations in Two Variables",
+      "chapterNumber": 2,
+      "topic": "Solutions",
+      "name": "Solution of a Linear Equation in Two Variables",
+      "formulaName": "Solution of a Linear Equation in Two Variables",
+      "formula": "(x₀, y₀) is a solution ⇔ a x₀ + b y₀ + c = 0",
+      "keywords": [
+        "solution",
+        "ordered pair",
+        "linear equation",
+        "infinitely many solutions"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Linear Equations"
+      ],
+      "difficulty": "Easy",
+      "searchText": "solution of a linear equation in two variables solution of a linear equation in two variables (x₀, y₀) is a solution ⇔ a x₀ + b y₀ + c = 0 (x_0,y_0)\\text{ is a solution}\\iff ax_0+by_0+c=0 an ordered pair that satisfies the equation is a solution. a linear equation in two variables has infinitely many solutions; each solution is a point on the graph of the line. for x + y − 5 = 0, the pair (2, 3) is a solution because 2 + 3 − 5 = 0. another solution is (0, 5). do not confuse this with a pair of linear equations (simultaneous equations), which is class 10. algebra linear equations in two variables solutions class 9 cbse solution ordered pair linear equation infinitely many solutions cbse class 9 linear equations"
+    },
+    {
+      "id": "CBSE-C9-AL-013",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "linear-equations-in-two-variables",
+      "chapter": "Linear Equations in Two Variables",
+      "chapterNumber": 2,
+      "topic": "Lines Parallel to the Axes",
+      "name": "Line Parallel to the y-axis",
+      "formulaName": "Line Parallel to the y-axis",
+      "formula": "x = a",
+      "keywords": [
+        "vertical line",
+        "parallel to y-axis",
+        "x = a",
+        "graph"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Linear Equations"
+      ],
+      "difficulty": "Easy",
+      "searchText": "line parallel to the y-axis line parallel to the y-axis x = a x=a the equation x = a represents the vertical line through (a, 0), parallel to the y-axis. every point on this line has x-coordinate a. x = 3 is the line through (3, 0), (3, 1) and (3, −2), parallel to the y-axis. in standard form this is 1·x + 0·y − a = 0. algebra linear equations in two variables lines parallel to the axes class 9 cbse vertical line parallel to y-axis x = a graph cbse class 9 linear equations"
+    },
+    {
+      "id": "CBSE-C9-AL-014",
+      "boardId": "cbse",
+      "board": "CBSE",
+      "classId": "9",
+      "class": "Class 9",
+      "subjectId": "algebra",
+      "subject": "Algebra",
+      "chapterId": "linear-equations-in-two-variables",
+      "chapter": "Linear Equations in Two Variables",
+      "chapterNumber": 2,
+      "topic": "Lines Parallel to the Axes",
+      "name": "Line Parallel to the x-axis",
+      "formulaName": "Line Parallel to the x-axis",
+      "formula": "y = b",
+      "keywords": [
+        "horizontal line",
+        "parallel to x-axis",
+        "y = b",
+        "graph"
+      ],
+      "examTags": [
+        "CBSE",
+        "Class 9",
+        "Linear Equations"
+      ],
+      "difficulty": "Easy",
+      "searchText": "line parallel to the x-axis line parallel to the x-axis y = b y=b the equation y = b represents the horizontal line through (0, b), parallel to the x-axis. every point on this line has y-coordinate b. y = −2 is the line through (0, −2), (1, −2) and (−3, −2), parallel to the x-axis. in standard form this is 0·x + 1·y − b = 0. algebra linear equations in two variables lines parallel to the axes class 9 cbse horizontal line parallel to x-axis y = b graph cbse class 9 linear equations"
     }
   ],
   "searchableFields": [
