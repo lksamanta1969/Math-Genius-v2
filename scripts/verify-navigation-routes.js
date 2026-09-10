@@ -77,7 +77,7 @@ const expectedCounts = {
   6: 0,
   7: 3,
   8: 0,
-  9: 0,
+  9: 1,
   10: 0,
   11: 0,
   12: 0
@@ -158,10 +158,10 @@ if (
 
 console.log("\n=== Summary ===");
 console.log("Navigation cards exposed:", manifestCount);
-console.log("Expected navigation cards:", 3);
+console.log("Expected navigation cards:", 4);
 
-if (manifestCount !== 3) {
-  fail("Expected exactly 3 navigation cards across all classes, got " + manifestCount);
+if (manifestCount !== 4) {
+  fail("Expected exactly 4 navigation cards across all classes, got " + manifestCount);
 }
 
 console.log(failed ? "\nFAILED: " + failed + " issues" : "\nAll navigation checks passed.");

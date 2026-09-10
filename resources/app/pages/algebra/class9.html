@@ -15,12 +15,310 @@
 </div>
 
 <div class="container">
+
     <h1>Algebra</h1>
     <h2>Class 9</h2>
-    <hr>
-    <p class="page-desc">Content is under development.</p>
-    <hr>
+
+    <p class="page-desc">
+        CBSE Class 9 Algebra as organised in this project: Polynomials, and
+        Linear Equations in Two Variables. The sections below follow those two
+        chapters and the existing Class 9 Algebra Formula Library (14 formulas).
+        Worked examples on this page are static. The offline Algebra engine used
+        on Class 7 is for one-variable linear work and is not used here.
+    </p>
+
+    <section class="topic-section" aria-labelledby="alg-scope">
+        <h2 id="alg-scope">1. How Class 9 Algebra is organised</h2>
+        <div class="formula-box">
+            <p><strong>Chapter 1 — Polynomials</strong> — degree, zeroes, remainder theorem, factor theorem, and Class 9 cube / trinomial identities.</p>
+            <p><strong>Chapter 2 — Linear Equations in Two Variables</strong> — standard form, solutions as ordered pairs, and lines parallel to the axes.</p>
+            <p class="formula-note">
+                This page stays inside that Class 9 scope. It does not teach Class 8
+                square identities as new content, Class 10 quadratic equations,
+                simultaneous linear equations (a pair of equations), arithmetic
+                progressions, or Class 11 sequences and series (AP, GP).
+            </p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="alg-ch1">
+        <h2 id="alg-ch1">2. Chapter 1 — Polynomials</h2>
+        <div class="formula-box">
+            <p><strong>Polynomial in one variable</strong> — an expression of the form a<sub>n</sub>x<sup>n</sup> + … + a<sub>1</sub>x + a<sub>0</sub>, where the powers of x are whole numbers and the coefficients are real numbers.</p>
+            <p><strong>Term / coefficient</strong> — each a<sub>k</sub>x<sup>k</sup> is a term; a<sub>k</sub> is its coefficient. The leading coefficient a<sub>n</sub> is the coefficient of the highest power that is not zero.</p>
+            <p><strong>Constant polynomial</strong> — a non-zero number with no variable, such as 7. The zero polynomial is the polynomial that is identically 0.</p>
+            <hr>
+            <p><strong>Degree of a polynomial</strong> <span class="muted-tag">CBSE-C9-AL-001</span></p>
+            <p class="formula-line">deg(p) = highest power of x with a non-zero coefficient</p>
+            <p class="formula-note">
+                If p(x) = a<sub>n</sub>x<sup>n</sup> + … + a<sub>0</sub> with a<sub>n</sub> ≠ 0, then deg(p) = n.
+                A non-zero constant polynomial has degree 0. The zero polynomial is not assigned a degree in Class 9.
+            </p>
+            <hr>
+            <p><strong>Zero of a polynomial</strong> <span class="muted-tag">CBSE-C9-AL-002</span></p>
+            <p class="formula-line">p(α) = 0</p>
+            <p class="formula-note">
+                A number α is a zero of p(x) if substituting x = α makes the polynomial equal to zero.
+                Finding a zero is not the same as solving a Class 10 quadratic equation by formula.
+            </p>
+            <hr>
+            <p><strong>Remainder theorem</strong> <span class="muted-tag">CBSE-C9-AL-003</span></p>
+            <p class="formula-line">If p(x) is divided by (x − a), then remainder = p(a)</p>
+            <p class="formula-note">
+                In full: p(x) = (x − a) q(x) + p(a). The divisor must be linear of the form x − a.
+                If the divisor is x + a, rewrite it as x − (−a) and evaluate p(−a).
+            </p>
+            <hr>
+            <p><strong>Factor theorem</strong> <span class="muted-tag">CBSE-C9-AL-004</span></p>
+            <p class="formula-line">(x − a) is a factor of p(x) ⇔ p(a) = 0</p>
+            <p class="formula-note">
+                This is the remainder theorem when the remainder is zero. Use it to test a proposed linear factor; do not treat it as a method for Class 10 factorisation of quadratics as a separate chapter.
+            </p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example A — Degree</strong></p>
+            <p>Find the degree of p(x) = 4x<sup>3</sup> − 2x + 7.</p>
+            <p>The powers of x with non-zero coefficients are 3, 1, and 0. The highest is 3, so p is a cubic polynomial.</p>
+            <p><strong>deg(p) = 3</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example B — Zero of a polynomial</strong></p>
+            <p>Show that 2 is a zero of p(x) = x − 2.</p>
+            <p>p(2) = 2 − 2 = 0. So 2 is a zero of p(x).</p>
+            <p><strong>p(2) = 0</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example C — Remainder theorem</strong></p>
+            <p>Find the remainder when p(x) = x<sup>2</sup> + 3x + 2 is divided by (x − 1).</p>
+            <p>Remainder = p(1) = 1<sup>2</sup> + 3(1) + 2 = 1 + 3 + 2 = 6.</p>
+            <p><strong>Remainder = 6</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example D — Factor theorem</strong></p>
+            <p>Is (x − 2) a factor of p(x) = x<sup>2</sup> − 5x + 6?</p>
+            <p>p(2) = 4 − 10 + 6 = 0, so (x − 2) is a factor. Indeed p(x) = (x − 2)(x − 3).</p>
+            <p><strong>(x − 2) is a factor</strong></p>
+        </div>
+
+        <div class="formula-box">
+            <p><strong>Class 9 algebraic identities</strong> — these expand or factor expressions using cubes and three-term sums. They are not a return to Class 8 square identities (a + b)<sup>2</sup> and (a − b)<sup>2</sup> as the main lesson.</p>
+            <hr>
+            <p><strong>Square of a trinomial</strong> <span class="muted-tag">CBSE-C9-AL-005</span></p>
+            <p class="formula-line">(x + y + z)<sup>2</sup> = x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup> + 2xy + 2yz + 2zx</p>
+            <p class="formula-note">
+                The square of a three-term sum is the sum of the three squares plus twice each pairwise product.
+            </p>
+            <hr>
+            <p><strong>Cube of a sum</strong> <span class="muted-tag">CBSE-C9-AL-006</span></p>
+            <p class="formula-line">(x + y)<sup>3</sup> = x<sup>3</sup> + y<sup>3</sup> + 3xy(x + y)</p>
+            <p class="formula-note">
+                Equivalently, (x + y)<sup>3</sup> = x<sup>3</sup> + 3x<sup>2</sup>y + 3xy<sup>2</sup> + y<sup>3</sup>.
+            </p>
+            <hr>
+            <p><strong>Cube of a difference</strong> <span class="muted-tag">CBSE-C9-AL-007</span></p>
+            <p class="formula-line">(x − y)<sup>3</sup> = x<sup>3</sup> − y<sup>3</sup> − 3xy(x − y)</p>
+            <p class="formula-note">
+                Equivalently, (x − y)<sup>3</sup> = x<sup>3</sup> − 3x<sup>2</sup>y + 3xy<sup>2</sup> − y<sup>3</sup>.
+            </p>
+            <hr>
+            <p><strong>Sum of cubes</strong> <span class="muted-tag">CBSE-C9-AL-008</span></p>
+            <p class="formula-line">x<sup>3</sup> + y<sup>3</sup> = (x + y)(x<sup>2</sup> − xy + y<sup>2</sup>)</p>
+            <p class="formula-note">Linked to the cube-of-a-sum identity.</p>
+            <hr>
+            <p><strong>Difference of cubes</strong> <span class="muted-tag">CBSE-C9-AL-009</span></p>
+            <p class="formula-line">x<sup>3</sup> − y<sup>3</sup> = (x − y)(x<sup>2</sup> + xy + y<sup>2</sup>)</p>
+            <p class="formula-note">This is the Class 9 cube analogue of the Class 8 difference of squares; the square identity itself is not taught again here.</p>
+            <hr>
+            <p><strong>Sum of cubes of three terms</strong> <span class="muted-tag">CBSE-C9-AL-010</span></p>
+            <p class="formula-line">x<sup>3</sup> + y<sup>3</sup> + z<sup>3</sup> − 3xyz = (x + y + z)(x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup> − xy − yz − zx)</p>
+            <p class="formula-note">
+                If x + y + z = 0, then x<sup>3</sup> + y<sup>3</sup> + z<sup>3</sup> = 3xyz.
+            </p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example E — Square of a trinomial</strong></p>
+            <p>Check (1 + 2 + 3)<sup>2</sup> using the identity.</p>
+            <p>Left side: 6<sup>2</sup> = 36. Right side: 1 + 4 + 9 + 2(1)(2) + 2(2)(3) + 2(3)(1) = 14 + 4 + 12 + 6 = 36.</p>
+            <p><strong>Both sides = 36</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example F — Cube of a sum</strong></p>
+            <p>Expand (2 + 1)<sup>3</sup> using (x + y)<sup>3</sup> = x<sup>3</sup> + y<sup>3</sup> + 3xy(x + y).</p>
+            <p>2<sup>3</sup> + 1<sup>3</sup> + 3(2)(1)(2 + 1) = 8 + 1 + 18 = 27, and (3)<sup>3</sup> = 27.</p>
+            <p><strong>27</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example G — Cube of a difference</strong></p>
+            <p>Expand (3 − 1)<sup>3</sup> using (x − y)<sup>3</sup> = x<sup>3</sup> − y<sup>3</sup> − 3xy(x − y).</p>
+            <p>3<sup>3</sup> − 1<sup>3</sup> − 3(3)(1)(3 − 1) = 27 − 1 − 18 = 8, and 2<sup>3</sup> = 8.</p>
+            <p><strong>8</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example H — Sum of cubes</strong></p>
+            <p>Factor 2<sup>3</sup> + 3<sup>3</sup>.</p>
+            <p>2<sup>3</sup> + 3<sup>3</sup> = 8 + 27 = 35, and (2 + 3)(4 − 6 + 9) = 5 × 7 = 35.</p>
+            <p><strong>(2 + 3)(4 − 6 + 9) = 35</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example I — Difference of cubes</strong></p>
+            <p>Factor 3<sup>3</sup> − 2<sup>3</sup>.</p>
+            <p>27 − 8 = 19, and (3 − 2)(9 + 6 + 4) = 1 × 19 = 19.</p>
+            <p><strong>(3 − 2)(9 + 6 + 4) = 19</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example J — Three cubes</strong></p>
+            <p>For x = 1, y = 2, z = 3, check x<sup>3</sup> + y<sup>3</sup> + z<sup>3</sup> − 3xyz.</p>
+            <p>1 + 8 + 27 − 18 = 18. Factor form: (1 + 2 + 3)(1 + 4 + 9 − 2 − 6 − 3) = 6 × 3 = 18.</p>
+            <p><strong>18</strong></p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="alg-ch2">
+        <h2 id="alg-ch2">3. Chapter 2 — Linear Equations in Two Variables</h2>
+        <div class="formula-box">
+            <p><strong>Two variables</strong> — here the unknowns are x and y together. Class 7 solved ax + b = c in one variable; Class 9 writes a first-degree equation in both x and y.</p>
+            <p><strong>Graph</strong> — every solution (x, y) is a point. All such points lie on a straight line. This page does not solve a <em>pair</em> of linear equations (simultaneous equations) — that is Class 10.</p>
+            <hr>
+            <p><strong>Linear equation in two variables</strong> <span class="muted-tag">CBSE-C9-AL-011</span></p>
+            <p class="formula-line">ax + by + c = 0  (a and b not both zero)</p>
+            <p class="formula-note">
+                First degree in x and y. Any equation that can be rewritten in this form is linear in two variables.
+                The graph of ax + by + c = 0 is a straight line.
+            </p>
+            <hr>
+            <p><strong>Solution of a linear equation in two variables</strong> <span class="muted-tag">CBSE-C9-AL-012</span></p>
+            <p class="formula-line">(x<sub>0</sub>, y<sub>0</sub>) is a solution ⇔ a x<sub>0</sub> + b y<sub>0</sub> + c = 0</p>
+            <p class="formula-note">
+                An ordered pair that satisfies the equation is a solution. There are infinitely many solutions;
+                each is a point on the line. Do not confuse one equation with a pair of simultaneous equations.
+            </p>
+            <hr>
+            <p><strong>Line parallel to the y-axis</strong> <span class="muted-tag">CBSE-C9-AL-013</span></p>
+            <p class="formula-line">x = a</p>
+            <p class="formula-note">
+                Vertical line through (a, 0). Every point on this line has x-coordinate a.
+                In standard form: 1·x + 0·y − a = 0.
+            </p>
+            <hr>
+            <p><strong>Line parallel to the x-axis</strong> <span class="muted-tag">CBSE-C9-AL-014</span></p>
+            <p class="formula-line">y = b</p>
+            <p class="formula-note">
+                Horizontal line through (0, b). Every point on this line has y-coordinate b.
+                In standard form: 0·x + 1·y − b = 0.
+            </p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example K — Standard form</strong></p>
+            <p>Write 2x + 3y = 6 in the form ax + by + c = 0 and name a, b, c.</p>
+            <p>2x + 3y − 6 = 0, so a = 2, b = 3, c = −6. Neither a nor b is zero, so the equation is linear in two variables.</p>
+            <p><strong>2x + 3y − 6 = 0</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example L — Checking a solution</strong></p>
+            <p>Is (2, 3) a solution of x + y − 5 = 0?</p>
+            <p>2 + 3 − 5 = 0, so yes. Another solution is (0, 5), because 0 + 5 − 5 = 0. Infinitely many other pairs also work, such as (1, 4).</p>
+            <p><strong>(2, 3) and (0, 5) are solutions</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example M — Vertical line</strong></p>
+            <p>Describe the graph of x = 3.</p>
+            <p>Every point has x-coordinate 3: (3, 0), (3, 1), (3, −2), … . The line is parallel to the y-axis.</p>
+            <p><strong>x = 3, parallel to the y-axis</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example N — Horizontal line</strong></p>
+            <p>Describe the graph of y = −2.</p>
+            <p>Every point has y-coordinate −2: (0, −2), (1, −2), (−3, −2), … . The line is parallel to the x-axis.</p>
+            <p><strong>y = −2, parallel to the x-axis</strong></p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="alg-supported">
+        <h2 id="alg-supported">4. What this Class 9 page covers</h2>
+        <ul class="practice-list">
+            <li><strong>Degree</strong> — read the highest power with a non-zero coefficient (including degree 0 for a non-zero constant).</li>
+            <li><strong>Zero of a polynomial</strong> — check p(α) = 0 by substitution.</li>
+            <li><strong>Remainder theorem</strong> — remainder when dividing by (x − a) is p(a).</li>
+            <li><strong>Factor theorem</strong> — (x − a) is a factor if and only if p(a) = 0.</li>
+            <li><strong>Class 9 identities</strong> — (x + y + z)<sup>2</sup>, cubes of a binomial, sum/difference of cubes, and x<sup>3</sup> + y<sup>3</sup> + z<sup>3</sup> − 3xyz.</li>
+            <li><strong>Linear equation in two variables</strong> — write ax + by + c = 0 and recognise a line.</li>
+            <li><strong>Solutions</strong> — test ordered pairs; there are infinitely many solutions to one equation.</li>
+            <li><strong>Axis-parallel lines</strong> — x = a (vertical) and y = b (horizontal).</li>
+        </ul>
+        <p class="formula-note">
+            There is no interactive solver on this page. Polynomial division, remainder/factor checks,
+            cube identities, and two-variable equations are shown as worked examples only.
+            Not on this page: Class 8 square identities as a chapter, Class 10 quadratics,
+            simultaneous equations, AP, GP, or calculus.
+        </p>
+    </section>
+
+    <section class="topic-section" aria-labelledby="alg-tips">
+        <h2 id="alg-tips">5. Common mistakes</h2>
+        <div class="formula-box">
+            <p>Do not assign a degree to the zero polynomial in Class 9.</p>
+            <p>For remainder when dividing by x + a, evaluate p(−a), not p(a).</p>
+            <p>p(a) = 0 is required for (x − a) to be a factor; a non-zero remainder means it is not a factor.</p>
+            <p>One linear equation in x and y has infinitely many solutions. Two equations together (a system) is Class 10 work.</p>
+            <p>x = a is vertical (parallel to the y-axis). y = b is horizontal (parallel to the x-axis). Mixing these is a common graphing error.</p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="alg-more">
+        <h2 id="alg-more">6. Practice more</h2>
+        <ul class="topic-list">
+            <li><a href="../formula-library.html">Browse Formula Library</a> — Polynomials and Linear Equations in Two Variables (Class 9).</li>
+            <li><a href="../ai-math-solver.html">Open AI Math Solver</a> — for question types the local engines already support. Class 9 polynomial theorems and two-variable equations are taught on this page as static examples.</li>
+        </ul>
+    </section>
+
 </div>
+
+<style>
+.muted-tag {
+    color: #8eb4e8;
+    font-size: 14px;
+    font-weight: normal;
+}
+.formula-line {
+    font-size: 17px;
+    margin: 10px 0;
+}
+.formula-note {
+    color: #C8D4F0;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+.example-block {
+    margin-bottom: 16px;
+}
+.example-block p {
+    color: #C8D4F0;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+.topic-list a {
+    color: #7ecbff;
+    text-decoration: underline;
+}
+</style>
+
+<script src="../../data/navigation.js"></script>
+<script src="../../js/study-back-nav.js"></script>
 
 </body>
 </html>
