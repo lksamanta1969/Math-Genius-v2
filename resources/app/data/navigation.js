@@ -50,6 +50,17 @@ const STUDY_PAGE_REGISTRY = {
     icon: "🎲",
     category: STUDY_MATERIAL_CATEGORY,
     boards: null
+  },
+  "algebra:7": {
+    id: "algebra:7",
+    topicId: "algebra",
+    classLevel: 7,
+    path: "../algebra/class7.html",
+    status: STUDY_PAGE_STATUS_AVAILABLE,
+    title: "Algebra",
+    icon: "📐",
+    category: STUDY_MATERIAL_CATEGORY,
+    boards: null
   }
 };
 

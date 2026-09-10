@@ -75,7 +75,7 @@ console.log("\n=== Available study-material navigation cards ===");
 let manifestCount = 0;
 const expectedCounts = {
   6: 0,
-  7: 2,
+  7: 3,
   8: 0,
   9: 0,
   10: 0,
@@ -158,10 +158,10 @@ if (
 
 console.log("\n=== Summary ===");
 console.log("Navigation cards exposed:", manifestCount);
-console.log("Expected navigation cards:", 2);
+console.log("Expected navigation cards:", 3);
 
-if (manifestCount !== 2) {
-  fail("Expected exactly 2 navigation cards across all classes, got " + manifestCount);
+if (manifestCount !== 3) {
+  fail("Expected exactly 3 navigation cards across all classes, got " + manifestCount);
 }
 
 console.log(failed ? "\nFAILED: " + failed + " issues" : "\nAll navigation checks passed.");

@@ -15,12 +15,319 @@
 </div>
 
 <div class="container">
+
     <h1>Algebra</h1>
     <h2>Class 7</h2>
-    <hr>
-    <p class="page-desc">Content is under development.</p>
-    <hr>
+
+    <p class="page-desc">
+        CBSE Class 7 Algebra as organised in this project: Simple Equations,
+        Algebraic Expressions, and Exponents and Powers. The sections below follow
+        those three chapters. Worked examples and the interactive panel use the same
+        offline Algebra engine as the AI Math Solver (Phase 8B.4).
+    </p>
+
+    <section class="topic-section" aria-labelledby="alg-scope">
+        <h2 id="alg-scope">1. How Class 7 Algebra is organised</h2>
+        <div class="formula-box">
+            <p><strong>Chapter 1 — Simple Equations</strong> — one-variable linear equations and transposition.</p>
+            <p><strong>Chapter 2 — Algebraic Expressions</strong> — like terms, expanding brackets, degree, and substitution.</p>
+            <p><strong>Chapter 3 — Exponents and Powers</strong> — product and quotient laws for the same base.</p>
+            <p class="formula-note">
+                This page stays inside that Class 7 scope. It does not teach Class 8 identities
+                or Class 9 polynomials (factor theorem, remainder theorem, linear equations in two variables).
+            </p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="alg-ch1">
+        <h2 id="alg-ch1">2. Chapter 1 — Simple Equations</h2>
+        <div class="formula-box">
+            <p><strong>Equation</strong> — two expressions joined by “=”. Both sides have the same value.</p>
+            <p><strong>Variable</strong> — the unknown letter we solve for (usually x).</p>
+            <p><strong>Solution</strong> — the number that makes the equation true when substituted.</p>
+            <p><strong>Balance rule</strong> — whatever you add, subtract, multiply, or divide on one side, do the same on the other side.</p>
+            <hr>
+            <p><strong>Simple linear equation</strong> <span class="muted-tag">CBSE-C7-AL-001</span></p>
+            <p class="formula-line">ax + b = c (a ≠ 0)</p>
+            <p class="formula-note">
+                First degree in one variable only. a is the coefficient of x, b is a constant term,
+                c is the constant on the other side.
+            </p>
+            <hr>
+            <p><strong>Transposition</strong> <span class="muted-tag">CBSE-C7-AL-002</span></p>
+            <p class="formula-line">Moving a term to the other side changes its sign</p>
+            <p class="formula-note">
+                x + 5 = 12 becomes x = 12 − 5. Adding 5 on the left is the same as subtracting 5 on the right.
+            </p>
+            <hr>
+            <p><strong>From a sentence to an equation</strong></p>
+            <p>“5 more than a number is 12” → x + 5 = 12. “3 times a number plus 4 is 19” → 3x + 4 = 19.</p>
+            <p class="formula-note">
+                Check: put the solution back into the original equation. If both sides match, it is correct.
+            </p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example A — Linear equation</strong></p>
+            <p>Solve 3x + 4 = 19.</p>
+            <p>Subtract 4 from both sides: 3x = 15. Divide both sides by 3.</p>
+            <p><strong>x = 5</strong> (check: 3 × 5 + 4 = 19).</p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example B — Transposition</strong></p>
+            <p>Solve x + 5 = 12.</p>
+            <p>Move +5 to the right; the sign changes: x = 12 − 5.</p>
+            <p><strong>x = 7</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example C — Constant on the left</strong></p>
+            <p>Solve 7 + x = 10.</p>
+            <p>Transpose 7: x = 10 − 7.</p>
+            <p><strong>x = 3</strong></p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="alg-ch2">
+        <h2 id="alg-ch2">3. Chapter 2 — Algebraic Expressions</h2>
+        <div class="formula-box">
+            <p><strong>Term</strong> — a number, a variable, or their product (3x, −2m, 7).</p>
+            <p><strong>Coefficient</strong> — the numerical factor of a term (in 5m the coefficient is 5).</p>
+            <p><strong>Like terms</strong> — same variable part (5m and −2m). Unlike terms cannot be combined (3x and 4).</p>
+            <p><strong>Expression</strong> — a sum or difference of terms. An expression is not an equation (no “=” to solve).</p>
+            <hr>
+            <p><strong>Combine like terms</strong> <span class="muted-tag">CBSE-C7-AL-003</span></p>
+            <p class="formula-line">pa ± qa = (p ± q)a</p>
+            <p class="formula-note">Add or subtract coefficients only. 5m − 2m = 3m; 2a + 3a = 5a.</p>
+            <hr>
+            <p><strong>Distributive law</strong> <span class="muted-tag">CBSE-C7-AL-007</span></p>
+            <p class="formula-line">a(b + c) = ab + ac</p>
+            <p class="formula-note">
+                Multiply the factor outside by every term inside the bracket. 3(x + 4) = 3x + 12.
+                The same idea works for a(b − c) = ab − ac.
+            </p>
+            <hr>
+            <p><strong>Degree of an expression (one variable)</strong> <span class="muted-tag">CBSE-C7-AL-004</span></p>
+            <p class="formula-line">Degree = highest power of the variable in the expression</p>
+            <p class="formula-note">
+                Degree of 4x³ − x + 7 is 3. A non-zero constant such as 7 has degree 0.
+                Class 7 only asks you to read the degree — not to use Class 9 polynomial theorems.
+            </p>
+            <hr>
+            <p><strong>Value of an expression</strong></p>
+            <p>Replace the variable by a given number and compute. For 2x + 3 when x = 4: 2 × 4 + 3 = 11.</p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example D — Like terms</strong></p>
+            <p>Simplify 5m − 2m.</p>
+            <p>Both terms have m. Coefficients: 5 − 2 = 3.</p>
+            <p><strong>3m</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example E — Distributive law</strong></p>
+            <p>Expand 3(x + 4).</p>
+            <p>3 × x = 3x and 3 × 4 = 12.</p>
+            <p><strong>3x + 12</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example F — Degree</strong></p>
+            <p>Find the degree of 4x³ − x + 7.</p>
+            <p>Powers of x are 3, 1, and 0. The highest is 3.</p>
+            <p><strong>Degree = 3</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example G — Substitution</strong></p>
+            <p>Evaluate 2x + 3 when x = 4.</p>
+            <p>2 × 4 + 3 = 8 + 3.</p>
+            <p><strong>11</strong></p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="alg-ch3">
+        <h2 id="alg-ch3">4. Chapter 3 — Exponents and Powers</h2>
+        <div class="formula-box">
+            <p><strong>Base and exponent</strong> — in a<sup>m</sup>, a is the base and m is the exponent (how many times a is multiplied by itself).</p>
+            <p><strong>Same base only</strong> — the product and quotient rules below apply when the bases are identical and non-zero.</p>
+            <hr>
+            <p><strong>Product rule</strong> <span class="muted-tag">CBSE-C7-AL-005</span></p>
+            <p class="formula-line">a<sup>m</sup> × a<sup>n</sup> = a<sup>m+n</sup></p>
+            <p class="formula-note">Multiply same base → add exponents. 2³ × 2⁴ = 2⁷ = 128.</p>
+            <hr>
+            <p><strong>Quotient rule</strong> <span class="muted-tag">CBSE-C7-AL-006</span></p>
+            <p class="formula-line">a<sup>m</sup> ÷ a<sup>n</sup> = a<sup>m−n</sup> (a ≠ 0)</p>
+            <p class="formula-note">Divide same base → subtract exponents. 5⁶ ÷ 5² = 5⁴ = 625.</p>
+            <p class="formula-note">
+                Do not add the bases. 2³ × 2⁴ is not 4⁷. Class 8 goes further (negative exponents,
+                (ab)<sup>n</sup>, a<sup>m</sup> ÷ a<sup>n</sup> with more identities) — those are not on this page.
+            </p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example H — Product rule</strong></p>
+            <p>Simplify 2³ × 2⁴.</p>
+            <p>Same base 2: add exponents 3 + 4 = 7. Then 2⁷ = 128.</p>
+            <p><strong>2⁷ = 128</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example I — Quotient rule</strong></p>
+            <p>Simplify 5⁶ ÷ 5².</p>
+            <p>Same base 5: subtract exponents 6 − 2 = 4. Then 5⁴ = 625.</p>
+            <p><strong>5⁴ = 625</strong></p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="alg-supported">
+        <h2 id="alg-supported">5. Supported Class 7 question types</h2>
+        <ul class="practice-list">
+            <li><strong>Simple linear equation</strong> — solve ax + b = c (e.g. 3x + 4 = 19).</li>
+            <li><strong>Transposition</strong> — move a term and change its sign (e.g. x + 5 = 12).</li>
+            <li><strong>Combine like terms</strong> — simplify 5m − 2m or 2a + 3a.</li>
+            <li><strong>Evaluate an expression</strong> — substitute a given value (e.g. 2x + 3 when x = 4).</li>
+            <li><strong>Degree</strong> — read the highest power in a one-variable expression (worked examples).</li>
+            <li><strong>Distributive law</strong> — expand a(b + c) (worked examples).</li>
+            <li><strong>Laws of exponents</strong> — product and quotient of the same base (worked examples).</li>
+        </ul>
+        <p class="formula-note">
+            The interactive engine solves one-variable linear equations, like-term simplification,
+            and substitution. Expanding brackets, degree, and exponent laws are taught as worked
+            examples. Not on this Class 7 page: quadratic equations, simultaneous equations,
+            inequalities, Class 8 algebraic identities, or Class 9 polynomials.
+        </p>
+    </section>
+
+    <section class="topic-section" aria-labelledby="alg-try">
+        <h2 id="alg-try">6. Try it — interactive examples</h2>
+        <p class="formula-note">
+            Choose a preset question or type your own. Answers are computed locally by the
+            Algebra rule engine (no cloud AI). Use linear equations, like terms, or
+            “evaluate … when x = …”.
+        </p>
+
+        <div class="formula-box alg-try-panel">
+            <label for="algQuestionInput" class="alg-label">Question</label>
+            <input
+                type="text"
+                id="algQuestionInput"
+                class="alg-input"
+                placeholder="e.g. 3x + 4 = 19"
+                autocomplete="off"
+                aria-label="Algebra question"
+            >
+
+            <div class="formula-buttons alg-example-buttons">
+                <button type="button" data-alg-example="3x + 4 = 19">Linear equation</button>
+                <button type="button" data-alg-example="x + 5 = 12">Transposition</button>
+                <button type="button" data-alg-example="5m - 2m">Like terms</button>
+                <button type="button" data-alg-example="2a + 3a">Combine terms</button>
+                <button type="button" data-alg-example="evaluate 2x+3 when x=4">Evaluate</button>
+            </div>
+
+            <div class="formula-buttons">
+                <button type="button" id="algSolveBtn">Solve with Algebra Engine</button>
+            </div>
+
+            <div id="algSolveOutput" class="alg-output" hidden aria-live="polite"></div>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="alg-more">
+        <h2 id="alg-more">7. Practice more</h2>
+        <ul class="topic-list">
+            <li><a href="../ai-math-solver.html">Open AI Math Solver</a> — upload or type questions with full step-by-step solutions.</li>
+            <li><a href="../formula-library.html">Browse Formula Library</a> — Simple Equations, Algebraic Expressions &amp; Exponents (Class 7).</li>
+        </ul>
+    </section>
+
 </div>
+
+<style>
+.muted-tag {
+    color: #8eb4e8;
+    font-size: 14px;
+    font-weight: normal;
+}
+.formula-line {
+    font-size: 17px;
+    margin: 10px 0;
+}
+.formula-note {
+    color: #C8D4F0;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+.example-block {
+    margin-bottom: 16px;
+}
+.example-block p {
+    color: #C8D4F0;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+.alg-try-panel .alg-label {
+    display: block;
+    color: #32c5ff;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.alg-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #2C4D8C;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #0E1C4D;
+    color: #ffffff;
+    margin-bottom: 14px;
+}
+.alg-example-buttons {
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.alg-example-buttons button {
+    flex: 1 1 160px;
+    font-size: 14px;
+}
+.alg-output {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #325a8a;
+    color: #C8D4F0;
+    line-height: 1.6;
+}
+.alg-result-ok {
+    color: #7dffb3;
+    font-size: 18px;
+}
+.alg-result-error {
+    color: #ffb4b4;
+}
+.alg-result-meta {
+    margin: 8px 0;
+}
+.alg-steps {
+    margin: 12px 0 0 20px;
+    padding: 0;
+}
+.alg-steps li {
+    margin-bottom: 8px;
+}
+.topic-list a {
+    color: #7ecbff;
+    text-decoration: underline;
+}
+</style>
+
+<script src="../../data/navigation.js"></script>
+<script src="../../js/study-back-nav.js"></script>
+<script src="../../js/solver/providers/local-rule-engine/algebra.js"></script>
+<script src="../../js/algebra-class7.js"></script>
 
 </body>
 </html>
