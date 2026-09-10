@@ -72,6 +72,17 @@ const STUDY_PAGE_REGISTRY = {
     icon: "📐",
     category: STUDY_MATERIAL_CATEGORY,
     boards: null
+  },
+  "mensuration:6": {
+    id: "mensuration:6",
+    topicId: "mensuration",
+    classLevel: 6,
+    path: "../mensuration/class6.html",
+    status: STUDY_PAGE_STATUS_AVAILABLE,
+    title: "Mensuration",
+    icon: "📦",
+    category: STUDY_MATERIAL_CATEGORY,
+    boards: null
   }
 };
 
