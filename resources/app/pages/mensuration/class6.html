@@ -180,7 +180,8 @@
         <p class="formula-note">
             Choose a preset question or type your own about a square, rectangle, or triangle.
             Answers are computed locally by the Mensuration rule engine (no cloud AI).
-            Circle questions are not accepted on this Class 6 page.
+            Teaching on this page is Class 6. Circle questions the engine can already solve
+            still return the answer and steps, with a higher-level notice.
         </p>
 
         <div class="formula-box me-try-panel">
@@ -293,6 +294,16 @@
 .me-steps li {
     margin-bottom: 8px;
 }
+.curriculum-level-notice {
+    margin: 10px 0 0;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #f1c40f;
+    background: #2a2408;
+    color: #f6e58d;
+    font-size: 13px;
+    line-height: 1.5;
+}
 .topic-list a {
     color: #7ecbff;
     text-decoration: underline;
@@ -301,6 +312,7 @@
 
 <script src="../../data/navigation.js"></script>
 <script src="../../js/study-back-nav.js"></script>
+<script src="../../js/curriculum/curriculum-level.js"></script>
 <script src="../../js/solver/providers/local-rule-engine/formula-catalog.js"></script>
 <script src="../../js/solver/providers/local-rule-engine/mensuration.js"></script>
 <script src="../../js/mensuration-class6.js"></script>

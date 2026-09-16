@@ -1,15 +1,17 @@
 /**
  * Class 6 Mensuration — lightweight interactive examples.
  * Reuses LocalRuleMensuration (Phase 8D); does not change the engine.
- * This page accepts only Class 6 square / rectangle / triangle perimeter and area.
+ * Teaching content on this page is Class 6. Solving is not blocked by class.
  */
 (function () {
   "use strict";
 
   const Me = window.LocalRuleMensuration;
+  const CL = window.CurriculumLevel;
   const input = document.getElementById("meQuestionInput");
   const output = document.getElementById("meSolveOutput");
   const solveBtn = document.getElementById("meSolveBtn");
+  const CURRENT_CLASS = 6;
 
   if (!Me || !input || !output || !solveBtn) {
     return;
@@ -23,20 +25,12 @@
       .replace(/"/g, "&quot;");
   }
 
-  function isOutsideClass6Scope(text) {
-    const t = String(text || "").toLowerCase();
-    if (
-      /\bcircle\b/.test(t) ||
-      /\bcircumference\b/.test(t) ||
-      /\bradius\b/.test(t) ||
-      /\bdiameter\b/.test(t) ||
-      /\bπ\b/.test(t) ||
-      /\bpi\b/.test(t) ||
-      /cbse-c7-me-00[23]/i.test(t)
-    ) {
-      return true;
-    }
-    return false;
+  function levelNoticeHtml(text, sol) {
+    if (!CL || !CL.noticeHtml) return "";
+    return CL.noticeHtml(
+      CL.estimateProblemClass(text, { solution: sol }),
+      CURRENT_CLASS
+    );
   }
 
   function renderSteps(steps) {
@@ -61,19 +55,23 @@
     );
   }
 
-  function showResult(sol) {
+  function showResult(sol, questionText) {
+    const notice = levelNoticeHtml(questionText, sol);
+
     if (!sol) {
       output.innerHTML =
-        '<p class="me-result-error">Could not analyse this question. Try a square, rectangle, or triangle perimeter or area question.</p>';
+        '<p class="me-result-error">Could not analyse this question. Try a square, rectangle, or triangle perimeter or area question.</p>' +
+        notice;
       output.hidden = false;
       return;
     }
 
     if (sol.unsupported) {
       output.innerHTML =
-        '<p class="me-result-error"><strong>Not supported on this page:</strong> ' +
+        '<p class="me-result-error"><strong>Not supported by the Mensuration engine:</strong> ' +
         escapeHtml(sol.reason || "Unsupported question type") +
-        "</p>";
+        "</p>" +
+        notice;
       output.hidden = false;
       return;
     }
@@ -82,6 +80,7 @@
       '<p class="me-result-ok"><strong>Answer:</strong> ' +
       escapeHtml(sol.finalAnswer) +
       "</p>" +
+      notice +
       (sol.given
         ? '<p class="me-result-meta"><strong>Given:</strong> ' +
           escapeHtml(sol.given) +
@@ -107,17 +106,7 @@
     }
 
     input.value = q;
-
-    if (isOutsideClass6Scope(q)) {
-      showResult({
-        unsupported: true,
-        reason:
-          "Circle circumference and circle area are Class 7 Mensuration. This Class 6 page covers only square, rectangle, and triangle perimeter and area."
-      });
-      return;
-    }
-
-    showResult(Me.trySolve(q));
+    showResult(Me.trySolve(q), q);
   }
 
   solveBtn.addEventListener("click", function () {
