@@ -83,6 +83,17 @@ const STUDY_PAGE_REGISTRY = {
     icon: "📦",
     category: STUDY_MATERIAL_CATEGORY,
     boards: null
+  },
+  "algebra:6": {
+    id: "algebra:6",
+    topicId: "algebra",
+    classLevel: 6,
+    path: "../algebra/class6.html",
+    status: STUDY_PAGE_STATUS_AVAILABLE,
+    title: "Algebra",
+    icon: "📐",
+    category: STUDY_MATERIAL_CATEGORY,
+    boards: null
   }
 };
 
