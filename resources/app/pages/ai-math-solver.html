@@ -21,13 +21,50 @@
 
 <header class="solver-header">
 <h1>🧠 AI Math Solver</h1>
-<p class="page-desc">Phase 8E — Data Handling &amp; Statistics (mean, median, mode, range, graphs). Formula IDs from the Formula Library.</p>
+<p class="page-desc">Type a problem and solve it locally with the Math Genius rule engine, or upload an image/PDF for OCR. No cloud AI is used.</p>
 <div class="phase-banner">
 <span class="phase-chip">8A–8D Solver</span>
 <span class="phase-chip phase-active">8E Statistics</span>
 <span class="phase-chip">Next</span>
 </div>
 </header>
+
+<section class="typed-solve-panel" aria-label="Type a math problem">
+<h2>Type a Math Problem</h2>
+<p class="muted typed-solve-hint">Type, paste, or edit a question, then Solve. Uses the local rule engine. You do not need to upload a file. Current class is used only to label higher-level problems — it never blocks a problem the engine can solve.</p>
+<div class="toolbar typed-class-row">
+<label class="typed-solve-label" for="solverCurrentClass">Current class</label>
+<select id="solverCurrentClass" class="provider-select" aria-label="Current class for curriculum notices">
+<option value="6" selected>Class VI</option>
+<option value="7">Class VII</option>
+<option value="8">Class VIII</option>
+<option value="9">Class IX</option>
+<option value="10">Class X</option>
+<option value="11">Class XI</option>
+<option value="12">Class XII</option>
+</select>
+</div>
+<label class="alg-label typed-solve-label" for="typedQuestionInput">Question</label>
+<textarea
+  id="typedQuestionInput"
+  class="typed-question-input"
+  rows="3"
+  placeholder="Type or edit your math problem here"
+  autocomplete="off"
+  aria-label="Type or edit your math problem"
+></textarea>
+<div class="toolbar typed-example-buttons">
+<button type="button" class="solver-btn" data-typed-example="2x + 7 = 15">2x + 7 = 15</button>
+<button type="button" class="solver-btn" data-typed-example="2a + 3a">2a + 3a</button>
+<button type="button" class="solver-btn" data-typed-example="12 + 25">12 + 25</button>
+<button type="button" class="solver-btn" data-typed-example="HCF(18,24)">HCF(18,24)</button>
+<button type="button" class="solver-btn" data-typed-example="Find the area of a square of side 6 cm">Square area</button>
+<button type="button" class="solver-btn" data-typed-example="Find the mean of the data: 5, 8, 6, 7, 9">Mean</button>
+</div>
+<div class="toolbar">
+<button type="button" class="solver-btn primary" id="typedSolveBtn">Solve</button>
+</div>
+</section>
 
 <section class="upload-bar">
 <label class="solver-btn primary" for="fileInput">Upload Image / PDF</label>
@@ -94,9 +131,10 @@
 <h3>Solution</h3>
 <div id="solveStatusBanner" class="solve-status-banner" hidden></div>
 
-<section class="sol-block edit-block">
+<section class="sol-block edit-block" id="ocrEditBlock">
 <h4>Detected Question (edit before Solve)</h4>
 <textarea id="questionEdit" class="question-edit" rows="3" aria-label="Edit detected question"></textarea>
+</section>
 <div class="toolbar sol-actions">
 <button type="button" class="solver-btn primary" id="solveBtn">Solve</button>
 <button type="button" class="solver-btn" id="retrySolveBtn">Retry Solve</button>
@@ -104,7 +142,6 @@
 <button type="button" class="solver-btn" id="copySolutionBtn">Copy Solution</button>
 <button type="button" class="solver-btn" id="copyAnswerBtn">Copy Final Answer</button>
 </div>
-</section>
 
 <p id="timingRow" class="timing-row muted">OCR: — · Solve: —</p>
 
@@ -124,6 +161,7 @@
 <section class="sol-block" data-section="curriculum">
 <h4>Curriculum</h4>
 <p id="solCurriculum" class="sol-text">—</p>
+<p id="solLevelNotice" class="sol-level-notice curriculum-level-notice" hidden></p>
 </section>
 <section class="sol-block" data-section="formula">
 <h4>Formula Used</h4>
@@ -191,6 +229,7 @@
 <script src="../js/solver/solver-engine.js"></script>
 <script src="../js/solver/solution-pipeline.js"></script>
 <script src="../js/curriculum/curriculum-mapper.js"></script>
+<script src="../js/curriculum/curriculum-level.js"></script>
 <script src="../js/solver/providers/local-rule-engine/formula-catalog.js"></script>
 <script src="../js/solver/providers/local-rule-engine/math-utils.js"></script>
 <script src="../js/solver/providers/local-rule-engine/expression.js"></script>

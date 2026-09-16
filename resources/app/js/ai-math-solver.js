@@ -1,9 +1,10 @@
 "use strict";
 
 /* ==========================================
-   AI Math Solver — Phase 8B.3 Controller
-   Upload → OCR → Detect → Edit (optional) → Local Rule Engine → Solution
-   Validation, timings, copy/retry. Offline. No Algebra.
+   AI Math Solver — Controller
+   PATH A: Type/paste → Local Rule Engine → existing solution panel
+   PATH B: Upload → OCR → Detect → Edit (optional) → same engine
+   Offline. No cloud AI. Typed solving does not mutate OCR questions.
 ========================================== */
 
 const state = {
@@ -28,7 +29,12 @@ const state = {
   lastOcrAt: null,
   cameraStream: null,
   busy: false,
-  zoom: 1
+  zoom: 1,
+  viewingTyped: false,
+  typedQuestion: null,
+  typedSolution: null,
+  typedBusy: false,
+  currentClass: 6
 };
 
 const els = {
@@ -62,6 +68,7 @@ const els = {
   copySolutionBtn: document.getElementById("copySolutionBtn"),
   copyAnswerBtn: document.getElementById("copyAnswerBtn"),
   timingRow: document.getElementById("timingRow"),
+  solutionPanel: document.getElementById("solutionPanel"),
   solQuestion: document.getElementById("solQuestion"),
   solGiven: document.getElementById("solGiven"),
   solFind: document.getElementById("solFind"),
@@ -78,7 +85,12 @@ const els = {
   cameraVideo: document.getElementById("cameraVideo"),
   cameraCanvas: document.getElementById("cameraCanvas"),
   captureBtn: document.getElementById("captureBtn"),
-  closeCameraBtn: document.getElementById("closeCameraBtn")
+  closeCameraBtn: document.getElementById("closeCameraBtn"),
+  typedQuestionInput: document.getElementById("typedQuestionInput"),
+  typedSolveBtn: document.getElementById("typedSolveBtn"),
+  ocrEditBlock: document.getElementById("ocrEditBlock"),
+  solLevelNotice: document.getElementById("solLevelNotice"),
+  solverCurrentClass: document.getElementById("solverCurrentClass")
 };
 
 function setStatus(msg) {
@@ -258,6 +270,7 @@ function clearAll() {
   state.solveStatus = Object.create(null);
   state.ocrDurationMs = null;
   state.busy = false;
+  state.viewingTyped = false;
   els.fileInput.value = "";
   els.questionPreview.hidden = true;
   els.applyCropBtn.hidden = true;
@@ -295,7 +308,7 @@ function formatMs(ms) {
 
 function updateTimingRow(solution) {
   if (!els.timingRow) return;
-  const ocr = formatMs(state.ocrDurationMs);
+  const ocr = state.viewingTyped ? "—" : formatMs(state.ocrDurationMs);
   const solve =
     solution && solution.solveDurationMs != null
       ? formatMs(solution.solveDurationMs)
@@ -391,7 +404,8 @@ function renderQuestions() {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className =
-      "question-item" + (q.id === state.selectedQuestionId ? " active" : "");
+      "question-item" +
+      (q.id === state.selectedQuestionId && !state.viewingTyped ? " active" : "");
     btn.innerHTML =
       "<strong>" +
       escapeHtml(q.id) +
@@ -438,6 +452,48 @@ function hydrateSolutionForUi(solution) {
   return solution;
 }
 
+function parseClassNumber(classValue) {
+  if (window.CurriculumLevel && window.CurriculumLevel.parseClassNumber) {
+    return window.CurriculumLevel.parseClassNumber(classValue);
+  }
+  const raw = String(classValue || "").trim();
+  if (!raw) return null;
+  const digit = raw.match(/\b(1[0-2]|[6-9])\b/);
+  if (digit) return Number(digit[1]);
+  return null;
+}
+
+function readCurrentClass() {
+  if (els.solverCurrentClass && els.solverCurrentClass.value) {
+    const n = parseClassNumber(els.solverCurrentClass.value);
+    if (n) return n;
+  }
+  return state.currentClass || 6;
+}
+
+function setLevelNotice(question, solution) {
+  if (!els.solLevelNotice) return;
+  const CL = window.CurriculumLevel;
+  if (!CL || !CL.noticeText) {
+    els.solLevelNotice.hidden = true;
+    els.solLevelNotice.textContent = "";
+    return;
+  }
+  const text =
+    (question && (question.text || question.recognizedText)) ||
+    (solution && solution.question) ||
+    "";
+  const est = CL.estimateProblemClass(text, { solution: solution });
+  const msg = CL.noticeText(est, readCurrentClass());
+  if (!msg) {
+    els.solLevelNotice.hidden = true;
+    els.solLevelNotice.textContent = "";
+    return;
+  }
+  els.solLevelNotice.hidden = false;
+  els.solLevelNotice.textContent = msg;
+}
+
 function formatCurriculumLine(solution) {
   if (!solution) return "—";
   const parts = [
@@ -472,7 +528,11 @@ function formatCurriculumLine(solution) {
 function renderSolutionPanel(question, solution, jobStatus) {
   const qText = (question && (question.text || question.recognizedText)) || "";
 
-  if (els.questionEdit && document.activeElement !== els.questionEdit) {
+  if (
+    els.questionEdit &&
+    document.activeElement !== els.questionEdit &&
+    !state.viewingTyped
+  ) {
     els.questionEdit.value = qText;
   }
 
@@ -480,6 +540,7 @@ function renderSolutionPanel(question, solution, jobStatus) {
 
   function clearCurriculum() {
     if (els.solCurriculum) els.solCurriculum.textContent = "—";
+    setLevelNotice(null);
   }
 
   if (jobStatus === "needs-verify") {
@@ -521,7 +582,12 @@ function renderSolutionPanel(question, solution, jobStatus) {
   }
 
   if (!solution) {
-    setBanner("warn", "Edit the question if needed, then click Solve.");
+    setBanner(
+      "warn",
+      state.viewingTyped
+        ? "Click Solve to run the local rule engine."
+        : "Edit the question if needed, then click Solve."
+    );
     els.solQuestion.textContent = qText;
     els.solGiven.textContent = "—";
     els.solFind.textContent = "—";
@@ -566,6 +632,7 @@ function renderSolutionPanel(question, solution, jobStatus) {
   if (els.solCurriculum) {
     els.solCurriculum.textContent = formatCurriculumLine(solution);
   }
+  setLevelNotice(question, solution);
 
   const formulas = Array.isArray(solution.formulaUsed)
     ? solution.formulaUsed
@@ -628,30 +695,160 @@ function renderSolutionPanel(question, solution, jobStatus) {
       .join("");
   }
 
-  els.solAnswer.textContent =
-    solution.finalAnswer != null && solution.finalAnswer !== ""
-      ? String(solution.finalAnswer)
-      : "—";
-  els.solVerification.textContent = solution.verification || "—";
+  const hasAnswer =
+    solution.finalAnswer != null && solution.finalAnswer !== "";
+  els.solAnswer.textContent = hasAnswer ? String(solution.finalAnswer) : "—";
+  const errNotes =
+    isErr &&
+    solution.verificationBlock &&
+    Array.isArray(solution.verificationBlock.notes)
+      ? solution.verificationBlock.notes.filter(Boolean).join(" ")
+      : "";
+  els.solVerification.textContent = errNotes || solution.verification || "—";
+  // Error shells use confidence 0 internally — never present that as the answer.
   const conf =
-    typeof solution.confidence === "number"
-      ? Math.round(solution.confidence * 100) +
-        "% (solver)" +
-        (question && question.confidence != null
-          ? " · OCR " + Math.round(question.confidence) + "%"
-          : "")
-      : question && question.confidence != null
+    isErr || !hasAnswer
+      ? question && question.confidence != null && !state.viewingTyped
         ? "OCR " + Math.round(question.confidence) + "%"
-        : "—";
+        : "—"
+      : typeof solution.confidence === "number"
+        ? Math.round(solution.confidence * 100) +
+          "% (solver)" +
+          (question && question.confidence != null && !state.viewingTyped
+            ? " · OCR " + Math.round(question.confidence) + "%"
+            : "")
+        : question && question.confidence != null && !state.viewingTyped
+          ? "OCR " + Math.round(question.confidence) + "%"
+          : "—";
   els.solConfidence.textContent = conf;
   updateTimingRow(solution);
+}
+
+function setOcrEditorVisible(visible) {
+  if (els.ocrEditBlock) els.ocrEditBlock.hidden = !visible;
+}
+
+function currentViewQuestion() {
+  if (state.viewingTyped) return state.typedQuestion;
+  return (
+    state.questions.find(function (item) {
+      return item.id === state.selectedQuestionId;
+    }) || null
+  );
+}
+
+function currentViewSolution() {
+  if (state.viewingTyped) return state.typedSolution;
+  return state.solutions[state.selectedQuestionId] || null;
+}
+
+function scrollTypedSolutionIntoView(jobStatus) {
+  if (!els.solutionPanel || !els.questionPreview) return;
+  if (jobStatus === "solving" || jobStatus === "pending") return;
+  requestAnimationFrame(function () {
+    els.solutionPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
+function showTypedPreview(jobStatus) {
+  state.viewingTyped = true;
+  setOcrEditorVisible(false);
+  els.questionPreview.hidden = false;
+  const q = state.typedQuestion;
+  const sol = state.typedSolution;
+  const status =
+    jobStatus ||
+    (sol
+      ? sol.status === "error" ||
+        sol.status === "unsupported" ||
+        (sol.error && sol.error.code)
+        ? "error"
+        : "done"
+      : "pending");
+  renderSolutionPanel(q, sol, status);
+  renderQuestions();
+  const ocrCount = state.questions.length;
+  els.previewMeta.innerHTML =
+    "<dt>Source</dt><dd>Typed (no OCR)</dd>" +
+    "<dt>ID</dt><dd>typed-local</dd>" +
+    (ocrCount
+      ? "<dt>Detected OCR questions</dt><dd>" +
+        ocrCount +
+        " still available</dd>"
+      : "<dt>OCR</dt><dd>Not used</dd>");
+  scrollTypedSolutionIntoView(status);
+}
+
+async function solveTypedQuestion() {
+  if (state.typedBusy) return;
+  if (!window.OcrSolveBridge || !window.QuestionSchema) {
+    setStatus("Solver is not available.");
+    return;
+  }
+  const text = els.typedQuestionInput
+    ? String(els.typedQuestionInput.value || "").trim()
+    : "";
+  if (!text) {
+    setStatus("Type or paste a math problem first.");
+    return;
+  }
+
+  const q = window.QuestionSchema.create({
+    id: "typed-local",
+    page: 1,
+    order: 0,
+    text: text,
+    recognizedText: text,
+    confidence: 100,
+    containsMath: true,
+    status: window.QuestionSchema.Status
+      ? window.QuestionSchema.Status.READY
+      : "ready"
+  });
+  q.source = "typed";
+
+  state.typedBusy = true;
+  state.typedQuestion = q;
+  state.typedSolution = null;
+  showTypedPreview("solving");
+  setStatus("Solving…");
+
+  try {
+    const sol = await window.OcrSolveBridge.solveOne(q, {
+      config: state.config,
+      forceSolve: true,
+      checkConfidence: false,
+      validationMode: "typed"
+    });
+    state.typedQuestion = q;
+    state.typedSolution = sol;
+    const failed =
+      !sol ||
+      sol.status === "error" ||
+      sol.status === "unsupported" ||
+      (sol.error && sol.error.code);
+    showTypedPreview(failed ? "error" : "done");
+    setStatus(
+      failed
+        ? (sol.error && sol.error.message) || "Solve failed — see error."
+        : "Solved in " + formatMs(sol.solveDurationMs) + "."
+    );
+  } catch (err) {
+    state.typedSolution = null;
+    showTypedPreview("error");
+    setStatus(err.message || "Solve failed.");
+  } finally {
+    state.typedBusy = false;
+  }
 }
 
 function selectQuestion(id) {
   const q = state.questions.find(function (item) {
     return item.id === id;
   });
+  state.viewingTyped = false;
   state.selectedQuestionId = id;
+  setOcrEditorVisible(true);
   renderQuestions();
   if (!q) {
     els.questionPreview.hidden = true;
@@ -816,6 +1013,8 @@ function startSolvingDetectedQuestions(questions) {
  * Apply editor text and solve the selected question (user-initiated).
  */
 async function solveSelectedQuestion() {
+  state.viewingTyped = false;
+  setOcrEditorVisible(true);
   const id = state.selectedQuestionId;
   const q = state.questions.find(function (item) {
     return item.id === id;
@@ -870,6 +1069,12 @@ async function solveSelectedQuestion() {
 }
 
 function clearSelectedResult() {
+  if (state.viewingTyped) {
+    state.typedSolution = null;
+    showTypedPreview("pending");
+    setStatus("Result cleared.");
+    return;
+  }
   const id = state.selectedQuestionId;
   if (!id) return;
   delete state.solutions[id];
@@ -1298,11 +1503,19 @@ function bindEvents() {
 
   if (els.solveBtn) {
     els.solveBtn.addEventListener("click", function () {
+      if (state.viewingTyped) {
+        solveTypedQuestion();
+        return;
+      }
       solveSelectedQuestion();
     });
   }
   if (els.retrySolveBtn) {
     els.retrySolveBtn.addEventListener("click", function () {
+      if (state.viewingTyped) {
+        solveTypedQuestion();
+        return;
+      }
       solveSelectedQuestion();
     });
   }
@@ -1311,23 +1524,53 @@ function bindEvents() {
   }
   if (els.copySolutionBtn) {
     els.copySolutionBtn.addEventListener("click", function () {
-      const id = state.selectedQuestionId;
-      const q = state.questions.find(function (item) {
-        return item.id === id;
-      });
-      const sol = state.solutions[id];
+      const q = currentViewQuestion();
+      const sol = currentViewSolution();
       copyText(buildSolutionCopyText(sol, q), "Solution copied.");
     });
   }
   if (els.copyAnswerBtn) {
     els.copyAnswerBtn.addEventListener("click", function () {
-      const sol = state.solutions[state.selectedQuestionId];
+      const sol = currentViewSolution();
       copyText(
         sol && sol.finalAnswer != null ? String(sol.finalAnswer) : "",
         "Final answer copied."
       );
     });
   }
+  if (els.typedSolveBtn) {
+    els.typedSolveBtn.addEventListener("click", function () {
+      solveTypedQuestion();
+    });
+  }
+  if (els.solverCurrentClass) {
+    const params = new URLSearchParams(window.location.search || "");
+    const fromQuery = parseClassNumber(params.get("class"));
+    if (fromQuery) {
+      els.solverCurrentClass.value = String(fromQuery);
+    }
+    state.currentClass = parseClassNumber(els.solverCurrentClass.value) || 6;
+    els.solverCurrentClass.addEventListener("change", function () {
+      state.currentClass = parseClassNumber(els.solverCurrentClass.value) || 6;
+      if (!els.questionPreview || els.questionPreview.hidden) return;
+      setLevelNotice(currentViewQuestion(), currentViewSolution());
+    });
+  }
+  if (els.typedQuestionInput) {
+    els.typedQuestionInput.addEventListener("keydown", function (evt) {
+      if (evt.key === "Enter" && (evt.ctrlKey || evt.metaKey)) {
+        evt.preventDefault();
+        solveTypedQuestion();
+      }
+    });
+  }
+  document.querySelectorAll("[data-typed-example]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (!els.typedQuestionInput) return;
+      els.typedQuestionInput.value = btn.getAttribute("data-typed-example") || "";
+      els.typedQuestionInput.focus();
+    });
+  });
 
   els.rotateLeftBtn.addEventListener("click", function () {
     if (state.mode !== "image") return;
@@ -1467,7 +1710,7 @@ async function boot() {
   bindEvents();
   drawDocument();
   updateChrome();
-  setStatus("Phase 8E ready — Data Handling & Statistics (mean, median, mode, range, graphs).");
+  setStatus("Ready — type a problem, or select a local image/PDF for OCR.");
 
   window.MathGeniusSolver = {
     phase: "8E",

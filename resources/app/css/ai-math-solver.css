@@ -31,6 +31,76 @@
   background: #0d2a70;
 }
 
+.typed-solve-panel {
+  background: #0e1c4d;
+  border: 1px solid #2c4d8c;
+  border-radius: 14px;
+  padding: 16px 16px 8px;
+  margin-bottom: 18px;
+}
+
+.typed-solve-panel h2 {
+  margin: 0 0 8px;
+  color: #32c5ff;
+  font-size: 20px;
+}
+
+.typed-solve-hint {
+  margin: 0 0 12px;
+}
+
+.typed-solve-label {
+  display: block;
+  color: #32c5ff;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.typed-question-input {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 84px;
+  padding: 12px 14px;
+  border: 1px solid #2c4d8c;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  background: #08132f;
+  color: #ffffff;
+  margin-bottom: 12px;
+  resize: vertical;
+}
+
+.typed-class-row {
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.typed-class-row .typed-solve-label {
+  margin: 0;
+}
+
+.typed-example-buttons {
+  margin-bottom: 8px;
+}
+
+.typed-example-buttons .solver-btn {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.curriculum-level-notice,
+.sol-level-notice {
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #f1c40f;
+  background: #2a2408;
+  color: #f6e58d;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .upload-bar,
 .toolbar {
   display: flex;

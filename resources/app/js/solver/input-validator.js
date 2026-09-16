@@ -47,13 +47,61 @@
     return s.trim();
   }
 
-  function isIntroAlgebraAllowed(text) {
+  function isTypedMode(opts) {
+    if (!opts) return false;
+    // Do not use `opts.mode || validationMode`: SolverEngine uses mode
+    // "offline"/"ocr"/"auto", which would hide a typed validation flag.
+    if (opts.validationMode === "typed") return true;
+    if (opts.source === "typed") return true;
+    if (opts.mode === "typed") return true;
+    if (opts.questionId === "typed-local") return true;
+    if (opts.questionSource === "typed") return true;
+    return false;
+  }
+
+  function isOwnedByWordedEngine(text) {
+    const g = typeof window !== "undefined" ? window : globalThis;
+    if (
+      g.LocalRuleMensuration &&
+      typeof g.LocalRuleMensuration.looksLikeMensuration === "function" &&
+      g.LocalRuleMensuration.looksLikeMensuration(text)
+    ) {
+      return true;
+    }
+    if (
+      g.LocalRuleStatistics &&
+      typeof g.LocalRuleStatistics.looksLikeStatistics === "function" &&
+      g.LocalRuleStatistics.looksLikeStatistics(text)
+    ) {
+      return true;
+    }
+    if (
+      g.LocalRuleGeometry &&
+      typeof g.LocalRuleGeometry.looksLikeGeometry === "function" &&
+      g.LocalRuleGeometry.looksLikeGeometry(text)
+    ) {
+      return true;
+    }
+    if (
+      g.LocalRuleProbability &&
+      typeof g.LocalRuleProbability.looksLikeProbability === "function" &&
+      g.LocalRuleProbability.looksLikeProbability(text)
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  function isIntroAlgebraAllowed(text, typedMode) {
     const g = typeof window !== "undefined" ? window : globalThis;
     if (g.LocalRuleAlgebra && g.LocalRuleAlgebra.isUnsupportedAlgebra) {
       const bad = g.LocalRuleAlgebra.isUnsupportedAlgebra(text);
       if (bad) return false;
     }
-    // Single-letter variables only (intro algebra)
+    if (typedMode || isOwnedByWordedEngine(text)) {
+      return true;
+    }
+    // OCR path: single-letter variables only (intro algebra)
     const withoutWords = text.replace(ALLOWED_WORDS, " ");
     const letters = withoutWords.match(/[a-zA-Z]/g) || [];
     if (!letters.length) return true;
@@ -100,6 +148,7 @@
    */
   function validate(rawText, options) {
     const opts = options || {};
+    const typedMode = isTypedMode(opts);
     const original = String(rawText == null ? "" : rawText).trim();
 
     if (!original) {
@@ -132,7 +181,7 @@
     }
 
     // Intro algebra may use single-letter variables; reject advanced forms
-    if (!isIntroAlgebraAllowed(text)) {
+    if (!isIntroAlgebraAllowed(text, typedMode)) {
       return fail(
         Codes.UNSUPPORTED_SYMBOLS,
         "Unsupported algebra type (quadratic, simultaneous, inequality, or multi-variable)."
@@ -149,8 +198,15 @@
         "Invalid characters in the expression."
       );
     }
-    // leftover multi-letter after removing allowed words & single vars
-    if (/[a-zA-Z]{2,}/.test(withoutWords)) {
+    // OCR path only: leftover multi-letter English is treated as OCR noise.
+    // Typed path, and worded questions already owned by an existing topic
+    // engine, must not be rejected here — that was converting a valid
+    // mensuration solution into an error with confidence 0 / no answer.
+    if (
+      !typedMode &&
+      !isOwnedByWordedEngine(text) &&
+      /[a-zA-Z]{2,}/.test(withoutWords)
+    ) {
       return fail(
         Codes.UNSUPPORTED_SYMBOLS,
         "Unsupported symbols or words in the expression."

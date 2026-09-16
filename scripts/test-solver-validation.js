@@ -35,6 +35,11 @@ loadScript("resources/app/js/solver/providers/local-rule-engine/math-utils.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/expression.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/decimal-math.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/numbers.js");
+loadScript("resources/app/js/solver/providers/local-rule-engine/algebra.js");
+loadScript("resources/app/js/solver/providers/local-rule-engine/geometry.js");
+loadScript("resources/app/js/solver/providers/local-rule-engine/mensuration.js");
+loadScript("resources/app/js/solver/providers/local-rule-engine/probability.js");
+loadScript("resources/app/js/solver/providers/local-rule-engine/statistics.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/handlers.js");
 loadScript("resources/app/js/solver/providers/local-rule-engine/provider.js");
 loadScript("resources/app/js/solver/ocr-solve-bridge.js");
@@ -184,11 +189,90 @@ async function run() {
   results.push({ name: "bridge divide by zero", ok: divOk });
   if (divOk) passed += 1;
 
+  const squareArea = "Find the area of a square of side 6 cm";
+  const squarePerim = "Find the perimeter of a square of side 6 cm";
+  const vTypedArea = V.validate(squareArea, { mode: "typed" });
+  const vOcrArea = V.validate(squareArea, { mode: "ocr" });
+  const typedValOk = vTypedArea.ok === true;
+  results.push({
+    name: "typed worded square area is valid",
+    ok: typedValOk,
+    detail: typedValOk ? "ok" : vTypedArea.code + " — " + vTypedArea.message
+  });
+  if (typedValOk) passed += 1;
+  const ocrWordedOk = vOcrArea.ok === true;
+  results.push({
+    name: "worded square area reaches engine (not algebra-0)",
+    ok: ocrWordedOk,
+    detail: ocrWordedOk ? "ok" : vOcrArea.code + " — " + vOcrArea.message
+  });
+  if (ocrWordedOk) passed += 1;
+
+  async function typedBridge(text) {
+    const q = g.QuestionSchema.create({
+      id: "typed-local",
+      text: text,
+      recognizedText: text,
+      confidence: 100,
+      containsMath: true,
+      status: "ready"
+    });
+    q.source = "typed";
+    return Bridge.solveOne(q, {
+      forceSolve: true,
+      checkConfidence: false,
+      validationMode: "typed"
+    });
+  }
+
+  const areaSol = await typedBridge(squareArea);
+  const areaOk =
+    areaSol &&
+    areaSol.status === "complete" &&
+    String(areaSol.finalAnswer) === "36 cm²" &&
+    areaSol.finalAnswer !== 0 &&
+    areaSol.finalAnswer !== "0";
+  results.push({
+    name: "typed square area preserves engine answer",
+    ok: areaOk,
+    detail: areaSol && areaSol.finalAnswer
+  });
+  if (areaOk) passed += 1;
+
+  const perSol = await typedBridge(squarePerim);
+  const perOk =
+    perSol &&
+    perSol.status === "complete" &&
+    String(perSol.finalAnswer) === "24 cm" &&
+    perSol.finalAnswer !== 0 &&
+    perSol.finalAnswer !== "0";
+  results.push({
+    name: "typed square perimeter preserves engine answer",
+    ok: perOk,
+    detail: perSol && perSol.finalAnswer
+  });
+  if (perOk) passed += 1;
+
+  const garbage = await typedBridge("asdfghqwerty");
+  const garbageOk =
+    garbage &&
+    garbage.finalAnswer !== 0 &&
+    garbage.finalAnswer !== "0" &&
+    (garbage.status === "error" ||
+      garbage.status === "unsupported" ||
+      garbage.finalAnswer == null);
+  results.push({
+    name: "typed garbage does not become 0",
+    ok: garbageOk,
+    detail: garbage && (garbage.finalAnswer == null ? "null" : String(garbage.finalAnswer))
+  });
+  if (garbageOk) passed += 1;
+
   console.log("\n=== Phase 8B.3 Validation Results ===");
   results.forEach(function (r) {
     console.log((r.ok ? "PASS" : "FAIL") + "  " + r.name + (r.detail ? " · " + r.detail : ""));
   });
-  const total = cases.length + 4;
+  const total = cases.length + 9;
   console.log("\n" + passed + "/" + total + " passed");
   if (passed !== total) process.exitCode = 1;
 }

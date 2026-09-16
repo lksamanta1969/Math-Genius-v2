@@ -95,10 +95,7 @@
       },
       confidence: 0,
       error: { code: code, message: message || code },
-      solveDurationMs: x.solveDurationMs != null ? x.solveDurationMs : 0,
-      class: 6,
-      subject: "Arithmetic",
-      board: "CBSE"
+      solveDurationMs: x.solveDurationMs != null ? x.solveDurationMs : 0
     };
     Object.keys(x).forEach(function (k) {
       payload[k] = x[k];
@@ -109,6 +106,15 @@
     return payload;
   }
 
+  function isTypedRequest(question, opts) {
+    const o = opts || {};
+    if (o.validationMode === "typed" || o.source === "typed") return true;
+    if (o.mode === "typed") return true;
+    if (question && question.source === "typed") return true;
+    if (question && question.id === "typed-local") return true;
+    return false;
+  }
+
   function runValidation(question, opts) {
     const g = getGlobals();
     const text = questionText(question);
@@ -116,6 +122,7 @@
     const threshold = lowConfidenceThreshold(config);
     const confidence =
       typeof question.confidence === "number" ? question.confidence : 0;
+    const typed = isTypedRequest(question, opts);
 
     if (!g.SolverInputValidator || !g.SolverInputValidator.validate) {
       if (!text) {
@@ -132,7 +139,12 @@
       checkConfidence: opts.checkConfidence !== false,
       confidence: confidence,
       threshold: threshold,
-      forceSolve: !!opts.forceSolve
+      forceSolve: !!opts.forceSolve,
+      mode: typed ? "typed" : "ocr",
+      validationMode: typed ? "typed" : "ocr",
+      source: typed ? "typed" : "ocr",
+      questionId: question && question.id,
+      questionSource: question && question.source
     });
   }
 
