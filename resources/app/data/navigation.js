@@ -116,6 +116,17 @@ const STUDY_PAGE_REGISTRY = {
     icon: "📊",
     category: STUDY_MATERIAL_CATEGORY,
     boards: null
+  },
+  "fractions-decimals:6": {
+    id: "fractions-decimals:6",
+    topicId: "fractions-decimals",
+    classLevel: 6,
+    path: "../fractions-decimals/class6.html",
+    status: STUDY_PAGE_STATUS_AVAILABLE,
+    title: "Fractions & Decimals",
+    icon: "➗",
+    category: STUDY_MATERIAL_CATEGORY,
+    boards: null
   }
 };
 
@@ -129,7 +140,7 @@ const MATHEMATICS_CURRICULUM_BASE = {
   6: [
     { id: "number-system", title: "Number System", icon: "🔢" },
     { id: "arithmetic", title: "Arithmetic", icon: "➕", studyPageKey: "arithmetic:6" },
-    { id: "fractions-decimals", title: "Fractions & Decimals", icon: "➗" },
+    { id: "fractions-decimals", title: "Fractions & Decimals", icon: "➗", studyPageKey: "fractions-decimals:6" },
     { id: "ratio-proportion", title: "Ratio & Proportion", icon: "⚖️" },
     { id: "algebra", title: "Algebra", icon: "📐", studyPageKey: "algebra:6" },
     { id: "geometry", title: "Geometry", icon: "📏", studyPageKey: "geometry:6" },
