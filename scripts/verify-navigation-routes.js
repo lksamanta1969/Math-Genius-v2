@@ -74,7 +74,7 @@ for (const level of nav.CLASS_LEVELS) {
 console.log("\n=== Available study-material navigation cards ===");
 let manifestCount = 0;
 const expectedCounts = {
-  6: 2,
+  6: 3,
   7: 3,
   8: 0,
   9: 1,
@@ -158,10 +158,10 @@ if (
 
 console.log("\n=== Summary ===");
 console.log("Navigation cards exposed:", manifestCount);
-console.log("Expected navigation cards:", 6);
+console.log("Expected navigation cards:", 7);
 
-if (manifestCount !== 6) {
-  fail("Expected exactly 6 navigation cards across all classes, got " + manifestCount);
+if (manifestCount !== 7) {
+  fail("Expected exactly 7 navigation cards across all classes, got " + manifestCount);
 }
 
 console.log(failed ? "\nFAILED: " + failed + " issues" : "\nAll navigation checks passed.");

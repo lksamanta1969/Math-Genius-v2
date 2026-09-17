@@ -94,6 +94,17 @@ const STUDY_PAGE_REGISTRY = {
     icon: "📐",
     category: STUDY_MATERIAL_CATEGORY,
     boards: null
+  },
+  "geometry:6": {
+    id: "geometry:6",
+    topicId: "geometry",
+    classLevel: 6,
+    path: "../geometry/class6.html",
+    status: STUDY_PAGE_STATUS_AVAILABLE,
+    title: "Geometry",
+    icon: "📏",
+    category: STUDY_MATERIAL_CATEGORY,
+    boards: null
   }
 };
 
