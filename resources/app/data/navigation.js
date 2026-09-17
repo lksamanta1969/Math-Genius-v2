@@ -105,6 +105,17 @@ const STUDY_PAGE_REGISTRY = {
     icon: "📏",
     category: STUDY_MATERIAL_CATEGORY,
     boards: null
+  },
+  "statistics:6": {
+    id: "statistics:6",
+    topicId: "statistics",
+    classLevel: 6,
+    path: "../statistics/class6.html",
+    status: STUDY_PAGE_STATUS_AVAILABLE,
+    title: "Data Handling",
+    icon: "📊",
+    category: STUDY_MATERIAL_CATEGORY,
+    boards: null
   }
 };
 
