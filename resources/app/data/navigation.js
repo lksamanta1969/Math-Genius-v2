@@ -62,6 +62,17 @@ const STUDY_PAGE_REGISTRY = {
     category: STUDY_MATERIAL_CATEGORY,
     boards: null
   },
+  "mensuration:7": {
+    id: "mensuration:7",
+    topicId: "mensuration",
+    classLevel: 7,
+    path: "../mensuration/class7.html",
+    status: STUDY_PAGE_STATUS_AVAILABLE,
+    title: "Mensuration",
+    icon: "📦",
+    category: STUDY_MATERIAL_CATEGORY,
+    boards: null
+  },
   "algebra:9": {
     id: "algebra:9",
     topicId: "algebra",
