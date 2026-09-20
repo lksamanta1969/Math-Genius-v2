@@ -15,12 +15,405 @@
 </div>
 
 <div class="container">
+
     <h1>Arithmetic</h1>
     <h2>Class 6</h2>
-    <hr>
-    <p class="page-desc">Content is under development.</p>
-    <hr>
+
+    <p class="page-desc">
+        CBSE Class 6 Arithmetic as organised in this project: Patterns in Mathematics,
+        Number Play, Prime Time, and The Other Side of Zero. Lessons use the existing
+        Class 6 Arithmetic Formula Library (those four chapters). Fractions already has
+        its own Study Material page and is not retaught here. Try It uses the existing
+        offline Numbers engine for even/odd, prime, factors, HCF, LCM, place value,
+        absolute value, and integer addition.
+    </p>
+
+    <section class="topic-section" aria-labelledby="ar-scope">
+        <h2 id="ar-scope">1. How Class 6 Arithmetic is organised</h2>
+        <div class="formula-box">
+            <p><strong>Chapter 1 — Patterns in Mathematics</strong> — odd, even, triangular, square, cube, and Fibonacci pattern rules.</p>
+            <p><strong>Chapter 3 — Number Play</strong> — place value and expanded form.</p>
+            <p><strong>Chapter 5 — Prime Time</strong> — factors, multiples, divisibility rules, and the HCF × LCM relation.</p>
+            <p><strong>Chapter 10 — The Other Side of Zero</strong> — absolute value, additive inverse, and integer addition on the number line.</p>
+            <p class="formula-note">
+                This page stays inside those Class 6 Arithmetic chapters. Fractions
+                (CBSE-C6-AR-017 to CBSE-C6-AR-021) are taught on the
+                <a href="../fractions-decimals/class6.html">Fractions &amp; Decimals</a>
+                page. Ratio, proportion, percentage, and decimal multiplication or
+                division are not taught here. Fibonacci, triangular numbers, and
+                divisibility rules are Formula Library lessons only — they are not
+                Try It presets.
+            </p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="ar-patterns">
+        <h2 id="ar-patterns">2. Chapter — Patterns in Mathematics</h2>
+        <div class="formula-box">
+            <p><strong>nth odd number</strong> <span class="muted-tag">CBSE-C6-AR-001</span></p>
+            <p class="formula-line">nth odd number = 2n − 1</p>
+            <p class="formula-note">
+                Odd numbers form 1, 3, 5, 7, … The 8th odd number is 2×8 − 1 = 15.
+            </p>
+            <hr>
+            <p><strong>nth even number</strong> <span class="muted-tag">CBSE-C6-AR-002</span></p>
+            <p class="formula-line">nth even number = 2n</p>
+            <p class="formula-note">
+                Even numbers form 2, 4, 6, 8, … The 9th even number is 2×9 = 18.
+            </p>
+            <hr>
+            <p><strong>nth triangular number</strong> <span class="muted-tag">CBSE-C6-AR-003</span></p>
+            <p class="formula-line">T_n = n(n + 1)/2</p>
+            <p class="formula-note">
+                Dots in a triangle: 1, 3, 6, 10, 15, … T_5 = 5×6/2 = 15. Lesson content only — no Try It preset.
+            </p>
+            <hr>
+            <p><strong>nth square number</strong> <span class="muted-tag">CBSE-C6-AR-004</span></p>
+            <p class="formula-line">S_n = n²</p>
+            <p class="formula-note">
+                Square numbers are 1, 4, 9, 16, 25, … The 6th square number is 6² = 36.
+            </p>
+            <hr>
+            <p><strong>nth cube number</strong> <span class="muted-tag">CBSE-C6-AR-005</span></p>
+            <p class="formula-line">C_n = n³</p>
+            <p class="formula-note">
+                Cube numbers are 1, 8, 27, 64, … The 4th cube number is 4³ = 64. Pattern only, not a volume formula.
+            </p>
+            <hr>
+            <p><strong>Fibonacci sequence rule</strong> <span class="muted-tag">CBSE-C6-AR-006</span></p>
+            <p class="formula-line">F_n = F_{n−1} + F_{n−2} (with F_1 = 1, F_2 = 1)</p>
+            <p class="formula-note">
+                Each term is the sum of the two before it: 1, 1, 2, 3, 5, 8, 13, … Lesson content only — no Try It preset.
+            </p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example A — Odd-number pattern</strong></p>
+            <p>Find the 12th odd number.</p>
+            <p>a_12 = 2×12 − 1 = 23.</p>
+            <p><strong>23</strong></p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="ar-play">
+        <h2 id="ar-play">3. Chapter — Number Play</h2>
+        <div class="formula-box">
+            <p><strong>Place value of a digit</strong> <span class="muted-tag">CBSE-C6-AR-007</span></p>
+            <p class="formula-line">Place value = digit × value of its place</p>
+            <p class="formula-note">
+                Face value is the digit itself; place value depends on position.
+                In 4582 the place value of 5 is 5 × 100 = 500.
+            </p>
+            <hr>
+            <p><strong>Expanded form of a number</strong> <span class="muted-tag">CBSE-C6-AR-008</span></p>
+            <p class="formula-line">Number = sum of (each digit × its place value)</p>
+            <p class="formula-note">
+                Example: 3406 = 3×1000 + 4×100 + 0×10 + 6×1 = 3000 + 400 + 6.
+            </p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example B — Place value</strong></p>
+            <p>Find the place value of 7 in 7305.</p>
+            <p>7 is in the thousands place: 7 × 1000 = 7000.</p>
+            <p><strong>7000</strong></p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="ar-prime">
+        <h2 id="ar-prime">4. Chapter — Prime Time</h2>
+        <div class="formula-box">
+            <p><strong>Factor relation</strong> <span class="muted-tag">CBSE-C6-AR-009</span></p>
+            <p class="formula-line">If a is a factor of b, then b = a × k for some whole number k</p>
+            <p class="formula-note">
+                A factor divides exactly. 4 is a factor of 20 because 20 = 4 × 5.
+                1 is a factor of every whole number.
+            </p>
+            <hr>
+            <p><strong>Multiple relation</strong> <span class="muted-tag">CBSE-C6-AR-010</span></p>
+            <p class="formula-line">Multiples of a = a, 2a, 3a, 4a, …</p>
+            <p class="formula-note">
+                Multiples of 5 include 5, 10, 15, 20, …
+            </p>
+            <hr>
+            <p><strong>Divisibility rule for 2</strong> <span class="muted-tag">CBSE-C6-AR-011</span></p>
+            <p class="formula-line">A number is divisible by 2 if its ones digit is 0, 2, 4, 6 or 8</p>
+            <p class="formula-note">
+                148 ends with 8, so it is divisible by 2. Lesson content only — no dedicated Try It preset.
+            </p>
+            <hr>
+            <p><strong>Divisibility rule for 3</strong> <span class="muted-tag">CBSE-C6-AR-012</span></p>
+            <p class="formula-line">A number is divisible by 3 if the sum of its digits is divisible by 3</p>
+            <p class="formula-note">
+                For 252: 2+5+2=9, and 9 is divisible by 3. Lesson content only.
+            </p>
+            <hr>
+            <p><strong>Divisibility rule for 5</strong> <span class="muted-tag">CBSE-C6-AR-013</span></p>
+            <p class="formula-line">A number is divisible by 5 if its ones digit is 0 or 5</p>
+            <p class="formula-note">
+                680 ends with 0, so it is divisible by 5. Lesson content only.
+            </p>
+            <hr>
+            <p><strong>Divisibility rule for 9</strong> <span class="muted-tag">CBSE-C6-AR-014</span></p>
+            <p class="formula-line">A number is divisible by 9 if the sum of its digits is divisible by 9</p>
+            <p class="formula-note">
+                For 729: 7+2+9=18, and 18 is divisible by 9. Lesson content only.
+            </p>
+            <hr>
+            <p><strong>Divisibility rule for 10</strong> <span class="muted-tag">CBSE-C6-AR-015</span></p>
+            <p class="formula-line">A number is divisible by 10 if its ones digit is 0</p>
+            <p class="formula-note">
+                940 ends with 0, so it is divisible by 10. Lesson content only.
+            </p>
+            <hr>
+            <p><strong>HCF × LCM relation (two numbers)</strong> <span class="muted-tag">CBSE-C6-AR-016</span></p>
+            <p class="formula-line">HCF(a, b) × LCM(a, b) = a × b</p>
+            <p class="formula-note">
+                For 12 and 18: HCF=6, LCM=36. Check: 6×36=216 and 12×18=216.
+            </p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example C — Factors</strong></p>
+            <p>Is 6 a factor of 42?</p>
+            <p>42 = 6 × 7, remainder 0.</p>
+            <p><strong>Yes</strong></p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example D — HCF and LCM</strong></p>
+            <p>If HCF(8, 12) = 4, find LCM(8, 12).</p>
+            <p>LCM = (8×12)/4 = 24.</p>
+            <p><strong>24</strong></p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="ar-zero">
+        <h2 id="ar-zero">5. Chapter — The Other Side of Zero</h2>
+        <div class="formula-box">
+            <p><strong>Absolute value</strong> <span class="muted-tag">CBSE-C6-AR-022</span></p>
+            <p class="formula-line">|a| = distance of a from 0 on the number line</p>
+            <p class="formula-note">
+                Absolute value is never negative. |−7| = 7 and |7| = 7.
+            </p>
+            <hr>
+            <p><strong>Additive inverse</strong> <span class="muted-tag">CBSE-C6-AR-023</span></p>
+            <p class="formula-line">a + (−a) = 0</p>
+            <p class="formula-note">
+                The additive inverse of 9 is −9 because 9+(−9)=0. The inverse of 0 is 0.
+            </p>
+            <hr>
+            <p><strong>Integer addition on the number line</strong> <span class="muted-tag">CBSE-C6-AR-024</span></p>
+            <p class="formula-line">Add +k → move k units right; add −k → move k units left</p>
+            <p class="formula-note">
+                Start at 3; add −5 → move 5 left → −2. So 3+(−5)=−2.
+            </p>
+        </div>
+
+        <div class="formula-box example-block">
+            <p><strong>Example E — Integer addition</strong></p>
+            <p>Using the number line, find (−2)+6.</p>
+            <p>Start at −2; move 6 units right.</p>
+            <p><strong>4</strong></p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="ar-supported">
+        <h2 id="ar-supported">6. What this Class 6 page covers</h2>
+        <ul class="practice-list">
+            <li><strong>Patterns</strong> — odd, even, triangular, square, cube, Fibonacci (CBSE-C6-AR-001 to 006).</li>
+            <li><strong>Number Play</strong> — place value and expanded form (CBSE-C6-AR-007, 008).</li>
+            <li><strong>Prime Time</strong> — factors, multiples, divisibility rules, HCF × LCM (CBSE-C6-AR-009 to 016).</li>
+            <li><strong>Integers</strong> — absolute value, additive inverse, number-line addition (CBSE-C6-AR-022 to 024).</li>
+        </ul>
+        <p class="formula-note">
+            Lessons on this page teach those Class 6 Formula Library ideas only. They do
+            not reteach Fractions (use the Fractions &amp; Decimals page). They do not
+            teach ratio, proportion, percentage, or decimal ×÷. Try It uses the existing
+            Numbers engine: if that engine can solve a typed question, it will, and a
+            higher-level notice appears when the problem is above Class 6.
+        </p>
+    </section>
+
+    <section class="topic-section" aria-labelledby="ar-tips">
+        <h2 id="ar-tips">7. Common mistakes</h2>
+        <div class="formula-box">
+            <p>Place value is not the same as face value — the digit 5 in 4582 is 500, not 5.</p>
+            <p>A factor divides exactly; a multiple is the original number times 1, 2, 3, …</p>
+            <p>HCF × LCM = product only for two numbers.</p>
+            <p>Absolute value is a distance from zero, so it is never negative.</p>
+            <p>Adding a negative integer moves left on the number line, not right.</p>
+            <p>Do not use this page for Fractions, ratio, proportion, percentage, or decimal ×÷.</p>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="ar-try">
+        <h2 id="ar-try">8. Try it — interactive examples</h2>
+        <p class="formula-note">
+            Choose a preset question or type your own about even/odd, prime, factors,
+            HCF, LCM, place value, absolute value, or integer addition. Answers are
+            computed locally by the Numbers rule engine (no cloud AI). Fibonacci,
+            triangular numbers, and divisibility-rule checks are lesson content only —
+            there is no preset for those.
+        </p>
+
+        <div class="formula-box ar-try-panel">
+            <h3 class="ar-practice-heading">Practice with Class VI Arithmetic</h3>
+            <p class="formula-note">
+                The question box is editable. Click in it and type or paste a problem,
+                or tap a preset to fill the box and then change it. Solving happens only when
+                you click <strong>Solve with Numbers Engine</strong> (or press Enter).
+                Current class does not block a problem the existing engine can already solve.
+            </p>
+            <label for="arQuestionInput" class="ar-label">Question</label>
+            <input
+                type="text"
+                id="arQuestionInput"
+                class="ar-input"
+                value="is 14 even"
+                placeholder="Type or edit an arithmetic question"
+                autocomplete="off"
+                aria-label="Editable arithmetic question"
+            >
+
+            <div class="formula-buttons ar-example-buttons">
+                <button type="button" data-ar-example="is 14 even">Even / odd</button>
+                <button type="button" data-ar-example="is 17 prime">Prime</button>
+                <button type="button" data-ar-example="factors of 24">Factors</button>
+                <button type="button" data-ar-example="HCF(18,24)">HCF</button>
+                <button type="button" data-ar-example="LCM(12,18)">LCM</button>
+                <button type="button" data-ar-example="place value of 7 in 7305">Place value</button>
+                <button type="button" data-ar-example="absolute value of -15">Absolute value</button>
+                <button type="button" data-ar-example="(-2)+6">Integer addition</button>
+            </div>
+
+            <div class="formula-buttons">
+                <button type="button" id="arSolveBtn">Solve with Numbers Engine</button>
+            </div>
+
+            <div id="arSolveOutput" class="ar-output" hidden aria-live="polite"></div>
+        </div>
+    </section>
+
+    <section class="topic-section" aria-labelledby="ar-more">
+        <h2 id="ar-more">9. Practice more</h2>
+        <ul class="topic-list">
+            <li><a href="../formula-library.html">Browse Formula Library</a> — Patterns, Number Play, Prime Time, and The Other Side of Zero (Class 6 Arithmetic).</li>
+            <li><a href="../fractions-decimals/class6.html">Open Fractions &amp; Decimals</a> — Class 6 Fractions formulas (CBSE-C6-AR-017 to 021) live on that page.</li>
+            <li><a href="../ai-math-solver.html">Open AI Math Solver</a> — uses the same local Numbers engine. This page’s lessons stay Class 6 Arithmetic; the solver still attempts any typed question the engine already supports.</li>
+        </ul>
+    </section>
+
 </div>
+
+<style>
+.muted-tag {
+    color: #8eb4e8;
+    font-size: 14px;
+    font-weight: normal;
+}
+.formula-line {
+    font-size: 17px;
+    margin: 10px 0;
+}
+.formula-note {
+    color: #C8D4F0;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+.example-block {
+    margin-bottom: 16px;
+}
+.example-block p {
+    color: #C8D4F0;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+.ar-try-panel .ar-practice-heading {
+    color: #32c5ff;
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+.ar-try-panel .ar-label {
+    display: block;
+    color: #32c5ff;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.ar-result-heading {
+    color: #32c5ff;
+    font-weight: 600;
+    margin: 12px 0 6px 0;
+}
+.ar-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #2C4D8C;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #0E1C4D;
+    color: #ffffff;
+    margin-bottom: 14px;
+}
+.ar-example-buttons {
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.ar-example-buttons button {
+    flex: 1 1 160px;
+    font-size: 14px;
+}
+.ar-output {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #325a8a;
+    color: #C8D4F0;
+    line-height: 1.6;
+}
+.ar-result-ok {
+    color: #7dffb3;
+    font-size: 18px;
+}
+.ar-result-error {
+    color: #ffb4b4;
+}
+.ar-result-meta {
+    margin: 8px 0;
+}
+.ar-steps {
+    margin: 12px 0 0 20px;
+    padding: 0;
+}
+.ar-steps li {
+    margin-bottom: 8px;
+}
+.curriculum-level-notice {
+    margin: 10px 0 0;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #f1c40f;
+    background: #2a2408;
+    color: #f6e58d;
+    font-size: 13px;
+    line-height: 1.5;
+}
+.topic-list a {
+    color: #7ecbff;
+    text-decoration: underline;
+}
+</style>
+
+<script src="../../data/navigation.js"></script>
+<script src="../../js/study-back-nav.js"></script>
+<script src="../../js/curriculum/curriculum-level.js"></script>
+<script src="../../js/solver/providers/local-rule-engine/formula-catalog.js"></script>
+<script src="../../js/solver/providers/local-rule-engine/math-utils.js"></script>
+<script src="../../js/solver/providers/local-rule-engine/expression.js"></script>
+<script src="../../js/solver/providers/local-rule-engine/normalize.js"></script>
+<script src="../../js/solver/providers/local-rule-engine/decimal-math.js"></script>
+<script src="../../js/solver/providers/local-rule-engine/numbers.js"></script>
+<script src="../../js/arithmetic-class6.js"></script>
 
 </body>
 </html>

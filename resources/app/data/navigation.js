@@ -117,6 +117,17 @@ const STUDY_PAGE_REGISTRY = {
     category: STUDY_MATERIAL_CATEGORY,
     boards: null
   },
+  "arithmetic:6": {
+    id: "arithmetic:6",
+    topicId: "arithmetic",
+    classLevel: 6,
+    path: "../arithmetic/class6.html",
+    status: STUDY_PAGE_STATUS_AVAILABLE,
+    title: "Arithmetic",
+    icon: "➕",
+    category: STUDY_MATERIAL_CATEGORY,
+    boards: null
+  },
   "fractions-decimals:6": {
     id: "fractions-decimals:6",
     topicId: "fractions-decimals",
