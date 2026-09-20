@@ -73,6 +73,17 @@ const STUDY_PAGE_REGISTRY = {
     category: STUDY_MATERIAL_CATEGORY,
     boards: null
   },
+  "arithmetic:7": {
+    id: "arithmetic:7",
+    topicId: "arithmetic",
+    classLevel: 7,
+    path: "../arithmetic/class7.html",
+    status: STUDY_PAGE_STATUS_AVAILABLE,
+    title: "Arithmetic",
+    icon: "➕",
+    category: STUDY_MATERIAL_CATEGORY,
+    boards: null
+  },
   "algebra:9": {
     id: "algebra:9",
     topicId: "algebra",
